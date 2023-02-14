@@ -23,5 +23,6 @@ public class Productor_Cierre extends Thread{
         while(true){
             
         }
-    }  
+    }
+   
 }
