@@ -15,21 +15,33 @@ import proyecto_operativos.Proyecto_operativos;
  */
 public class Productor_Inicio extends Thread{
     private int productores;
+    private int max_Drive;
     public int Pro_per_Day;
     Semaphore drive_Inicio;
     Semaphore s;
     
-    public Productor_Inicio(Semaphore drive_Inicio, Semaphore s, int productores) {
+    public Productor_Inicio(Semaphore drive_Inicio, Semaphore s, int productores, int max_Drive) {
         this.drive_Inicio=drive_Inicio;
         this.s=s;
         this.productores=productores;
+        this.max_Drive =max_Drive;
     }
+    
+    public int get_Pro_per_Day(){
+        return this.Pro_per_Day;
+    }
+    
+    public void set_Pro_per_Day(int Pro_per_Day){
+        this.Pro_per_Day = Pro_per_Day;
+    }
+    
      @Override
     public void run(){
         while(true){
                 try {
+                    
                     this.drive_Inicio.acquire();
-                    if(Pro_per_Day <50){
+                    if(Pro_per_Day <max_Drive){
                         if(Proyecto_operativos.ci_Andy>=0 && Proyecto_operativos.ci_Andy<3){
                             Thread.sleep(2000);
                             Pro_per_Day=Pro_per_Day+productores*(1);
@@ -42,10 +54,11 @@ public class Productor_Inicio extends Thread{
                             Thread.sleep(4000);
                             Pro_per_Day=Pro_per_Day+productores*(1);
                         }
-                    if(Pro_per_Day >50){
-                            Pro_per_Day =50;
+                    if(Pro_per_Day >max_Drive){
+                            Pro_per_Day =max_Drive;
                         }
                         System.out.println("Se hicieron "+Pro_per_Day+"inicios");
+                        this.drive_Inicio.release();
                     }
 
 

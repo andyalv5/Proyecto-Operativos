@@ -15,21 +15,33 @@ import proyecto_operativos.Proyecto_operativos;
  */
 public class Productor_Plot_Twist extends Thread{
     private int productores;
+    private int max_Drive;
     public int Pro_per_Day;
     Semaphore drive_Plot_Twist;
     Semaphore s;
     
-    public Productor_Plot_Twist(Semaphore drive_Plot_Twist, Semaphore s, int productores) {
+    public Productor_Plot_Twist(Semaphore drive_Plot_Twist, Semaphore s, int productores,int max_Drive) {
         this.drive_Plot_Twist=drive_Plot_Twist;
         this.s=s;
         this.productores = productores;
+        this.max_Drive= max_Drive;
     }
+    
+    public int get_Pro_per_Day(){
+        return this.Pro_per_Day;
+    }
+    
+    public void set_Pro_per_Day(int Pro_per_Day){
+        this.Pro_per_Day = Pro_per_Day;
+    }
+    
+    
      @Override
     public void run(){
         while(true){
                 try {
                     this.drive_Plot_Twist.acquire();
-                        if(Pro_per_Day <40){
+                        if(Pro_per_Day <max_Drive){
                             if(Proyecto_operativos.ci_Andy>=0 && Proyecto_operativos.ci_Andy<5){
                                 Thread.sleep(2000);
                                 Pro_per_Day=Pro_per_Day+productores*(1);
@@ -38,12 +50,13 @@ public class Productor_Plot_Twist extends Thread{
                                 Thread.sleep(3000);
                                 Pro_per_Day=Pro_per_Day+productores*(1);
                             }
-                        if(Pro_per_Day >40){
-                            Pro_per_Day =40;
+                        if(Pro_per_Day >max_Drive){
+                            Pro_per_Day =max_Drive;
                         }
-                        System.out.println("Se hicieron "+Pro_per_Day+" plot twist");
+                    System.out.println("Se hicieron "+Pro_per_Day+" plot twist");
+                    this.drive_Plot_Twist.release();
                         
-                        }
+                    }
                         
                     
 

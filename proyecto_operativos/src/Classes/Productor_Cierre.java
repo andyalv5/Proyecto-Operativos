@@ -16,14 +16,24 @@ import proyecto_operativos.Proyecto_operativos;
 public class Productor_Cierre extends Thread{
     public int Pro_per_Day;
     private int productores;
+    private int max_Drive;
     Semaphore drive_Cierre;
     Semaphore s;
     
-    public Productor_Cierre(Semaphore drive_Cierre, Semaphore s, int productores) {
+    public Productor_Cierre(Semaphore drive_Cierre, Semaphore s, int productores,int max_Drive) {
         this.drive_Cierre=drive_Cierre;
         this.s=s;
         this.productores=productores;
+        this.max_Drive = max_Drive;
     }
+    
+    public int get_Pro_per_Day(){
+        return this.Pro_per_Day;
+    }
+    public void set_Pro_per_Day(int Pro_per_Day){
+        this.Pro_per_Day = Pro_per_Day;
+    }
+    
     @Override
     public void run(){
         while(true){
@@ -31,30 +41,31 @@ public class Productor_Cierre extends Thread{
                     this.drive_Cierre.acquire();
                     
                     if(Proyecto_operativos.ci_Andy>=0 && Proyecto_operativos.ci_Andy<3){
-                        if(Pro_per_Day <55){
+                        if(Pro_per_Day <max_Drive){
                             Thread.sleep(4000);
                             Pro_per_Day = Pro_per_Day+productores*(1);}
                     }
                     else if(Proyecto_operativos.ci_Andy>=3 && Proyecto_operativos.ci_Andy<6){
-                        if(Pro_per_Day <55){
+                        if(Pro_per_Day <max_Drive){
                             Thread.sleep(2000);
                             Pro_per_Day=Pro_per_Day+productores*(1);}
                     }
                     else{
-                        if(Pro_per_Day <55){
+                        if(Pro_per_Day <max_Drive){
                             Thread.sleep(3000);
                             Pro_per_Day=Pro_per_Day+productores*(1);}
                     }
-                    if(Pro_per_Day >55){
-                        Pro_per_Day =55;
+                    if(Pro_per_Day >max_Drive){
+                        Pro_per_Day =max_Drive;
                     }
                     System.out.println("Se hicieron "+Pro_per_Day+" Cierres");
+                    this.drive_Cierre.release();
 
 
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Productores_Intro.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                this.s.release();
+                
             
         }
     }
