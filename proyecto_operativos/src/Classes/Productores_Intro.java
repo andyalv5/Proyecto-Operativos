@@ -58,12 +58,12 @@ public class Productores_Intro extends Thread{
             
             try {
 //              Proyecto_operativos.Pro_per_day_Intro_Ensambler.acquire();
-                    
+                
                 System.out.println("Estoy a punto de entrar al acquire");
                 this.drive_Intro.acquire();
                 System.out.println("Estoy saliendo del aquire");
                     
-                    
+               
                 if(Pro_per_Day < max_Drive){
                         
                     Thread.sleep(Proyecto_operativos.dia_ms);
@@ -73,6 +73,7 @@ public class Productores_Intro extends Thread{
                         
                             
 //                            Intentamos acceder al area compartida sección critica
+                        
                         Dashboard.Jtext_Productores_Intro.acquire();
                             
 //                            Leemos el texto
@@ -80,6 +81,7 @@ public class Productores_Intro extends Thread{
                             
 //                            Liberamos el area compartida
                         Dashboard.Jtext_Productores_Intro.release();
+                       
                             
 //                            System.out.println("-------------------------------");
 //                            System.out.println(Integer.parseInt(Cant_Productores_Intro.getText()) );
@@ -89,20 +91,24 @@ public class Productores_Intro extends Thread{
                     }
                     else if(Proyecto_operativos.ci_Andy>=3 && Proyecto_operativos.ci_Andy<6){
 
+                        s.acquire();
                         Pro_per_Day = Pro_per_Day + (productores*2);
+                        s.release();
                     }
                     else{
-                        
+                        s.acquire();
                         Pro_per_Day = Pro_per_Day + (productores*3);
+                        s.release();
                         }
                     }
                     
                 else{
+                        s.acquire();
                         Pro_per_Day = max_Drive;
-                        System.out.println("max_drive = " + this.Pro_per_Day);
+                        s.release();
                     }
                 System.out.println("Se hicieron " + Pro_per_Day + " intros");
-                    
+             
                     
             }
             catch (InterruptedException ex) {

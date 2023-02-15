@@ -12,6 +12,7 @@ import Classes.Productores_Intro;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import proyecto_operativos.Proyecto_operativos;
 
 /**
  *
@@ -30,16 +31,25 @@ public class Ensamblador extends Thread{
     Productor_Inicio hilo3;
     Productor_Credito hilo4;
     Productor_Plot_Twist hilo5;
-    
-    
+    private int ensambladores;
     Semaphore s;
+    Semaphore o;
+    Semaphore p;
+    Semaphore q;
+    Semaphore r;
     
-    public Ensamblador(Productores_Intro hilo1,Productor_Cierre hilo2,Productor_Inicio hilo3,Productor_Credito hilo4,Productor_Plot_Twist hilo5) {
+    
+    public Ensamblador(Productores_Intro hilo1,Productor_Cierre hilo2,Productor_Inicio hilo3,Productor_Credito hilo4,Productor_Plot_Twist hilo5, Semaphore s,Semaphore o,Semaphore p, Semaphore q,Semaphore r) {
      this.hilo1= hilo1;
      this.hilo2= hilo2;
      this.hilo3= hilo3;
      this.hilo4= hilo4;
      this.hilo5= hilo5;
+     this.s=s;
+     this.o=o;
+     this.p=p;
+     this.q=q;
+     this.r=r;
      
     }
     
@@ -67,27 +77,61 @@ public class Ensamblador extends Thread{
         this.Plot_Twist_Prod = Pro_per_Day;
     }
     
+    public void set_Productores(int productores){
+        this.ensambladores=productores;
+    }
+    
     @Override
     public void run(){
         while(true){
             try {
-                Thread.sleep(2000);
-                if(intro_Prod>0 && inicio_Prod>0 && cierre_Prod>0 && Plot_Twist_Prod>0 && Credito_Prod>0){
-                    capitulo = capitulo+1;
+                
+                
+                Thread.sleep(2*Proyecto_operativos.dia_ms);
+                if(intro_Prod>0 && inicio_Prod>0 && cierre_Prod>0 && Plot_Twist_Prod>0 && Credito_Prod>0 && ensambladores>0){
                     
-                    hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);                    
-                    hilo1.free_space();
-                    
-                    hilo2.set_Pro_per_Day(hilo2.Pro_per_Day-1);
-                    hilo2.free_space();
-                    hilo3.set_Pro_per_Day(hilo3.Pro_per_Day-1);
-                    hilo3.free_space();
-                    hilo4.set_Pro_per_Day(hilo4.Pro_per_Day-1);
-                    hilo4.free_space();
-                    hilo5.set_Pro_per_Day(hilo5.Pro_per_Day-1);
-                    hilo5.free_space();
-                    
-                    System.out.println("Se ensamblo "+capitulo+" capitulos");
+                   
+                    s.acquire();
+                    o.acquire();
+                    p.acquire();
+                    q.acquire();
+                    r.acquire();
+                    for (int i = 0;i < Math.min(ensambladores , Math.min(intro_Prod, Math.min(inicio_Prod, Math.min(cierre_Prod, Math.min(Plot_Twist_Prod, Credito_Prod)))));i++){
+                        capitulo = capitulo+1;
+                        
+                        
+                        hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);
+                        hilo1.free_space();
+                        
+                        
+                        
+                        hilo2.set_Pro_per_Day(hilo2.Pro_per_Day-1);
+                        hilo2.free_space();
+                       
+                        
+                        
+                        hilo3.set_Pro_per_Day(hilo3.Pro_per_Day-1);
+                        hilo3.free_space();
+                      
+                        
+                      
+                        hilo4.set_Pro_per_Day(hilo4.Pro_per_Day-1);
+                        hilo4.free_space();
+                        
+                        
+                        
+                        hilo5.set_Pro_per_Day(hilo5.Pro_per_Day-1);
+                        hilo5.free_space();
+                        
+                        
+                        System.out.println("Se ensamblo "+capitulo+" capitulos");
+                        
+                    }
+                    r.release();
+                    q.release();
+                    p.release();
+                    o.release();    
+                    s.release();
                 }
             } catch (InterruptedException ex) {
                 Logger.getLogger(Ensamblador.class.getName()).log(Level.SEVERE, null, ex);

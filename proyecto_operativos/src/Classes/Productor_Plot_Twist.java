@@ -52,19 +52,29 @@ public class Productor_Plot_Twist extends Thread{
         while(true){
                 try {
                     this.drive_Plot_Twist.acquire();
+                    
                         if(Pro_per_Day <max_Drive){
                             if(Proyecto_operativos.ci_Andy>=0 && Proyecto_operativos.ci_Andy<5){
-                                Thread.sleep(2000);
+                                Thread.sleep(2*(Proyecto_operativos.dia_ms));
+                                s.acquire();
                                 Pro_per_Day=Pro_per_Day+productores*(1);
+                                s.release();
+                                
                             }
                             else{
-                                Thread.sleep(3000);
+                                Thread.sleep(3*Proyecto_operativos.dia_ms);
+                                s.acquire();
                                 Pro_per_Day=Pro_per_Day+productores*(1);
+                                s.release();
+                             
                             }
                         if(Pro_per_Day >max_Drive){
+                            s.acquire();
                             Pro_per_Day =max_Drive;
+                            s.release();
                         }
                     System.out.println("Se hicieron "+Pro_per_Day+" plot twist");
+                
                     
                         
                     }

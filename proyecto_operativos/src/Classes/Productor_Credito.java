@@ -52,22 +52,32 @@ public class Productor_Credito extends Thread{
         while(true){
             try {
                     this.drive_Credito.acquire();
+                    
                     if(Pro_per_Day <max_Drive){
-                        Thread.sleep(1000);
+                        Thread.sleep(Proyecto_operativos.dia_ms);
                         if(Proyecto_operativos.ci_Andy>=0 && Proyecto_operativos.ci_Andy<3){
+                            s.acquire();
                             Pro_per_Day=Pro_per_Day+productores*(4);
+                            s.release();
                         }
                         else if(Proyecto_operativos.ci_Andy>=3 && Proyecto_operativos.ci_Andy<6){
+                            s.acquire();
                             Pro_per_Day=Pro_per_Day+productores*(2);
+                            s.release();
                         }
                         else{
+                            s.acquire();
                             Pro_per_Day=Pro_per_Day+3;
+                            s.release();
                         }
                         if(Pro_per_Day >max_Drive){
+                            s.acquire();
                             Pro_per_Day =max_Drive;
+                            s.release();
                         }
                     }
 //                    System.out.println("Se hicieron "+Pro_per_Day+" Creditos");
+                    
                     this.drive_Credito.release();
 
                 } catch (InterruptedException ex) {
