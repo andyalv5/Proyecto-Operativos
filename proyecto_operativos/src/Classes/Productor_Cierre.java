@@ -34,6 +34,18 @@ public class Productor_Cierre extends Thread{
         this.Pro_per_Day = Pro_per_Day;
     }
     
+    public void free_space(){        
+    }
+    
+    /*
+    
+    */
+    
+    public void set_Productores(int productores){
+        this.productores=productores;
+    }
+    
+    
     @Override
     public void run(){
         while(true){
@@ -59,7 +71,7 @@ public class Productor_Cierre extends Thread{
                         Pro_per_Day =max_Drive;
                     }
                     System.out.println("Se hicieron "+Pro_per_Day+" Cierres");
-                    this.drive_Cierre.release();
+                    
 
 
                 } catch (InterruptedException ex) {

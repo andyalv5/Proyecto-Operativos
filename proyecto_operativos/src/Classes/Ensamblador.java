@@ -74,11 +74,18 @@ public class Ensamblador extends Thread{
                 Thread.sleep(2000);
                 if(intro_Prod>0 && inicio_Prod>0 && cierre_Prod>0 && Plot_Twist_Prod>0 && Credito_Prod>0){
                     capitulo = capitulo+1;
-                    hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);
+                    
+                    hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);                    
+                    hilo1.free_space();
+                    
                     hilo2.set_Pro_per_Day(hilo2.Pro_per_Day-1);
+                    hilo2.free_space();
                     hilo3.set_Pro_per_Day(hilo3.Pro_per_Day-1);
+                    hilo3.free_space();
                     hilo4.set_Pro_per_Day(hilo4.Pro_per_Day-1);
+                    hilo4.free_space();
                     hilo5.set_Pro_per_Day(hilo5.Pro_per_Day-1);
+                    hilo5.free_space();
                     
                     System.out.println("Se ensamblo "+capitulo+" capitulos");
                 }

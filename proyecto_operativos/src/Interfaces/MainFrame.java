@@ -45,14 +45,14 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("BIENVENIDO");
         jLabel2.setOpaque(true);
-        Background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 620, 350, -1));
+        Background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 350, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pngegg.png"))); // NOI18N
         jLabel1.setText("1030");
         Background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, 520, 580));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/green-and-blue-investment-building.jpg"))); // NOI18N
-        Background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 710, 150, 110));
+        Background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 150, 110));
 
         btnAggUsuario.setText("Pulse aquí para entrar");
         btnAggUsuario.setDefaultCapable(false);
@@ -65,7 +65,7 @@ public class MainFrame extends javax.swing.JFrame {
                 btnAggUsuarioActionPerformed(evt);
             }
         });
-        Background.add(btnAggUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 750, 250, -1));
+        Background.add(btnAggUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 250, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/0-creative-business-model-canvas___media_library_original_1600_900.jpg"))); // NOI18N
         Background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 880));
@@ -85,9 +85,12 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAggUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAggUsuarioActionPerformed
-        // TODO add your handling code here:
-        Dashboard venaddus = new Dashboard();
+        
+//        Llama a la otra interfaz
+        Dashboard venaddus = new Dashboard();        
         venaddus.setVisible(true);
+        
+//        Cierra la interfaz actual
         this.setVisible(false);
         
     }//GEN-LAST:event_btnAggUsuarioActionPerformed

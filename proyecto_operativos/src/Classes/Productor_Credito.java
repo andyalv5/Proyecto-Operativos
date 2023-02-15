@@ -35,6 +35,18 @@ public class Productor_Credito extends Thread{
         this.Pro_per_Day = Pro_per_Day;
     }
     
+    public void free_space(){        
+    }
+    
+    /*
+    
+    */
+    
+    public void set_Productores(int productores){
+        this.productores=productores;
+    }
+    
+    
      @Override
     public void run(){
         while(true){
@@ -55,7 +67,7 @@ public class Productor_Credito extends Thread{
                             Pro_per_Day =max_Drive;
                         }
                     }
-                    System.out.println("Se hicieron "+Pro_per_Day+" Creditos");
+//                    System.out.println("Se hicieron "+Pro_per_Day+" Creditos");
                     this.drive_Credito.release();
 
                 } catch (InterruptedException ex) {

@@ -35,6 +35,17 @@ public class Productor_Plot_Twist extends Thread{
         this.Pro_per_Day = Pro_per_Day;
     }
     
+    public void free_space(){        
+        this.drive_Plot_Twist.release(productores);
+    }
+    
+    /*
+    
+    */
+    
+    public void set_Productores(int productores){
+        this.productores=productores;
+    }
     
      @Override
     public void run(){
@@ -54,7 +65,7 @@ public class Productor_Plot_Twist extends Thread{
                             Pro_per_Day =max_Drive;
                         }
                     System.out.println("Se hicieron "+Pro_per_Day+" plot twist");
-                    this.drive_Plot_Twist.release();
+                    
                         
                     }
                         

@@ -17,19 +17,30 @@ import java.util.concurrent.Semaphore;
 public class Proyecto_operativos {
     //prod hay que revisarlo para que sea una variable que se introduzca por interfaz 
     
-    public static int ci_Andy = 9;
+//    Final cédula Andy
+    public static int ci_Andy = 1;
+    
+//    Final cédula José
     public static int ci_jose = 10;
     
-    public static int tamanio_credito = 25;
-    public static int tamanio_Inicio = 50;
-    public static int tamanio_Cierre = 55;
-    public static int tamanio_Plot_Twist = 40;
+    public static int dia_ms = 1000;
     
-    public static Semaphore drive_credito = new Semaphore(tamanio_credito);
-    public static Semaphore drive_Inicio = new Semaphore(tamanio_Inicio);
-    public static Semaphore drive_Cierre = new Semaphore(tamanio_Cierre);
-    public static Semaphore drive_Plot_Twist = new Semaphore(tamanio_Plot_Twist);
-    public static Semaphore semaforo_s = new Semaphore(1);
+    
+    public static Semaphore Pro_per_day_Intro_Ensambler = new Semaphore(1);
+    
+    
+//    Tamaños diferentes en el drive
+//    public static int tamanio_credito = 25;
+//    public static int tamanio_Inicio = 50;
+//    public static int tamanio_Cierre = 55;
+//    public static int tamanio_Plot_Twist = 40;
+    
+//    Semaforos para cada tamaño diferente en el drive
+//    public static Semaphore drive_credito = new Semaphore(tamanio_credito);
+//    public static Semaphore drive_Inicio = new Semaphore(tamanio_Inicio);
+//    public static Semaphore drive_Cierre = new Semaphore(tamanio_Cierre);
+//    public static Semaphore drive_Plot_Twist = new Semaphore(tamanio_Plot_Twist);
+//    public static Semaphore semaforo_s = new Semaphore(1);
     
     
     
@@ -42,7 +53,7 @@ public class Proyecto_operativos {
      */
     public static void main(String[] args) {
         
-        MainFrame inicial =new MainFrame();
+        MainFrame inicial = new MainFrame();
         inicial.setVisible(true);
     }
     
