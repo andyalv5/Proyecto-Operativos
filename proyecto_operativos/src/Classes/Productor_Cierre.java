@@ -51,7 +51,6 @@ public class Productor_Cierre extends Thread{
         while(true){
                 try {
                     
-                    System.out.println("Me mame");
                     this.drive_Cierre.acquire();
                     
                     
