@@ -26,7 +26,7 @@ public class Dashboard extends javax.swing.JFrame {
     public ActionListener ac;
     
 //    Final cédula de Andy 
-    public int ci_Andy = 9;
+    public int ci_Andy = 8;
     
     //    Tamaños diferentes en el drive
     public static int tamanio_Intro = 30;
@@ -78,10 +78,10 @@ public class Dashboard extends javax.swing.JFrame {
         progresoCierreBar.setMaximum(tamanio_Cierre);
         progresoInicioBar.setMaximum(tamanio_Inicio);
         progresoPlotTwistBar.setMaximum(tamanio_Plot_Twist);
-        Cant_Productores_Inicio.setText(String.valueOf(2+ci_Andy));
-        Cant_Productores_Intro.setText(String.valueOf(2));
+        Cant_Productores_Inicio.setText(String.valueOf(3));
+        Cant_Productores_Intro.setText(String.valueOf(ci_Andy));
         Cant_Productores_Cierre.setText(String.valueOf(2));
-        Cant_Productores_Credito.setText(String.valueOf(2));
+        Cant_Productores_Credito.setText(String.valueOf(3));
         Cant_Productores_PT.setText(String.valueOf(2));
          
         
@@ -490,7 +490,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_Cant_Productores_IntroActionPerformed
 
     private void Inicio_to_CierreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inicio_to_CierreActionPerformed
-        if(Integer.parseInt(this.Cant_Productores_Inicio.getText()) > 0){
+        if(Integer.parseInt(this.Cant_Productores_Inicio.getText()) > 1){
             
             try {
                 
@@ -513,7 +513,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_Inicio_to_CierreActionPerformed
 
     private void Inicio_to_Plot_TwistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inicio_to_Plot_TwistActionPerformed
-        if(Integer.parseInt(this.Cant_Productores_Inicio.getText()) > 0){
+        if(Integer.parseInt(this.Cant_Productores_Inicio.getText()) > 1){
             
             try {
                 
@@ -540,7 +540,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_Cant_Productores_EnsambladoActionPerformed
 
     private void credit_to_cierreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_credit_to_cierreActionPerformed
-        if(Integer.parseInt(this.Cant_Productores_Credito.getText()) > 0){
+        if(Integer.parseInt(this.Cant_Productores_Credito.getText()) > 1){
             
             try {
                 
@@ -567,7 +567,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_Cant_Productores_CierreActionPerformed
 
     private void cierre_to_InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cierre_to_InicioActionPerformed
-        if(Integer.parseInt(this.Cant_Productores_Cierre.getText()) > 0){
+        if(Integer.parseInt(this.Cant_Productores_Cierre.getText()) > 1){
             
             try {
                 
@@ -594,7 +594,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_Cant_Productores_InicioActionPerformed
 
     private void to_EnsambleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_to_EnsambleActionPerformed
-        if(Integer.parseInt(this.Cant_Productores_Intro.getText()) > 0){
+        if(Integer.parseInt(this.Cant_Productores_Intro.getText()) > 1){
             
             try {
                 
@@ -621,7 +621,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_Cant_Productores_PTActionPerformed
 
     private void Credito_to_IntroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Credito_to_IntroActionPerformed
-        if(Integer.parseInt(this.Cant_Productores_Credito.getText()) > 0){
+        if(Integer.parseInt(this.Cant_Productores_Credito.getText()) > 1){
             
             try {
                 
@@ -644,7 +644,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_Credito_to_IntroActionPerformed
 
     private void Cierre_to_CreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cierre_to_CreditoActionPerformed
-        if(Integer.parseInt(this.Cant_Productores_Cierre.getText()) > 0){
+        if(Integer.parseInt(this.Cant_Productores_Cierre.getText()) > 1){
             
             try {
                 
@@ -667,7 +667,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_Cierre_to_CreditoActionPerformed
 
     private void Plot_Twist_To_InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Plot_Twist_To_InicioActionPerformed
-        if(Integer.parseInt(this.Cant_Productores_PT.getText()) > 0){
+        if(Integer.parseInt(this.Cant_Productores_PT.getText()) > 1){
             
             try {
                 
@@ -690,7 +690,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_Plot_Twist_To_InicioActionPerformed
 
     private void Intro_a_creditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Intro_a_creditoActionPerformed
-        if(Integer.parseInt(this.Cant_Productores_Intro.getText()) > 0){
+        if(Integer.parseInt(this.Cant_Productores_Intro.getText()) > 1){
             
             try {
                 
@@ -713,11 +713,16 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_Intro_a_creditoActionPerformed
 
     private void subir_EnsambladoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subir_EnsambladoresActionPerformed
-        // TODO add your handling code here:
+         this.Cant_Productores_Ensamblado.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Ensamblado.getText()) + 1));
     }//GEN-LAST:event_subir_EnsambladoresActionPerformed
 
     private void bajar_EnsabladoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bajar_EnsabladoresActionPerformed
-        // TODO add your handling code here:
+        if(Integer.parseInt(this.Cant_Productores_Ensamblado.getText()) > 0){
+            
+            this.Cant_Productores_Ensamblado.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Ensamblado.getText()) - 1));
+            
+           
+        }
     }//GEN-LAST:event_bajar_EnsabladoresActionPerformed
 
     /**
