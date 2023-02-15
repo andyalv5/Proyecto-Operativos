@@ -54,7 +54,7 @@ public class Productor_Credito extends Thread{
                     this.drive_Credito.acquire();
                     
                     if(Pro_per_Day <max_Drive){
-                        Thread.sleep(Proyecto_operativos.dia_ms);
+                        Thread.sleep(Proyecto_operativos.dia_en_ms);
                         if(Proyecto_operativos.ci_Andy>=0 && Proyecto_operativos.ci_Andy<3){
                             s.acquire();
                             Pro_per_Day=Pro_per_Day+productores*(4);

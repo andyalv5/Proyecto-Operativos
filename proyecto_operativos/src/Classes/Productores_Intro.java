@@ -66,7 +66,7 @@ public class Productores_Intro extends Thread{
                
                 if(Pro_per_Day < max_Drive){
                         
-                    Thread.sleep(Proyecto_operativos.dia_ms);
+                    Thread.sleep(Proyecto_operativos.dia_en_ms);
                         
 //                        Si la cedula está entre 0 y 3, entra
                     if(Proyecto_operativos.ci_Andy >= 0 && Proyecto_operativos.ci_Andy < 3){

@@ -23,7 +23,7 @@ public class Proyecto_operativos {
 //    Final cédula José
     public static int ci_jose = 10;
     
-    public static int dia_ms = 1000;
+    public static int dia_en_ms = 1000;
     
     
     public static Semaphore Pro_per_day_Intro_Ensambler = new Semaphore(1);
