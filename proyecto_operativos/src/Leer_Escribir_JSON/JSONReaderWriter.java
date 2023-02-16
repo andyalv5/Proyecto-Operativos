@@ -6,6 +6,7 @@ package Leer_Escribir_JSON;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -47,7 +48,7 @@ public class JSONReaderWriter{
     }
     
     /**
-     * 
+     * Lee el archivo JSON
      */
     public void Reader(){
         
@@ -87,22 +88,7 @@ public class JSONReaderWriter{
 //            Iterator<Map.Entry> Drive_itr_2 = null;
             
             this.map(Drive_itr);
-            
-//            System.out.println("dddd");
-//            ------------------------------------------------------------
-////            Se busca dentro del while lo que está en el drive
-//            while( Drive_itr.hasNext()){                
-//            }
-//                Drive_itr_2 = ((Map) Drive_itr.next()).entrySet().iterator();
-//                while (Drive_itr_2.hasNext()) {
-//                    Map.Entry pair = Drive_itr_2.next();
-//                    
-//                    System.out.println(pair.getKey() + " : " + pair.getValue());
-////                    Añadimos a la lista los valores
-//                    lista[i] = (String) pair.getValue();
-//                    i++;
-//            }
-            
+                        
 //            Arreglo de JSON de Cantidad_Productores_Rodaje_jose_inicial
             JSONArray Cantidad_Productores_Rodaje_jose_inicial = (JSONArray) jo.get("Cantidad_Productores_Rodaje_jose_inicial");
             Iterator Cantidad_Productores_Rodaje_jose_inicial_itr = Cantidad_Productores_Rodaje_jose_inicial.iterator();
@@ -126,19 +112,12 @@ public class JSONReaderWriter{
             i++;
             
             
-            
-//            System.out.println(dia_en_segundos);
-//            System.out.println(dias_entre_despachos);
-//            System.out.println(Ensamblador_Rodaje_jose);
-//            System.out.println(Ensamblador_Rodaje_andy);
-//            System.out.println("");
-            
-            for(int i = 0; i < lista.length; i++){
-                System.out.println(lista[i]);
+            for (String lista1 : lista) {
+                System.out.println(lista1);
             }
             
             
-        }catch(Exception e){
+        }catch(IOException | ParseException e){
             System.out.println(e);
         }
         
@@ -311,13 +290,12 @@ public class JSONReaderWriter{
 //        -----------------------------------
         jo.put("Ensamblador_Rodaje_andy", Ensamblador_Rodaje_andy_int);
 //        ----------------------------
-        
-//        writing JSON to file:"JSONExample.json" in cwd
-        PrintWriter pw = new PrintWriter("src\\Archivos\\jsonfile.json");
-        pw.write(jo.toJSONString());
-          
-        pw.flush();
-        pw.close();
+        try (//        writing JSON to file:"JSONExample.json" in cwd
+                PrintWriter pw = new PrintWriter("src\\Archivos\\jsonfile.json")) {
+            pw.write(jo.toJSONString());
+            
+            pw.flush();
+        }
 
     }
          

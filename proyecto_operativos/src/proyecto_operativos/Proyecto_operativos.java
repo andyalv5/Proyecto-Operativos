@@ -97,7 +97,7 @@ public class Proyecto_operativos {
     public static void main(String[] args) throws FileNotFoundException {
         
         MainFrame inicial = new MainFrame();
-        inicial.setVisible(true);
+//        inicial.setVisible(true);
         
 //        JOSE VA A DOMINAR ESTO MUAJAJAJA
 //        |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -108,10 +108,11 @@ public class Proyecto_operativos {
         pm.start();
         
         JSONReaderWriter jsonrw = new JSONReaderWriter();
-        jsonrw.Reader();
         
         jsonrw.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "1", "1");
+        jsonrw.Reader();
 //        |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+        
     }
     
 }
