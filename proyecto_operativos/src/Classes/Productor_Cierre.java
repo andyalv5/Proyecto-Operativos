@@ -7,7 +7,7 @@ package Classes;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import proyecto_operativos.Proyecto_operativos;
+import proyecto_operativos.Proyecto_1;
 
 /**
  *
@@ -54,16 +54,16 @@ public class Productor_Cierre extends Thread{
                     this.drive_Cierre.acquire();
                     
                     
-                    if(Proyecto_operativos.ci_Andy>=0 && Proyecto_operativos.ci_Andy<3){
+                    if(Proyecto_1.ci_Andy>=0 && Proyecto_1.ci_Andy<3){
                         if(Pro_per_Day <max_Drive){
-                            Thread.sleep(4*Proyecto_operativos.dia_en_ms);
+                            Thread.sleep(4*Proyecto_1.dia_en_ms);
                             s.acquire();
                             Pro_per_Day = Pro_per_Day+productores*(1);}
                             s.release();
                     }
-                    else if(Proyecto_operativos.ci_Andy>=3 && Proyecto_operativos.ci_Andy<6){
+                    else if(Proyecto_1.ci_Andy>=3 && Proyecto_1.ci_Andy<6){
                         if(Pro_per_Day <max_Drive){
-                            Thread.sleep(2*Proyecto_operativos.dia_en_ms);
+                            Thread.sleep(2*Proyecto_1.dia_en_ms);
                             s.acquire();
                             Pro_per_Day=Pro_per_Day+productores*(1);}
                             s.release();
@@ -71,7 +71,7 @@ public class Productor_Cierre extends Thread{
                     else{
                         if(Pro_per_Day <max_Drive){
                             
-                            Thread.sleep(3*Proyecto_operativos.dia_en_ms);
+                            Thread.sleep(3*Proyecto_1.dia_en_ms);
                             s.acquire();
                             Pro_per_Day=Pro_per_Day+productores*(1);
                             s.release();

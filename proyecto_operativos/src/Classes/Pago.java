@@ -6,7 +6,7 @@ package Classes;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import proyecto_operativos.Proyecto_operativos;
+import proyecto_operativos.Proyecto_1;
 
 /**
  *
@@ -18,7 +18,7 @@ public class Pago extends Thread{
     public void run(){
         try {
 //            Duerme un dia para posteriormente hacer el pago
-            Thread.sleep(Proyecto_operativos.dia_en_ms);
+            Thread.sleep(Proyecto_1.dia_en_ms);
             
             
         } catch (InterruptedException ex) {
