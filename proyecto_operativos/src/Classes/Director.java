@@ -14,7 +14,7 @@ import proyecto_operativos.Proyecto_operativos;
  * @author Hallo
  */
 public class Director extends Thread{
-    
+//    Estas variables random las pienso usar para calculos futuros
     int random;
     int random2;
     boolean keep = true;
