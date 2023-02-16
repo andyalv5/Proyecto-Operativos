@@ -11,12 +11,14 @@ import Classes.Productor_Plot_Twist;
 import Classes.Productores_Intro;
 import Classes.Project_manager;
 import Interfaces.MainFrame;
+import Leer_Escribir_JSON.JSONReaderWriter;
+import java.io.FileNotFoundException;
 import java.util.concurrent.Semaphore;
 /**
  *
  * @author Andy
  */
-public class Proyecto_1 {
+public class Proyecto_operativos {
     
 //    JOSÉ SE ROBARÁ ESTE ESPACIO MUAJAJAJA
 //    ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -92,7 +94,7 @@ public class Proyecto_1 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         
         MainFrame inicial = new MainFrame();
         inicial.setVisible(true);
@@ -104,6 +106,11 @@ public class Proyecto_1 {
         
         dir.start();
         pm.start();
+        
+        JSONReaderWriter jsonrw = new JSONReaderWriter();
+        jsonrw.Reader();
+        
+        jsonrw.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "1", "1");
 //        |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
     }
     

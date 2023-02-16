@@ -12,7 +12,7 @@ import Classes.Productores_Intro;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import proyecto_operativos.Proyecto_1;
+import proyecto_operativos.Proyecto_operativos;
 
 /**
  *
@@ -87,7 +87,7 @@ public class Ensamblador extends Thread{
             try {
                 
                 
-                Thread.sleep(2*Proyecto_1.dia_en_ms);
+                Thread.sleep(2*Proyecto_operativos.dia_en_ms);
                 if(intro_Prod>0 && inicio_Prod>0 && cierre_Prod>0 && Plot_Twist_Prod>0 && Credito_Prod>0 && ensambladores>0){
                     
                    

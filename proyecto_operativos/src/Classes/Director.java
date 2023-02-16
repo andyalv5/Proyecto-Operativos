@@ -6,7 +6,7 @@ package Classes;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import proyecto_operativos.Proyecto_1;
+import proyecto_operativos.Proyecto_operativos;
 
 
 /**
@@ -33,25 +33,25 @@ public class Director extends Thread{
         while(keep){
             try {
                 
-                Proyecto_1.Contador.acquire();
+                Proyecto_operativos.Contador.acquire();
                 
-                if(Proyecto_1.contador_dias_restantes != 0){
+                if(Proyecto_operativos.contador_dias_restantes != 0){
                     
-                    Proyecto_1.Contador.release();
+                    Proyecto_operativos.Contador.release();
                     
 //                    genera un numero random de 30 a 90 min en base al día establecido
-                    random = (int)(Math.random()*((double)(Proyecto_1.dia_en_ms)/24 + (double)(Proyecto_1.dia_en_ms)/24/60) + (double)(Proyecto_1.dia_en_ms)/24/2);
+                    random = (int)(Math.random()*((double)(Proyecto_operativos.dia_en_ms)/24 + (double)(Proyecto_operativos.dia_en_ms)/24/60) + (double)(Proyecto_operativos.dia_en_ms)/24/2);
                     
                     Thread.sleep(random);
                     
     //                Agregamos semaforo a la sección critica
-//                    Proyecto_1.Director_PM_Semaphore.acquire();
+//                    Proyecto_operativos.Director_PM_Semaphore.acquire();
     //                Llamamos al metodo "cachado"
 
                     cachado();                    
 
     //                Liberamos semaforo a la sección critica
-//                    Proyecto_1.Director_PM_Semaphore.release();
+//                    Proyecto_operativos.Director_PM_Semaphore.release();
                     
 //                    Toma su descanso de vigilación cada 30-90 minutos
                     
@@ -59,10 +59,10 @@ public class Director extends Thread{
 //                    ---------------------------------------
 //                    Aquí pondremos el método para agregar todos los capitulos creados a la serie
 //                    Y además resetearemos el contador a su valor original
-                    Proyecto_1.contador_dias_restantes = Proyecto_1.dias_entre_despachos;
+                    Proyecto_operativos.contador_dias_restantes = Proyecto_operativos.dias_entre_despachos;
 //                    --------------------------------------------
 
-                    Proyecto_1.Contador.release();
+                    Proyecto_operativos.Contador.release();
                     
                 }
                 
@@ -84,7 +84,7 @@ public class Director extends Thread{
             System.out.println("Director: Te vi menooor");
             
 //            Medimos las horas que tarda el Director 12-18 horas aleatoriamente
-            int random2 = (int)(Math.random()*Proyecto_1.dia_en_ms*6/24 + Proyecto_1.dia_en_ms*12/24);
+            int random2 = (int)(Math.random()*Proyecto_operativos.dia_en_ms*6/24 + Proyecto_operativos.dia_en_ms*12/24);
             
             Thread.sleep(random2);
             

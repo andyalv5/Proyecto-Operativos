@@ -8,7 +8,7 @@ import Interfaces.Dashboard;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import proyecto_operativos.Proyecto_1;
+import proyecto_operativos.Proyecto_operativos;
 
 
 /**
@@ -57,7 +57,7 @@ public class Productores_Intro extends Thread{
         while(true){
             
             try {
-//              Proyecto_1.Pro_per_day_Intro_Ensambler.acquire();
+//              Proyecto_operativos.Pro_per_day_Intro_Ensambler.acquire();
                 
                 System.out.println("Estoy a punto de entrar al acquire");
                 this.drive_Intro.acquire();
@@ -66,10 +66,10 @@ public class Productores_Intro extends Thread{
                
                 if(Pro_per_Day < max_Drive){
                         
-                    Thread.sleep(Proyecto_1.dia_en_ms);
+                    Thread.sleep(Proyecto_operativos.dia_en_ms);
                         
 //                        Si la cedula está entre 0 y 3, entra
-                    if(Proyecto_1.ci_Andy >= 0 && Proyecto_1.ci_Andy < 3){
+                    if(Proyecto_operativos.ci_Andy >= 0 && Proyecto_operativos.ci_Andy < 3){
                         
                             
 //                            Intentamos acceder al area compartida sección critica
@@ -89,7 +89,7 @@ public class Productores_Intro extends Thread{
                             
                             
                     }
-                    else if(Proyecto_1.ci_Andy>=3 && Proyecto_1.ci_Andy<6){
+                    else if(Proyecto_operativos.ci_Andy>=3 && Proyecto_operativos.ci_Andy<6){
 
                         s.acquire();
                         Pro_per_Day = Pro_per_Day + (productores*2);

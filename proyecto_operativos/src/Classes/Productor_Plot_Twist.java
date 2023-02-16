@@ -7,7 +7,7 @@ package Classes;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import proyecto_operativos.Proyecto_1;
+import proyecto_operativos.Proyecto_operativos;
 
 /**
  *
@@ -54,15 +54,15 @@ public class Productor_Plot_Twist extends Thread{
                     this.drive_Plot_Twist.acquire();
                     
                         if(Pro_per_Day <max_Drive){
-                            if(Proyecto_1.ci_Andy>=0 && Proyecto_1.ci_Andy<5){
-                                Thread.sleep(2*(Proyecto_1.dia_en_ms));
+                            if(Proyecto_operativos.ci_Andy>=0 && Proyecto_operativos.ci_Andy<5){
+                                Thread.sleep(2*(Proyecto_operativos.dia_en_ms));
                                 s.acquire();
                                 Pro_per_Day=Pro_per_Day+productores*(1);
                                 s.release();
                                 
                             }
                             else{
-                                Thread.sleep(3*Proyecto_1.dia_en_ms);
+                                Thread.sleep(3*Proyecto_operativos.dia_en_ms);
                                 s.acquire();
                                 Pro_per_Day=Pro_per_Day+productores*(1);
                                 s.release();
