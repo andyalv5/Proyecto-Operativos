@@ -79,7 +79,7 @@ public class Productor_Inicio extends Thread{
                         s.release();
                         }
                         System.out.println("Se hicieron "+Pro_per_Day+"inicios");
-                        this.drive_Inicio.release();
+               
                     }
 
 
