@@ -87,7 +87,7 @@ public class Ensamblador extends Thread{
             try {
                 
                 
-                Thread.sleep(2*Proyecto_operativos.dia_ms);
+                Thread.sleep(2*Proyecto_operativos.dia_en_ms);
                 if(intro_Prod>0 && inicio_Prod>0 && cierre_Prod>0 && Plot_Twist_Prod>0 && Credito_Prod>0 && ensambladores>0){
                     
                    
