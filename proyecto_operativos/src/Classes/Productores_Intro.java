@@ -33,7 +33,7 @@ public class Productores_Intro extends Thread{
     }
     
     public void free_space(){        
-        this.drive_Intro.release(productores);
+        this.drive_Intro.release();
     }
     
     /*

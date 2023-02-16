@@ -36,7 +36,7 @@ public class Productor_Plot_Twist extends Thread{
     }
     
     public void free_space(){        
-        this.drive_Plot_Twist.release(productores);
+        this.drive_Plot_Twist.release();
     }
     
     /*

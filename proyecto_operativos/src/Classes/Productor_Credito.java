@@ -35,7 +35,8 @@ public class Productor_Credito extends Thread{
         this.Pro_per_Day = Pro_per_Day;
     }
     
-    public void free_space(){        
+    public void free_space(){ 
+        this.drive_Credito.release();
     }
     
     /*
