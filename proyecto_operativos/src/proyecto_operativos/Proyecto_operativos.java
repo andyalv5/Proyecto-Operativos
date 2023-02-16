@@ -98,7 +98,7 @@ public class Proyecto_operativos {
     public static void main(String[] args) throws FileNotFoundException {
         
         MainFrame inicial = new MainFrame();
-//        inicial.setVisible(true);
+        inicial.setVisible(true);
         
 //        JOSE VA A DOMINAR ESTO MUAJAJAJA
 //        |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
