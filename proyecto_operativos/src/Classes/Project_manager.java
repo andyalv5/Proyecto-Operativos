@@ -18,18 +18,74 @@ import proyecto_operativos.Proyecto_operativos;
 public class Project_manager extends Thread{
     
 //    Si está viendo R y M
-    public static volatile boolean Rick_y_Morty = false;
+    boolean Rick_y_Morty = false;
 //    Si está revisando Sprints reviews
-    public static boolean Sprint_reviews = false;
+    boolean Sprint_reviews = false;
     
     public static volatile int Veces_descubierto_flojeando = 0;
     
     int ci;
     
-    public Project_manager(int ci){
+    //    Solo puede o ser "jose" o "andy"
+    String rodaje;
+    
+    /**
+     * 
+     * @param ci 
+     */
+    public Project_manager(int ci, String rodaje){
         this.ci = ci;
+        this.rodaje = rodaje;
     }
     
+    /**
+     * Revisa que rodaje es, y en consecuencia,usa el semaforo correspondiente para acquire
+     * @throws InterruptedException 
+     */
+    public void Semaforo_Contador_acquire() throws InterruptedException{
+        if(this.rodaje.equalsIgnoreCase("andy")){
+            System.out.println("toca un acquire en andy");
+            Proyecto_operativos.Contador_andy.acquire();
+        }else{
+            Proyecto_operativos.Contador_jose.acquire();
+        }
+    }
+    
+    /**
+     * Revisa que rodaje es, y en consecuencia, usa el semaforo correspondiente para release
+     * @throws InterruptedException 
+     */
+    public void Semaforo_Contador_release() throws InterruptedException{
+        if(this.rodaje.equalsIgnoreCase("andy")){
+            System.out.println("toca un release en andy");
+            Proyecto_operativos.Contador_andy.release();
+        }else{
+            Proyecto_operativos.Contador_jose.release();
+        }
+    }
+   
+    /**
+     * Evalua en que rodaje se está
+     * @return el contador de dias restantes segun el rodaje 
+     */
+    public int Contador_dias_restantes_rodaje(){
+        if(this.rodaje.equalsIgnoreCase("andy")){
+            return Proyecto_operativos.contador_dias_restantes_andy;
+        }else{
+            return Proyecto_operativos.contador_dias_restantes_jose;            
+        }
+    }
+    /**
+     * Resta en 1 el contador de dias restantes en el rodaje en específico
+     */
+    public void Restar_contador_dias_restantes_rodaje(){
+        
+        if(this.rodaje.equalsIgnoreCase("andy")){
+            Proyecto_operativos.contador_dias_restantes_andy--;
+        }else{
+            Proyecto_operativos.contador_dias_restantes_jose--;            
+        }
+    }
     
     @Override
     public void run(){
@@ -39,8 +95,10 @@ public class Project_manager extends Thread{
 //                Trabajaremos con el caso "andy"
                 int tiempo;
                                 
-                Proyecto_operativos.Contador.acquire();
-                if(Proyecto_operativos.contador_dias_restantes > 0){
+//                Proyecto_operativos.Contador.acquire();
+                this.Semaforo_Contador_acquire();
+                
+                if(this.Contador_dias_restantes_rodaje() > 0){
     //                Tomaremos el valor de "final de la cedula" + "1 hora" en relación a lo que vale un día en milisegundos
                     tiempo = Proyecto_operativos.dia_en_ms * ci / 24 + Proyecto_operativos.dia_en_ms / 24;
 
@@ -48,14 +106,16 @@ public class Project_manager extends Thread{
                     Thread.sleep(tiempo);
                     
 //                    Disminuimos el contador de dias restantes
-                    Proyecto_operativos.contador_dias_restantes--;
+//                    Proyecto_operativos.contador_dias_restantes--;
+                    this.Restar_contador_dias_restantes_rodaje();
                     
-                    System.out.println("Tomaa: " + Proyecto_operativos.contador_dias_restantes);
+                    System.out.println("Tomaa: " + this.Contador_dias_restantes_rodaje());
                     
-                    Proyecto_operativos.Contador.release();
+//                    Proyecto_operativos.Contador.release();
+                    this.Semaforo_Contador_release();
                     
                 }else{
-                    Proyecto_operativos.Contador.release();
+                    this.Semaforo_Contador_release();
 
                 }
                 
@@ -63,26 +123,63 @@ public class Project_manager extends Thread{
                 tiempo = (Proyecto_operativos.dia_en_ms*15/24)/60 + (Proyecto_operativos.dia_en_ms*Proyecto_operativos.nro_final_id_andy/24)/60;
                 
                 //Se dispone a ver Rick_y_Morty xd
+                if(this.rodaje.equalsIgnoreCase("andy")){
+//                    Si es del rodaje de andy, pues entrará aquí
+
+//                    Sección critica
+                    Proyecto_operativos.Director_PM_Semaphore_andy.acquire();                    
+                    System.out.println("Verdadero en andy");
+                    this.Rick_y_Morty = true;                    
+                    Proyecto_operativos.Director_PM_Semaphore_andy.release();
+                    
+//                    Espera su tiempo
+                    Thread.sleep(tiempo);                
+                    
+//                    Sección crítica
+                    Proyecto_operativos.Director_PM_Semaphore_andy.acquire();                                        
+                    System.out.println("FALSO en andy");
+                    this.Rick_y_Morty = false;                    
+                    Proyecto_operativos.Director_PM_Semaphore_andy.release();
+                    
+                }else{
+//                    Si no es "andy", awebo tiene que ser "jose"
+
+//                    Sección critica
+                    Proyecto_operativos.Director_PM_Semaphore_jose.acquire();                    
+                    System.out.println("Verdadero en jose");
+                    this.Rick_y_Morty = true;                    
+                    Proyecto_operativos.Director_PM_Semaphore_jose.release();
+                    
+//                    Duerme su tiempo
+                    Thread.sleep(tiempo);                
+                    
+//                    Seccion critica
+                    Proyecto_operativos.Director_PM_Semaphore_jose.acquire();
+                    System.out.println("FALSO en jose");
+                    this.Rick_y_Morty = false;                                        
+                    Proyecto_operativos.Director_PM_Semaphore_jose.release();
+                }
+                
 //                Proyecto_operativos.Director_PM_Semaphore.acquire();
-                System.out.println("Verdadero");
-                Project_manager.Rick_y_Morty = true;
+//                System.out.println("Verdadero");
+//                this.Rick_y_Morty = true;
 //                Proyecto_operativos.Director_PM_Semaphore.release(); 
                 
-                Thread.sleep(tiempo);                
+//                Thread.sleep(tiempo);                
                 
 //                Ya quiere dejar de ver Rick y Morty
 //                Proyecto_operativos.Director_PM_Semaphore.acquire();
-                System.out.println("FALSO");
-                Project_manager.Rick_y_Morty = false;
+//                System.out.println("FALSO");
+//                this.Rick_y_Morty = false;
 //                Proyecto_operativos.Director_PM_Semaphore.release();
                 
                 
 //                Ahora se dispone a ver Sprints Reviews
-                Project_manager.Sprint_reviews = true;
+                this.Sprint_reviews = true;
                 
                 Thread.sleep(tiempo);
                 
-                Project_manager.Sprint_reviews = false;
+                this.Sprint_reviews = false;
                 
                 Thread.sleep(tiempo);
                 

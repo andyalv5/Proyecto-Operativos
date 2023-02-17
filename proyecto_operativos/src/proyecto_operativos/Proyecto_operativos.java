@@ -44,17 +44,36 @@ public class Proyecto_operativos {
 //    -----------------------------------------------------------------------
     
 //    Semaforo que accede al contador (seccion critica)
-    public static Semaphore Contador = new Semaphore(1);
+//    public static Semaphore Contador = new Semaphore(1);
 //    Semaforo que accede a la variable booleana de la clase "Project_Manager" Rick y Morty
     public static Semaphore Director_PM_Semaphore = new Semaphore(1);
     
+    public static Semaphore Director_PM_Semaphore_jose = new Semaphore(1);
+    public static Semaphore Director_PM_Semaphore_andy = new Semaphore(1);
+    
 //    Empieza con los días restantes que faltan para la entrega de la serie
-    public static volatile int contador_dias_restantes = 30;
+    private static volatile int contador_dias_restantes = 30;
+    public static volatile int contador_dias_restantes_andy = Proyecto_operativos.contador_dias_restantes;
+    public static volatile int contador_dias_restantes_jose = Proyecto_operativos.contador_dias_restantes;
+    
+    
+//    Aqui tengo el project manager trabajando con la cedula de andy
+    public static Project_manager pm_andy = new Project_manager(Proyecto_operativos.ci_Andy, "andy");
+//    Aqui le indico al director de andy a que productor vigilar, y además, le indico que es el director de andy
+    public static Director dir_andy = new Director(Proyecto_operativos.pm_andy, "andy");
+    
+    public static Semaphore Contador_andy = new Semaphore(1);
+    public static Semaphore Contador_jose = new Semaphore(1);
     
 //    -----------------------------------------------------------------------
 
     public static boolean keep = true;
     
+    
+//    -----------------------------------------------------------------
+    
+
+
 //    ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
     
     
@@ -104,11 +123,11 @@ public class Proyecto_operativos {
         JSONReaderWriter jsonrw = new JSONReaderWriter();
         jsonrw.Reader();
        
-        Director dir = new Director();
-        Project_manager pm = new Project_manager(Proyecto_operativos.ci_Andy);
+//        Project_manager pm = new Project_manager(Proyecto_operativos.ci_Andy);
+//        Director dir = new Director(pm, "andy");
         
-        dir.start();
-        pm.start();
+        dir_andy.start();
+        pm_andy.start();
         
         
         jsonrw.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "1", "1");
