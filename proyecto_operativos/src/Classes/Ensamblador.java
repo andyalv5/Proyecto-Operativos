@@ -9,6 +9,7 @@ import Classes.Productor_Credito;
 import Classes.Productor_Inicio;
 import Classes.Productor_Plot_Twist;
 import Classes.Productores_Intro;
+import Interfaces.Dashboard;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,7 +20,8 @@ import proyecto_operativos.Proyecto_operativos;
  * @author Andy
  */
 public class Ensamblador extends Thread{
-
+    
+    public int ganancia;
     private int capitulo_Counter;
     public int capitulo;
     public int intro_Prod;
@@ -38,6 +40,7 @@ public class Ensamblador extends Thread{
     Semaphore p;
     Semaphore q;
     Semaphore r;
+    
     
     
     public Ensamblador(Productores_Intro hilo1,Productor_Cierre hilo2,Productor_Inicio hilo3,Productor_Credito hilo4,Productor_Plot_Twist hilo5, Semaphore s,Semaphore o,Semaphore p, Semaphore q,Semaphore r) {
@@ -82,15 +85,31 @@ public class Ensamblador extends Thread{
         this.ensambladores=productores;
     }
     
+    public int get_ganancia(){
+        return this.ganancia;
+    }
+    
+    public void set_ganancia(int ganancia){
+        this.ganancia = ganancia;
+    }
+    
     @Override
     public void run(){
         while(true){
             try {
                 
                 
-                Thread.sleep(2*Proyecto_operativos.dia_en_ms);
+                Thread.sleep(Proyecto_operativos.dia_en_ms);
+                
+                Dashboard.Jtext_Productores_Ensamblado.acquire();
+                ganancia=ganancia+ensambladores*(8);
+                Dashboard.Jtext_Productores_Ensamblado.release();
+                
+                Thread.sleep(Proyecto_operativos.dia_en_ms);
                 if(intro_Prod>0 && inicio_Prod>0 && cierre_Prod>0 && Plot_Twist_Prod>0 && Credito_Prod>0 && ensambladores>0){
-                    
+                    Dashboard.Jtext_Productores_Ensamblado.acquire();
+                    ganancia=ganancia+ensambladores*(8);
+                    Dashboard.Jtext_Productores_Ensamblado.release();
                    
                     s.acquire();
                     o.acquire();
@@ -131,11 +150,15 @@ public class Ensamblador extends Thread{
                         System.out.println("Se ensamblo "+capitulo+" capitulos");
                         
                     }
+                    
+                    
+                    
                     r.release();
                     q.release();
                     p.release();
                     o.release();    
                     s.release();
+                    
                 }
             } catch (InterruptedException ex) {
                 Logger.getLogger(Ensamblador.class.getName()).log(Level.SEVERE, null, ex);

@@ -16,6 +16,7 @@ import proyecto_operativos.Proyecto_operativos;
  * @author Andy
  */
 public class Productores_Intro extends Thread{
+    public int ganancia;
     public int Pro_per_Day;
     Semaphore drive_Intro;
     Semaphore s;
@@ -52,6 +53,14 @@ public class Productores_Intro extends Thread{
         this.Pro_per_Day = Pro_per_Day;
     }
     
+    public int get_ganancia(){
+        return this.ganancia;
+    }
+    
+    public void set_ganancia(int ganancia){
+        this.ganancia = ganancia;
+    }
+    
     @Override
     public void run(){
         while(true){
@@ -63,10 +72,11 @@ public class Productores_Intro extends Thread{
                 this.drive_Intro.acquire();
                 System.out.println("Estoy saliendo del aquire");
                     
-               
+                Thread.sleep(Proyecto_operativos.dia_en_ms);
+                ganancia=ganancia+productores*(5);
                 if(Pro_per_Day < max_Drive){
                         
-                    Thread.sleep(Proyecto_operativos.dia_en_ms);
+                    
                         
 //                        Si la cedula está entre 0 y 3, entra
                     if(Proyecto_operativos.ci_Andy >= 0 && Proyecto_operativos.ci_Andy < 3){
@@ -74,13 +84,13 @@ public class Productores_Intro extends Thread{
                             
 //                            Intentamos acceder al area compartida sección critica
                         
-                        Dashboard.Jtext_Productores_Intro.acquire();
+                        s.acquire();
                             
 //                            Leemos el texto
                             Pro_per_Day = Pro_per_Day + (productores * 1);
                             
 //                            Liberamos el area compartida
-                        Dashboard.Jtext_Productores_Intro.release();
+                        s.release();
                        
                             
 //                            System.out.println("-------------------------------");
