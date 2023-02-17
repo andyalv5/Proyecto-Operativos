@@ -158,9 +158,9 @@ public class JSONReaderWriter{
             i++;
             
             
-            for (String lista1 : lista) {
-                System.out.println(lista1);
-            }
+//            for (String lista1 : lista) {
+//                System.out.println(lista1);
+//            }
 //            Ponemos en variables publicas para las demás clases los valores correspondientes
 
             
@@ -201,12 +201,10 @@ public class JSONReaderWriter{
     
             JSONReaderWriter.Ensamblador_Rodaje_jose = this.Toint(lista[22]);
             JSONReaderWriter.Ensamblador_Rodaje_andy = this.Toint(lista[23]);
-            
-            
+                        
 //            Ahora le ponemos el valor a dia_en_ms de la clase "Proyectos_operativos"
             Proyecto_operativos.dia_en_ms = JSONReaderWriter.dia_en_segundos * 1000;
-            
-            
+                   
                
     
             

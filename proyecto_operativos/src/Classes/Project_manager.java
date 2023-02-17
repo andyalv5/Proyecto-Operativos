@@ -24,8 +24,10 @@ public class Project_manager extends Thread{
     
     public static volatile int Veces_descubierto_flojeando = 0;
     
-    public Project_manager(){
-        
+    int ci;
+    
+    public Project_manager(int ci){
+        this.ci = ci;
     }
     
     
@@ -40,7 +42,7 @@ public class Project_manager extends Thread{
                 Proyecto_operativos.Contador.acquire();
                 if(Proyecto_operativos.contador_dias_restantes > 0){
     //                Tomaremos el valor de "final de la cedula" + "1 hora" en relación a lo que vale un día en milisegundos
-                    tiempo = Proyecto_operativos.dia_en_ms * Proyecto_operativos.nro_final_id_andy / 24 + Proyecto_operativos.dia_en_ms / 24;
+                    tiempo = Proyecto_operativos.dia_en_ms * ci / 24 + Proyecto_operativos.dia_en_ms / 24;
 
     //                Se duermen las horas establecidas
                     Thread.sleep(tiempo);

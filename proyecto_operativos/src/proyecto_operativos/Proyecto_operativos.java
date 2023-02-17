@@ -62,10 +62,10 @@ public class Proyecto_operativos {
     //prod hay que revisarlo para que sea una variable que se introduzca por interfaz 
     
 //    Final cédula Andy
-    public static int ci_Andy = 1;
+    public static int ci_Andy = 8;
     
 //    Final cédula José
-    public static int ci_jose = 10;
+    public static int ci_jose = 9;
     
 //    public static int dia_en_ms = 1000;
     
@@ -105,16 +105,16 @@ public class Proyecto_operativos {
         jsonrw.Reader();
        
         Director dir = new Director();
-        Project_manager pm = new Project_manager();
+        Project_manager pm = new Project_manager(Proyecto_operativos.ci_Andy);
         
         dir.start();
         pm.start();
         
         
         jsonrw.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "1", "1");
-        jsonrw.Reader();
+//        jsonrw.Reader();
         
-        System.out.println("AQUI ES: " + JSONReaderWriter.dia_en_segundos);
+        
 //        |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
         MainFrame inicial = new MainFrame();
