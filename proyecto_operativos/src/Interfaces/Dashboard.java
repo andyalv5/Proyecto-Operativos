@@ -514,7 +514,7 @@ public class Dashboard extends javax.swing.JFrame {
                 this.Jtext_Productores_Plot_Twist.acquire();
                
                 this.Cant_Productores_Inicio.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Inicio.getText()) - 1));
-                this.Cant_Productores_Inicio.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_PT.getText()) + 1));
+                this.Cant_Productores_PT.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_PT.getText()) + 1));
                
 //                Liberamos las secciones criticas
                 this.Jtext_Productores_Plot_Twist.release();
@@ -639,7 +639,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_Cierre_to_CreditoActionPerformed
 
     private void Plot_Twist_To_InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Plot_Twist_To_InicioActionPerformed
-        if(Integer.parseInt(this.Cant_Productores_Inicio.getText()) >0){
+        if(Integer.parseInt(this.Cant_Productores_PT.getText()) >0){
             
             try {
                 
