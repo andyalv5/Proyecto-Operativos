@@ -500,7 +500,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_Cant_Productores_IntroActionPerformed
 
     private void Inicio_to_CierreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inicio_to_CierreActionPerformed
-        if(Integer.parseInt(this.Cant_Productores_Cierre.getText()) <= ci_Andy+10){
+        if(Integer.parseInt(this.Cant_Productores_Inicio.getText()) > 0){
             
             try {
                 
