@@ -52,8 +52,9 @@ public class Productor_Inicio extends Thread{
     
      @Override
     public void run(){
-        while(true){
+        while(Proyecto_operativos.keep){
                 try {
+                    
                     
                     this.drive_Inicio.acquire();
                     
@@ -84,6 +85,7 @@ public class Productor_Inicio extends Thread{
                         System.out.println("Se hicieron "+Pro_per_Day+"inicios");
                
                     }
+                    
 
 
                 } catch (InterruptedException ex) {

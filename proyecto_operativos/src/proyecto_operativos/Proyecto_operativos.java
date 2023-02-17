@@ -53,6 +53,7 @@ public class Proyecto_operativos {
     
 //    -----------------------------------------------------------------------
 
+    public static boolean keep = true;
     
 //    ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
     
@@ -112,7 +113,12 @@ public class Proyecto_operativos {
         
         jsonrw.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "1", "1");
         jsonrw.Reader();
+        
+        System.out.println("AQUI ES: " + JSONReaderWriter.dia_en_segundos);
 //        |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+        
         
     }
     

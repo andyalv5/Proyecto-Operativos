@@ -21,6 +21,50 @@ import org.json.simple.parser.*;
  * @author Hallo
  */
 public class JSONReaderWriter{
+    
+    
+    public static int dia_en_segundos;
+    public static int dias_entre_despachos;
+    
+//    Drive
+    
+    public static int parte_intro_max;
+    public static boolean Capacidad_infinita_intro;
+    
+    public static int parte_creditos_max;
+    public static boolean Capacidad_infinita_creditos;
+    
+    public static int parte_inicio_max;
+    public static boolean Capacidad_infinita_inicio;
+    
+    public static int parte_cierre_max;
+    public static boolean Capacidad_infinita_cierre;
+    
+    public static int parte_plot_twist_max;
+    public static boolean Capacidad_infinita_plot_twist;
+    
+//    Cantidad_Productores_Rodaje_jose_inicial
+    
+    public static int Productor_Intros_jose;
+    public static int Productor_Creditos_jose;
+    public static int Productor_Inicio_jose;
+    public static int Productor_cierre_jose;
+    public static int Productor_Plot_Twist_jose;
+    
+//    Cantidad_Productores_Rodaje_andy_inicial
+    
+    public static int Productor_Intros_andy;
+    public static int Productor_Creditos_andy;
+    public static int Productor_Inicio_andy;
+    public static int Productor_cierre_andy;
+    public static int Productor_Plot_Twist_andy;
+    
+//    Ensambladores
+    
+    public static int Ensamblador_Rodaje_jose;
+    public static int Ensamblador_Rodaje_andy;   
+    
+    
     int i = 0;
 //    creamos una LISTA DE STRINGS que será devuelta cuandos se corra este metodo
      String[] lista = new String[24];
@@ -115,6 +159,9 @@ public class JSONReaderWriter{
             for (String lista1 : lista) {
                 System.out.println(lista1);
             }
+            
+            JSONReaderWriter.dia_en_segundos = Integer.parseInt(lista[0]);
+            JSONReaderWriter.dias_entre_despachos = Integer.parseInt(lista[1]);
             
             
         }catch(IOException | ParseException e){
