@@ -95,7 +95,7 @@ public class Ensamblador extends Thread{
     
     @Override
     public void run(){
-        while(true){
+        while(Proyecto_operativos.keep){
             try {
                 
                 

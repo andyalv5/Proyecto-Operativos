@@ -59,7 +59,7 @@ public class Productor_Cierre extends Thread{
     
     @Override
     public void run(){
-        while(true){
+        while(Proyecto_operativos.keep){
                 try {
                     
                     this.drive_Cierre.acquire();

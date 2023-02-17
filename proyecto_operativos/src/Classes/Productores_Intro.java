@@ -63,7 +63,7 @@ public class Productores_Intro extends Thread{
     
     @Override
     public void run(){
-        while(true){
+        while(Proyecto_operativos.keep){
             
             try {
 //              Proyecto_operativos.Pro_per_day_Intro_Ensambler.acquire();

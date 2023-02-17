@@ -44,16 +44,36 @@ public class Proyecto_operativos {
 //    -----------------------------------------------------------------------
     
 //    Semaforo que accede al contador (seccion critica)
-    public static Semaphore Contador = new Semaphore(1);
+//    public static Semaphore Contador = new Semaphore(1);
 //    Semaforo que accede a la variable booleana de la clase "Project_Manager" Rick y Morty
     public static Semaphore Director_PM_Semaphore = new Semaphore(1);
     
+    public static Semaphore Director_PM_Semaphore_jose = new Semaphore(1);
+    public static Semaphore Director_PM_Semaphore_andy = new Semaphore(1);
+    
 //    Empieza con los días restantes que faltan para la entrega de la serie
-    public static volatile int contador_dias_restantes = 30;
+    private static volatile int contador_dias_restantes = 30;
+    public static volatile int contador_dias_restantes_andy = Proyecto_operativos.contador_dias_restantes;
+    public static volatile int contador_dias_restantes_jose = Proyecto_operativos.contador_dias_restantes;
+    
+    
+//    Aqui tengo el project manager trabajando con la cedula de andy
+    public static Project_manager pm_andy = new Project_manager(Proyecto_operativos.ci_Andy, "andy");
+//    Aqui le indico al director de andy a que productor vigilar, y además, le indico que es el director de andy
+    public static Director dir_andy = new Director(Proyecto_operativos.pm_andy, "andy");
+    
+    public static Semaphore Contador_andy = new Semaphore(1);
+    public static Semaphore Contador_jose = new Semaphore(1);
     
 //    -----------------------------------------------------------------------
 
+    public static boolean keep = true;
     
+    
+//    -----------------------------------------------------------------
+    
+
+
 //    ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
     
     
@@ -61,10 +81,10 @@ public class Proyecto_operativos {
     //prod hay que revisarlo para que sea una variable que se introduzca por interfaz 
     
 //    Final cédula Andy
-    public static int ci_Andy = 1;
+    public static int ci_Andy = 8;
     
 //    Final cédula José
-    public static int ci_jose = 10;
+    public static int ci_jose = 9;
     
 //    public static int dia_en_ms = 1000;
     
@@ -97,22 +117,29 @@ public class Proyecto_operativos {
      */
     public static void main(String[] args) throws FileNotFoundException {
         
-        MainFrame inicial = new MainFrame();
-        inicial.setVisible(true);
         
 //        JOSE VA A DOMINAR ESTO MUAJAJAJA
 //        |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-        Director dir = new Director();
-        Project_manager pm = new Project_manager();
-        
-        dir.start();
-        pm.start();
-        
         JSONReaderWriter jsonrw = new JSONReaderWriter();
+        jsonrw.Reader();
+       
+//        Project_manager pm = new Project_manager(Proyecto_operativos.ci_Andy);
+//        Director dir = new Director(pm, "andy");
+        
+        dir_andy.start();
+        pm_andy.start();
+        
         
         jsonrw.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "1", "1");
-        jsonrw.Reader();
+//        jsonrw.Reader();
+        
+        
 //        |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+        MainFrame inicial = new MainFrame();
+        inicial.setVisible(true);
+
+        
         
     }
     

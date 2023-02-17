@@ -61,7 +61,7 @@ public class Productor_Inicio extends Thread{
     
      @Override
     public void run(){
-        while(true){
+        while(Proyecto_operativos.keep){
                 try {
                     
                     
@@ -123,6 +123,7 @@ public class Productor_Inicio extends Thread{
                         System.out.println("Se hicieron "+Pro_per_Day+"inicios");
                
                     }
+                    
 
 
                 } catch (InterruptedException ex) {

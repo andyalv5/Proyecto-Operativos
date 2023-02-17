@@ -59,7 +59,7 @@ public class Productor_Plot_Twist extends Thread{
     
      @Override
     public void run(){
-        while(true){
+        while(Proyecto_operativos.keep){
                 try {
                     this.drive_Plot_Twist.acquire();
                     Thread.sleep(Proyecto_operativos.dia_en_ms);
