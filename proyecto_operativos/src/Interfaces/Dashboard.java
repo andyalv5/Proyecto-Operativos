@@ -550,10 +550,14 @@ public class Dashboard extends javax.swing.JFrame {
                 
 //                Intentamos acceder a las secciones criticas
                 this.Jtext_Productores_Credito.acquire();
+                this.Jtext_Productores_Cierre.acquire();
                 
                 this.Cant_Productores_Credito.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Credito.getText()) - 1));
+                this.Cant_Productores_Cierre.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Cierre.getText()) + 1));
                
+                
 //                Liberamos las secciones criticas
+                this.Jtext_Productores_Cierre.release();
                 this.Jtext_Productores_Credito.release();
                 
                 
@@ -596,17 +600,22 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_Cant_Productores_PTActionPerformed
 
     private void Credito_to_IntroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Credito_to_IntroActionPerformed
-        if(Integer.parseInt(this.Cant_Productores_Intro.getText()) <= ci_Andy+10){
+        
+        if(Integer.parseInt(this.Cant_Productores_Credito.getText()) > 0){
             
             try {
                 
 //                Intentamos acceder a las secciones criticas
-                this.Jtext_Productores_Intro.acquire();
+                Dashboard.Jtext_Productores_Intro.acquire();
+                Dashboard.Jtext_Productores_Credito.acquire();
                 
                 this.Cant_Productores_Intro.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Intro.getText()) + 1));
+                this.Cant_Productores_Credito.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Credito.getText()) - 1));
+                
                 
 //                Liberamos las secciones criticas
-                this.Jtext_Productores_Intro.release();
+                Dashboard.Jtext_Productores_Credito.release();
+                Dashboard.Jtext_Productores_Intro.release();
                 
                 
             } catch (InterruptedException ex) {
@@ -616,15 +625,19 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_Credito_to_IntroActionPerformed
 
     private void Cierre_to_CreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cierre_to_CreditoActionPerformed
-        if(Integer.parseInt(this.Cant_Productores_Credito.getText()) <= ci_Andy+10){
+        if(Integer.parseInt(this.Cant_Productores_Cierre.getText()) > 0){
             try {
                 
 //                Intentamos acceder a las secciones criticas
                 this.Jtext_Productores_Credito.acquire();
+                this.Jtext_Productores_Cierre.acquire();
                 
+                
+                this.Cant_Productores_Cierre.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Cierre.getText()) - 1));
                 this.Cant_Productores_Credito.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Credito.getText()) + 1));
                 
 //                Liberamos las secciones criticas
+                this.Jtext_Productores_Cierre.release();
                 this.Jtext_Productores_Credito.release();
                 
                 
@@ -661,10 +674,12 @@ public class Dashboard extends javax.swing.JFrame {
                 
 //                Intentamos acceder a las secciones criticas
                 this.Jtext_Productores_Intro.acquire();
+                this.Jtext_Productores_Credito.acquire();
                 
                 this.Cant_Productores_Intro.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Intro.getText()) - 1));
+                this.Cant_Productores_Credito.setText(String.valueOf(Integer.valueOf(this.Cant_Productores_Credito.getText()) + 1));
                 
-                
+                this.Jtext_Productores_Credito.release();
 //                Liberamos las secciones criticas
                 this.Jtext_Productores_Intro.release();
                 
