@@ -178,8 +178,6 @@ public class Dashboard extends javax.swing.JFrame {
         Cant_Productores_Cierre = new javax.swing.JTextField();
         cierre_to_Inicio = new javax.swing.JButton();
         Cant_Productores_Inicio = new javax.swing.JTextField();
-        Set_Up_PT = new javax.swing.JButton();
-        set_Down_PT = new javax.swing.JButton();
         Cant_Productores_PT = new javax.swing.JTextField();
         Cierre_to_Credito = new javax.swing.JButton();
         Plot_Twist_To_Inicio = new javax.swing.JButton();
@@ -370,23 +368,6 @@ public class Dashboard extends javax.swing.JFrame {
         });
         jPanel1.add(Cant_Productores_Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, 130, -1));
 
-        Set_Up_PT.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Set_Up_PT.setText("^");
-        Set_Up_PT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Set_Up_PTActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Set_Up_PT, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 480, 50, 40));
-
-        set_Down_PT.setText("V");
-        set_Down_PT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                set_Down_PTActionPerformed(evt);
-            }
-        });
-        jPanel1.add(set_Down_PT, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 480, 50, 40));
-
         Cant_Productores_PT.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Cant_Productores_PT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Cant_Productores_PT.setText("0");
@@ -530,10 +511,13 @@ public class Dashboard extends javax.swing.JFrame {
                 
 //                Intentamos acceder a las secciones criticas
                 this.Jtext_Productores_Inicio.acquire();
+                this.Jtext_Productores_Plot_Twist.acquire();
                
                 this.Cant_Productores_Inicio.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Inicio.getText()) - 1));
+                this.Cant_Productores_Inicio.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_PT.getText()) + 1));
                
 //                Liberamos las secciones criticas
+                this.Jtext_Productores_Plot_Twist.release();
                 this.Jtext_Productores_Inicio.release();
                 
                 
@@ -655,16 +639,19 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_Cierre_to_CreditoActionPerformed
 
     private void Plot_Twist_To_InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Plot_Twist_To_InicioActionPerformed
-        if(Integer.parseInt(this.Cant_Productores_Inicio.getText()) <= ci_Andy+10){
+        if(Integer.parseInt(this.Cant_Productores_Inicio.getText()) >0){
             
             try {
                 
 //                Intentamos acceder a las secciones criticas
                 this.Jtext_Productores_Inicio.acquire();
+                this.Jtext_Productores_Plot_Twist.acquire();
                 
                 this.Cant_Productores_Inicio.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Inicio.getText()) + 1));
+                this.Cant_Productores_PT.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_PT.getText()) - 1));
                 
 //                Liberamos las secciones criticas
+                this.Jtext_Productores_Plot_Twist.release();
                 this.Jtext_Productores_Inicio.release();
                 
                 
@@ -710,53 +697,6 @@ public class Dashboard extends javax.swing.JFrame {
            
         }
     }//GEN-LAST:event_bajar_EnsabladoresActionPerformed
-
-    private void Set_Up_PTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Set_Up_PTActionPerformed
-      
-        
-        if(Integer.parseInt(this.Cant_Productores_PT.getText()) <= ci_Andy+10){
-            
-            try {
-                
-//                Intentamos acceder a las secciones criticas
-                this.Jtext_Productores_Plot_Twist.acquire();
-                
-                this.Cant_Productores_PT.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_PT.getText()) +1));
-                
-//                Liberamos las secciones criticas
-                this.Jtext_Productores_Plot_Twist.release();
-                
-                
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_Set_Up_PTActionPerformed
-
-    private void set_Down_PTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_Down_PTActionPerformed
-        
-        
-        
-        
-        
-        if(Integer.parseInt(this.Cant_Productores_PT.getText()) >0){
-            
-            try {
-                
-//                Intentamos acceder a las secciones criticas
-                this.Jtext_Productores_Plot_Twist.acquire();
-                
-                this.Cant_Productores_PT.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_PT.getText()) - 1));
-                
-//                Liberamos las secciones criticas
-                this.Jtext_Productores_Plot_Twist.release();
-                
-                
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_set_Down_PTActionPerformed
 
     /**
      * @param args the command line arguments
@@ -811,7 +751,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton Intro_a_credito;
     private javax.swing.JLabel Plot_Twist_Quantity;
     private javax.swing.JButton Plot_Twist_To_Inicio;
-    private javax.swing.JButton Set_Up_PT;
     private javax.swing.JButton bajar_Ensabladores;
     private javax.swing.JButton cierre_to_Inicio;
     private javax.swing.JButton credit_to_cierre;
@@ -831,7 +770,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JProgressBar progresoInicioBar;
     private javax.swing.JProgressBar progresoIntroBar;
     private javax.swing.JProgressBar progresoPlotTwistBar;
-    private javax.swing.JButton set_Down_PT;
     private javax.swing.JButton subir_Ensambladores;
     // End of variables declaration//GEN-END:variables
 }
