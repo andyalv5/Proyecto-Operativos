@@ -55,14 +55,14 @@ public class Productor_Plot_Twist extends Thread{
                     
                         if(Pro_per_Day <max_Drive){
                             if(Proyecto_operativos.ci_Andy>=0 && Proyecto_operativos.ci_Andy<5){
-                                Thread.sleep(2*(Proyecto_operativos.dia_ms));
+                                Thread.sleep(2*(Proyecto_operativos.dia_en_ms));
                                 s.acquire();
                                 Pro_per_Day=Pro_per_Day+productores*(1);
                                 s.release();
                                 
                             }
                             else{
-                                Thread.sleep(3*Proyecto_operativos.dia_ms);
+                                Thread.sleep(3*Proyecto_operativos.dia_en_ms);
                                 s.acquire();
                                 Pro_per_Day=Pro_per_Day+productores*(1);
                                 s.release();
