@@ -112,11 +112,11 @@ public class Productores_Intro extends Thread{
                         }
                     }
                     
-                else{
+                if(Pro_per_Day >max_Drive){
                         s.acquire();
                         Pro_per_Day = max_Drive;
                         s.release();
-                    }
+                }
                 System.out.println("Se hicieron " + Pro_per_Day + " intros");
              
                     
