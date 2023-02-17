@@ -20,6 +20,7 @@ import proyecto_operativos.Proyecto_operativos;
  */
 public class Ensamblador extends Thread{
 
+    private int capitulo_Counter;
     public int capitulo;
     public int intro_Prod;
     public int cierre_Prod;
@@ -50,7 +51,7 @@ public class Ensamblador extends Thread{
      this.p=p;
      this.q=q;
      this.r=r;
-     
+     this.capitulo_Counter=5;
     }
     
     public int get_capitulo(){
@@ -119,10 +120,13 @@ public class Ensamblador extends Thread{
                         hilo4.free_space();
                         
                         
-                        
-                        hilo5.set_Pro_per_Day(hilo5.Pro_per_Day-1);
-                        hilo5.free_space();
-                        
+                       capitulo_Counter= capitulo_Counter-1;
+                       System.out.println("///////////////////////"+capitulo_Counter);
+                        if (this.capitulo_Counter==0){
+                            hilo5.set_Pro_per_Day(hilo5.Pro_per_Day-1);
+                            hilo5.free_space();
+                            capitulo_Counter =5;
+                        }
                         
                         System.out.println("Se ensamblo "+capitulo+" capitulos");
                         
