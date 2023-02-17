@@ -98,18 +98,18 @@ public class Proyecto_operativos {
      */
     public static void main(String[] args) throws FileNotFoundException {
         
-        MainFrame inicial = new MainFrame();
-        inicial.setVisible(true);
         
 //        JOSE VA A DOMINAR ESTO MUAJAJAJA
 //        |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+        JSONReaderWriter jsonrw = new JSONReaderWriter();
+        jsonrw.Reader();
+       
         Director dir = new Director();
         Project_manager pm = new Project_manager();
         
         dir.start();
         pm.start();
         
-        JSONReaderWriter jsonrw = new JSONReaderWriter();
         
         jsonrw.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "1", "1");
         jsonrw.Reader();
@@ -117,6 +117,8 @@ public class Proyecto_operativos {
         System.out.println("AQUI ES: " + JSONReaderWriter.dia_en_segundos);
 //        |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
+        MainFrame inicial = new MainFrame();
+        inicial.setVisible(true);
 
         
         

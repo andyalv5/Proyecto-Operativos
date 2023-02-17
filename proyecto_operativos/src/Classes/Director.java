@@ -17,7 +17,7 @@ public class Director extends Thread{
 //    Estas variables random las pienso usar para calculos futuros
     int random;
     int random2;
-    boolean keep = true;
+//    boolean keep = true;
     
 //    El Project Manager que el director vigila
         
@@ -30,7 +30,7 @@ public class Director extends Thread{
     public void run(){
         
         
-        while(keep){
+        while(Proyecto_operativos.keep){
             try {
                 
                 Proyecto_operativos.Contador.acquire();

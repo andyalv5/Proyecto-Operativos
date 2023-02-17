@@ -50,7 +50,7 @@ public class Productor_Credito extends Thread{
     
      @Override
     public void run(){
-        while(true){
+        while(Proyecto_operativos.keep){
             try {
                     this.drive_Credito.acquire();
                     

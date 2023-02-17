@@ -15,6 +15,7 @@ import java.util.Map;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
+import proyecto_operativos.Proyecto_operativos;
 
 /**
  *
@@ -90,6 +91,7 @@ public class JSONReaderWriter{
                 }
             }
     }
+
     
     /**
      * Lee el archivo JSON
@@ -159,9 +161,55 @@ public class JSONReaderWriter{
             for (String lista1 : lista) {
                 System.out.println(lista1);
             }
+//            Ponemos en variables publicas para las demás clases los valores correspondientes
+
             
-            JSONReaderWriter.dia_en_segundos = Integer.parseInt(lista[0]);
-            JSONReaderWriter.dias_entre_despachos = Integer.parseInt(lista[1]);
+            JSONReaderWriter.dia_en_segundos = this.Toint(lista[0]);
+            JSONReaderWriter.dias_entre_despachos = this.Toint(lista[1]);
+            JSONReaderWriter.parte_intro_max = this.Toint(lista[2]);
+            JSONReaderWriter.Capacidad_infinita_intro = this.Tobool(lista[3]);
+            
+            JSONReaderWriter.parte_creditos_max = this.Toint(lista[4]);
+            JSONReaderWriter.Capacidad_infinita_creditos = this.Tobool(lista[5]);
+            
+            JSONReaderWriter.parte_inicio_max = this.Toint(lista[6]);
+            JSONReaderWriter.Capacidad_infinita_inicio = this.Tobool(lista[7]);
+            
+            JSONReaderWriter.parte_cierre_max = this.Toint(lista[9]);
+            JSONReaderWriter.Capacidad_infinita_cierre = this.Tobool(lista[8]);
+            
+            JSONReaderWriter.parte_plot_twist_max = this.Toint(lista[11]);
+            JSONReaderWriter.Capacidad_infinita_plot_twist = this.Tobool(lista[10]);
+            
+//    Cantidad_Productores_Rodaje_jose_inicial
+    
+            JSONReaderWriter.Productor_Intros_jose = this.Toint(lista[12]);
+            JSONReaderWriter.Productor_Creditos_jose = this.Toint(lista[13]);
+            JSONReaderWriter.Productor_Inicio_jose = this.Toint(lista[14]);
+            JSONReaderWriter.Productor_cierre_jose = this.Toint(lista[15]);
+            JSONReaderWriter.Productor_Plot_Twist_jose = this.Toint(lista[16]);
+                
+////    Cantidad_Productores_Rodaje_andy_inicial
+            
+            JSONReaderWriter.Productor_Intros_andy = this.Toint(lista[17]);
+            JSONReaderWriter.Productor_Creditos_andy = this.Toint(lista[18]);
+            JSONReaderWriter.Productor_Inicio_andy = this.Toint(lista[19]);
+            JSONReaderWriter.Productor_cierre_andy = this.Toint(lista[20]);
+            JSONReaderWriter.Productor_Plot_Twist_andy = this.Toint(lista[21]);
+    
+//    Ensambladores
+    
+            JSONReaderWriter.Ensamblador_Rodaje_jose = this.Toint(lista[22]);
+            JSONReaderWriter.Ensamblador_Rodaje_andy = this.Toint(lista[23]);
+            
+            
+//            Ahora le ponemos el valor a dia_en_ms de la clase "Proyectos_operativos"
+            Proyecto_operativos.dia_en_ms = JSONReaderWriter.dia_en_segundos * 1000;
+            
+            
+               
+    
+            
             
             
         }catch(IOException | ParseException e){

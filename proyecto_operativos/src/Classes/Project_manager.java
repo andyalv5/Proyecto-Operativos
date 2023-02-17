@@ -31,7 +31,7 @@ public class Project_manager extends Thread{
     
     @Override
     public void run(){
-        while(true){
+        while(Proyecto_operativos.keep){
             
             try {
 //                Trabajaremos con el caso "andy"
