@@ -16,7 +16,7 @@ import proyecto_operativos.Proyecto_operativos;
  */
 public class Productor_Plot_Twist extends Thread{
     public int ganancia;
-    private int productores;
+    public int productores;
     private int max_Drive;
     public int Pro_per_Day;
     Semaphore drive_Plot_Twist;
@@ -63,17 +63,13 @@ public class Productor_Plot_Twist extends Thread{
                 try {
                     this.drive_Plot_Twist.acquire();
                     Thread.sleep(Proyecto_operativos.dia_en_ms);
-                    Dashboard.Jtext_Productores_Plot_Twist.acquire();
-                    ganancia=ganancia+productores*(10);
-                    Dashboard.Jtext_Productores_Plot_Twist.release();
+                    
                     
                         if(Pro_per_Day <max_Drive){
                             if(Proyecto_operativos.ci_Andy>=0 && Proyecto_operativos.ci_Andy<5){
                                 
                                 Thread.sleep((Proyecto_operativos.dia_en_ms));
-                                Dashboard.Jtext_Productores_Plot_Twist.acquire();
-                                ganancia=ganancia+productores*(10);
-                                Dashboard.Jtext_Productores_Plot_Twist.release();
+                                
                                 s.acquire();
                                 Pro_per_Day=Pro_per_Day+productores*(1);
                                 s.release();
@@ -81,13 +77,8 @@ public class Productor_Plot_Twist extends Thread{
                             }
                             else{
                                 
-                                Thread.sleep(Proyecto_operativos.dia_en_ms);
-                                Dashboard.Jtext_Productores_Plot_Twist.acquire();
-                                ganancia=ganancia+productores*(10);
-                                Dashboard.Jtext_Productores_Plot_Twist.release();
-                                Thread.sleep(Proyecto_operativos.dia_en_ms);
-                                Dashboard.Jtext_Productores_Plot_Twist.acquire();
-                                ganancia=ganancia+productores*(10);
+                                Thread.sleep(2*Proyecto_operativos.dia_en_ms);
+                                
                                 Dashboard.Jtext_Productores_Plot_Twist.release();
                                 s.acquire();
                                 Pro_per_Day=Pro_per_Day+productores*(1);

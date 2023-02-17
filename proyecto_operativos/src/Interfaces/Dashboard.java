@@ -5,6 +5,7 @@
 package Interfaces;
 
 import Classes.Ensamblador;
+import Classes.Pago;
 import Classes.Productor_Cierre;
 import Classes.Productor_Credito;
 import Classes.Productor_Inicio;
@@ -16,6 +17,7 @@ import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Timer;
+import proyecto_operativos.Proyecto_operativos;
 
 /**
  *
@@ -62,8 +64,8 @@ public class Dashboard extends javax.swing.JFrame {
     public static Productor_Inicio hilo3 = new Productor_Inicio(drive_Inicio, semaforo_ini,1,tamanio_Inicio);
     public static Productor_Credito hilo4 = new Productor_Credito(drive_credito, semaforo_con,1,tamanio_credito);
     public static Productor_Plot_Twist hilo5 = new Productor_Plot_Twist(drive_Plot_Twist, semaforo_PT,1,tamanio_Plot_Twist);
-    public Ensamblador hilo6 = new Ensamblador(hilo1,hilo2,hilo3,hilo4,hilo5,semaforo_intro,semaforo_cie,semaforo_ini,semaforo_con,semaforo_PT);
-    
+    public static Ensamblador hilo6 = new Ensamblador(hilo1,hilo2,hilo3,hilo4,hilo5,semaforo_intro,semaforo_cie,semaforo_ini,semaforo_con,semaforo_PT);
+    public static Pago hilo7 = new Pago();
     
     
     
@@ -91,6 +93,7 @@ public class Dashboard extends javax.swing.JFrame {
         hilo4.start();
         hilo5.start();
         hilo6.start();
+        hilo7.start();
         
         
         this.setLocationRelativeTo(null);
@@ -98,6 +101,11 @@ public class Dashboard extends javax.swing.JFrame {
             
                 @Override
                 public void actionPerformed(ActionEvent e){
+                    
+                    
+                    
+                    
+                    
                     hilo1.set_Productores(Integer.parseInt(Cant_Productores_Intro.getText().toString()));
                     hilo2.set_Productores(Integer.parseInt(Cant_Productores_Cierre.getText().toString()));
                     hilo3.set_Productores(Integer.parseInt(Cant_Productores_Inicio.getText().toString()));
@@ -110,6 +118,7 @@ public class Dashboard extends javax.swing.JFrame {
                     intro_ganancia.setText(String.valueOf(hilo1.get_ganancia()));
                     hilo6.set_intro_Prod(hilo1.get_Pro_per_Day());
                     
+                   
                     hilo2.set_Productores(Integer.parseInt(Cant_Productores_Cierre.getText().toString()));
                     progresoCierreBar.setValue(hilo2.get_Pro_per_Day());
                     Cierre_Quantity.setText(String.valueOf(hilo2.get_Pro_per_Day()));

@@ -34,7 +34,7 @@ public class Ensamblador extends Thread{
     Productor_Inicio hilo3;
     Productor_Credito hilo4;
     Productor_Plot_Twist hilo5;
-    private int ensambladores;
+    public int ensambladores;
     Semaphore s;
     Semaphore o;
     Semaphore p;
@@ -101,16 +101,9 @@ public class Ensamblador extends Thread{
                 
                 Thread.sleep(Proyecto_operativos.dia_en_ms);
                 
-                Dashboard.Jtext_Productores_Ensamblado.acquire();
-                ganancia=ganancia+ensambladores*(8);
-                Dashboard.Jtext_Productores_Ensamblado.release();
-                
                 Thread.sleep(Proyecto_operativos.dia_en_ms);
                 if(intro_Prod>0 && inicio_Prod>0 && cierre_Prod>0 && Plot_Twist_Prod>0 && Credito_Prod>0 && ensambladores>0){
-                    Dashboard.Jtext_Productores_Ensamblado.acquire();
-                    ganancia=ganancia+ensambladores*(8);
-                    Dashboard.Jtext_Productores_Ensamblado.release();
-                   
+                    
                     s.acquire();
                     o.acquire();
                     p.acquire();
@@ -121,7 +114,8 @@ public class Ensamblador extends Thread{
                         
                         
                         hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);
-                        hilo1.free_space();
+                        hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);
+                        hilo1.free_space(2);
                         
                         
                         
@@ -136,7 +130,8 @@ public class Ensamblador extends Thread{
                         
                       
                         hilo4.set_Pro_per_Day(hilo4.Pro_per_Day-1);
-                        hilo4.free_space();
+                        hilo4.set_Pro_per_Day(hilo4.Pro_per_Day-1);
+                        hilo4.free_space(2);
                         
                         
                        capitulo_Counter= capitulo_Counter-1;

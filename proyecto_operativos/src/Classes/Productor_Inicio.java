@@ -16,7 +16,7 @@ import proyecto_operativos.Proyecto_operativos;
  */
 public class Productor_Inicio extends Thread{
     public int ganancia;
-    private int productores;
+    public int productores;
     private int max_Drive;
     public int Pro_per_Day;
     Semaphore drive_Inicio;
@@ -67,50 +67,26 @@ public class Productor_Inicio extends Thread{
                     
                     this.drive_Inicio.acquire();
                     Thread.sleep(Proyecto_operativos.dia_en_ms);
-                    Dashboard.Jtext_Productores_Inicio.acquire();
-                    ganancia=ganancia+productores*(7);
-                    Dashboard.Jtext_Productores_Inicio.release();
                     
                     if(Pro_per_Day <max_Drive){
                         if(Proyecto_operativos.ci_Andy>=0 && Proyecto_operativos.ci_Andy<3){
                             
                             
                             Thread.sleep(Proyecto_operativos.dia_en_ms);
-                            Dashboard.Jtext_Productores_Inicio.acquire();
-                            ganancia=ganancia+productores*(7);
-                            Dashboard.Jtext_Productores_Inicio.release();
                             s.acquire();
                             Pro_per_Day=Pro_per_Day+productores*(1);
                             s.release();
                         }
                         else if(Proyecto_operativos.ci_Andy>=3 && Proyecto_operativos.ci_Andy<6){
-                            Thread.sleep(Proyecto_operativos.dia_en_ms);
-                            Dashboard.Jtext_Productores_Inicio.acquire();
-                            ganancia=ganancia+productores*(7);
-                            Dashboard.Jtext_Productores_Inicio.release();
-                            Thread.sleep(Proyecto_operativos.dia_en_ms);
-                            Dashboard.Jtext_Productores_Inicio.acquire();
-                            ganancia=ganancia+productores*(7);
-                            Dashboard.Jtext_Productores_Inicio.release();
+                            Thread.sleep(2*Proyecto_operativos.dia_en_ms);
+                            
                             s.acquire();
                             Pro_per_Day=Pro_per_Day+productores*(1);
                             s.release();
                         }
                         else{
-                            Thread.sleep(Proyecto_operativos.dia_en_ms);
-                            Dashboard.Jtext_Productores_Inicio.acquire();
-                            ganancia=ganancia+productores*(7);
-                            Dashboard.Jtext_Productores_Inicio.release();
+                            Thread.sleep(3*Proyecto_operativos.dia_en_ms);
                             
-                            Thread.sleep(Proyecto_operativos.dia_en_ms);
-                            Dashboard.Jtext_Productores_Inicio.acquire();
-                            ganancia=ganancia+productores*(7);
-                            Dashboard.Jtext_Productores_Inicio.release();
-                            
-                            Thread.sleep(Proyecto_operativos.dia_en_ms);
-                            Dashboard.Jtext_Productores_Inicio.acquire();
-                            ganancia=ganancia+productores*(7);
-                            Dashboard.Jtext_Productores_Inicio.release();
                             s.acquire();
                             Pro_per_Day=Pro_per_Day+productores*(1);
                             s.release();

@@ -20,7 +20,7 @@ public class Productores_Intro extends Thread{
     public int Pro_per_Day;
     Semaphore drive_Intro;
     Semaphore s;
-    private int productores;
+    public int productores;
     private int max_Drive;
     
     javax.swing.JTextField Cant_Productores_Intro;
@@ -33,8 +33,8 @@ public class Productores_Intro extends Thread{
         this.productores=productores;
     }
     
-    public void free_space(){        
-        this.drive_Intro.release();
+    public void free_space(int n){        
+        this.drive_Intro.release(n);
     }
     
     /*
@@ -73,7 +73,7 @@ public class Productores_Intro extends Thread{
                 System.out.println("Estoy saliendo del aquire");
                     
                 Thread.sleep(Proyecto_operativos.dia_en_ms);
-                ganancia=ganancia+productores*(5);
+               
                 if(Pro_per_Day < max_Drive){
                         
                     
