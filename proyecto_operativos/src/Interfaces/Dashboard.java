@@ -578,10 +578,14 @@ public class Dashboard extends javax.swing.JFrame {
                 
 //                Intentamos acceder a las secciones criticas
                 this.Jtext_Productores_Cierre.acquire();
+                this.Jtext_Productores_Inicio.acquire();
                 
                 this.Cant_Productores_Cierre.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Cierre.getText()) - 1));
+                this.Cant_Productores_Inicio.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Inicio.getText()) + 1));
+                
                 
 //                Liberamos las secciones criticas
+                this.Jtext_Productores_Inicio.release();
                 this.Jtext_Productores_Cierre.release();
                 
                 
