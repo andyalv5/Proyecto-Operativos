@@ -47,9 +47,9 @@ public class Proyecto_operativos {
     public static Semaphore Director_PM_Semaphore_andy = new Semaphore(1);
     
 //    Empieza con los días restantes que faltan para la entrega de la serie
-    private static volatile int contador_dias_restantes = 30;
-    public static volatile int contador_dias_restantes_andy = Proyecto_operativos.contador_dias_restantes;
-    public static volatile int contador_dias_restantes_jose = Proyecto_operativos.contador_dias_restantes;
+//    public static int contador_dias_restantes;
+    public static int contador_dias_restantes_andy;
+    public static int contador_dias_restantes_jose;
     
     
 ////    Aqui tengo el project manager trabajando con la cedula de andy
@@ -125,7 +125,7 @@ public class Proyecto_operativos {
 //        pm_andy.start();
         
 //        System.out.println(JSONReaderWriter.Capacidad_infinita_plot_twist);
-        jsonrw.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "0", "1","0","0","0","0");
+        jsonrw.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "1", "1","0","0","0","0");
         
 //        jsonrw.Reader();
         

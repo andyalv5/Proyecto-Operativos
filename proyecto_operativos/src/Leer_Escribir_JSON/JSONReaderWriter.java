@@ -240,8 +240,12 @@ public class JSONReaderWriter{
 //            Ahora le ponemos el valor a dia_en_ms de la clase "Proyectos_operativos"
             Proyecto_operativos.dia_en_ms = JSONReaderWriter.dia_en_segundos * 1000;
                    
-               
-    
+//            Ahora ponemos el valor a contador_dias_restantes de la clase "Proyectos_operativos"   
+            int variable_para_contador_dias_restantes = JSONReaderWriter.dias_entre_despachos;
+            
+            Proyecto_operativos.contador_dias_restantes_andy = variable_para_contador_dias_restantes;
+            Proyecto_operativos.contador_dias_restantes_jose = variable_para_contador_dias_restantes;
+
             this.Validador_del_JSONfile();
             
             

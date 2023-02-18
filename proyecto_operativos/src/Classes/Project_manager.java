@@ -98,6 +98,7 @@ public class Project_manager extends Thread{
     public void Restar_contador_dias_restantes_rodaje(){
         
         if(this.rodaje.equalsIgnoreCase("andy")){
+            System.out.println("Voy a restar");
             Proyecto_operativos.contador_dias_restantes_andy--;  
             System.out.println(String.valueOf(Proyecto_operativos.contador_dias_restantes_andy));
                         
