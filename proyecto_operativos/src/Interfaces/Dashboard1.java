@@ -64,10 +64,10 @@ public class Dashboard1 extends javax.swing.JFrame {
     public static Semaphore Jtext_Productores_Cierre1 = new Semaphore(1);
     public static Semaphore Jtext_Productores_Plot_Twist1 = new Semaphore(1);
     
-    public static Productores_Intro Dhilo1 = new Productores_Intro(drive_Intro1, semaforo_intro1,1,tamanio_Intro1);
+    public static Productores_Intro Dhilo1 = new Productores_Intro(drive_Intro1, semaforo_intro1,1,tamanio_Intro1,1);
     public static Productor_Cierre Dhilo2 = new Productor_Cierre(drive_Cierre1, semaforo_cie1,1,tamanio_Cierre1);
     public static Productor_Inicio Dhilo3 = new Productor_Inicio(drive_Inicio1, semaforo_ini1,1,tamanio_Inicio1);
-    public static Productor_Credito Dhilo4 = new Productor_Credito(drive_credito1, semaforo_con1,1,tamanio_credito1);
+    public static Productor_Credito Dhilo4 = new Productor_Credito(drive_credito1, semaforo_con1,1,tamanio_credito1,1);
     public static Productor_Plot_Twist Dhilo5 = new Productor_Plot_Twist(drive_Plot_Twist1, semaforo_PT1,1,tamanio_Plot_Twist1);
     public static Ensamblador Dhilo6 = new Ensamblador(Dhilo1,Dhilo2,Dhilo3,Dhilo4,Dhilo5,semaforo_intro1,semaforo_cie1,semaforo_ini1,semaforo_con1,semaforo_PT1,1100);
   

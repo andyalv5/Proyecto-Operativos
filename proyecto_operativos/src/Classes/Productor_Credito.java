@@ -21,12 +21,14 @@ public class Productor_Credito extends Thread{
     public int Pro_per_Day;
     Semaphore drive_Credito;
     Semaphore s;
+    private int num;
     
-    public Productor_Credito(Semaphore drive_Credito, Semaphore s,int productores,int max_Drive) {
+    public Productor_Credito(Semaphore drive_Credito, Semaphore s,int productores,int max_Drive,int num) {
         this.drive_Credito=drive_Credito;
         this.s=s;
         this.productores =productores;
         this.max_Drive =max_Drive;
+        this.num = num;
     }
     
     public int get_Pro_per_Day(){
@@ -61,7 +63,7 @@ public class Productor_Credito extends Thread{
     public void run(){
         while(Proyecto_operativos.keep){
             try {
-                    this.drive_Credito.acquire();
+                    this.drive_Credito.acquire(num);
                     Thread.sleep(Proyecto_operativos.dia_en_ms);
                     
                     if(Pro_per_Day <max_Drive){

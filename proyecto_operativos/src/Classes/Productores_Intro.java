@@ -22,15 +22,17 @@ public class Productores_Intro extends Thread{
     Semaphore s;
     public int productores;
     private int max_Drive;
+    private int num;
     
     javax.swing.JTextField Cant_Productores_Intro;
     
     
-    public Productores_Intro(Semaphore drive_Intro, Semaphore s,int productores,int max_Drive) {
+    public Productores_Intro(Semaphore drive_Intro, Semaphore s,int productores,int max_Drive,int num) {
         this.drive_Intro = drive_Intro;
         this.s = s;
         this.max_Drive = max_Drive;
         this.productores=productores;
+        this.num=num;
     }
     
     public void free_space(int n){        
@@ -69,7 +71,7 @@ public class Productores_Intro extends Thread{
 //              Proyecto_operativos.Pro_per_day_Intro_Ensambler.acquire();
                 
                 System.out.println("Estoy a punto de entrar al acquire");
-                this.drive_Intro.acquire();
+                this.drive_Intro.acquire(num);
                 System.out.println("Estoy saliendo del aquire");
                     
                 Thread.sleep(Proyecto_operativos.dia_en_ms);
