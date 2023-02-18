@@ -149,7 +149,7 @@ public class Dashboard extends javax.swing.JFrame {
     //    Aqui tengo el project manager trabajando con la cedula de andy
         Project_manager pm_andy = new Project_manager(Proyecto_operativos.ci_Andy, "andy", this.Contador);
     //    Aqui le indico al director de andy a que productor vigilar, y además, le indico que es el director de andy
-        Director dir_andy = new Director(pm_andy, "andy", this.Contador);
+        Director dir_andy = new Director(pm_andy, "andy", this.Contador, this.Veces_PM_atrapado);
         
         hilo1.start();
         hilo2.start();
@@ -247,6 +247,8 @@ public class Dashboard extends javax.swing.JFrame {
                         sueldo_Manager.setText(String.valueOf(pm_andy.ganancia));
                         
                         
+                        
+                        
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -326,6 +328,8 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         Ganancia_Capitulo = new javax.swing.JLabel();
+        Veces_PM_atrapado = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -653,16 +657,16 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addComponent(Intro_a_credito, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Credito_to_Intro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -698,6 +702,16 @@ public class Dashboard extends javax.swing.JFrame {
         Ganancia_Capitulo.setText("0");
         jPanel1.add(Ganancia_Capitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 550, -1, -1));
 
+        Veces_PM_atrapado.setBackground(new java.awt.Color(0, 0, 0));
+        Veces_PM_atrapado.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        Veces_PM_atrapado.setText("0");
+        jPanel1.add(Veces_PM_atrapado, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 190, -1, -1));
+
+        jLabel18.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel18.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel18.setText("Veces PM atrapado: ");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, -1, -1));
+
         jLabel13.setBackground(new java.awt.Color(0, 0, 0));
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel13.setText("Sueldo del Manager:");
@@ -727,7 +741,7 @@ public class Dashboard extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1024,6 +1038,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel Plot_Twist_Quantity;
     private javax.swing.JButton Plot_Twist_To_Inicio;
     private javax.swing.JLabel Plot_Twist_ganancia;
+    private javax.swing.JLabel Veces_PM_atrapado;
     private javax.swing.JButton bajar_Ensabladores;
     private javax.swing.JLabel cierre_ganancia;
     private javax.swing.JButton cierre_to_Inicio;
@@ -1044,6 +1059,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

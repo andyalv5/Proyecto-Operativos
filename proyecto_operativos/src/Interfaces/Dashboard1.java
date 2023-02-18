@@ -148,7 +148,7 @@ public class Dashboard1 extends javax.swing.JFrame {
     //    Aqui tengo el project manager trabajando con la cedula de jose
         Project_manager pm_jose = new Project_manager(Proyecto_operativos.ci_jose, "jose", this.Contador1);
     //    Aqui le indico al director de jose a que productor vigilar, y además, le indico que es el director de jose
-        Director dir_jose = new Director(pm_jose, "jose", this.Contador1);
+        Director dir_jose = new Director(pm_jose, "jose", this.Contador1, this.Veces_PM_atrapado);
         
         Dhilo1.start();
         Dhilo2.start();
@@ -321,11 +321,13 @@ public class Dashboard1 extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         Ganancia_Capitulo1 = new javax.swing.JLabel();
+        Veces_PM_atrapado = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         sueldo_Director1 = new javax.swing.JLabel();
         sueldo_Manager1 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -693,6 +695,11 @@ public class Dashboard1 extends javax.swing.JFrame {
         Ganancia_Capitulo1.setText("0");
         jPanel1.add(Ganancia_Capitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 550, -1, -1));
 
+        Veces_PM_atrapado.setBackground(new java.awt.Color(0, 0, 0));
+        Veces_PM_atrapado.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        Veces_PM_atrapado.setText("0");
+        jPanel1.add(Veces_PM_atrapado, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 190, -1, -1));
+
         jLabel13.setBackground(new java.awt.Color(0, 0, 0));
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel13.setText("Sueldo del Manager:");
@@ -717,6 +724,11 @@ public class Dashboard1 extends javax.swing.JFrame {
         sueldo_Manager1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         sueldo_Manager1.setText("0");
         jPanel1.add(sueldo_Manager1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 150, -1, -1));
+
+        jLabel17.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel17.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel17.setText("Veces PM descubierto: ");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1020,6 +1032,7 @@ public class Dashboard1 extends javax.swing.JFrame {
     private javax.swing.JLabel Plot_Twist_Quantity1;
     private javax.swing.JButton Plot_Twist_To_Inicio;
     private javax.swing.JLabel Plot_Twist_ganancia15;
+    private javax.swing.JLabel Veces_PM_atrapado;
     private javax.swing.JButton bajar_Ensabladores;
     private javax.swing.JLabel cierre_ganancia13;
     private javax.swing.JButton cierre_to_Inicio;
@@ -1040,6 +1053,7 @@ public class Dashboard1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

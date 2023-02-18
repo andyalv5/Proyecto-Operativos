@@ -34,12 +34,16 @@ public class Director extends Thread{
 //    El Project Manager que el director vigila
     
     public javax.swing.JTextField Contador_inter;
+    
+//    Variable de la interfaz que el director cambiará
+    javax.swing.JLabel Veces_PM_atrapado;
         
         
-    public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter){
+    public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter, javax.swing.JLabel Veces_PM_atrapado){
         this.pm = pm;
         this.rodaje = rodaje;
         this.Contador_inter = Contador_inter;
+        this.Veces_PM_atrapado = Veces_PM_atrapado;
     }
     /**
      * Hace un acquire del semaforo de su respectivo rodaje
@@ -187,6 +191,8 @@ public class Director extends Thread{
         }
     }
     
+    
+    
    
     /*
     Revisa si el PM está viendo RyM
@@ -220,8 +226,10 @@ public class Director extends Thread{
         
         if(this.rodaje.equalsIgnoreCase("andy")){
             Project_manager.Veces_descubierto_flojeando_andy++;
+            this.Veces_PM_atrapado.setText(String.valueOf(Project_manager.Veces_descubierto_flojeando_andy));
         }else{
             Project_manager.Veces_descubierto_flojeando_jose++;
+            this.Veces_PM_atrapado.setText(String.valueOf(Project_manager.Veces_descubierto_flojeando_jose));
         }
     }
 }
