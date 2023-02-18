@@ -16,10 +16,12 @@ import proyecto_operativos.Proyecto_operativos;
  * @author Hallo
  */
 public class Project_manager extends Thread{
+    
     public int ganancia;
     
 //    Si está viendo R y M
     boolean Rick_y_Morty = false;
+    
 //    Si está revisando Sprints reviews
     boolean Sprint_reviews = false;
     
@@ -32,7 +34,7 @@ public class Project_manager extends Thread{
     public static volatile boolean PM_nuevo_dia_andy = false;    
     public static volatile boolean PM_nuevo_dia_jose = false;    
     int ci;    
-    //    Solo puede o ser "jose" o "andy"
+//    Solo puede o ser "jose" o "andy"
     String rodaje;
     
     javax.swing.JTextField Contador_inter;

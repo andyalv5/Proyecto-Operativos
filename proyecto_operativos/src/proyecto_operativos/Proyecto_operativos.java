@@ -124,11 +124,12 @@ public class Proyecto_operativos {
 //        dir_andy.start();
 //        pm_andy.start();
         
+        System.out.println(JSONReaderWriter.Capacidad_infinita_plot_twist);
+        jsonrw.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "1", "1", "1", "1", "1", "0", "1","0","0","0","0");
         
-        jsonrw.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "1", "1");
 //        jsonrw.Reader();
         
-        
+
 //        |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
         MainFrame inicial = new MainFrame();

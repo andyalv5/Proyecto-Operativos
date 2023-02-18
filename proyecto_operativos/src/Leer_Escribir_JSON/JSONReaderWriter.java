@@ -63,12 +63,20 @@ public class JSONReaderWriter{
 //    Ensambladores
     
     public static int Ensamblador_Rodaje_jose;
-    public static int Ensamblador_Rodaje_andy;   
+    public static int Ensamblador_Rodaje_andy; 
+    
+//    Ingresos
+    public static int Ingresos_Rodaje_jose;    
+    public static int Ingresos_Rodaje_andy;
+    
+//    Costos
+    public static int Costos_Rodaje_jose;    
+    public static int Costos_Rodaje_andy;
     
     
     int i = 0;
 //    creamos una LISTA DE STRINGS que será devuelta cuandos se corra este metodo
-     String[] lista = new String[24];
+     String[] lista = new String[28];
      
     /**
      * 
@@ -157,10 +165,28 @@ public class JSONReaderWriter{
             lista[i] = Ensamblador_Rodaje_andy;
             i++;
             
+               
+//    Ingresos
+            String Ingresos_Rodaje_jose = String.valueOf(jo.get("Ingresos_Rodaje_jose"));
+            lista[i] = Ingresos_Rodaje_jose;    
+            i++;
             
-//            for (String lista1 : lista) {
-//                System.out.println(lista1);
-//            }
+            String Ingresos_Rodaje_andy = String.valueOf(jo.get("Ingresos_Rodaje_andy"));
+            lista[i] = Ingresos_Rodaje_andy;
+            i++;
+
+//    Costos
+            String Costos_Rodaje_jose = String.valueOf(jo.get("Costos_Rodaje_jose"));
+            lista[i] = Costos_Rodaje_jose;    
+            i++;
+            
+            String Costos_Rodaje_andy = String.valueOf(jo.get("Costos_Rodaje_andy"));
+            lista[i] = Costos_Rodaje_andy;
+            i++;
+            
+            for (String lista1 : lista) {
+                System.out.println(lista1);
+            }
 //            Ponemos en variables publicas para las demás clases los valores correspondientes
 
             
@@ -201,16 +227,25 @@ public class JSONReaderWriter{
     
             JSONReaderWriter.Ensamblador_Rodaje_jose = this.Toint(lista[22]);
             JSONReaderWriter.Ensamblador_Rodaje_andy = this.Toint(lista[23]);
+            
+//            Ingresos
+            JSONReaderWriter.Ingresos_Rodaje_jose = this.Toint(lista[24]);
+            JSONReaderWriter.Ingresos_Rodaje_andy = this.Toint(lista[25]);
+            
+//            Costos
+            JSONReaderWriter.Costos_Rodaje_jose = this.Toint(lista[26]);
+            JSONReaderWriter.Costos_Rodaje_andy = this.Toint(lista[27]);
+            
                         
 //            Ahora le ponemos el valor a dia_en_ms de la clase "Proyectos_operativos"
             Proyecto_operativos.dia_en_ms = JSONReaderWriter.dia_en_segundos * 1000;
                    
                
     
+            this.Validador_del_JSONfile();
             
             
-            
-        }catch(IOException | ParseException e){
+        }catch(Exception e){
             System.out.println(e);
         }
         
@@ -281,6 +316,58 @@ public class JSONReaderWriter{
         boolean booler = Boolean.parseBoolean(string);
         return booler;
     }
+    /**
+     * Valida los datos que se pusieron en el JSON
+     * @return 
+     */
+    private boolean Validador_del_JSONfile(){
+        
+//        Verificamos que el dia_en_segundos no sea negativo
+        if(JSONReaderWriter.dia_en_segundos < 0){
+            System.out.println("No tiene sentido que un dia sean " + JSONReaderWriter.dia_en_segundos + " milisegundos");
+            return false;
+        }        
+        
+//        Verificamos que el dia entre despachos no sea mayor que cero
+        if(JSONReaderWriter.dias_entre_despachos <= 0){
+            System.out.println("No es conveniente que el valor de dias entre despachos sea " + JSONReaderWriter.dias_entre_despachos);
+            return false;
+        }
+        
+//        Se verifica que la capacidad máxima de almacenaje en el Drive de ninguna de las partes sea <= 0
+        if(JSONReaderWriter.parte_intro_max <= 0 || JSONReaderWriter.parte_creditos_max <= 0 || JSONReaderWriter.parte_inicio_max <= 0 || JSONReaderWriter.parte_cierre_max <= 0 || JSONReaderWriter.parte_plot_twist_max <= 0){
+            System.out.println("No es conveniente que el valor maximo de capacidad de una de las partes de los capitulos en el drive sea <= 0");
+            return false;
+        }
+        
+//        Verificamos que la cantidad de productores y ensambladores tanto de jose como de andy no sea negativa
+        if(JSONReaderWriter.Productor_Intros_andy < 0 || JSONReaderWriter.Productor_Creditos_andy < 0 || JSONReaderWriter.Productor_Inicio_andy < 0 || JSONReaderWriter.Productor_cierre_andy < 0 || JSONReaderWriter.Productor_Plot_Twist_andy < 0 || JSONReaderWriter.Productor_Intros_jose < 0 || JSONReaderWriter.Productor_Creditos_jose < 0 || JSONReaderWriter.Productor_Inicio_jose  < 0 || JSONReaderWriter.Productor_cierre_jose < 0 || JSONReaderWriter.Productor_Plot_Twist_jose < 0 || JSONReaderWriter.Ensamblador_Rodaje_andy < 0 || JSONReaderWriter.Ensamblador_Rodaje_jose < 0){
+            System.out.println("No tiene sentido tener un nro de productores y/o ensambladores en negativo");
+            return false;
+        }
+        
+//        Verificamos que la cantidad de productores de jose no sobrepase el límite impuesto por la cédula de jose
+        if (JSONReaderWriter.Productor_Intros_jose + JSONReaderWriter.Productor_Creditos_jose + JSONReaderWriter.Productor_Inicio_jose  + JSONReaderWriter.Productor_cierre_jose + JSONReaderWriter.Productor_Plot_Twist_jose > Proyecto_operativos.ci_jose + 10){
+            System.out.println("Cantidad erronea de productores de jose escritos en el JSON");
+            return false; 
+        }
+        
+//        Verificamos que la cantidad de productores de andy no sobrepase el límite impuesto por la cedula de andy
+        if(JSONReaderWriter.Productor_Intros_andy + JSONReaderWriter.Productor_Creditos_andy + JSONReaderWriter.Productor_Inicio_andy  + JSONReaderWriter.Productor_cierre_andy + JSONReaderWriter.Productor_Plot_Twist_andy > Proyecto_operativos.ci_Andy + 10){
+            
+            int variable = JSONReaderWriter.Productor_Intros_andy + JSONReaderWriter.Productor_Creditos_andy + JSONReaderWriter.Productor_Inicio_andy  + JSONReaderWriter.Productor_cierre_andy + JSONReaderWriter.Productor_Plot_Twist_andy;
+            int var2 = Proyecto_operativos.ci_Andy + 10;
+            System.out.println("Cantidad erronea de productores de andy ( " + variable + " > " + var2 + "). ");
+            return false;
+        }
+        
+        if(JSONReaderWriter.Ingresos_Rodaje_andy < 0 || JSONReaderWriter.Ingresos_Rodaje_jose < 0 || JSONReaderWriter.Costos_Rodaje_andy < 0 || JSONReaderWriter.Costos_Rodaje_jose < 0){
+            System.out.println("No tiene sentido ni queremos los ingresos y costos con valores < 0");
+            return false;
+        }
+        
+        return true;
+    }
     
     /**
      * Escribe en el JSON TODOS LOS DATOS QUE SE LE PASEN
@@ -308,9 +395,13 @@ public class JSONReaderWriter{
      * @param Productor_Plot_Twist_andy
      * @param Ensamblador_Rodaje_jose
      * @param Ensamblador_Rodaje_andy
+     * @param Ingresos_Rodaje_jose
+     * @param Ingresos_Rodaje_andy
+     * @param Costos_Rodaje_jose
+     * @param Costos_Rodaje_andy
      * @throws FileNotFoundException 
      */
-    public void Writer(String dia_en_segundos, String dias_entre_despachos, String parte_intro_max, String Capacidad_infinita1, String parte_creditos_max, String Capacidad_infinita2, String parte_inicio_max, String Capacidad_infinita3, String parte_cierre_max, String Capacidad_infinita4, String parte_plot_twist_max, String Capacidad_infinita5, String Productor_Intros_jose, String Productor_Creditos_jose, String Productor_Inicio_jose, String Productor_cierre_jose, String Productor_Plot_Twist_jose, String Productor_Intros_andy, String Productor_Creditos_andy, String Productor_Inicio_andy, String Productor_cierre_andy, String Productor_Plot_Twist_andy, String Ensamblador_Rodaje_jose, String Ensamblador_Rodaje_andy) throws FileNotFoundException{
+    public void Writer(String dia_en_segundos, String dias_entre_despachos, String parte_intro_max, String Capacidad_infinita1, String parte_creditos_max, String Capacidad_infinita2, String parte_inicio_max, String Capacidad_infinita3, String parte_cierre_max, String Capacidad_infinita4, String parte_plot_twist_max, String Capacidad_infinita5, String Productor_Intros_jose, String Productor_Creditos_jose, String Productor_Inicio_jose, String Productor_cierre_jose, String Productor_Plot_Twist_jose, String Productor_Intros_andy, String Productor_Creditos_andy, String Productor_Inicio_andy, String Productor_cierre_andy, String Productor_Plot_Twist_andy, String Ensamblador_Rodaje_jose, String Ensamblador_Rodaje_andy, String Ingresos_Rodaje_jose, String Ingresos_Rodaje_andy, String Costos_Rodaje_jose, String Costos_Rodaje_andy) throws FileNotFoundException{
         
         // creating JSONObject
         JSONObject jo = new JSONObject();
@@ -383,7 +474,25 @@ public class JSONReaderWriter{
 //        -----------------------------------
         jo.put("Ensamblador_Rodaje_andy", Ensamblador_Rodaje_andy_int);
 //        ----------------------------
-        try (//        writing JSON to file:"JSONExample.json" in cwd
+        
+//        Ingresos
+        
+        int Ingresos_Rodaje_jose_int = Integer.parseInt(Ingresos_Rodaje_jose);        
+        jo.put("Ingresos_Rodaje_jose", Ingresos_Rodaje_jose_int);
+        
+        int Ingresos_Rodaje_andy_int = Integer.parseInt(Ingresos_Rodaje_andy);        
+        jo.put("Ingresos_Rodaje_andy", Ingresos_Rodaje_andy_int);
+        
+//        Costos
+        int Costos_Rodaje_jose_int = Integer.parseInt(Costos_Rodaje_jose);
+        jo.put("Costos_Rodaje_jose", Costos_Rodaje_jose_int);
+                 
+        int Costos_Rodaje_andy_int = Integer.parseInt(Costos_Rodaje_andy);
+        jo.put("Costos_Rodaje_andy", Costos_Rodaje_andy_int);
+        
+        
+        
+        try (//        writing JSON to file:"jsonfile.json" in cwd
                 PrintWriter pw = new PrintWriter("src\\Archivos\\jsonfile.json")) {
             pw.write(jo.toJSONString());
             
