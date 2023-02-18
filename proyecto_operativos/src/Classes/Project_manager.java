@@ -27,20 +27,23 @@ public class Project_manager extends Thread{
     public static volatile int Veces_descubierto_flojeando_jose = 0;
     
 //    Variable que indica que el project manager está en un nuevo dia
-    public static volatile boolean PM_nuevo_dia = false;
-    
-    int ci;
-    
+    public static volatile boolean PM_nuevo_dia = false;    
+    int ci;    
     //    Solo puede o ser "jose" o "andy"
     String rodaje;
+    
+    javax.swing.JTextField Contador_inter;
     
     /**
      * 
      * @param ci 
+     * @param rodaje 
+     * @param Contador_inter 
      */
-    public Project_manager(int ci, String rodaje){
+    public Project_manager(int ci, String rodaje, javax.swing.JTextField Contador_inter){
         this.ci = ci;
         this.rodaje = rodaje;
+        this.Contador_inter = Contador_inter;
     }
     
     /**
@@ -89,9 +92,15 @@ public class Project_manager extends Thread{
     public void Restar_contador_dias_restantes_rodaje(){
         
         if(this.rodaje.equalsIgnoreCase("andy")){
-            Proyecto_operativos.contador_dias_restantes_andy--;
+            Proyecto_operativos.contador_dias_restantes_andy--;  
+            System.out.println(String.valueOf(Proyecto_operativos.contador_dias_restantes_andy));
+            
+            System.out.println(this.Contador_inter);
+            
+            this.Contador_inter.setText("hola");
         }else{
             Proyecto_operativos.contador_dias_restantes_jose--;            
+            this.Contador_inter.setText(String.valueOf(Proyecto_operativos.contador_dias_restantes_jose));
         }
     }
     
