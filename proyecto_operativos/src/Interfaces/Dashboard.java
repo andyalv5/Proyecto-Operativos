@@ -145,6 +145,7 @@ public class Dashboard extends javax.swing.JFrame {
                     
                     EnsambladoTxt.setText(String.valueOf(hilo6.get_capitulo()));
                     Ensamblado_Ganancia.setText(String.valueOf(hilo6.get_ganancia()));
+                    Ganancia_Capitulo.setText(String.valueOf(hilo6.get_ganancia_velma()));
                 }
             };
         t =new Timer(0,ac);
@@ -214,6 +215,9 @@ public class Dashboard extends javax.swing.JFrame {
         Credito_to_Intro = new javax.swing.JButton();
         Intro_a_credito = new javax.swing.JButton();
         Ensamblado_Ganancia = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        Ganancia_Capitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -546,20 +550,30 @@ public class Dashboard extends javax.swing.JFrame {
         Ensamblado_Ganancia.setText("0");
         jPanel1.add(Ensamblado_Ganancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
 
+        jLabel12.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel12.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel12.setText("Costos:  -");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+
+        jLabel5.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel5.setText("ganancia por capítulo:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, -1, -1));
+
+        Ganancia_Capitulo.setBackground(new java.awt.Color(0, 0, 0));
+        Ganancia_Capitulo.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        Ganancia_Capitulo.setText("0");
+        jPanel1.add(Ganancia_Capitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 550, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
         );
 
         pack();
@@ -839,6 +853,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton Credito_to_Intro;
     private javax.swing.JLabel EnsambladoTxt;
     private javax.swing.JLabel Ensamblado_Ganancia;
+    private javax.swing.JLabel Ganancia_Capitulo;
     private javax.swing.JLabel Inicio_Quantity;
     private javax.swing.JButton Inicio_to_Cierre;
     private javax.swing.JButton Inicio_to_Plot_Twist;
@@ -862,9 +877,11 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

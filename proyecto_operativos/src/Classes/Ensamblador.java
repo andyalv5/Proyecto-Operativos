@@ -10,6 +10,7 @@ import Classes.Productor_Inicio;
 import Classes.Productor_Plot_Twist;
 import Classes.Productores_Intro;
 import Interfaces.Dashboard;
+import static Interfaces.Dashboard.hilo6;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +21,12 @@ import proyecto_operativos.Proyecto_operativos;
  * @author Andy
  */
 public class Ensamblador extends Thread{
+    private int ganancia_Velma;
+    
+    public int get_ganancia_velma(){
+        return this.ganancia_Velma;
+    }
+    
     
     public int ganancia;
     private int capitulo_Counter;
@@ -111,7 +118,9 @@ public class Ensamblador extends Thread{
                     r.acquire();
                     for (int i = 0;i < Math.min(ensambladores , Math.min(intro_Prod, Math.min(inicio_Prod, Math.min(cierre_Prod, Math.min(Plot_Twist_Prod, Credito_Prod)))));i++){
                         capitulo = capitulo+1;
-                        
+                        Dashboard.Jtext_Productores_Ensamblado.acquire();
+                        this.ganancia_Velma= ganancia_Velma +((950*100)/150);
+                        Dashboard.Jtext_Productores_Ensamblado.release();
                         
                         hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);
                         hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);

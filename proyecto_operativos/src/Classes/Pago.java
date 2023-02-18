@@ -21,7 +21,6 @@ import proyecto_operativos.Proyecto_operativos;
  */
 public class Pago extends Thread{
     
-    
     @Override
     public void run(){
         while(Proyecto_operativos.keep){
@@ -53,7 +52,8 @@ public class Pago extends Thread{
                     Dashboard.Jtext_Productores_Ensamblado.acquire();
                     hilo6.ganancia=hilo6.ganancia+hilo6.ensambladores*(8);
                     Dashboard.Jtext_Productores_Ensamblado.release();
-                
+                    
+                    
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(Pago.class.getName()).log(Level.SEVERE, null, ex);
