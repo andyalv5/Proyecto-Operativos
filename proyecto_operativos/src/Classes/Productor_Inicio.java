@@ -18,15 +18,17 @@ public class Productor_Inicio extends Thread{
     public int ganancia;
     public int productores;
     private int max_Drive;
+    private int num;
     public int Pro_per_Day;
     Semaphore drive_Inicio;
     Semaphore s;
     
-    public Productor_Inicio(Semaphore drive_Inicio, Semaphore s, int productores, int max_Drive) {
+    public Productor_Inicio(Semaphore drive_Inicio, Semaphore s, int productores, int max_Drive,int num) {
         this.drive_Inicio=drive_Inicio;
         this.s=s;
         this.productores=productores;
         this.max_Drive =max_Drive;
+        this.num=num;
         
     }
     
@@ -38,9 +40,9 @@ public class Productor_Inicio extends Thread{
         this.Pro_per_Day = Pro_per_Day;
     }
     
-    public void free_space(){     
+    public void free_space(int i){     
         
-        this.drive_Inicio.release();
+        this.drive_Inicio.release(i);
     }
     
     public int get_ganancia(){
@@ -65,7 +67,7 @@ public class Productor_Inicio extends Thread{
                 try {
                     
                     
-                    this.drive_Inicio.acquire();
+                    this.drive_Inicio.acquire(num);
                     Thread.sleep(Proyecto_operativos.dia_en_ms);
                     
                     if(Pro_per_Day <max_Drive){

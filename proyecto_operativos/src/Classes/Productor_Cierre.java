@@ -19,14 +19,16 @@ public class Productor_Cierre extends Thread{
     public int Pro_per_Day;
     public int productores;
     private int max_Drive;
+    private int num;
     Semaphore drive_Cierre;
     Semaphore s;
     
-    public Productor_Cierre(Semaphore drive_Cierre, Semaphore s, int productores,int max_Drive) {
+    public Productor_Cierre(Semaphore drive_Cierre, Semaphore s, int productores,int max_Drive,int num) {
         this.drive_Cierre=drive_Cierre;
         this.s=s;
         this.productores=productores;
         this.max_Drive = max_Drive;
+        this.num=num;
     }
     
     public int get_Pro_per_Day(){
@@ -36,8 +38,8 @@ public class Productor_Cierre extends Thread{
         this.Pro_per_Day = Pro_per_Day;
     }
     
-    public void free_space(){   
-        this.drive_Cierre.release();
+    public void free_space(int i){   
+        this.drive_Cierre.release(i);
     }
     
     
@@ -62,7 +64,7 @@ public class Productor_Cierre extends Thread{
         while(Proyecto_operativos.keep){
                 try {
                     
-                    this.drive_Cierre.acquire();
+                    this.drive_Cierre.acquire(num);
                     Thread.sleep(Proyecto_operativos.dia_en_ms);
                    
                

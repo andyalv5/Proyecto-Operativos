@@ -20,7 +20,7 @@ import proyecto_operativos.Proyecto_operativos;
  *
  * @author Andy
  */
-public class Ensamblador extends Thread{
+public class Ensamblador1 extends Thread{
     private int ganancia_Velma;
     
     public int get_ganancia_velma(){
@@ -50,7 +50,7 @@ public class Ensamblador extends Thread{
     
     
     
-    public Ensamblador(Productores_Intro hilo1,Productor_Cierre hilo2,Productor_Inicio hilo3,Productor_Credito hilo4,Productor_Plot_Twist hilo5, Semaphore s,Semaphore o,Semaphore p, Semaphore q,Semaphore r,int dinero) {
+    public Ensamblador1(Productores_Intro hilo1,Productor_Cierre hilo2,Productor_Inicio hilo3,Productor_Credito hilo4,Productor_Plot_Twist hilo5, Semaphore s,Semaphore o,Semaphore p, Semaphore q,Semaphore r,int dinero) {
      this.hilo1= hilo1;
      this.hilo2= hilo2;
      this.hilo3= hilo3;
@@ -124,24 +124,24 @@ public class Ensamblador extends Thread{
                         Dashboard.Jtext_Productores_Ensamblado.release();
                         
                         hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);
-                        hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);
-                        hilo1.free_space(2);
+                        hilo1.free_space(1);
                         
                         
                         
                         hilo2.set_Pro_per_Day(hilo2.Pro_per_Day-1);
-                        hilo2.free_space(1);
+                        hilo2.set_Pro_per_Day(hilo2.Pro_per_Day-1);
+                        hilo2.free_space(2);
                        
                         
                         
                         hilo3.set_Pro_per_Day(hilo3.Pro_per_Day-1);
-                        hilo3.free_space(1);
+                        hilo3.set_Pro_per_Day(hilo3.Pro_per_Day-1);
+                        hilo3.free_space(2);
                       
                         
                       
                         hilo4.set_Pro_per_Day(hilo4.Pro_per_Day-1);
-                        hilo4.set_Pro_per_Day(hilo4.Pro_per_Day-1);
-                        hilo4.free_space(2);
+                        hilo4.free_space(1);
                         
                         
                        capitulo_Counter= capitulo_Counter-1;
@@ -166,7 +166,7 @@ public class Ensamblador extends Thread{
                     
                 }
             } catch (InterruptedException ex) {
-                Logger.getLogger(Ensamblador.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Ensamblador1.class.getName()).log(Level.SEVERE, null, ex);
             }
             
              
