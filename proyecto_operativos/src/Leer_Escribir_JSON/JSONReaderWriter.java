@@ -245,8 +245,16 @@ public class JSONReaderWriter{
             
             Proyecto_operativos.contador_dias_restantes_andy = variable_para_contador_dias_restantes;
             Proyecto_operativos.contador_dias_restantes_jose = variable_para_contador_dias_restantes;
-
-            this.Validador_del_JSONfile();
+            
+            if(!this.Validador_del_JSONfile()){
+                
+                System.out.println("Arreglando JSON al por defecto");
+                
+                this.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "1", "1","0","0","0","0");
+                
+                Proyecto_operativos.keep = false;
+                
+            }
             
             
         }catch(Exception e){
