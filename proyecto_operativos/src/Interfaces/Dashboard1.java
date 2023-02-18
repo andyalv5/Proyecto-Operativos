@@ -21,54 +21,55 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Timer;
 import proyecto_operativos.Proyecto_operativos;
+import static proyecto_operativos.Proyecto_operativos.ci_jose;
 
 /**
  *
  * @author Andy
  */
-public class Dashboard extends javax.swing.JFrame {
+public class Dashboard1 extends javax.swing.JFrame {
     private Timer t;
     public ActionListener ac;
     
 //    Final cédula de Andy 
-    public int ci_Andy = Proyecto_operativos.ci_Andy;
+    public int ci_jose = Proyecto_operativos.ci_jose;
     
     //    Tamaños diferentes en el drive
-    public static int tamanio_Intro = JSONReaderWriter.parte_intro_max;
-    public static int tamanio_credito = JSONReaderWriter.parte_creditos_max;
-    public static int tamanio_Inicio = JSONReaderWriter.parte_inicio_max;
-    public static int tamanio_Cierre = JSONReaderWriter.parte_cierre_max;
-    public static int tamanio_Plot_Twist = JSONReaderWriter.parte_plot_twist_max;
+    public static int tamanio_Intro1 = JSONReaderWriter.parte_intro_max;
+    public static int tamanio_credito1 = JSONReaderWriter.parte_creditos_max;
+    public static int tamanio_Inicio1 = JSONReaderWriter.parte_inicio_max;
+    public static int tamanio_Cierre1 = JSONReaderWriter.parte_cierre_max;
+    public static int tamanio_Plot_Twist1 = JSONReaderWriter.parte_plot_twist_max;
     
 //    Semaforos para cada tamaño diferente en el drive
-    public static Semaphore drive_Intro = new Semaphore(tamanio_Intro);
-    public static Semaphore drive_credito = new Semaphore(tamanio_credito);
-    public static Semaphore drive_Inicio = new Semaphore(tamanio_Inicio);
-    public static Semaphore drive_Cierre = new Semaphore(tamanio_Cierre);
-    public static Semaphore drive_Plot_Twist = new Semaphore(tamanio_Plot_Twist);
+    public static Semaphore drive_Intro1 = new Semaphore(tamanio_Intro1);
+    public static Semaphore drive_credito1 = new Semaphore(tamanio_credito1);
+    public static Semaphore drive_Inicio1 = new Semaphore(tamanio_Inicio1);
+    public static Semaphore drive_Cierre1 = new Semaphore(tamanio_Cierre1);
+    public static Semaphore drive_Plot_Twist1 = new Semaphore(tamanio_Plot_Twist1);
     
-    public static Semaphore semaforo_s = new Semaphore(1);
-    public static Semaphore semaforo_com = new Semaphore(1);
-    public static Semaphore semaforo_ini = new Semaphore(1);
-    public static Semaphore semaforo_con = new Semaphore(1);
-    public static Semaphore semaforo_PT = new Semaphore(1);
-    public static Semaphore semaforo_cie = new Semaphore(1);
-    public static Semaphore semaforo_intro = new Semaphore(1);
+    public static Semaphore semaforo_s1 = new Semaphore(1);
+    public static Semaphore semaforo_com1 = new Semaphore(1);
+    public static Semaphore semaforo_ini1 = new Semaphore(1);
+    public static Semaphore semaforo_con1 = new Semaphore(1);
+    public static Semaphore semaforo_PT1 = new Semaphore(1);
+    public static Semaphore semaforo_cie1 = new Semaphore(1);
+    public static Semaphore semaforo_intro1 = new Semaphore(1);
     
 //    Semaforos para los JtextosFields
-    public static Semaphore Jtext_Productores_Intro = new Semaphore(1);
-    public static Semaphore Jtext_Productores_Credito = new Semaphore(1);
-    public static Semaphore Jtext_Productores_Ensamblado = new Semaphore(1);
-    public static Semaphore Jtext_Productores_Inicio = new Semaphore(1);
-    public static Semaphore Jtext_Productores_Cierre = new Semaphore(1);
-    public static Semaphore Jtext_Productores_Plot_Twist = new Semaphore(1);
+    public static Semaphore Jtext_Productores_Intro1 = new Semaphore(1);
+    public static Semaphore Jtext_Productores_Credito1 = new Semaphore(1);
+    public static Semaphore Jtext_Productores_Ensamblado1 = new Semaphore(1);
+    public static Semaphore Jtext_Productores_Inicio1 = new Semaphore(1);
+    public static Semaphore Jtext_Productores_Cierre1 = new Semaphore(1);
+    public static Semaphore Jtext_Productores_Plot_Twist1 = new Semaphore(1);
     
-    public static Productores_Intro hilo1 = new Productores_Intro(drive_Intro, semaforo_intro,1,tamanio_Intro);
-    public static Productor_Cierre hilo2 = new Productor_Cierre(drive_Cierre, semaforo_cie,1,tamanio_Cierre);
-    public static Productor_Inicio hilo3 = new Productor_Inicio(drive_Inicio, semaforo_ini,1,tamanio_Inicio);
-    public static Productor_Credito hilo4 = new Productor_Credito(drive_credito, semaforo_con,1,tamanio_credito);
-    public static Productor_Plot_Twist hilo5 = new Productor_Plot_Twist(drive_Plot_Twist, semaforo_PT,1,tamanio_Plot_Twist);
-    public static Ensamblador hilo6 = new Ensamblador(hilo1,hilo2,hilo3,hilo4,hilo5,semaforo_intro,semaforo_cie,semaforo_ini,semaforo_con,semaforo_PT,950);
+    public static Productores_Intro Dhilo1 = new Productores_Intro(drive_Intro1, semaforo_intro1,1,tamanio_Intro1);
+    public static Productor_Cierre Dhilo2 = new Productor_Cierre(drive_Cierre1, semaforo_cie1,1,tamanio_Cierre1);
+    public static Productor_Inicio Dhilo3 = new Productor_Inicio(drive_Inicio1, semaforo_ini1,1,tamanio_Inicio1);
+    public static Productor_Credito Dhilo4 = new Productor_Credito(drive_credito1, semaforo_con1,1,tamanio_credito1);
+    public static Productor_Plot_Twist Dhilo5 = new Productor_Plot_Twist(drive_Plot_Twist1, semaforo_PT1,1,tamanio_Plot_Twist1);
+    public static Ensamblador Dhilo6 = new Ensamblador(Dhilo1,Dhilo2,Dhilo3,Dhilo4,Dhilo5,semaforo_intro1,semaforo_cie1,semaforo_ini1,semaforo_con1,semaforo_PT1,1100);
   
     
 ////    Aqui tengo el project manager trabajando con la cedula de andy
@@ -80,43 +81,42 @@ public class Dashboard extends javax.swing.JFrame {
     /**
      * Creates new form Dashboard
      */
-    public Dashboard() {
+    public Dashboard1() {
         initComponents();
         Cant_Productores_Ensamblado.setText(String.valueOf(0));
-        progresoIntroBar.setMaximum(tamanio_Intro);
-        progresoCreditoBar.setMaximum(tamanio_credito);
-        progresoCierreBar.setMaximum(tamanio_Cierre);
-        progresoInicioBar.setMaximum(tamanio_Inicio);
-        progresoPlotTwistBar.setMaximum(tamanio_Plot_Twist);
+        progresoIntroBar.setMaximum(tamanio_Intro1);
+        progresoCreditoBar.setMaximum(tamanio_credito1);
+        progresoCierreBar.setMaximum(tamanio_Cierre1);
+        progresoInicioBar.setMaximum(tamanio_Inicio1);
+        progresoPlotTwistBar.setMaximum(tamanio_Plot_Twist1);
         Cant_Productores_Inicio.setText(String.valueOf(3));
-        Cant_Productores_Intro.setText(String.valueOf(ci_Andy));
+        Cant_Productores_Intro.setText(String.valueOf(ci_jose));
         Cant_Productores_Cierre.setText(String.valueOf(2));
         Cant_Productores_Credito.setText(String.valueOf(3));
         Cant_Productores_PT.setText(String.valueOf(2));
         Contador.setText(String.valueOf(JSONReaderWriter.dias_entre_despachos));
         
     //    Aqui tengo el project manager trabajando con la cedula de andy
-        Project_manager pm_andy = new Project_manager(Proyecto_operativos.ci_Andy, "andy", this.Contador);
+        Project_manager pm_jose = new Project_manager(Proyecto_operativos.ci_jose, "jose", this.Contador);
     //    Aqui le indico al director de andy a que productor vigilar, y además, le indico que es el director de andy
-        Director dir_andy = new Director(pm_andy, "andy", this.Contador);
+        Director dir_jose = new Director(pm_jose, "jose", this.Contador);
         
-        hilo1.start();
-        hilo2.start();
-        hilo3.start();
-        hilo4.start();
-        hilo5.start();
-        hilo6.start();
-        pm_andy.start();
-        dir_andy.start();
+        Dhilo1.start();
+        Dhilo2.start();
+        Dhilo3.start();
+        Dhilo4.start();
+        Dhilo5.start();
+        Dhilo6.start();
+        pm_jose.start();
+        dir_jose.start();
         
-        Pago hilo7= new Pago(pm_andy, dir_andy);
-        hilo7.start();
+        Pago Dhilo7= new Pago(pm_jose, dir_jose);
+        Dhilo7.start();
         
     
         
         
         
-        this.setLocationRelativeTo(null);
             ac = new ActionListener(){
             
                 @Override
@@ -124,77 +124,77 @@ public class Dashboard extends javax.swing.JFrame {
                     
                    
                     try {
-                        semaforo_s.acquire();
-                        hilo1.set_Productores(Integer.parseInt(Cant_Productores_Intro.getText().toString()));
-                        semaforo_s.release();
+                        semaforo_s1.acquire();
+                        Dhilo1.set_Productores(Integer.parseInt(Cant_Productores_Intro.getText().toString()));
+                        semaforo_s1.release();
                         
-                        semaforo_cie.acquire();
-                        hilo2.set_Productores(Integer.parseInt(Cant_Productores_Cierre.getText().toString()));
-                        semaforo_cie.release();
+                        semaforo_cie1.acquire();
+                        Dhilo2.set_Productores(Integer.parseInt(Cant_Productores_Cierre.getText().toString()));
+                        semaforo_cie1.release();
                         
-                        semaforo_ini.acquire();
-                        hilo3.set_Productores(Integer.parseInt(Cant_Productores_Inicio.getText().toString()));
-                        semaforo_ini.release();
+                        semaforo_ini1.acquire();
+                        Dhilo3.set_Productores(Integer.parseInt(Cant_Productores_Inicio.getText().toString()));
+                        semaforo_ini1.release();
                         
-                        semaforo_con.acquire();
-                        hilo4.set_Productores(Integer.parseInt(Cant_Productores_Credito.getText().toString()));
-                        semaforo_con.release();
+                        semaforo_con1.acquire();
+                        Dhilo4.set_Productores(Integer.parseInt(Cant_Productores_Credito.getText().toString()));
+                        semaforo_con1.release();
                         
-                        semaforo_PT.acquire();
-                        hilo5.set_Productores(Integer.parseInt(Cant_Productores_PT.getText().toString()));
-                        semaforo_PT.release();
+                        semaforo_PT1.acquire();
+                        Dhilo5.set_Productores(Integer.parseInt(Cant_Productores_PT.getText().toString()));
+                        semaforo_PT1.release();
                         
-                        hilo6.set_Productores(Integer.parseInt(Cant_Productores_Ensamblado.getText().toString()));
+                        Dhilo6.set_Productores(Integer.parseInt(Cant_Productores_Ensamblado.getText().toString()));
                         
-                        semaforo_s.acquire();
-                        progresoIntroBar.setValue(hilo1.get_Pro_per_Day());
-                        intro_Quantity.setText(String.valueOf(hilo1.get_Pro_per_Day()));
-                        intro_ganancia.setText(String.valueOf(hilo1.get_ganancia()));
-                        hilo6.set_intro_Prod(hilo1.get_Pro_per_Day());
-                        semaforo_s.release();
+                        semaforo_s1.acquire();
+                        progresoIntroBar.setValue(Dhilo1.get_Pro_per_Day());
+                        intro_Quantity.setText(String.valueOf(Dhilo1.get_Pro_per_Day()));
+                        intro_ganancia.setText(String.valueOf(Dhilo1.get_ganancia()));
+                        Dhilo6.set_intro_Prod(Dhilo1.get_Pro_per_Day());
+                        semaforo_s1.release();
                         
-                        semaforo_cie.acquire();
-                        hilo2.set_Productores(Integer.parseInt(Cant_Productores_Cierre.getText().toString()));
-                        progresoCierreBar.setValue(hilo2.get_Pro_per_Day());
-                        Cierre_Quantity.setText(String.valueOf(hilo2.get_Pro_per_Day()));
-                        cierre_ganancia.setText(String.valueOf(hilo2.get_ganancia()));
-                        hilo6.set_cierre_Prod(hilo2.get_Pro_per_Day());
-                        semaforo_cie.release();
+                        semaforo_cie1.acquire();
+                        Dhilo2.set_Productores(Integer.parseInt(Cant_Productores_Cierre.getText().toString()));
+                        progresoCierreBar.setValue(Dhilo2.get_Pro_per_Day());
+                        Cierre_Quantity.setText(String.valueOf(Dhilo2.get_Pro_per_Day()));
+                        cierre_ganancia.setText(String.valueOf(Dhilo2.get_ganancia()));
+                        Dhilo6.set_cierre_Prod(Dhilo2.get_Pro_per_Day());
+                        semaforo_cie1.release();
                         
-                        semaforo_ini.acquire();
-                        hilo3.set_Productores(Integer.parseInt(Cant_Productores_Inicio.getText().toString()));
-                        progresoInicioBar.setValue(hilo3.get_Pro_per_Day());
-                        Inicio_Quantity.setText(String.valueOf(hilo3.get_Pro_per_Day()));
-                        inicio_ganancia.setText(String.valueOf(hilo3.get_ganancia()));
-                        hilo6.set_inicio_Prod(hilo3.get_Pro_per_Day());
-                        semaforo_ini.release();
+                        semaforo_ini1.acquire();
+                        Dhilo3.set_Productores(Integer.parseInt(Cant_Productores_Inicio.getText().toString()));
+                        progresoInicioBar.setValue(Dhilo3.get_Pro_per_Day());
+                        Inicio_Quantity.setText(String.valueOf(Dhilo3.get_Pro_per_Day()));
+                        inicio_ganancia.setText(String.valueOf(Dhilo3.get_ganancia()));
+                        Dhilo6.set_inicio_Prod(Dhilo3.get_Pro_per_Day());
+                        semaforo_ini1.release();
                         
-                        semaforo_con.acquire();
-                        hilo4.set_Productores(Integer.parseInt(Cant_Productores_Credito.getText().toString()));
-                        progresoCreditoBar.setValue(hilo4.get_Pro_per_Day());
-                        Credito_Quantity.setText(String.valueOf(hilo4.get_Pro_per_Day()));
-                        credito_ganancia.setText(String.valueOf(hilo4.get_ganancia()));
-                        hilo6.set_Credito_Prod(hilo4.get_Pro_per_Day());
-                        semaforo_con.release();
+                        semaforo_con1.acquire();
+                        Dhilo4.set_Productores(Integer.parseInt(Cant_Productores_Credito.getText().toString()));
+                        progresoCreditoBar.setValue(Dhilo4.get_Pro_per_Day());
+                        Credito_Quantity.setText(String.valueOf(Dhilo4.get_Pro_per_Day()));
+                        credito_ganancia.setText(String.valueOf(Dhilo4.get_ganancia()));
+                        Dhilo6.set_Credito_Prod(Dhilo4.get_Pro_per_Day());
+                        semaforo_con1.release();
                         
-                        semaforo_PT.acquire();
-                        hilo5.set_Productores(Integer.parseInt(Cant_Productores_PT.getText().toString()));
-                        progresoPlotTwistBar.setValue(hilo5.get_Pro_per_Day());
-                        Plot_Twist_Quantity.setText(String.valueOf(hilo5.get_Pro_per_Day()));
-                        Plot_Twist_ganancia.setText(String.valueOf(hilo5.get_ganancia()));
-                        hilo6.set_Plot_Twist_Prod(hilo5.get_Pro_per_Day());
-                        semaforo_PT.release();
+                        semaforo_PT1.acquire();
+                        Dhilo5.set_Productores(Integer.parseInt(Cant_Productores_PT.getText().toString()));
+                        progresoPlotTwistBar.setValue(Dhilo5.get_Pro_per_Day());
+                        Plot_Twist_Quantity.setText(String.valueOf(Dhilo5.get_Pro_per_Day()));
+                        Plot_Twist_ganancia.setText(String.valueOf(Dhilo5.get_ganancia()));
+                        Dhilo6.set_Plot_Twist_Prod(Dhilo5.get_Pro_per_Day());
+                        semaforo_PT1.release();
                     
                         
-                        EnsambladoTxt.setText(String.valueOf(hilo6.get_capitulo()));
-                        Ensamblado_Ganancia.setText(String.valueOf(hilo6.get_ganancia()));
-                        Ganancia_Capitulo.setText(String.valueOf(hilo6.get_ganancia_velma()));
-                        sueldo_Director.setText(String.valueOf(dir_andy.ganancia));
-                        sueldo_Manager.setText(String.valueOf(pm_andy.ganancia));
+                        EnsambladoTxt.setText(String.valueOf(Dhilo6.get_capitulo()));
+                        Ensamblado_Ganancia.setText(String.valueOf(Dhilo6.get_ganancia()));
+                        Ganancia_Capitulo.setText(String.valueOf(Dhilo6.get_ganancia_velma()));
+                        sueldo_Director.setText(String.valueOf(dir_jose.ganancia));
+                        sueldo_Manager.setText(String.valueOf(pm_jose.ganancia));
                         
                         
                     } catch (InterruptedException ex) {
-                        Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(Dashboard1.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
                    
@@ -688,20 +688,20 @@ public class Dashboard extends javax.swing.JFrame {
             try {
                 
 //                Intentamos acceder a las secciones criticas
-                this.Jtext_Productores_Cierre.acquire();
-                this.Jtext_Productores_Inicio.acquire();
+                this.Jtext_Productores_Cierre1.acquire();
+                this.Jtext_Productores_Inicio1.acquire();
                 
                 this.Cant_Productores_Cierre.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Cierre.getText()) + 1));
                 this.Cant_Productores_Inicio.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Inicio.getText()) - 1));
                 
                 
 //                Liberamos las secciones criticas
-                this.Jtext_Productores_Inicio.release();
-                this.Jtext_Productores_Cierre.release();
+                this.Jtext_Productores_Inicio1.release();
+                this.Jtext_Productores_Cierre1.release();
                 
                 
             } catch (InterruptedException ex) {
-                Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Dashboard1.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_Inicio_to_CierreActionPerformed
@@ -712,19 +712,19 @@ public class Dashboard extends javax.swing.JFrame {
             try {
                 
 //                Intentamos acceder a las secciones criticas
-                this.Jtext_Productores_Inicio.acquire();
-                this.Jtext_Productores_Plot_Twist.acquire();
+                this.Jtext_Productores_Inicio1.acquire();
+                this.Jtext_Productores_Plot_Twist1.acquire();
                
                 this.Cant_Productores_Inicio.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Inicio.getText()) - 1));
                 this.Cant_Productores_PT.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_PT.getText()) + 1));
                
 //                Liberamos las secciones criticas
-                this.Jtext_Productores_Plot_Twist.release();
-                this.Jtext_Productores_Inicio.release();
+                this.Jtext_Productores_Plot_Twist1.release();
+                this.Jtext_Productores_Inicio1.release();
                 
                 
             } catch (InterruptedException ex) {
-                Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Dashboard1.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_Inicio_to_Plot_TwistActionPerformed
@@ -739,20 +739,20 @@ public class Dashboard extends javax.swing.JFrame {
             try {
                 
 //                Intentamos acceder a las secciones criticas
-                this.Jtext_Productores_Credito.acquire();
-                this.Jtext_Productores_Cierre.acquire();
+                this.Jtext_Productores_Credito1.acquire();
+                this.Jtext_Productores_Cierre1.acquire();
                 
                 this.Cant_Productores_Credito.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Credito.getText()) - 1));
                 this.Cant_Productores_Cierre.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Cierre.getText()) + 1));
                
                 
 //                Liberamos las secciones criticas
-                this.Jtext_Productores_Cierre.release();
-                this.Jtext_Productores_Credito.release();
+                this.Jtext_Productores_Cierre1.release();
+                this.Jtext_Productores_Credito1.release();
                 
                 
             } catch (InterruptedException ex) {
-                Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Dashboard1.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_credit_to_cierreActionPerformed
@@ -767,19 +767,19 @@ public class Dashboard extends javax.swing.JFrame {
             try {
                 
 //                Intentamos acceder a las secciones criticas
-                this.Jtext_Productores_Cierre.acquire();
-                this.Jtext_Productores_Inicio.acquire();
+                this.Jtext_Productores_Cierre1.acquire();
+                this.Jtext_Productores_Inicio1.acquire();
                 
                 this.Cant_Productores_Cierre.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Cierre.getText()) - 1));
                 this.Cant_Productores_Inicio.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Inicio.getText()) + 1));
                                 
 //                Liberamos las secciones criticas
-                this.Jtext_Productores_Inicio.release();
-                this.Jtext_Productores_Cierre.release();
+                this.Jtext_Productores_Inicio1.release();
+                this.Jtext_Productores_Cierre1.release();
                 
                 
             } catch (InterruptedException ex) {
-                Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Dashboard1.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_cierre_to_InicioActionPerformed
@@ -799,20 +799,20 @@ public class Dashboard extends javax.swing.JFrame {
             try {
                 
 //                Intentamos acceder a las secciones criticas
-                Dashboard.Jtext_Productores_Intro.acquire();
-                Dashboard.Jtext_Productores_Credito.acquire();
+                Dashboard1.Jtext_Productores_Intro1.acquire();
+                Dashboard1.Jtext_Productores_Credito1.acquire();
                 
                 this.Cant_Productores_Intro.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Intro.getText()) + 1));
                 this.Cant_Productores_Credito.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Credito.getText()) - 1));
                 
                 
 //                Liberamos las secciones criticas
-                Dashboard.Jtext_Productores_Credito.release();
-                Dashboard.Jtext_Productores_Intro.release();
+                Dashboard1.Jtext_Productores_Credito1.release();
+                Dashboard1.Jtext_Productores_Intro1.release();
                 
                 
             } catch (InterruptedException ex) {
-                Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Dashboard1.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_Credito_to_IntroActionPerformed
@@ -822,20 +822,20 @@ public class Dashboard extends javax.swing.JFrame {
             try {
                 
 //                Intentamos acceder a las secciones criticas
-                this.Jtext_Productores_Credito.acquire();
-                this.Jtext_Productores_Cierre.acquire();
+                this.Jtext_Productores_Credito1.acquire();
+                this.Jtext_Productores_Cierre1.acquire();
                 
                 
                 this.Cant_Productores_Cierre.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Cierre.getText()) - 1));
                 this.Cant_Productores_Credito.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Credito.getText()) + 1));
                 
 //                Liberamos las secciones criticas
-                this.Jtext_Productores_Cierre.release();
-                this.Jtext_Productores_Credito.release();
+                this.Jtext_Productores_Cierre1.release();
+                this.Jtext_Productores_Credito1.release();
                 
                 
             } catch (InterruptedException ex) {
-                Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Dashboard1.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_Cierre_to_CreditoActionPerformed
@@ -846,19 +846,19 @@ public class Dashboard extends javax.swing.JFrame {
             try {
                 
 //                Intentamos acceder a las secciones criticas
-                this.Jtext_Productores_Inicio.acquire();
-                this.Jtext_Productores_Plot_Twist.acquire();
+                this.Jtext_Productores_Inicio1.acquire();
+                this.Jtext_Productores_Plot_Twist1.acquire();
                 
                 this.Cant_Productores_Inicio.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Inicio.getText()) + 1));
                 this.Cant_Productores_PT.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_PT.getText()) - 1));
                 
 //                Liberamos las secciones criticas
-                this.Jtext_Productores_Plot_Twist.release();
-                this.Jtext_Productores_Inicio.release();
+                this.Jtext_Productores_Plot_Twist1.release();
+                this.Jtext_Productores_Inicio1.release();
                 
                 
             } catch (InterruptedException ex) {
-                Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Dashboard1.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_Plot_Twist_To_InicioActionPerformed
@@ -869,19 +869,19 @@ public class Dashboard extends javax.swing.JFrame {
             try {
                 
 //                Intentamos acceder a las secciones criticas
-                this.Jtext_Productores_Intro.acquire();
-                this.Jtext_Productores_Credito.acquire();
+                this.Jtext_Productores_Intro1.acquire();
+                this.Jtext_Productores_Credito1.acquire();
                 
                 this.Cant_Productores_Intro.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Intro.getText()) - 1));
                 this.Cant_Productores_Credito.setText(String.valueOf(Integer.valueOf(this.Cant_Productores_Credito.getText()) + 1));
                 
-                this.Jtext_Productores_Credito.release();
+                this.Jtext_Productores_Credito1.release();
 //                Liberamos las secciones criticas
-                this.Jtext_Productores_Intro.release();
+                this.Jtext_Productores_Intro1.release();
                 
                 
             } catch (InterruptedException ex) {
-                Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Dashboard1.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         
@@ -921,20 +921,21 @@ public class Dashboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Dashboard().setVisible(true);
+                new Dashboard1().setVisible(true);
             }
         });
     }

@@ -27,7 +27,7 @@ public class Ensamblador extends Thread{
         return this.ganancia_Velma;
     }
     
-    
+    private int dinero;
     public int ganancia;
     private int capitulo_Counter;
     public int capitulo;
@@ -50,7 +50,7 @@ public class Ensamblador extends Thread{
     
     
     
-    public Ensamblador(Productores_Intro hilo1,Productor_Cierre hilo2,Productor_Inicio hilo3,Productor_Credito hilo4,Productor_Plot_Twist hilo5, Semaphore s,Semaphore o,Semaphore p, Semaphore q,Semaphore r) {
+    public Ensamblador(Productores_Intro hilo1,Productor_Cierre hilo2,Productor_Inicio hilo3,Productor_Credito hilo4,Productor_Plot_Twist hilo5, Semaphore s,Semaphore o,Semaphore p, Semaphore q,Semaphore r,int dinero) {
      this.hilo1= hilo1;
      this.hilo2= hilo2;
      this.hilo3= hilo3;
@@ -62,6 +62,7 @@ public class Ensamblador extends Thread{
      this.q=q;
      this.r=r;
      this.capitulo_Counter=5;
+     this.dinero=dinero;
     }
     
     public int get_capitulo(){
@@ -119,7 +120,7 @@ public class Ensamblador extends Thread{
                     for (int i = 0;i < Math.min(ensambladores , Math.min(intro_Prod, Math.min(inicio_Prod, Math.min(cierre_Prod, Math.min(Plot_Twist_Prod, Credito_Prod)))));i++){
                         capitulo = capitulo+1;
                         Dashboard.Jtext_Productores_Ensamblado.acquire();
-                        this.ganancia_Velma= ganancia_Velma +((950*100)/150);
+                        this.ganancia_Velma= ganancia_Velma +((dinero*100)/150);
                         Dashboard.Jtext_Productores_Ensamblado.release();
                         
                         hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);

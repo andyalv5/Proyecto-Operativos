@@ -16,6 +16,7 @@ import proyecto_operativos.Proyecto_operativos;
  * @author Hallo
  */
 public class Project_manager extends Thread{
+    public int ganancia;
     
 //    Si está viendo R y M
     boolean Rick_y_Morty = false;
@@ -134,7 +135,7 @@ public class Project_manager extends Thread{
                     
                 }else{
                     this.Semaforo_Contador_release();
-
+                    
                 }
                 
 //                Calculamos el (15 + ultimo digito cedula) minutos en los milisegundos correspondientes EN BASE A LO QUE VALE UN DIA

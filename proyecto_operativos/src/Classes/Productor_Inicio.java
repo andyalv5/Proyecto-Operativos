@@ -99,7 +99,11 @@ public class Productor_Inicio extends Thread{
                         System.out.println("Se hicieron "+Pro_per_Day+"inicios");
                
                     }
-                    
+                    if(Pro_per_Day <0){
+                        s.acquire();
+                        Pro_per_Day =0;
+                        s.release();
+                    }
 
 
                 } catch (InterruptedException ex) {

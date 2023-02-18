@@ -92,6 +92,12 @@ public class Productor_Credito extends Thread{
                         Pro_per_Day =max_Drive;
                         s.release();
                     }
+                    if(Pro_per_Day <0){
+                        s.acquire();
+                        Pro_per_Day =0;
+                        s.release();
+                    }
+                    
                     System.out.println("Se hicieron "+Pro_per_Day+" Creditos");
                     
                 } catch (InterruptedException ex) {

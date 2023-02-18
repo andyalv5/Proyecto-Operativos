@@ -17,6 +17,8 @@ public class Director extends Thread{
 //    Estas variables random las pienso usar para calculos futuros
     int random;
     int random2;
+    public int ganancia;
+    public int sueldo_al_payaso =(7*8);
     
 //    Variable que indica si el director está en un nuevo dia
     public static volatile boolean Director_nuevo_dia = false;
@@ -29,7 +31,7 @@ public class Director extends Thread{
     
 //    El Project Manager que el director vigila
     
-    javax.swing.JTextField Contador_inter;
+    public javax.swing.JTextField Contador_inter;
         
         
     public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter){
@@ -124,7 +126,11 @@ public class Director extends Thread{
 //                    Y además resetearemos el contador a su valor original
                     
 //                    Proyecto_operativos.contador_dias_restantes = Proyecto_operativos.dias_entre_despachos;
+                    Proyecto_operativos.keep=false;
                     this.resetear_contador_dias_restantes_rodaje();
+                    
+                    
+                    
 //                    --------------------------------------------
 
 //                    Proyecto_operativos.Contador.release();
@@ -161,6 +167,7 @@ public class Director extends Thread{
             //Se agrega +1 a las veces que fue descubierto flojeando al Project_manager
 //            Project_manager.Veces_descubierto_flojeando++;
             this.Sumar_veces_descubierto_flojeando_rodaje();
+            this.sueldo_al_payaso =sueldo_al_payaso-1;
             
         }else{
             System.out.println("Director: A la proxima te veo >.>");
