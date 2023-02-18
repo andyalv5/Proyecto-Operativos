@@ -18,6 +18,9 @@ public class Director extends Thread{
     int random;
     int random2;
     
+//    Variable que indica si el director está en un nuevo dia
+    public static volatile boolean Director_nuevo_dia = false;
+    
     Project_manager pm;
     
 //    Solo puede o ser "jose" o "andy"
@@ -65,7 +68,7 @@ public class Director extends Thread{
     public void resetear_contador_dias_restantes_rodaje(){
         
         if(this.rodaje.equalsIgnoreCase("andy")){
-            System.out.println("Toca el reseteo a andy");
+//            System.out.println("Toca el reseteo a andy");
             Proyecto_operativos.contador_dias_restantes_andy = Proyecto_operativos.dias_entre_despachos;
         
         }else{
@@ -84,10 +87,12 @@ public class Director extends Thread{
 //                Proyecto_operativos.Contador.acquire();
                 pm.Semaforo_Contador_acquire();
                 
-                if(pm.Contador_dias_restantes_rodaje() != 0){
+                if(pm.Contador_dias_restantes_rodaje() != 0 && Director.Director_nuevo_dia){
                     
 //                    Proyecto_operativos.Contador.release();
                     pm.Semaforo_Contador_release();
+                    
+                    Director.Director_nuevo_dia = false;
                     
 //                    genera un numero random de 30 a 90 min en base al día establecido
                     random = (int)(Math.random()*((double)(Proyecto_operativos.dia_en_ms)/24 + (double)(Proyecto_operativos.dia_en_ms)/24/60) + (double)(Proyecto_operativos.dia_en_ms)/24/2);
@@ -109,7 +114,7 @@ public class Director extends Thread{
                     
 //                    Toma su descanso de vigilación cada 30-90 minutos
                     
-                }else{
+                }else if(pm.Contador_dias_restantes_rodaje() == 0 && Director.Director_nuevo_dia){
 //                    ---------------------------------------
 //                    Aquí pondremos el método para agregar todos los capitulos creados a la serie
 //                    Y además resetearemos el contador a su valor original
@@ -121,6 +126,9 @@ public class Director extends Thread{
 //                    Proyecto_operativos.Contador.release();
                     pm.Semaforo_Contador_release();
                     
+                }else{
+                    
+                    pm.Semaforo_Contador_release();
                 }
                 
                 
@@ -146,11 +154,24 @@ public class Director extends Thread{
             Thread.sleep(random2);
             
             //Se agrega +1 a las veces que fue descubierto flojeando al Project_manager
-            Project_manager.Veces_descubierto_flojeando++;
+//            Project_manager.Veces_descubierto_flojeando++;
+            this.Sumar_veces_descubierto_flojeando_rodaje();
             
         }else{
             System.out.println("Director: A la proxima te veo >.>");
 
+        }
+    }
+    
+    /**
+     * Le suma las veces que fue descubierto al PM del rodaje respectivo
+     */
+    public void Sumar_veces_descubierto_flojeando_rodaje(){
+        
+        if(this.rodaje.equalsIgnoreCase("andy")){
+            Project_manager.Veces_descubierto_flojeando_andy++;
+        }else{
+            Project_manager.Veces_descubierto_flojeando_jose++;
         }
     }
 }
