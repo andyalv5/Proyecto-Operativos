@@ -94,10 +94,8 @@ public class Project_manager extends Thread{
         if(this.rodaje.equalsIgnoreCase("andy")){
             Proyecto_operativos.contador_dias_restantes_andy--;  
             System.out.println(String.valueOf(Proyecto_operativos.contador_dias_restantes_andy));
-            
-            System.out.println(this.Contador_inter);
-            
-            this.Contador_inter.setText("hola");
+                        
+            this.Contador_inter.setText(String.valueOf(Proyecto_operativos.contador_dias_restantes_andy));
         }else{
             Proyecto_operativos.contador_dias_restantes_jose--;            
             this.Contador_inter.setText(String.valueOf(Proyecto_operativos.contador_dias_restantes_jose));

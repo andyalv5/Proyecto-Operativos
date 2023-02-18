@@ -95,6 +95,11 @@ public class Dashboard extends javax.swing.JFrame {
         Cant_Productores_PT.setText(String.valueOf(2));
         Contador.setText(String.valueOf(JSONReaderWriter.dias_entre_despachos));
         
+    //    Aqui tengo el project manager trabajando con la cedula de andy
+        Project_manager pm_andy = new Project_manager(Proyecto_operativos.ci_Andy, "andy", this.Contador);
+    //    Aqui le indico al director de andy a que productor vigilar, y además, le indico que es el director de andy
+        Director dir_andy = new Director(pm_andy, "andy", this.Contador);
+        
         hilo1.start();
         hilo2.start();
         hilo3.start();
@@ -103,10 +108,6 @@ public class Dashboard extends javax.swing.JFrame {
         hilo6.start();
         hilo7.start();
         
-//    Aqui tengo el project manager trabajando con la cedula de andy
-    Project_manager pm_andy = new Project_manager(Proyecto_operativos.ci_Andy, "andy", this.Contador);
-//    Aqui le indico al director de andy a que productor vigilar, y además, le indico que es el director de andy
-    Director dir_andy = new Director(this.pm_andy, "andy", this.Contador);
     
         pm_andy.start();
         dir_andy.start();

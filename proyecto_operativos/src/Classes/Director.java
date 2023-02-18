@@ -130,6 +130,7 @@ public class Director extends Thread{
 //                    Proyecto_operativos.Contador.release();
                     pm.Semaforo_Contador_release();
                     
+                                        
                 }else{
                     
                     pm.Semaforo_Contador_release();
