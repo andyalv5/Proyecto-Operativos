@@ -196,7 +196,7 @@ public class Project_manager extends Thread{
 
 //                    Sección critica
                     Proyecto_operativos.Director_PM_Semaphore_jose.acquire();                    
-                    System.out.println("Verdadero en jose");
+//                    System.out.println("Verdadero en jose");
                     this.Rick_y_Morty = true;                    
                     Proyecto_operativos.Director_PM_Semaphore_jose.release();
                     
@@ -205,7 +205,7 @@ public class Project_manager extends Thread{
                     
 //                    Seccion critica
                     Proyecto_operativos.Director_PM_Semaphore_jose.acquire();
-                    System.out.println("FALSO en jose");
+//                    System.out.println("FALSO en jose");
                     this.Rick_y_Morty = false;                                        
                     Proyecto_operativos.Director_PM_Semaphore_jose.release();
                 }

@@ -83,17 +83,67 @@ public class Dashboard extends javax.swing.JFrame {
      */
     public Dashboard() {
         initComponents();
-        Cant_Productores_Ensamblado.setText(String.valueOf(0));
-        progresoIntroBar.setMaximum(tamanio_Intro);
-        progresoCreditoBar.setMaximum(tamanio_credito);
-        progresoCierreBar.setMaximum(tamanio_Cierre);
-        progresoInicioBar.setMaximum(tamanio_Inicio);
-        progresoPlotTwistBar.setMaximum(tamanio_Plot_Twist);
-        Cant_Productores_Inicio.setText(String.valueOf(3));
-        Cant_Productores_Intro.setText(String.valueOf(ci_Andy));
-        Cant_Productores_Cierre.setText(String.valueOf(2));
-        Cant_Productores_Credito.setText(String.valueOf(3));
-        Cant_Productores_PT.setText(String.valueOf(2));
+        
+//        Se pone la cantidad inicial de ensambladores de andy
+        Cant_Productores_Ensamblado.setText(String.valueOf(JSONReaderWriter.Ensamblador_Rodaje_andy));
+        
+//        Se evalua si será capacidad INTRO infinita o no
+        if(JSONReaderWriter.Capacidad_infinita_intro){
+            
+            progresoIntroBar.setMaximum(9999);            
+        }else{
+            
+            progresoIntroBar.setMaximum(tamanio_Intro);            
+        }
+        
+//        Se evalua si será capacidad CREDITOS infinita o no
+        if(JSONReaderWriter.Capacidad_infinita_creditos){
+            
+            progresoCreditoBar.setMaximum(9999);
+        }else{
+            
+            progresoCreditoBar.setMaximum(tamanio_credito);
+        }
+        
+//        Se evalua si será capacidad CIERRE infinita o no
+        if(JSONReaderWriter.Capacidad_infinita_cierre){
+            
+            progresoCierreBar.setMaximum(9999);
+        }else{
+            
+            progresoCierreBar.setMaximum(tamanio_Cierre);
+        }
+        
+//        Se evalua si será capacidad INICIO infinita o no
+        if(JSONReaderWriter.Capacidad_infinita_inicio){
+            
+            progresoInicioBar.setMaximum(9999);
+        }else{
+            
+            progresoInicioBar.setMaximum(tamanio_Inicio);
+        }
+        
+//        Se evalua si será capacidad infinita o no
+        if(JSONReaderWriter.Capacidad_infinita_plot_twist){
+            
+            progresoPlotTwistBar.setMaximum(9999);
+        }else{
+            
+            progresoPlotTwistBar.setMaximum(tamanio_Plot_Twist);
+        }
+        
+        
+                
+        Cant_Productores_Inicio.setText(String.valueOf(JSONReaderWriter.Productor_Inicio_andy));
+        
+        Cant_Productores_Intro.setText(String.valueOf(JSONReaderWriter.Productor_Intros_andy));
+        
+        Cant_Productores_Cierre.setText(String.valueOf(JSONReaderWriter.Productor_cierre_andy));
+        
+        Cant_Productores_Credito.setText(String.valueOf(JSONReaderWriter.Productor_Creditos_andy));
+        
+        Cant_Productores_PT.setText(String.valueOf(JSONReaderWriter.Productor_Plot_Twist_andy));
+        
         Contador.setText(String.valueOf(JSONReaderWriter.dias_entre_despachos));
         
     //    Aqui tengo el project manager trabajando con la cedula de andy
@@ -271,6 +321,7 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         Credito_to_Intro = new javax.swing.JButton();
         Intro_a_credito = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         Ensamblado_Ganancia = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -596,6 +647,8 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("Rodaje Andy");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -606,11 +659,17 @@ public class Dashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Credito_to_Intro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addGap(88, 88, 88)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Intro_a_credito, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Credito_to_Intro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -989,6 +1048,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

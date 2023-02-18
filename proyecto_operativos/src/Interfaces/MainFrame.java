@@ -90,8 +90,8 @@ public class MainFrame extends javax.swing.JFrame {
         Dashboard venaddus = new Dashboard();        
         venaddus.setVisible(true);
 
-       // Dashboard1 venaddus1 = new Dashboard1();        
-       // venaddus1.setVisible(true);
+        Dashboard1 venaddus1 = new Dashboard1();        
+        venaddus1.setVisible(true);
         
 //        Cierra la interfaz actual
         this.setVisible(false);

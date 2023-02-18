@@ -21,7 +21,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Timer;
 import proyecto_operativos.Proyecto_operativos;
-import static proyecto_operativos.Proyecto_operativos.ci_jose;
 
 /**
  *
@@ -83,17 +82,65 @@ public class Dashboard1 extends javax.swing.JFrame {
      */
     public Dashboard1() {
         initComponents();
-        Cant_Productores_Ensamblado1.setText(String.valueOf(0));
-        progresoIntroBar1.setMaximum(tamanio_Intro1);
-        progresoCreditoBar1.setMaximum(tamanio_credito1);
-        progresoCierreBar1.setMaximum(tamanio_Cierre1);
-        progresoInicioBar1.setMaximum(tamanio_Inicio1);
-        progresoPlotTwistBar1.setMaximum(tamanio_Plot_Twist1);
-        Cant_Productores_Inicio.setText(String.valueOf(3));
-        Cant_Productores_Intro.setText(String.valueOf(ci_jose));
-        Cant_Productores_Cierre.setText(String.valueOf(2));
-        Cant_Productores_Credito.setText(String.valueOf(3));
-        Cant_Productores_PT.setText(String.valueOf(2));
+        
+//        Se pone el valor inicial de la cantidad de productores ensamblados
+        Cant_Productores_Ensamblado1.setText(String.valueOf(JSONReaderWriter.Ensamblador_Rodaje_jose));
+        
+//        Teniendo la opción de capacidad de partes intro "infinita" 
+        if(JSONReaderWriter.Capacidad_infinita_intro){
+//            Si la capacidad es infinita, se pone el máximo con 9999
+            progresoIntroBar1.setMaximum(9999);            
+        }else{
+//            Si la capacidad NO es infinita, se coloca el máximo establecido en el JSON
+            progresoIntroBar1.setMaximum(tamanio_Intro1);            
+        }
+        
+//        Teniendo la opción de capacidad de partes credito "infinita"
+        if(JSONReaderWriter.Capacidad_infinita_creditos){
+//            Si la capacidad es infinita, se pone el máximo con 9999            
+            progresoCreditoBar1.setMaximum(9999);
+        }else{
+//            Si la capacidad NO es infinita, se coloca el máximo establecido en el JSON            
+            progresoCreditoBar1.setMaximum(tamanio_credito1);            
+        }
+        
+        
+//        Teniendo la opción de capacidad de partes cierre "infinita"
+        if(JSONReaderWriter.Capacidad_infinita_cierre){
+//            Si la capacidad es infinita, se pone el máximo con 9999                        
+            progresoCierreBar1.setMaximum(9999);
+        }else{
+//            Si la capacidad NO es infinita, se coloca el máximo establecido en el JSON                        
+            progresoCierreBar1.setMaximum(tamanio_Cierre1);
+        }
+        
+//        Teniendo la opción de capacidad de partes inicio "infinita"
+        if(JSONReaderWriter.Capacidad_infinita_inicio){            
+//            Si la capacidad es infinita, se pone el máximo con 9999                        
+            progresoInicioBar1.setMaximum(9999);
+        }else{            
+//            Si la capacidad NO es infinita, se coloca el máximo establecido en el JSON                        
+            progresoInicioBar1.setMaximum(tamanio_Inicio1);
+        }
+        
+        
+//        Teniendo la opción de capacidad de partes plot_twist "infinita"
+        if(JSONReaderWriter.Capacidad_infinita_plot_twist){
+//            Si la capacidad es infinita, se pone el máximo con 9999
+            progresoPlotTwistBar1.setMaximum(9999);
+        }else{            
+//            Si la capacidad NO es infinita, se coloca el máximo establecido en el JSON                        
+            progresoPlotTwistBar1.setMaximum(tamanio_Plot_Twist1);
+        }
+        
+//        Ahora se lee de la clase JSONReaderWriter los valores iniciales de productores del rodaje a tratar
+        Cant_Productores_Inicio.setText(String.valueOf(JSONReaderWriter.Productor_Inicio_jose));        
+        Cant_Productores_Intro.setText(String.valueOf(JSONReaderWriter.Productor_Intros_jose));        
+        Cant_Productores_Cierre.setText(String.valueOf(JSONReaderWriter.Productor_cierre_jose));        
+        Cant_Productores_Credito.setText(String.valueOf(JSONReaderWriter.Productor_Creditos_jose));        
+        Cant_Productores_PT.setText(String.valueOf(JSONReaderWriter.Productor_Plot_Twist_jose));        
+        
+//        El contador empieza con los dias entre despachos que indique el JSONReaderWriter
         Contador1.setText(String.valueOf(JSONReaderWriter.dias_entre_despachos));
         
     //    Aqui tengo el project manager trabajando con la cedula de jose
@@ -267,6 +314,7 @@ public class Dashboard1 extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         Credito_to_Intro = new javax.swing.JButton();
         Intro_a_credito = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         Ensamblado_Ganancia1 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -592,6 +640,8 @@ public class Dashboard1 extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("Rodaje José");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -602,11 +652,17 @@ public class Dashboard1 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Credito_to_Intro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addGap(88, 88, 88)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Intro_a_credito, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Credito_to_Intro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -986,6 +1042,7 @@ public class Dashboard1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
