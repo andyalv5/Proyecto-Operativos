@@ -44,8 +44,10 @@ public class Project_manager extends Thread{
      */
     public void Semaforo_Contador_acquire() throws InterruptedException{
         if(this.rodaje.equalsIgnoreCase("andy")){
-            System.out.println("toca un acquire en andy");
+            System.out.println("toca un acquire PM Contador en andy");
             Proyecto_operativos.Contador_andy.acquire();
+            System.out.println(Proyecto_operativos.Contador_andy);
+            
         }else{
             Proyecto_operativos.Contador_jose.acquire();
         }
@@ -57,8 +59,9 @@ public class Project_manager extends Thread{
      */
     public void Semaforo_Contador_release() throws InterruptedException{
         if(this.rodaje.equalsIgnoreCase("andy")){
-            System.out.println("toca un release en andy");
+            System.out.println("toca un release PM Contador en andy");
             Proyecto_operativos.Contador_andy.release();
+            System.out.println(Proyecto_operativos.Contador_andy);
         }else{
             Proyecto_operativos.Contador_jose.release();
         }
