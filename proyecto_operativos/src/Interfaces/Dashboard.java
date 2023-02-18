@@ -7,6 +7,7 @@ package Interfaces;
 import Classes.Director;
 import Classes.Ensamblador;
 import Classes.Pago;
+import Classes.Paso_el_dia;
 import Classes.Productor_Cierre;
 import Classes.Productor_Credito;
 import Classes.Productor_Inicio;
@@ -69,7 +70,7 @@ public class Dashboard extends javax.swing.JFrame {
     public static Productor_Credito hilo4 = new Productor_Credito(drive_credito, semaforo_con,1,tamanio_credito);
     public static Productor_Plot_Twist hilo5 = new Productor_Plot_Twist(drive_Plot_Twist, semaforo_PT,1,tamanio_Plot_Twist);
     public static Ensamblador hilo6 = new Ensamblador(hilo1,hilo2,hilo3,hilo4,hilo5,semaforo_intro,semaforo_cie,semaforo_ini,semaforo_con,semaforo_PT,950);
-  
+    
     
 ////    Aqui tengo el project manager trabajando con la cedula de andy
 //    Project_manager pm_andy = new Project_manager(Proyecto_operativos.ci_Andy, "andy", this.Contador);
@@ -112,6 +113,9 @@ public class Dashboard extends javax.swing.JFrame {
         Pago hilo7= new Pago(pm_andy, dir_andy);
         hilo7.start();
         
+        Paso_el_dia pel_andy = new Paso_el_dia();
+        
+        pel_andy.start();
     
         
         

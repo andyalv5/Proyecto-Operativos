@@ -96,9 +96,9 @@ public class Dashboard1 extends javax.swing.JFrame {
         Cant_Productores_PT.setText(String.valueOf(2));
         Contador.setText(String.valueOf(JSONReaderWriter.dias_entre_despachos));
         
-    //    Aqui tengo el project manager trabajando con la cedula de andy
+    //    Aqui tengo el project manager trabajando con la cedula de jose
         Project_manager pm_jose = new Project_manager(Proyecto_operativos.ci_jose, "jose", this.Contador);
-    //    Aqui le indico al director de andy a que productor vigilar, y además, le indico que es el director de andy
+    //    Aqui le indico al director de jose a que productor vigilar, y además, le indico que es el director de jose
         Director dir_jose = new Director(pm_jose, "jose", this.Contador);
         
         Dhilo1.start();

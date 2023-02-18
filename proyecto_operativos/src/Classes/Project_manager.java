@@ -28,7 +28,9 @@ public class Project_manager extends Thread{
     public static volatile int Veces_descubierto_flojeando_jose = 0;
     
 //    Variable que indica que el project manager está en un nuevo dia
-    public static volatile boolean PM_nuevo_dia = false;    
+//    public static volatile boolean PM_nuevo_dia = false;    
+    public static volatile boolean PM_nuevo_dia_andy = false;    
+    public static volatile boolean PM_nuevo_dia_jose = false;    
     int ci;    
     //    Solo puede o ser "jose" o "andy"
     String rodaje;
@@ -81,6 +83,7 @@ public class Project_manager extends Thread{
      * @return el contador de dias restantes segun el rodaje 
      */
     public int Contador_dias_restantes_rodaje(){
+        
         if(this.rodaje.equalsIgnoreCase("andy")){
             return Proyecto_operativos.contador_dias_restantes_andy;
         }else{
@@ -103,6 +106,32 @@ public class Project_manager extends Thread{
         }
     }
     
+    /**
+     * 
+     * @return El booleano de si pasó un nuevo día, dependiendo del rodaje en el que se esté
+     */
+    public boolean PM_nuevo_dia_rodaje(){
+        
+        if(this.rodaje.equalsIgnoreCase("andy")){
+            return Project_manager.PM_nuevo_dia_andy;
+        }else{
+            
+            return Project_manager.PM_nuevo_dia_jose;
+        }
+    }
+    
+    /**
+     * Pone en falso el paso del nuevo dia, dependiendo del rodaje en el que se esté
+     */
+    public void Falsear_PM_nuevo_dia_rodaje(){
+        
+        if(this.rodaje.equalsIgnoreCase("andy")){
+            Project_manager.PM_nuevo_dia_andy = false;
+        }else{            
+            Project_manager.PM_nuevo_dia_jose = false;
+        }
+    }
+    
     @Override
     public void run(){
         while(Proyecto_operativos.keep){
@@ -115,9 +144,9 @@ public class Project_manager extends Thread{
                 this.Semaforo_Contador_acquire();
 //                System.out.println("Soy un PM que no puede entrar");
 //                System.out.println(Project_manager.PM_nuevo_dia);
-                if(this.Contador_dias_restantes_rodaje() > 0 && Project_manager.PM_nuevo_dia){
+                if(this.Contador_dias_restantes_rodaje() > 0 && this.PM_nuevo_dia_rodaje()){
                     
-                    Project_manager.PM_nuevo_dia = false;
+                    this.Falsear_PM_nuevo_dia_rodaje();
     //                Tomaremos el valor de "final de la cedula" + "1 hora" en relación a lo que vale un día en milisegundos
                     tiempo = Proyecto_operativos.dia_en_ms * ci / 24 + Proyecto_operativos.dia_en_ms / 24;
 

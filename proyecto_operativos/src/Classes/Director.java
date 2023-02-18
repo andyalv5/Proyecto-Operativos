@@ -21,7 +21,9 @@ public class Director extends Thread{
     public int sueldo_al_payaso =(7*8);
     
 //    Variable que indica si el director está en un nuevo dia
-    public static volatile boolean Director_nuevo_dia = false;
+//    public static volatile boolean Director_nuevo_dia = false;
+    public static volatile boolean Director_nuevo_dia_andy = false;
+    public static volatile boolean Director_nuevo_dia_jose = false;
     
     Project_manager pm;
     
@@ -83,6 +85,37 @@ public class Director extends Thread{
         }
     }
     
+    /**
+     * 
+     * @return el valor de si paso un nuevo dia en su respectivo rodaje
+     */
+    public boolean Director_nuevo_dia_rodaje(){
+        
+        if(this.rodaje.equalsIgnoreCase("andy")){
+            
+            return Director.Director_nuevo_dia_andy;
+            
+        }else{
+            
+            return Director.Director_nuevo_dia_jose;
+            
+        }
+    }
+    /**
+     * Vuelve falso a que pasó un nuevo en su rodaje respectivo
+     */
+    public void Falsear_Director_nuevo_dia_rodaje(){
+        if(this.rodaje.equalsIgnoreCase("andy")){
+            
+            Director.Director_nuevo_dia_andy = false;
+            
+        }else{
+            
+            Director.Director_nuevo_dia_jose = false;
+            
+        }        
+    }
+    
     @Override
     public void run(){
         
@@ -93,12 +126,13 @@ public class Director extends Thread{
 //                Proyecto_operativos.Contador.acquire();
                 pm.Semaforo_Contador_acquire();
                 
-                if(pm.Contador_dias_restantes_rodaje() != 0 && Director.Director_nuevo_dia){
+                if(pm.Contador_dias_restantes_rodaje() != 0 && this.Director_nuevo_dia_rodaje()){
                     
 //                    Proyecto_operativos.Contador.release();
                     pm.Semaforo_Contador_release();
                     
-                    Director.Director_nuevo_dia = false;
+//                    Director.Director_nuevo_dia = false;
+                    Falsear_Director_nuevo_dia_rodaje();
                     
 //                    genera un numero random de 30 a 90 min en base al día establecido
                     random = (int)(Math.random()*((double)(Proyecto_operativos.dia_en_ms)/24 + (double)(Proyecto_operativos.dia_en_ms)/24/60) + (double)(Proyecto_operativos.dia_en_ms)/24/2);
@@ -120,13 +154,14 @@ public class Director extends Thread{
                     
 //                    Toma su descanso de vigilación cada 30-90 minutos
                     
-                }else if(pm.Contador_dias_restantes_rodaje() == 0 && Director.Director_nuevo_dia){
+//                }else if(pm.Contador_dias_restantes_rodaje() == 0 && this.Director_nuevo_dia_rodaje()){
+                }else if(pm.Contador_dias_restantes_rodaje() == 0){
 //                    ---------------------------------------
 //                    Aquí pondremos el método para agregar todos los capitulos creados a la serie
 //                    Y además resetearemos el contador a su valor original
                     
 //                    Proyecto_operativos.contador_dias_restantes = Proyecto_operativos.dias_entre_despachos;
-                    Proyecto_operativos.keep=false;
+                    
                     this.resetear_contador_dias_restantes_rodaje();
                     
                     
@@ -136,6 +171,9 @@ public class Director extends Thread{
 //                    Proyecto_operativos.Contador.release();
                     pm.Semaforo_Contador_release();
                     
+                    this.Falsear_Director_nuevo_dia_rodaje();
+                    
+                    Proyecto_operativos.keep=false;
                                         
                 }else{
                     
