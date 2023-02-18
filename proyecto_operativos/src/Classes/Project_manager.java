@@ -24,6 +24,9 @@ public class Project_manager extends Thread{
     
     public static volatile int Veces_descubierto_flojeando = 0;
     
+//    Variable que indica que el project manager está en un nuevo dia
+    public static volatile boolean PM_nuevo_dia = false;
+    
     int ci;
     
     //    Solo puede o ser "jose" o "andy"
@@ -44,9 +47,9 @@ public class Project_manager extends Thread{
      */
     public void Semaforo_Contador_acquire() throws InterruptedException{
         if(this.rodaje.equalsIgnoreCase("andy")){
-            System.out.println("toca un acquire PM Contador en andy");
+//            System.out.println("toca un acquire PM Contador en andy");
             Proyecto_operativos.Contador_andy.acquire();
-            System.out.println(Proyecto_operativos.Contador_andy);
+//            System.out.println(Proyecto_operativos.Contador_andy);
             
         }else{
             Proyecto_operativos.Contador_jose.acquire();
@@ -59,9 +62,9 @@ public class Project_manager extends Thread{
      */
     public void Semaforo_Contador_release() throws InterruptedException{
         if(this.rodaje.equalsIgnoreCase("andy")){
-            System.out.println("toca un release PM Contador en andy");
+//            System.out.println("toca un release PM Contador en andy");
             Proyecto_operativos.Contador_andy.release();
-            System.out.println(Proyecto_operativos.Contador_andy);
+//            System.out.println(Proyecto_operativos.Contador_andy);
         }else{
             Proyecto_operativos.Contador_jose.release();
         }
@@ -100,8 +103,11 @@ public class Project_manager extends Thread{
                                 
 //                Proyecto_operativos.Contador.acquire();
                 this.Semaforo_Contador_acquire();
-                
-                if(this.Contador_dias_restantes_rodaje() > 0){
+//                System.out.println("Soy un PM que no puede entrar");
+//                System.out.println(Project_manager.PM_nuevo_dia);
+                if(this.Contador_dias_restantes_rodaje() > 0 && Project_manager.PM_nuevo_dia){
+                    
+                    Project_manager.PM_nuevo_dia = false;
     //                Tomaremos el valor de "final de la cedula" + "1 hora" en relación a lo que vale un día en milisegundos
                     tiempo = Proyecto_operativos.dia_en_ms * ci / 24 + Proyecto_operativos.dia_en_ms / 24;
 
@@ -131,7 +137,7 @@ public class Project_manager extends Thread{
 
 //                    Sección critica
                     Proyecto_operativos.Director_PM_Semaphore_andy.acquire();                    
-                    System.out.println("Verdadero en andy");
+//                    System.out.println("Verdadero en andy");
                     this.Rick_y_Morty = true;                    
                     Proyecto_operativos.Director_PM_Semaphore_andy.release();
                     
@@ -140,7 +146,7 @@ public class Project_manager extends Thread{
                     
 //                    Sección crítica
                     Proyecto_operativos.Director_PM_Semaphore_andy.acquire();                                        
-                    System.out.println("FALSO en andy");
+//                    System.out.println("FALSO en andy");
                     this.Rick_y_Morty = false;                    
                     Proyecto_operativos.Director_PM_Semaphore_andy.release();
                     

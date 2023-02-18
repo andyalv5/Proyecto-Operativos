@@ -29,6 +29,9 @@ public class Pago extends Thread{
             try {
     //            Duerme un dia para posteriormente hacer el pago
                 Thread.sleep(Proyecto_operativos.dia_en_ms);
+                
+                    Director.Director_nuevo_dia = true;
+                    Project_manager.PM_nuevo_dia = true;
 
                     Dashboard.Jtext_Productores_Intro.acquire();
                     hilo1.ganancia=hilo1.ganancia+hilo1.productores*(3);

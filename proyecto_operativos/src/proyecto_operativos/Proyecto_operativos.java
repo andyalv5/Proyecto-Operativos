@@ -4,11 +4,6 @@
  */
 package proyecto_operativos;
 import Classes.Director;
-import Classes.Productor_Cierre;
-import Classes.Productor_Credito;
-import Classes.Productor_Inicio;
-import Classes.Productor_Plot_Twist;
-import Classes.Productores_Intro;
 import Classes.Project_manager;
 import Interfaces.MainFrame;
 import Leer_Escribir_JSON.JSONReaderWriter;
