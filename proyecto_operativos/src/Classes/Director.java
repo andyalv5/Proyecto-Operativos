@@ -202,6 +202,7 @@ public class Director extends Thread{
         if(this.pm.Rick_y_Morty == true){
             
             System.out.println("Director: Te vi menooor");
+            this.sueldo_al_payaso =sueldo_al_payaso-1;
             
 //            Medimos las horas que tarda el Director 12-18 horas aleatoriamente
             int random2 = (int)(Math.random()*Proyecto_operativos.dia_en_ms*6/24 + Proyecto_operativos.dia_en_ms*12/24);
@@ -211,7 +212,7 @@ public class Director extends Thread{
             //Se agrega +1 a las veces que fue descubierto flojeando al Project_manager
 //            Project_manager.Veces_descubierto_flojeando++;
             this.Sumar_veces_descubierto_flojeando_rodaje();
-            this.sueldo_al_payaso =sueldo_al_payaso-1;
+            
             
         }else{
             System.out.println("Director: A la proxima te veo >.>");
