@@ -4,6 +4,9 @@
  */
 package Interfaces;
 
+import Classes.SetLocationRelativeTo;
+import Classes.SetLocationRelativeToDashboard;
+
 /**
  *
  * @author AndyYJosé
@@ -87,11 +90,10 @@ public class MainFrame extends javax.swing.JFrame {
     private void btnAggUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAggUsuarioActionPerformed
         
 //        Llama a la otra interfaz
-        Dashboard venaddus = new Dashboard();        
-        venaddus.setVisible(true);
 
-        Dashboard1 venaddus1 = new Dashboard1();        
-        venaddus1.setVisible(true);
+        SetLocationRelativeToDashboard.SetLocationRelativeToDashboard();
+
+        SetLocationRelativeTo.SetLocationRelativeTo();
         
 //        Cierra la interfaz actual
         this.setVisible(false);

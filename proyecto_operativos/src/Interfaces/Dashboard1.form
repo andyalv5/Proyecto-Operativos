@@ -23,12 +23,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" pref="966" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" pref="963" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="1" pref="585" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="1" pref="582" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -768,7 +768,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="18" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="Intro_a_credito" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="Credito_to_Intro" min="-2" pref="50" max="-2" attributes="0"/>

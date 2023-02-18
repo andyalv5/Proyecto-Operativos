@@ -170,7 +170,6 @@ public class Dashboard extends javax.swing.JFrame {
         
         
         
-        this.setLocationRelativeTo(null);
             ac = new ActionListener(){
             
                 @Override
