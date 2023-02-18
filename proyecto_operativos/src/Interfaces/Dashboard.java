@@ -11,6 +11,7 @@ import Classes.Productor_Credito;
 import Classes.Productor_Inicio;
 import Classes.Productor_Plot_Twist;
 import Classes.Productores_Intro;
+import Leer_Escribir_JSON.JSONReaderWriter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.Semaphore;
@@ -28,14 +29,14 @@ public class Dashboard extends javax.swing.JFrame {
     public ActionListener ac;
     
 //    Final cédula de Andy 
-    public int ci_Andy = 8;
+    public int ci_Andy = Proyecto_operativos.ci_Andy;
     
     //    Tamaños diferentes en el drive
-    public static int tamanio_Intro = 30;
-    public static int tamanio_credito = 25;
-    public static int tamanio_Inicio = 50;
-    public static int tamanio_Cierre = 55;
-    public static int tamanio_Plot_Twist = 40;
+    public static int tamanio_Intro = JSONReaderWriter.parte_intro_max;
+    public static int tamanio_credito = JSONReaderWriter.parte_creditos_max;
+    public static int tamanio_Inicio = JSONReaderWriter.parte_inicio_max;
+    public static int tamanio_Cierre = JSONReaderWriter.parte_cierre_max;
+    public static int tamanio_Plot_Twist = JSONReaderWriter.parte_plot_twist_max;
     
 //    Semaforos para cada tamaño diferente en el drive
     public static Semaphore drive_Intro = new Semaphore(tamanio_Intro);
@@ -43,6 +44,7 @@ public class Dashboard extends javax.swing.JFrame {
     public static Semaphore drive_Inicio = new Semaphore(tamanio_Inicio);
     public static Semaphore drive_Cierre = new Semaphore(tamanio_Cierre);
     public static Semaphore drive_Plot_Twist = new Semaphore(tamanio_Plot_Twist);
+    
     public static Semaphore semaforo_s = new Semaphore(1);
     public static Semaphore semaforo_com = new Semaphore(1);
     public static Semaphore semaforo_ini = new Semaphore(1);
@@ -59,7 +61,7 @@ public class Dashboard extends javax.swing.JFrame {
     public static Semaphore Jtext_Productores_Cierre = new Semaphore(1);
     public static Semaphore Jtext_Productores_Plot_Twist = new Semaphore(1);
     
-    public static Productores_Intro hilo1= new Productores_Intro(drive_Intro, semaforo_intro,1,tamanio_Intro);
+    public static Productores_Intro hilo1 = new Productores_Intro(drive_Intro, semaforo_intro,1,tamanio_Intro);
     public static Productor_Cierre hilo2 = new Productor_Cierre(drive_Cierre, semaforo_cie,1,tamanio_Cierre);
     public static Productor_Inicio hilo3 = new Productor_Inicio(drive_Inicio, semaforo_ini,1,tamanio_Inicio);
     public static Productor_Credito hilo4 = new Productor_Credito(drive_credito, semaforo_con,1,tamanio_credito);

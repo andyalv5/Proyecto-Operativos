@@ -154,11 +154,24 @@ public class Director extends Thread{
             Thread.sleep(random2);
             
             //Se agrega +1 a las veces que fue descubierto flojeando al Project_manager
-            Project_manager.Veces_descubierto_flojeando++;
+//            Project_manager.Veces_descubierto_flojeando++;
+            this.Sumar_veces_descubierto_flojeando_rodaje();
             
         }else{
             System.out.println("Director: A la proxima te veo >.>");
 
+        }
+    }
+    
+    /**
+     * Le suma las veces que fue descubierto al PM del rodaje respectivo
+     */
+    public void Sumar_veces_descubierto_flojeando_rodaje(){
+        
+        if(this.rodaje.equalsIgnoreCase("andy")){
+            Project_manager.Veces_descubierto_flojeando_andy++;
+        }else{
+            Project_manager.Veces_descubierto_flojeando_jose++;
         }
     }
 }

@@ -22,7 +22,9 @@ public class Project_manager extends Thread{
 //    Si está revisando Sprints reviews
     boolean Sprint_reviews = false;
     
-    public static volatile int Veces_descubierto_flojeando = 0;
+//    public static volatile int Veces_descubierto_flojeando = 0;
+    public static volatile int Veces_descubierto_flojeando_andy = 0;
+    public static volatile int Veces_descubierto_flojeando_jose = 0;
     
 //    Variable que indica que el project manager está en un nuevo dia
     public static volatile boolean PM_nuevo_dia = false;
