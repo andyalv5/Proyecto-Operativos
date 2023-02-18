@@ -192,6 +192,11 @@ public class Dashboard extends javax.swing.JFrame {
         Plot_Twist_ganancia = new javax.swing.JLabel();
         cierre_ganancia = new javax.swing.JLabel();
         inicio_ganancia = new javax.swing.JLabel();
+        intro_ganancia1 = new javax.swing.JLabel();
+        intro_ganancia2 = new javax.swing.JLabel();
+        intro_ganancia3 = new javax.swing.JLabel();
+        intro_ganancia4 = new javax.swing.JLabel();
+        intro_ganancia5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         Cant_Productores_Intro = new javax.swing.JTextField();
         Inicio_to_Cierre = new javax.swing.JButton();
@@ -222,7 +227,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel11.setBackground(new java.awt.Color(0, 0, 0));
         jLabel11.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel11.setText("Costos:");
+        jLabel11.setText("Costos:  -");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
@@ -351,6 +356,31 @@ public class Dashboard extends javax.swing.JFrame {
         inicio_ganancia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         inicio_ganancia.setText("0");
         jPanel2.add(inicio_ganancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, -1));
+
+        intro_ganancia1.setBackground(new java.awt.Color(0, 0, 0));
+        intro_ganancia1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        intro_ganancia1.setText("-");
+        jPanel2.add(intro_ganancia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
+
+        intro_ganancia2.setBackground(new java.awt.Color(0, 0, 0));
+        intro_ganancia2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        intro_ganancia2.setText("-");
+        jPanel2.add(intro_ganancia2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
+
+        intro_ganancia3.setBackground(new java.awt.Color(0, 0, 0));
+        intro_ganancia3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        intro_ganancia3.setText("-");
+        jPanel2.add(intro_ganancia3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+
+        intro_ganancia4.setBackground(new java.awt.Color(0, 0, 0));
+        intro_ganancia4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        intro_ganancia4.setText("-");
+        jPanel2.add(intro_ganancia4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
+
+        intro_ganancia5.setBackground(new java.awt.Color(0, 0, 0));
+        intro_ganancia5.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        intro_ganancia5.setText("-");
+        jPanel2.add(intro_ganancia5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo-geometrico_53876-115958.jpg"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 450, 470));
@@ -824,6 +854,11 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel inicio_ganancia;
     private javax.swing.JLabel intro_Quantity;
     private javax.swing.JLabel intro_ganancia;
+    private javax.swing.JLabel intro_ganancia1;
+    private javax.swing.JLabel intro_ganancia2;
+    private javax.swing.JLabel intro_ganancia3;
+    private javax.swing.JLabel intro_ganancia4;
+    private javax.swing.JLabel intro_ganancia5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
