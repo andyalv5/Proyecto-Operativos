@@ -44,7 +44,7 @@
         <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="EnsambladoTxt">
+        <Component class="javax.swing.JLabel" name="EnsambladoTxt1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -92,7 +92,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="Cant_Productores_Ensamblado">
+        <Component class="javax.swing.JTextField" name="Cant_Productores_Ensamblado1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
@@ -103,7 +103,7 @@
             <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Cant_Productores_EnsambladoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Cant_Productores_Ensamblado1ActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -146,7 +146,7 @@
             <Property name="useNullLayout" type="boolean" value="false"/>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="intro_Quantity">
+            <Component class="javax.swing.JLabel" name="intro_Quantity1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -162,7 +162,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JLabel" name="Credito_Quantity">
+            <Component class="javax.swing.JLabel" name="Credito_Quantity1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -178,7 +178,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JLabel" name="Cierre_Quantity">
+            <Component class="javax.swing.JLabel" name="Cierre_Quantity1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -194,7 +194,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JLabel" name="Inicio_Quantity">
+            <Component class="javax.swing.JLabel" name="Inicio_Quantity1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -210,7 +210,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JLabel" name="Plot_Twist_Quantity">
+            <Component class="javax.swing.JLabel" name="Plot_Twist_Quantity1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -226,7 +226,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JProgressBar" name="progresoPlotTwistBar">
+            <Component class="javax.swing.JProgressBar" name="progresoPlotTwistBar1">
               <Properties>
                 <Property name="maximum" type="int" value="30"/>
               </Properties>
@@ -236,7 +236,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JProgressBar" name="progresoInicioBar">
+            <Component class="javax.swing.JProgressBar" name="progresoInicioBar1">
               <Properties>
                 <Property name="maximum" type="int" value="30"/>
               </Properties>
@@ -246,7 +246,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JProgressBar" name="progresoCierreBar">
+            <Component class="javax.swing.JProgressBar" name="progresoCierreBar1">
               <Properties>
                 <Property name="maximum" type="int" value="30"/>
               </Properties>
@@ -304,7 +304,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JProgressBar" name="progresoCreditoBar">
+            <Component class="javax.swing.JProgressBar" name="progresoCreditoBar1">
               <Properties>
                 <Property name="maximum" type="int" value="30"/>
               </Properties>
@@ -330,7 +330,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JProgressBar" name="progresoIntroBar">
+            <Component class="javax.swing.JProgressBar" name="progresoIntroBar1">
               <Properties>
                 <Property name="maximum" type="int" value="30"/>
               </Properties>
@@ -372,7 +372,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JLabel" name="intro_ganancia">
+            <Component class="javax.swing.JLabel" name="intro_ganancia11">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -388,7 +388,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JLabel" name="credito_ganancia">
+            <Component class="javax.swing.JLabel" name="credito_ganancia12">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -404,7 +404,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JLabel" name="Plot_Twist_ganancia">
+            <Component class="javax.swing.JLabel" name="Plot_Twist_ganancia15">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -420,7 +420,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JLabel" name="cierre_ganancia">
+            <Component class="javax.swing.JLabel" name="cierre_ganancia13">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -436,7 +436,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JLabel" name="inicio_ganancia">
+            <Component class="javax.swing.JLabel" name="inicio_ganancia14">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -546,7 +546,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="Contador">
+        <Component class="javax.swing.JTextField" name="Contador1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
@@ -557,7 +557,7 @@
             <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ContadorActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Contador1ActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -811,7 +811,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="Ensamblado_Ganancia">
+        <Component class="javax.swing.JLabel" name="Ensamblado_Ganancia1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -859,7 +859,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="Ganancia_Capitulo">
+        <Component class="javax.swing.JLabel" name="Ganancia_Capitulo1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -923,7 +923,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="sueldo_Director">
+        <Component class="javax.swing.JLabel" name="sueldo_Director1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -939,7 +939,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="sueldo_Manager">
+        <Component class="javax.swing.JLabel" name="sueldo_Manager1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>

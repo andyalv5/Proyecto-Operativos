@@ -83,23 +83,23 @@ public class Dashboard1 extends javax.swing.JFrame {
      */
     public Dashboard1() {
         initComponents();
-        Cant_Productores_Ensamblado.setText(String.valueOf(0));
-        progresoIntroBar.setMaximum(tamanio_Intro1);
-        progresoCreditoBar.setMaximum(tamanio_credito1);
-        progresoCierreBar.setMaximum(tamanio_Cierre1);
-        progresoInicioBar.setMaximum(tamanio_Inicio1);
-        progresoPlotTwistBar.setMaximum(tamanio_Plot_Twist1);
+        Cant_Productores_Ensamblado1.setText(String.valueOf(0));
+        progresoIntroBar1.setMaximum(tamanio_Intro1);
+        progresoCreditoBar1.setMaximum(tamanio_credito1);
+        progresoCierreBar1.setMaximum(tamanio_Cierre1);
+        progresoInicioBar1.setMaximum(tamanio_Inicio1);
+        progresoPlotTwistBar1.setMaximum(tamanio_Plot_Twist1);
         Cant_Productores_Inicio.setText(String.valueOf(3));
         Cant_Productores_Intro.setText(String.valueOf(ci_jose));
         Cant_Productores_Cierre.setText(String.valueOf(2));
         Cant_Productores_Credito.setText(String.valueOf(3));
         Cant_Productores_PT.setText(String.valueOf(2));
-        Contador.setText(String.valueOf(JSONReaderWriter.dias_entre_despachos));
+        Contador1.setText(String.valueOf(JSONReaderWriter.dias_entre_despachos));
         
     //    Aqui tengo el project manager trabajando con la cedula de jose
-        Project_manager pm_jose = new Project_manager(Proyecto_operativos.ci_jose, "jose", this.Contador);
+        Project_manager pm_jose = new Project_manager(Proyecto_operativos.ci_jose, "jose", this.Contador1);
     //    Aqui le indico al director de jose a que productor vigilar, y además, le indico que es el director de jose
-        Director dir_jose = new Director(pm_jose, "jose", this.Contador);
+        Director dir_jose = new Director(pm_jose, "jose", this.Contador1);
         
         Dhilo1.start();
         Dhilo2.start();
@@ -144,53 +144,53 @@ public class Dashboard1 extends javax.swing.JFrame {
                         Dhilo5.set_Productores(Integer.parseInt(Cant_Productores_PT.getText().toString()));
                         semaforo_PT1.release();
                         
-                        Dhilo6.set_Productores(Integer.parseInt(Cant_Productores_Ensamblado.getText().toString()));
+                        Dhilo6.set_Productores(Integer.parseInt(Cant_Productores_Ensamblado1.getText().toString()));
                         
                         semaforo_s1.acquire();
-                        progresoIntroBar.setValue(Dhilo1.get_Pro_per_Day());
-                        intro_Quantity.setText(String.valueOf(Dhilo1.get_Pro_per_Day()));
-                        intro_ganancia.setText(String.valueOf(Dhilo1.get_ganancia()));
+                        progresoIntroBar1.setValue(Dhilo1.get_Pro_per_Day());
+                        intro_Quantity1.setText(String.valueOf(Dhilo1.get_Pro_per_Day()));
+                        intro_ganancia11.setText(String.valueOf(Dhilo1.get_ganancia()));
                         Dhilo6.set_intro_Prod(Dhilo1.get_Pro_per_Day());
                         semaforo_s1.release();
                         
                         semaforo_cie1.acquire();
                         Dhilo2.set_Productores(Integer.parseInt(Cant_Productores_Cierre.getText().toString()));
-                        progresoCierreBar.setValue(Dhilo2.get_Pro_per_Day());
-                        Cierre_Quantity.setText(String.valueOf(Dhilo2.get_Pro_per_Day()));
-                        cierre_ganancia.setText(String.valueOf(Dhilo2.get_ganancia()));
+                        progresoCierreBar1.setValue(Dhilo2.get_Pro_per_Day());
+                        Cierre_Quantity1.setText(String.valueOf(Dhilo2.get_Pro_per_Day()));
+                        cierre_ganancia13.setText(String.valueOf(Dhilo2.get_ganancia()));
                         Dhilo6.set_cierre_Prod(Dhilo2.get_Pro_per_Day());
                         semaforo_cie1.release();
                         
                         semaforo_ini1.acquire();
                         Dhilo3.set_Productores(Integer.parseInt(Cant_Productores_Inicio.getText().toString()));
-                        progresoInicioBar.setValue(Dhilo3.get_Pro_per_Day());
-                        Inicio_Quantity.setText(String.valueOf(Dhilo3.get_Pro_per_Day()));
-                        inicio_ganancia.setText(String.valueOf(Dhilo3.get_ganancia()));
+                        progresoInicioBar1.setValue(Dhilo3.get_Pro_per_Day());
+                        Inicio_Quantity1.setText(String.valueOf(Dhilo3.get_Pro_per_Day()));
+                        inicio_ganancia14.setText(String.valueOf(Dhilo3.get_ganancia()));
                         Dhilo6.set_inicio_Prod(Dhilo3.get_Pro_per_Day());
                         semaforo_ini1.release();
                         
                         semaforo_con1.acquire();
                         Dhilo4.set_Productores(Integer.parseInt(Cant_Productores_Credito.getText().toString()));
-                        progresoCreditoBar.setValue(Dhilo4.get_Pro_per_Day());
-                        Credito_Quantity.setText(String.valueOf(Dhilo4.get_Pro_per_Day()));
-                        credito_ganancia.setText(String.valueOf(Dhilo4.get_ganancia()));
+                        progresoCreditoBar1.setValue(Dhilo4.get_Pro_per_Day());
+                        Credito_Quantity1.setText(String.valueOf(Dhilo4.get_Pro_per_Day()));
+                        credito_ganancia12.setText(String.valueOf(Dhilo4.get_ganancia()));
                         Dhilo6.set_Credito_Prod(Dhilo4.get_Pro_per_Day());
                         semaforo_con1.release();
                         
                         semaforo_PT1.acquire();
                         Dhilo5.set_Productores(Integer.parseInt(Cant_Productores_PT.getText().toString()));
-                        progresoPlotTwistBar.setValue(Dhilo5.get_Pro_per_Day());
-                        Plot_Twist_Quantity.setText(String.valueOf(Dhilo5.get_Pro_per_Day()));
-                        Plot_Twist_ganancia.setText(String.valueOf(Dhilo5.get_ganancia()));
+                        progresoPlotTwistBar1.setValue(Dhilo5.get_Pro_per_Day());
+                        Plot_Twist_Quantity1.setText(String.valueOf(Dhilo5.get_Pro_per_Day()));
+                        Plot_Twist_ganancia15.setText(String.valueOf(Dhilo5.get_ganancia()));
                         Dhilo6.set_Plot_Twist_Prod(Dhilo5.get_Pro_per_Day());
                         semaforo_PT1.release();
                     
                         
-                        EnsambladoTxt.setText(String.valueOf(Dhilo6.get_capitulo()));
-                        Ensamblado_Ganancia.setText(String.valueOf(Dhilo6.get_ganancia()));
-                        Ganancia_Capitulo.setText(String.valueOf(Dhilo6.get_ganancia_velma()));
-                        sueldo_Director.setText(String.valueOf(dir_jose.ganancia));
-                        sueldo_Manager.setText(String.valueOf(pm_jose.ganancia));
+                        EnsambladoTxt1.setText(String.valueOf(Dhilo6.get_capitulo()));
+                        Ensamblado_Ganancia1.setText(String.valueOf(Dhilo6.get_ganancia()));
+                        Ganancia_Capitulo1.setText(String.valueOf(Dhilo6.get_ganancia_velma()));
+                        sueldo_Director1.setText(String.valueOf(dir_jose.ganancia));
+                        sueldo_Manager1.setText(String.valueOf(pm_jose.ganancia));
                         
                         
                     } catch (InterruptedException ex) {
@@ -218,40 +218,40 @@ public class Dashboard1 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        EnsambladoTxt = new javax.swing.JLabel();
+        EnsambladoTxt1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        Cant_Productores_Ensamblado = new javax.swing.JTextField();
+        Cant_Productores_Ensamblado1 = new javax.swing.JTextField();
         Cant_Productores_Credito = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        intro_Quantity = new javax.swing.JLabel();
-        Credito_Quantity = new javax.swing.JLabel();
-        Cierre_Quantity = new javax.swing.JLabel();
-        Inicio_Quantity = new javax.swing.JLabel();
-        Plot_Twist_Quantity = new javax.swing.JLabel();
-        progresoPlotTwistBar = new javax.swing.JProgressBar();
-        progresoInicioBar = new javax.swing.JProgressBar();
-        progresoCierreBar = new javax.swing.JProgressBar();
+        intro_Quantity1 = new javax.swing.JLabel();
+        Credito_Quantity1 = new javax.swing.JLabel();
+        Cierre_Quantity1 = new javax.swing.JLabel();
+        Inicio_Quantity1 = new javax.swing.JLabel();
+        Plot_Twist_Quantity1 = new javax.swing.JLabel();
+        progresoPlotTwistBar1 = new javax.swing.JProgressBar();
+        progresoInicioBar1 = new javax.swing.JProgressBar();
+        progresoCierreBar1 = new javax.swing.JProgressBar();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        progresoCreditoBar = new javax.swing.JProgressBar();
+        progresoCreditoBar1 = new javax.swing.JProgressBar();
         jLabel3 = new javax.swing.JLabel();
-        progresoIntroBar = new javax.swing.JProgressBar();
+        progresoIntroBar1 = new javax.swing.JProgressBar();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        intro_ganancia = new javax.swing.JLabel();
-        credito_ganancia = new javax.swing.JLabel();
-        Plot_Twist_ganancia = new javax.swing.JLabel();
-        cierre_ganancia = new javax.swing.JLabel();
-        inicio_ganancia = new javax.swing.JLabel();
+        intro_ganancia11 = new javax.swing.JLabel();
+        credito_ganancia12 = new javax.swing.JLabel();
+        Plot_Twist_ganancia15 = new javax.swing.JLabel();
+        cierre_ganancia13 = new javax.swing.JLabel();
+        inicio_ganancia14 = new javax.swing.JLabel();
         intro_ganancia1 = new javax.swing.JLabel();
         intro_ganancia2 = new javax.swing.JLabel();
         intro_ganancia3 = new javax.swing.JLabel();
         intro_ganancia4 = new javax.swing.JLabel();
         intro_ganancia5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        Contador = new javax.swing.JTextField();
+        Contador1 = new javax.swing.JTextField();
         Cant_Productores_Intro = new javax.swing.JTextField();
         Inicio_to_Cierre = new javax.swing.JButton();
         Inicio_to_Plot_Twist = new javax.swing.JButton();
@@ -267,25 +267,25 @@ public class Dashboard1 extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         Credito_to_Intro = new javax.swing.JButton();
         Intro_a_credito = new javax.swing.JButton();
-        Ensamblado_Ganancia = new javax.swing.JLabel();
+        Ensamblado_Ganancia1 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        Ganancia_Capitulo = new javax.swing.JLabel();
+        Ganancia_Capitulo1 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        sueldo_Director = new javax.swing.JLabel();
-        sueldo_Manager = new javax.swing.JLabel();
+        sueldo_Director1 = new javax.swing.JLabel();
+        sueldo_Manager1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        EnsambladoTxt.setBackground(new java.awt.Color(0, 0, 0));
-        EnsambladoTxt.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        EnsambladoTxt.setText("0");
-        jPanel1.add(EnsambladoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
+        EnsambladoTxt1.setBackground(new java.awt.Color(0, 0, 0));
+        EnsambladoTxt1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        EnsambladoTxt1.setText("0");
+        jPanel1.add(EnsambladoTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
 
         jLabel11.setBackground(new java.awt.Color(0, 0, 0));
         jLabel11.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -297,17 +297,17 @@ public class Dashboard1 extends javax.swing.JFrame {
         jLabel2.setText("Ensamblado:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
-        Cant_Productores_Ensamblado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Cant_Productores_Ensamblado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Cant_Productores_Ensamblado.setText("0");
-        Cant_Productores_Ensamblado.setEnabled(false);
-        Cant_Productores_Ensamblado.setVerifyInputWhenFocusTarget(false);
-        Cant_Productores_Ensamblado.addActionListener(new java.awt.event.ActionListener() {
+        Cant_Productores_Ensamblado1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Cant_Productores_Ensamblado1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Cant_Productores_Ensamblado1.setText("0");
+        Cant_Productores_Ensamblado1.setEnabled(false);
+        Cant_Productores_Ensamblado1.setVerifyInputWhenFocusTarget(false);
+        Cant_Productores_Ensamblado1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Cant_Productores_EnsambladoActionPerformed(evt);
+                Cant_Productores_Ensamblado1ActionPerformed(evt);
             }
         });
-        jPanel1.add(Cant_Productores_Ensamblado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 130, -1));
+        jPanel1.add(Cant_Productores_Ensamblado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 130, -1));
 
         Cant_Productores_Credito.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Cant_Productores_Credito.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -324,39 +324,39 @@ public class Dashboard1 extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        intro_Quantity.setBackground(new java.awt.Color(0, 0, 0));
-        intro_Quantity.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        intro_Quantity.setText("0");
-        jPanel2.add(intro_Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, -1, -1));
+        intro_Quantity1.setBackground(new java.awt.Color(0, 0, 0));
+        intro_Quantity1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        intro_Quantity1.setText("0");
+        jPanel2.add(intro_Quantity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, -1, -1));
 
-        Credito_Quantity.setBackground(new java.awt.Color(0, 0, 0));
-        Credito_Quantity.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        Credito_Quantity.setText("0");
-        jPanel2.add(Credito_Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, -1, -1));
+        Credito_Quantity1.setBackground(new java.awt.Color(0, 0, 0));
+        Credito_Quantity1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        Credito_Quantity1.setText("0");
+        jPanel2.add(Credito_Quantity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, -1, -1));
 
-        Cierre_Quantity.setBackground(new java.awt.Color(0, 0, 0));
-        Cierre_Quantity.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        Cierre_Quantity.setText("0");
-        jPanel2.add(Cierre_Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, -1, -1));
+        Cierre_Quantity1.setBackground(new java.awt.Color(0, 0, 0));
+        Cierre_Quantity1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        Cierre_Quantity1.setText("0");
+        jPanel2.add(Cierre_Quantity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, -1, -1));
 
-        Inicio_Quantity.setBackground(new java.awt.Color(0, 0, 0));
-        Inicio_Quantity.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        Inicio_Quantity.setText("0");
-        jPanel2.add(Inicio_Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, -1, -1));
+        Inicio_Quantity1.setBackground(new java.awt.Color(0, 0, 0));
+        Inicio_Quantity1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        Inicio_Quantity1.setText("0");
+        jPanel2.add(Inicio_Quantity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, -1, -1));
 
-        Plot_Twist_Quantity.setBackground(new java.awt.Color(0, 0, 0));
-        Plot_Twist_Quantity.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        Plot_Twist_Quantity.setText("0");
-        jPanel2.add(Plot_Twist_Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, -1, -1));
+        Plot_Twist_Quantity1.setBackground(new java.awt.Color(0, 0, 0));
+        Plot_Twist_Quantity1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        Plot_Twist_Quantity1.setText("0");
+        jPanel2.add(Plot_Twist_Quantity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, -1, -1));
 
-        progresoPlotTwistBar.setMaximum(30);
-        jPanel2.add(progresoPlotTwistBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 220, 30));
+        progresoPlotTwistBar1.setMaximum(30);
+        jPanel2.add(progresoPlotTwistBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 220, 30));
 
-        progresoInicioBar.setMaximum(30);
-        jPanel2.add(progresoInicioBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 220, 30));
+        progresoInicioBar1.setMaximum(30);
+        jPanel2.add(progresoInicioBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 220, 30));
 
-        progresoCierreBar.setMaximum(30);
-        jPanel2.add(progresoCierreBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 220, 30));
+        progresoCierreBar1.setMaximum(30);
+        jPanel2.add(progresoCierreBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 220, 30));
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -373,16 +373,16 @@ public class Dashboard1 extends javax.swing.JFrame {
         jLabel4.setText("Cierre:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, -1, -1));
 
-        progresoCreditoBar.setMaximum(30);
-        jPanel2.add(progresoCreditoBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 220, 30));
+        progresoCreditoBar1.setMaximum(30);
+        jPanel2.add(progresoCreditoBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 220, 30));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel3.setText("Credito:");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, -1, -1));
 
-        progresoIntroBar.setMaximum(30);
-        jPanel2.add(progresoIntroBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 220, 30));
+        progresoIntroBar1.setMaximum(30);
+        jPanel2.add(progresoIntroBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 220, 30));
 
         jLabel9.setBackground(new java.awt.Color(0, 0, 0));
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -394,30 +394,30 @@ public class Dashboard1 extends javax.swing.JFrame {
         jLabel10.setText("Intro:");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
 
-        intro_ganancia.setBackground(new java.awt.Color(0, 0, 0));
-        intro_ganancia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        intro_ganancia.setText("0");
-        jPanel2.add(intro_ganancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
+        intro_ganancia11.setBackground(new java.awt.Color(0, 0, 0));
+        intro_ganancia11.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        intro_ganancia11.setText("0");
+        jPanel2.add(intro_ganancia11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
 
-        credito_ganancia.setBackground(new java.awt.Color(0, 0, 0));
-        credito_ganancia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        credito_ganancia.setText("0");
-        jPanel2.add(credito_ganancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, -1));
+        credito_ganancia12.setBackground(new java.awt.Color(0, 0, 0));
+        credito_ganancia12.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        credito_ganancia12.setText("0");
+        jPanel2.add(credito_ganancia12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, -1));
 
-        Plot_Twist_ganancia.setBackground(new java.awt.Color(0, 0, 0));
-        Plot_Twist_ganancia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        Plot_Twist_ganancia.setText("0");
-        jPanel2.add(Plot_Twist_ganancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, -1, -1));
+        Plot_Twist_ganancia15.setBackground(new java.awt.Color(0, 0, 0));
+        Plot_Twist_ganancia15.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        Plot_Twist_ganancia15.setText("0");
+        jPanel2.add(Plot_Twist_ganancia15, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, -1, -1));
 
-        cierre_ganancia.setBackground(new java.awt.Color(0, 0, 0));
-        cierre_ganancia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        cierre_ganancia.setText("0");
-        jPanel2.add(cierre_ganancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, -1));
+        cierre_ganancia13.setBackground(new java.awt.Color(0, 0, 0));
+        cierre_ganancia13.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        cierre_ganancia13.setText("0");
+        jPanel2.add(cierre_ganancia13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, -1));
 
-        inicio_ganancia.setBackground(new java.awt.Color(0, 0, 0));
-        inicio_ganancia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        inicio_ganancia.setText("0");
-        jPanel2.add(inicio_ganancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, -1));
+        inicio_ganancia14.setBackground(new java.awt.Color(0, 0, 0));
+        inicio_ganancia14.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        inicio_ganancia14.setText("0");
+        jPanel2.add(inicio_ganancia14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, -1));
 
         intro_ganancia1.setBackground(new java.awt.Color(0, 0, 0));
         intro_ganancia1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -449,17 +449,17 @@ public class Dashboard1 extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 470, 470));
 
-        Contador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Contador.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Contador.setText("0");
-        Contador.setEnabled(false);
-        Contador.setVerifyInputWhenFocusTarget(false);
-        Contador.addActionListener(new java.awt.event.ActionListener() {
+        Contador1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Contador1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Contador1.setText("0");
+        Contador1.setEnabled(false);
+        Contador1.setVerifyInputWhenFocusTarget(false);
+        Contador1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ContadorActionPerformed(evt);
+                Contador1ActionPerformed(evt);
             }
         });
-        jPanel1.add(Contador, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 40, 130, -1));
+        jPanel1.add(Contador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 40, 130, -1));
 
         Cant_Productores_Intro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Cant_Productores_Intro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -615,10 +615,10 @@ public class Dashboard1 extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 150, 520));
 
-        Ensamblado_Ganancia.setBackground(new java.awt.Color(0, 0, 0));
-        Ensamblado_Ganancia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        Ensamblado_Ganancia.setText("0");
-        jPanel1.add(Ensamblado_Ganancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+        Ensamblado_Ganancia1.setBackground(new java.awt.Color(0, 0, 0));
+        Ensamblado_Ganancia1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        Ensamblado_Ganancia1.setText("0");
+        jPanel1.add(Ensamblado_Ganancia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
 
         jLabel12.setBackground(new java.awt.Color(0, 0, 0));
         jLabel12.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -630,10 +630,10 @@ public class Dashboard1 extends javax.swing.JFrame {
         jLabel5.setText("Ganancia por capítulo:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, -1, -1));
 
-        Ganancia_Capitulo.setBackground(new java.awt.Color(0, 0, 0));
-        Ganancia_Capitulo.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        Ganancia_Capitulo.setText("0");
-        jPanel1.add(Ganancia_Capitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 550, -1, -1));
+        Ganancia_Capitulo1.setBackground(new java.awt.Color(0, 0, 0));
+        Ganancia_Capitulo1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        Ganancia_Capitulo1.setText("0");
+        jPanel1.add(Ganancia_Capitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 550, -1, -1));
 
         jLabel13.setBackground(new java.awt.Color(0, 0, 0));
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -650,15 +650,15 @@ public class Dashboard1 extends javax.swing.JFrame {
         jLabel15.setText("Sueldo del Director:");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, -1, -1));
 
-        sueldo_Director.setBackground(new java.awt.Color(0, 0, 0));
-        sueldo_Director.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        sueldo_Director.setText("0");
-        jPanel1.add(sueldo_Director, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 110, -1, -1));
+        sueldo_Director1.setBackground(new java.awt.Color(0, 0, 0));
+        sueldo_Director1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        sueldo_Director1.setText("0");
+        jPanel1.add(sueldo_Director1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 110, -1, -1));
 
-        sueldo_Manager.setBackground(new java.awt.Color(0, 0, 0));
-        sueldo_Manager.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        sueldo_Manager.setText("0");
-        jPanel1.add(sueldo_Manager, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 150, -1, -1));
+        sueldo_Manager1.setBackground(new java.awt.Color(0, 0, 0));
+        sueldo_Manager1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        sueldo_Manager1.setText("0");
+        jPanel1.add(sueldo_Manager1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 150, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -729,9 +729,9 @@ public class Dashboard1 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Inicio_to_Plot_TwistActionPerformed
 
-    private void Cant_Productores_EnsambladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cant_Productores_EnsambladoActionPerformed
+    private void Cant_Productores_Ensamblado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cant_Productores_Ensamblado1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Cant_Productores_EnsambladoActionPerformed
+    }//GEN-LAST:event_Cant_Productores_Ensamblado1ActionPerformed
 
     private void credit_to_cierreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_credit_to_cierreActionPerformed
         if(Integer.parseInt(this.Cant_Productores_Credito.getText()) > 0){
@@ -888,21 +888,21 @@ public class Dashboard1 extends javax.swing.JFrame {
     }//GEN-LAST:event_Intro_a_creditoActionPerformed
 
     private void subir_EnsambladoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subir_EnsambladoresActionPerformed
-         this.Cant_Productores_Ensamblado.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Ensamblado.getText()) + 1));
+         this.Cant_Productores_Ensamblado1.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Ensamblado1.getText()) + 1));
     }//GEN-LAST:event_subir_EnsambladoresActionPerformed
 
     private void bajar_EnsabladoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bajar_EnsabladoresActionPerformed
-        if(Integer.parseInt(this.Cant_Productores_Ensamblado.getText()) > 0){
+        if(Integer.parseInt(this.Cant_Productores_Ensamblado1.getText()) > 0){
             
-            this.Cant_Productores_Ensamblado.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Ensamblado.getText()) - 1));
+            this.Cant_Productores_Ensamblado1.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Ensamblado1.getText()) - 1));
             
            
         }
     }//GEN-LAST:event_bajar_EnsabladoresActionPerformed
 
-    private void ContadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContadorActionPerformed
+    private void Contador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Contador1ActionPerformed
 
-    }//GEN-LAST:event_ContadorActionPerformed
+    }//GEN-LAST:event_Contador1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -943,34 +943,34 @@ public class Dashboard1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Cant_Productores_Cierre;
     private javax.swing.JTextField Cant_Productores_Credito;
-    private javax.swing.JTextField Cant_Productores_Ensamblado;
+    private javax.swing.JTextField Cant_Productores_Ensamblado1;
     private javax.swing.JTextField Cant_Productores_Inicio;
     private javax.swing.JTextField Cant_Productores_Intro;
     private javax.swing.JTextField Cant_Productores_PT;
-    private javax.swing.JLabel Cierre_Quantity;
+    private javax.swing.JLabel Cierre_Quantity1;
     private javax.swing.JButton Cierre_to_Credito;
-    private javax.swing.JTextField Contador;
-    private javax.swing.JLabel Credito_Quantity;
+    private javax.swing.JTextField Contador1;
+    private javax.swing.JLabel Credito_Quantity1;
     private javax.swing.JButton Credito_to_Intro;
-    private javax.swing.JLabel EnsambladoTxt;
-    private javax.swing.JLabel Ensamblado_Ganancia;
-    private javax.swing.JLabel Ganancia_Capitulo;
-    private javax.swing.JLabel Inicio_Quantity;
+    private javax.swing.JLabel EnsambladoTxt1;
+    private javax.swing.JLabel Ensamblado_Ganancia1;
+    private javax.swing.JLabel Ganancia_Capitulo1;
+    private javax.swing.JLabel Inicio_Quantity1;
     private javax.swing.JButton Inicio_to_Cierre;
     private javax.swing.JButton Inicio_to_Plot_Twist;
     private javax.swing.JButton Intro_a_credito;
-    private javax.swing.JLabel Plot_Twist_Quantity;
+    private javax.swing.JLabel Plot_Twist_Quantity1;
     private javax.swing.JButton Plot_Twist_To_Inicio;
-    private javax.swing.JLabel Plot_Twist_ganancia;
+    private javax.swing.JLabel Plot_Twist_ganancia15;
     private javax.swing.JButton bajar_Ensabladores;
-    private javax.swing.JLabel cierre_ganancia;
+    private javax.swing.JLabel cierre_ganancia13;
     private javax.swing.JButton cierre_to_Inicio;
     private javax.swing.JButton credit_to_cierre;
-    private javax.swing.JLabel credito_ganancia;
-    private javax.swing.JLabel inicio_ganancia;
-    private javax.swing.JLabel intro_Quantity;
-    private javax.swing.JLabel intro_ganancia;
+    private javax.swing.JLabel credito_ganancia12;
+    private javax.swing.JLabel inicio_ganancia14;
+    private javax.swing.JLabel intro_Quantity1;
     private javax.swing.JLabel intro_ganancia1;
+    private javax.swing.JLabel intro_ganancia11;
     private javax.swing.JLabel intro_ganancia2;
     private javax.swing.JLabel intro_ganancia3;
     private javax.swing.JLabel intro_ganancia4;
@@ -992,13 +992,13 @@ public class Dashboard1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JProgressBar progresoCierreBar;
-    private javax.swing.JProgressBar progresoCreditoBar;
-    private javax.swing.JProgressBar progresoInicioBar;
-    private javax.swing.JProgressBar progresoIntroBar;
-    private javax.swing.JProgressBar progresoPlotTwistBar;
+    private javax.swing.JProgressBar progresoCierreBar1;
+    private javax.swing.JProgressBar progresoCreditoBar1;
+    private javax.swing.JProgressBar progresoInicioBar1;
+    private javax.swing.JProgressBar progresoIntroBar1;
+    private javax.swing.JProgressBar progresoPlotTwistBar1;
     private javax.swing.JButton subir_Ensambladores;
-    private javax.swing.JLabel sueldo_Director;
-    private javax.swing.JLabel sueldo_Manager;
+    private javax.swing.JLabel sueldo_Director1;
+    private javax.swing.JLabel sueldo_Manager1;
     // End of variables declaration//GEN-END:variables
 }

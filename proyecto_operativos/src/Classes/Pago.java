@@ -11,6 +11,12 @@ import static Interfaces.Dashboard.hilo3;
 import static Interfaces.Dashboard.hilo4;
 import static Interfaces.Dashboard.hilo5;
 import static Interfaces.Dashboard.hilo6;
+import static Interfaces.Dashboard1.Dhilo1;
+import static Interfaces.Dashboard1.Dhilo2;
+import static Interfaces.Dashboard1.Dhilo3;
+import static Interfaces.Dashboard1.Dhilo4;
+import static Interfaces.Dashboard1.Dhilo5;
+import static Interfaces.Dashboard1.Dhilo6;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import proyecto_operativos.Proyecto_operativos;
@@ -73,6 +79,29 @@ public class Pago extends Thread{
                     hilo6.ganancia=hilo6.ganancia+hilo6.ensambladores*(8);
 //                    Dashboard.Jtext_Productores_Ensamblado.release();
                     
+//                    Dashboard.Jtext_Productores_Intro.acquire();
+                    Dhilo1.ganancia=Dhilo1.ganancia+Dhilo1.productores*(3);
+//                    Dashboard.Jtext_Productores_Intro.release();
+                    
+//                    Dashboard.Jtext_Productores_Cierre.acquire();
+                    Dhilo2.ganancia=Dhilo2.ganancia+Dhilo2.productores*(7.5f);
+//                    Dashboard.Jtext_Productores_Cierre.release();
+                    
+//                    Dashboard.Jtext_Productores_Inicio.acquire();
+                    Dhilo3.ganancia=Dhilo3.ganancia+Dhilo3.productores*(7);
+//                    Dashboard.Jtext_Productores_Inicio.release();
+                  
+//                    Dashboard.Jtext_Productores_Credito.acquire();
+                    Dhilo4.ganancia=Dhilo4.ganancia+Dhilo4.productores*(3);
+//                    Dashboard.Jtext_Productores_Credito.release();
+                    
+//                    Dashboard.Jtext_Productores_Plot_Twist.acquire();
+                    Dhilo5.ganancia=Dhilo5.ganancia+hilo5.productores*(10);
+//                    Dashboard.Jtext_Productores_Plot_Twist.release();
+                        
+//                    Dashboard.Jtext_Productores_Ensamblado.acquire();
+                    Dhilo6.ganancia=Dhilo6.ganancia+hilo6.ensambladores*(8);
+//                    Dashboard.Jtext_Productores_Ensamblado.release();
                     
                     
                     this.director.ganancia=this.director.ganancia+100;
