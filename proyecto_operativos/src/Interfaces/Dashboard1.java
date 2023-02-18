@@ -7,6 +7,7 @@ package Interfaces;
 import Classes.Director;
 import Classes.Ensamblador;
 import Classes.Pago;
+import Classes.Pago1;
 import Classes.Productor_Cierre;
 import Classes.Productor_Credito;
 import Classes.Productor_Inicio;
@@ -110,7 +111,7 @@ public class Dashboard1 extends javax.swing.JFrame {
         pm_jose.start();
         dir_jose.start();
         
-        Pago Dhilo7= new Pago(pm_jose, dir_jose);
+        Pago1 Dhilo7= new Pago1(pm_jose, dir_jose);
         Dhilo7.start();
         
     
