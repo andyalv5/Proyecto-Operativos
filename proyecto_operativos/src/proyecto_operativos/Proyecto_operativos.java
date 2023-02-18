@@ -52,10 +52,10 @@ public class Proyecto_operativos {
     public static volatile int contador_dias_restantes_jose = Proyecto_operativos.contador_dias_restantes;
     
     
-//    Aqui tengo el project manager trabajando con la cedula de andy
-    public static Project_manager pm_andy = new Project_manager(Proyecto_operativos.ci_Andy, "andy");
-//    Aqui le indico al director de andy a que productor vigilar, y además, le indico que es el director de andy
-    public static Director dir_andy = new Director(Proyecto_operativos.pm_andy, "andy");
+////    Aqui tengo el project manager trabajando con la cedula de andy
+//    public static Project_manager pm_andy = new Project_manager(Proyecto_operativos.ci_Andy, "andy");
+////    Aqui le indico al director de andy a que productor vigilar, y además, le indico que es el director de andy
+//    public static Director dir_andy = new Director(Proyecto_operativos.pm_andy, "andy");
     
     public static Semaphore Contador_andy = new Semaphore(1);
     public static Semaphore Contador_jose = new Semaphore(1);
@@ -121,8 +121,8 @@ public class Proyecto_operativos {
 //        Project_manager pm = new Project_manager(Proyecto_operativos.ci_Andy);
 //        Director dir = new Director(pm, "andy");
         
-        dir_andy.start();
-        pm_andy.start();
+//        dir_andy.start();
+//        pm_andy.start();
         
         
         jsonrw.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "1", "1");

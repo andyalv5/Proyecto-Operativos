@@ -28,11 +28,14 @@ public class Director extends Thread{
 //    boolean keep = true;
     
 //    El Project Manager que el director vigila
+    
+    javax.swing.JTextField Contador_inter;
         
         
-    public Director(Project_manager pm, String rodaje){
+    public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter){
         this.pm = pm;
         this.rodaje = rodaje;
+        this.Contador_inter = Contador_inter;
     }
     /**
      * Hace un acquire del semaforo de su respectivo rodaje
@@ -70,10 +73,11 @@ public class Director extends Thread{
         if(this.rodaje.equalsIgnoreCase("andy")){
 //            System.out.println("Toca el reseteo a andy");
             Proyecto_operativos.contador_dias_restantes_andy = Proyecto_operativos.dias_entre_despachos;
-        
+            this.Contador_inter.setText(String.valueOf(Proyecto_operativos.contador_dias_restantes_andy));
         }else{
             
             Proyecto_operativos.contador_dias_restantes_jose = Proyecto_operativos.dias_entre_despachos;
+            this.Contador_inter.setText(String.valueOf(Proyecto_operativos.contador_dias_restantes_jose));
         }
     }
     

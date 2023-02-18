@@ -4,6 +4,7 @@
  */
 package Interfaces;
 
+import Classes.Director;
 import Classes.Ensamblador;
 import Classes.Pago;
 import Classes.Productor_Cierre;
@@ -11,6 +12,7 @@ import Classes.Productor_Credito;
 import Classes.Productor_Inicio;
 import Classes.Productor_Plot_Twist;
 import Classes.Productores_Intro;
+import Classes.Project_manager;
 import Leer_Escribir_JSON.JSONReaderWriter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -69,7 +71,11 @@ public class Dashboard extends javax.swing.JFrame {
     public static Ensamblador hilo6 = new Ensamblador(hilo1,hilo2,hilo3,hilo4,hilo5,semaforo_intro,semaforo_cie,semaforo_ini,semaforo_con,semaforo_PT);
     public static Pago hilo7 = new Pago();
     
-    
+////    Aqui tengo el project manager trabajando con la cedula de andy
+//    Project_manager pm_andy = new Project_manager(Proyecto_operativos.ci_Andy, "andy", this.Contador);
+////    Aqui le indico al director de andy a que productor vigilar, y además, le indico que es el director de andy
+//    Director dir_andy = new Director(this.pm_andy, "andy", this.Contador);
+
     
     /**
      * Creates new form Dashboard
@@ -87,7 +93,7 @@ public class Dashboard extends javax.swing.JFrame {
         Cant_Productores_Cierre.setText(String.valueOf(2));
         Cant_Productores_Credito.setText(String.valueOf(3));
         Cant_Productores_PT.setText(String.valueOf(2));
-         
+        Contador.setText(String.valueOf(JSONReaderWriter.dias_entre_despachos));
         
         hilo1.start();
         hilo2.start();
@@ -96,6 +102,14 @@ public class Dashboard extends javax.swing.JFrame {
         hilo5.start();
         hilo6.start();
         hilo7.start();
+        
+//    Aqui tengo el project manager trabajando con la cedula de andy
+    Project_manager pm_andy = new Project_manager(Proyecto_operativos.ci_Andy, "andy", this.Contador);
+//    Aqui le indico al director de andy a que productor vigilar, y además, le indico que es el director de andy
+    Director dir_andy = new Director(this.pm_andy, "andy", this.Contador);
+    
+        pm_andy.start();
+        dir_andy.start();
         
         
         this.setLocationRelativeTo(null);
@@ -201,6 +215,7 @@ public class Dashboard extends javax.swing.JFrame {
         intro_ganancia4 = new javax.swing.JLabel();
         intro_ganancia5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        Contador = new javax.swing.JTextField();
         Cant_Productores_Intro = new javax.swing.JTextField();
         Inicio_to_Cierre = new javax.swing.JButton();
         Inicio_to_Plot_Twist = new javax.swing.JButton();
@@ -393,6 +408,18 @@ public class Dashboard extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 470, 470));
 
+        Contador.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Contador.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Contador.setText("0");
+        Contador.setEnabled(false);
+        Contador.setVerifyInputWhenFocusTarget(false);
+        Contador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContadorActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Contador, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, 130, -1));
+
         Cant_Productores_Intro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Cant_Productores_Intro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Cant_Productores_Intro.setText("0");
@@ -571,7 +598,7 @@ public class Dashboard extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 911, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -807,6 +834,10 @@ public class Dashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bajar_EnsabladoresActionPerformed
 
+    private void ContadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContadorActionPerformed
+
+    }//GEN-LAST:event_ContadorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -851,6 +882,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField Cant_Productores_PT;
     private javax.swing.JLabel Cierre_Quantity;
     private javax.swing.JButton Cierre_to_Credito;
+    private javax.swing.JTextField Contador;
     private javax.swing.JLabel Credito_Quantity;
     private javax.swing.JButton Credito_to_Intro;
     private javax.swing.JLabel EnsambladoTxt;
