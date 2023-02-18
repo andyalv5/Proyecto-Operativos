@@ -62,7 +62,7 @@ public class Proyecto_operativos {
     
 //    -----------------------------------------------------------------------
 
-    public static boolean keep = true;
+    public static volatile boolean keep = true;
     
     
 //    -----------------------------------------------------------------

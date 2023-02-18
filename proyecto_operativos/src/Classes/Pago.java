@@ -50,17 +50,7 @@ public class Pago extends Thread{
                 
                 
                     if(i==1){
-                    Dashboard.semaforo_s.acquire();
-                    Dashboard.semaforo_intro.acquire();
-                    Dashboard.semaforo_con.acquire();
-                    Dashboard.semaforo_cie.acquire();
-                    Dashboard.semaforo_PT.acquire();
                     Proyecto_operativos.keep=false;
-                    Dashboard.semaforo_PT.release();
-                    Dashboard.semaforo_cie.release();
-                    Dashboard.semaforo_con.release();
-                    Dashboard.semaforo_intro.release();
-                    Dashboard.semaforo_s.release();
                     }
                     i=i-1;
                 

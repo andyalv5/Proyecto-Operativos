@@ -28,8 +28,8 @@ import static proyecto_operativos.Proyecto_operativos.ci_jose;
  * @author Andy
  */
 public class Dashboard1 extends javax.swing.JFrame {
-    private Timer t;
-    public ActionListener ac;
+    private Timer t1;
+    public ActionListener ac1;
     
 //    Final cédula de Andy 
     public int ci_jose = Proyecto_operativos.ci_jose;
@@ -117,7 +117,7 @@ public class Dashboard1 extends javax.swing.JFrame {
         
         
         
-            ac = new ActionListener(){
+            ac1 = new ActionListener(){
             
                 @Override
                 public void actionPerformed(ActionEvent e){
@@ -200,8 +200,8 @@ public class Dashboard1 extends javax.swing.JFrame {
                    
                 }
             };
-        t =new Timer(0,ac);
-        t.start();
+        t1 =new Timer(0,ac1);
+        t1.start();
         
         
         
