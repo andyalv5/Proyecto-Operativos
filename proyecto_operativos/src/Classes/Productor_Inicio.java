@@ -4,6 +4,7 @@
  */
 package Classes;
 
+import Interfaces.Dashboard;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,7 +15,8 @@ import proyecto_operativos.Proyecto_operativos;
  * @author Andy
  */
 public class Productor_Inicio extends Thread{
-    private int productores;
+    public int ganancia;
+    public int productores;
     private int max_Drive;
     public int Pro_per_Day;
     Semaphore drive_Inicio;
@@ -25,6 +27,7 @@ public class Productor_Inicio extends Thread{
         this.s=s;
         this.productores=productores;
         this.max_Drive =max_Drive;
+        
     }
     
     public int get_Pro_per_Day(){
@@ -40,7 +43,13 @@ public class Productor_Inicio extends Thread{
         this.drive_Inicio.release();
     }
     
+    public int get_ganancia(){
+        return this.ganancia;
+    }
     
+    public void set_ganancia(int ganancia){
+        this.ganancia = ganancia;
+    }
     /*
     
     */
@@ -57,22 +66,27 @@ public class Productor_Inicio extends Thread{
                     
                     
                     this.drive_Inicio.acquire();
+                    Thread.sleep(Proyecto_operativos.dia_en_ms);
                     
                     if(Pro_per_Day <max_Drive){
                         if(Proyecto_operativos.ci_Andy>=0 && Proyecto_operativos.ci_Andy<3){
-                            Thread.sleep(2*Proyecto_operativos.dia_en_ms);
+                            
+                            
+                            Thread.sleep(Proyecto_operativos.dia_en_ms);
                             s.acquire();
                             Pro_per_Day=Pro_per_Day+productores*(1);
                             s.release();
                         }
                         else if(Proyecto_operativos.ci_Andy>=3 && Proyecto_operativos.ci_Andy<6){
-                            Thread.sleep(3*Proyecto_operativos.dia_en_ms);
+                            Thread.sleep(2*Proyecto_operativos.dia_en_ms);
+                            
                             s.acquire();
                             Pro_per_Day=Pro_per_Day+productores*(1);
                             s.release();
                         }
                         else{
-                            Thread.sleep(4*Proyecto_operativos.dia_en_ms);
+                            Thread.sleep(3*Proyecto_operativos.dia_en_ms);
+                            
                             s.acquire();
                             Pro_per_Day=Pro_per_Day+productores*(1);
                             s.release();

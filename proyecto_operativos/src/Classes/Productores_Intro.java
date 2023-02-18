@@ -16,10 +16,11 @@ import proyecto_operativos.Proyecto_operativos;
  * @author Andy
  */
 public class Productores_Intro extends Thread{
+    public int ganancia;
     public int Pro_per_Day;
     Semaphore drive_Intro;
     Semaphore s;
-    private int productores;
+    public int productores;
     private int max_Drive;
     
     javax.swing.JTextField Cant_Productores_Intro;
@@ -32,8 +33,8 @@ public class Productores_Intro extends Thread{
         this.productores=productores;
     }
     
-    public void free_space(){        
-        this.drive_Intro.release();
+    public void free_space(int n){        
+        this.drive_Intro.release(n);
     }
     
     /*
@@ -52,6 +53,14 @@ public class Productores_Intro extends Thread{
         this.Pro_per_Day = Pro_per_Day;
     }
     
+    public int get_ganancia(){
+        return this.ganancia;
+    }
+    
+    public void set_ganancia(int ganancia){
+        this.ganancia = ganancia;
+    }
+    
     @Override
     public void run(){
         while(Proyecto_operativos.keep){
@@ -63,10 +72,11 @@ public class Productores_Intro extends Thread{
                 this.drive_Intro.acquire();
                 System.out.println("Estoy saliendo del aquire");
                     
+                Thread.sleep(Proyecto_operativos.dia_en_ms);
                
                 if(Pro_per_Day < max_Drive){
                         
-                    Thread.sleep(Proyecto_operativos.dia_en_ms);
+                    
                         
 //                        Si la cedula está entre 0 y 3, entra
                     if(Proyecto_operativos.ci_Andy >= 0 && Proyecto_operativos.ci_Andy < 3){
@@ -74,13 +84,13 @@ public class Productores_Intro extends Thread{
                             
 //                            Intentamos acceder al area compartida sección critica
                         
-                        Dashboard.Jtext_Productores_Intro.acquire();
+                        s.acquire();
                             
 //                            Leemos el texto
                             Pro_per_Day = Pro_per_Day + (productores * 1);
                             
 //                            Liberamos el area compartida
-                        Dashboard.Jtext_Productores_Intro.release();
+                        s.release();
                        
                             
 //                            System.out.println("-------------------------------");
@@ -102,11 +112,11 @@ public class Productores_Intro extends Thread{
                         }
                     }
                     
-                else{
+                if(Pro_per_Day >max_Drive){
                         s.acquire();
                         Pro_per_Day = max_Drive;
                         s.release();
-                    }
+                }
                 System.out.println("Se hicieron " + Pro_per_Day + " intros");
              
                     

@@ -4,6 +4,7 @@
  */
 package Classes;
 
+import Interfaces.Dashboard;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,7 +15,8 @@ import proyecto_operativos.Proyecto_operativos;
  * @author Andy
  */
 public class Productor_Credito extends Thread{
-    private int productores;
+    public int ganancia;
+    public int productores;
     private int max_Drive;
     public int Pro_per_Day;
     Semaphore drive_Credito;
@@ -35,10 +37,17 @@ public class Productor_Credito extends Thread{
         this.Pro_per_Day = Pro_per_Day;
     }
     
-    public void free_space(){ 
-        this.drive_Credito.release();
+    public void free_space(int n){ 
+        this.drive_Credito.release(n);
     }
     
+    public int get_ganancia(){
+        return this.ganancia;
+    }
+    
+    public void set_ganancia(int ganancia){
+        this.ganancia = ganancia;
+    }
     /*
     
     */
@@ -53,34 +62,38 @@ public class Productor_Credito extends Thread{
         while(Proyecto_operativos.keep){
             try {
                     this.drive_Credito.acquire();
+                    Thread.sleep(Proyecto_operativos.dia_en_ms);
                     
                     if(Pro_per_Day <max_Drive){
-                        Thread.sleep(Proyecto_operativos.dia_en_ms);
                         if(Proyecto_operativos.ci_Andy>=0 && Proyecto_operativos.ci_Andy<3){
+
                             s.acquire();
                             Pro_per_Day=Pro_per_Day+productores*(4);
                             s.release();
+
                         }
                         else if(Proyecto_operativos.ci_Andy>=3 && Proyecto_operativos.ci_Andy<6){
+
                             s.acquire();
                             Pro_per_Day=Pro_per_Day+productores*(2);
                             s.release();
+
                         }
                         else{
+
                             s.acquire();
-                            Pro_per_Day=Pro_per_Day+3;
+                            Pro_per_Day=Pro_per_Day+productores*(3);
                             s.release();
-                        }
-                        if(Pro_per_Day >max_Drive){
-                            s.acquire();
-                            Pro_per_Day =max_Drive;
-                            s.release();
+
                         }
                     }
-//                    System.out.println("Se hicieron "+Pro_per_Day+" Creditos");
+                    if(Pro_per_Day >max_Drive){
+                        s.acquire();
+                        Pro_per_Day =max_Drive;
+                        s.release();
+                    }
+                    System.out.println("Se hicieron "+Pro_per_Day+" Creditos");
                     
-                    this.drive_Credito.release();
-
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Productores_Intro.class.getName()).log(Level.SEVERE, null, ex);
                 }
