@@ -7,6 +7,7 @@ package Interfaces;
 import Classes.SetLocationRelativeTo;
 import Classes.SetLocationRelativeToDashboard;
 import Leer_Escribir_JSON.JSONReaderWriter;
+import java.io.FileNotFoundException;
 
 /**
  *
@@ -20,6 +21,31 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+//        Se abre JSON para poder trabajar
+        JSONReaderWriter jsnrw = new JSONReaderWriter();
+        
+        try{
+            jsnrw.Reader();
+            
+        }catch(FileNotFoundException e){
+            this.Mensaje.setText(String.valueOf(e));
+        }
+        
+//        Valores para hacer operaciones
+        int ingreso_anterior_andy = JSONReaderWriter.Ingresos_Rodaje_andy;
+        int ingreso_anterior_jose = JSONReaderWriter.Ingresos_Rodaje_jose;
+        
+        int costos_anterior_andy = JSONReaderWriter.Costos_Rodaje_andy;
+        int costos_anterior_jose = JSONReaderWriter.Costos_Rodaje_jose;
+        
+//        El resultado de las operaciones
+        int ganancias_anterior_andy =  ingreso_anterior_andy - costos_anterior_andy;
+        int ganancias_anterior_jose =  ingreso_anterior_jose - costos_anterior_jose;
+        
+//        Se pone en la interfaz las ganancias de la simulación pasada
+        this.ganancias_anterior_VELMA.setText(String.valueOf(ganancias_anterior_andy));
+        this.gananias_anterior_TLOU.setText(String.valueOf(ganancias_anterior_jose));
     }
 
     /**
@@ -33,7 +59,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         Background = new javax.swing.JPanel();
         Productor_Intros_VELMA = new javax.swing.JTextField();
+        Mensaje = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
+        Nro_series = new javax.swing.JTextField();
         Productor_Creditos_VELMA = new javax.swing.JTextField();
         Productor_Inicio_VELMA = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
@@ -50,8 +78,10 @@ public class MainFrame extends javax.swing.JFrame {
         Dia_en_segundos_MainFrame_text = new javax.swing.JTextField();
         parte_cierre_max_MainFrame = new javax.swing.JTextField();
         parte_creditos_max_MainFrame = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         parte_inicio_max_MainFrame = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         Productor_Intros_TLOU = new javax.swing.JTextField();
@@ -59,11 +89,14 @@ public class MainFrame extends javax.swing.JFrame {
         Productor_Inicio_TLOU = new javax.swing.JTextField();
         Productor_Cierre_TLOU = new javax.swing.JTextField();
         Ensamblador_VELMA = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
         parte_plot_twist_max_MainFrame = new javax.swing.JTextField();
         Capacidad_infinita_plot_twist_checkbox = new javax.swing.JCheckBox();
         Capacidad_infinita_cierre_checkbox = new javax.swing.JCheckBox();
         Capacidad_infinita_inicio_checkbox = new javax.swing.JCheckBox();
         Capacidad_infinita_creditos_checkbox = new javax.swing.JCheckBox();
+        gananias_anterior_TLOU = new javax.swing.JLabel();
+        ganancias_anterior_VELMA = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -104,11 +137,36 @@ public class MainFrame extends javax.swing.JFrame {
         });
         Background.add(Productor_Intros_VELMA, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 350, 160, 40));
 
+        Mensaje.setBackground(new java.awt.Color(0, 0, 0));
+        Mensaje.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Mensaje.setForeground(new java.awt.Color(255, 255, 255));
+        Mensaje.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Mensaje.setText("-");
+        Mensaje.setFocusable(false);
+        Mensaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MensajeActionPerformed(evt);
+            }
+        });
+        Background.add(Mensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 560, 310, 40));
+
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Productores iniciales VELMA");
         Background.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 300, -1, -1));
+
+        Nro_series.setBackground(new java.awt.Color(0, 0, 0));
+        Nro_series.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Nro_series.setForeground(new java.awt.Color(255, 255, 255));
+        Nro_series.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Nro_series.setText("1");
+        Nro_series.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Nro_seriesActionPerformed(evt);
+            }
+        });
+        Background.add(Nro_series, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 510, 160, 40));
 
         Productor_Creditos_VELMA.setBackground(new java.awt.Color(0, 0, 0));
         Productor_Creditos_VELMA.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -285,6 +343,12 @@ public class MainFrame extends javax.swing.JFrame {
         });
         Background.add(parte_creditos_max_MainFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, 160, 40));
 
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("Nro de series");
+        Background.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 470, -1, -1));
+
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -298,6 +362,11 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel2.setText("BIENVENIDO");
         jLabel2.setOpaque(true);
         Background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 350, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Ganancias simulación anterior VELMA:");
+        Background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, -1, -1));
 
         parte_inicio_max_MainFrame.setBackground(new java.awt.Color(0, 0, 0));
         parte_inicio_max_MainFrame.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -371,6 +440,11 @@ public class MainFrame extends javax.swing.JFrame {
         });
         Background.add(Ensamblador_VELMA, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 600, 160, 40));
 
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel16.setText("Ganancias simulación anterior TLOU:");
+        Background.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 330, -1, -1));
+
         parte_plot_twist_max_MainFrame.setBackground(new java.awt.Color(0, 0, 0));
         parte_plot_twist_max_MainFrame.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         parte_plot_twist_max_MainFrame.setForeground(new java.awt.Color(255, 255, 255));
@@ -425,6 +499,16 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         Background.add(Capacidad_infinita_creditos_checkbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 100, -1, -1));
+
+        gananias_anterior_TLOU.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        gananias_anterior_TLOU.setForeground(new java.awt.Color(0, 0, 0));
+        gananias_anterior_TLOU.setText("0");
+        Background.add(gananias_anterior_TLOU, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 330, 70, -1));
+
+        ganancias_anterior_VELMA.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        ganancias_anterior_VELMA.setForeground(new java.awt.Color(0, 0, 0));
+        ganancias_anterior_VELMA.setText("0");
+        Background.add(ganancias_anterior_VELMA, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 360, 60, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -496,6 +580,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         ReseteoHard.setBackground(new java.awt.Color(0, 0, 0));
         ReseteoHard.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ReseteoHard.setForeground(new java.awt.Color(255, 255, 255));
         ReseteoHard.setText("Usar datos por defecto (RESETEO HARD)");
         ReseteoHard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -697,19 +782,24 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     private void btnAggUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAggUsuarioActionPerformed
+        
         try{
             
             JSONReaderWriter jsnrw = new JSONReaderWriter();
             
-//            Valida si todos los campos son valores numericos mayores que cero
             if(this.ReseteoHard.isSelected()){
-                jsnrw.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "1", "1","0","0","0","0");
+//                Si la casilla "ReseteoHard" está marcada, aquí se reseteará todo el codigo por defecto impuesto en el metodo "ArreglarJSONporDefecto" ubicado en la clase JSONReaderWriter
+                
+                jsnrw.ArreglarJSONporDefecto();
+                
+//                Se lee para que el programa cargue los nuevos datos
                 jsnrw.Reader();
                 
-//                Ahora se pasa a la siguiente interfaz
+//                Ahora se pasa a la siguiente interfaz con los datos por defecto
                 this.PasarSiguienteInterfaz();
                 
-            }else if(JSONReaderWriter.isPositiveNumeric(this.Dia_en_segundos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric(this.Dias_entre_despachos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Intros_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Creditos_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Inicio_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Cierre_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Plot_Twist_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Ensamblador_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Intros_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Creditos_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Inicio_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Cierre_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Plot_Twist_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Ensamblador_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_intro_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_creditos_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_inicio_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_cierre_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_plot_twist_max_MainFrame.getText())){
+            }else if(JSONReaderWriter.isPositiveNumeric(this.Dia_en_segundos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric(this.Dias_entre_despachos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Intros_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Creditos_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Inicio_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Cierre_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Plot_Twist_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Ensamblador_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Intros_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Creditos_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Inicio_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Cierre_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Plot_Twist_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Ensamblador_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_intro_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_creditos_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_inicio_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_cierre_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_plot_twist_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.Nro_series.getText())){
+//                Valida si todos los campos son valores numericos mayores que cero
 //                Si se entra aquí, se debe escribir en el JSON los valores escritos en la interfaz
                 
 //                Casteamos las cajitas de checkbox a String
@@ -721,39 +811,28 @@ public class MainFrame extends javax.swing.JFrame {
                 
                 
                 
-                
+//                Se escribe en el JSON todos los datos recopilados
                 jsnrw.Writer(this.Dia_en_segundos_MainFrame_text.getText(), this.Dias_entre_despachos_MainFrame_text.getText(), this.parte_intro_max_MainFrame.getText(), Capacidad_infinita_intro, this.parte_creditos_max_MainFrame.getText(), Capacidad_infinita_credito, this.parte_inicio_max_MainFrame.getText(), Capacidad_infinita_inicio, this.parte_cierre_max_MainFrame.getText(), Capacidad_infinita_cierre, this.parte_plot_twist_max_MainFrame.getText(), Capacidad_infinita_plot_twist, this.Productor_Intros_TLOU.getText(), this.Productor_Creditos_TLOU.getText(), this.Productor_Inicio_TLOU.getText(), this.Productor_Cierre_TLOU.getText(), this.Productor_Plot_Twist_TLOU.getText(), this.Productor_Intros_VELMA.getText(), this.Productor_Creditos_VELMA.getText(), this.Productor_Inicio_VELMA.getText(), this.Productor_Cierre_VELMA.getText(), this.Productor_Plot_Twist_VELMA.getText(), this.Ensamblador_TLOU.getText(), this.Ensamblador_VELMA.getText(), String.valueOf(JSONReaderWriter.Ingresos_Rodaje_jose), String.valueOf(JSONReaderWriter.Ingresos_Rodaje_andy), String.valueOf(JSONReaderWriter.Costos_Rodaje_jose), String.valueOf(JSONReaderWriter.Costos_Rodaje_andy));
-                
-                jsnrw.Reader();
-                
-                
-                
-
+//                Se lee el JSON para que se carguen los datos en el programa
+                jsnrw.Reader();                
 //                Ahora se pasa a la siguiente interfaz
                 this.PasarSiguienteInterfaz();
             
-            }else if(JSONReaderWriter.isEmpty(this.Dia_en_segundos_MainFrame_text.getText()) && JSONReaderWriter.isEmpty(this.Dias_entre_despachos_MainFrame_text.getText()) && JSONReaderWriter.isEmpty(this.Productor_Intros_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Creditos_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Inicio_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Cierre_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Plot_Twist_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Ensamblador_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Intros_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Productor_Creditos_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Productor_Inicio_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Productor_Cierre_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Productor_Plot_Twist_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Ensamblador_VELMA.getText()) && JSONReaderWriter.isEmpty(this.parte_intro_max_MainFrame.getText()) && JSONReaderWriter.isEmpty(this.parte_creditos_max_MainFrame.getText()) && JSONReaderWriter.isEmpty(this.parte_inicio_max_MainFrame.getText()) && JSONReaderWriter.isEmpty(this.parte_cierre_max_MainFrame.getText()) && JSONReaderWriter.isEmpty(this.parte_plot_twist_max_MainFrame.getText())){
+            }else if(JSONReaderWriter.isEmpty(this.Dia_en_segundos_MainFrame_text.getText()) && JSONReaderWriter.isEmpty(this.Dias_entre_despachos_MainFrame_text.getText()) && JSONReaderWriter.isEmpty(this.Productor_Intros_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Creditos_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Inicio_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Cierre_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Plot_Twist_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Ensamblador_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Intros_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Productor_Creditos_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Productor_Inicio_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Productor_Cierre_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Productor_Plot_Twist_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Ensamblador_VELMA.getText()) && JSONReaderWriter.isEmpty(this.parte_intro_max_MainFrame.getText()) && JSONReaderWriter.isEmpty(this.parte_creditos_max_MainFrame.getText()) && JSONReaderWriter.isEmpty(this.parte_inicio_max_MainFrame.getText()) && JSONReaderWriter.isEmpty(this.parte_cierre_max_MainFrame.getText()) && JSONReaderWriter.isEmpty(this.parte_plot_twist_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.Nro_series.getText())){
 //                Si entra aqui, significa que está todo vacío, por lo tanto, tomamos el JSON por defecto
-
-////                Llama a la otra interfaz
-//
-//                SetLocationRelativeToDashboard.SetLocationRelativeToDashboard();
-//
-//                SetLocationRelativeTo.SetLocationRelativeTo();
-//
-////                Cierra la interfaz actual
-//                this.setVisible(false);
 
                 this.PasarSiguienteInterfaz();
                 
                 
-            }else if(JSONReaderWriter.isEmpty(this.Dia_en_segundos_MainFrame_text.getText()) || JSONReaderWriter.isEmpty(this.Dias_entre_despachos_MainFrame_text.getText()) || JSONReaderWriter.isEmpty(this.Productor_Intros_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Creditos_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Inicio_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Cierre_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Plot_Twist_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Ensamblador_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Intros_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Productor_Creditos_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Productor_Inicio_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Productor_Cierre_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Productor_Plot_Twist_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Ensamblador_VELMA.getText()) || JSONReaderWriter.isEmpty(this.parte_intro_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.parte_creditos_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.parte_inicio_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.parte_cierre_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.parte_plot_twist_max_MainFrame.getText())){
-                System.out.println("Debe ingresar un numero > 0");
-                System.out.println(this.Dia_en_segundos_MainFrame_text.getText());
+            }else if(JSONReaderWriter.isEmpty(this.Dia_en_segundos_MainFrame_text.getText()) || JSONReaderWriter.isEmpty(this.Dias_entre_despachos_MainFrame_text.getText()) || JSONReaderWriter.isEmpty(this.Productor_Intros_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Creditos_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Inicio_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Cierre_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Plot_Twist_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Ensamblador_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Intros_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Productor_Creditos_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Productor_Inicio_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Productor_Cierre_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Productor_Plot_Twist_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Ensamblador_VELMA.getText()) || JSONReaderWriter.isEmpty(this.parte_intro_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.parte_creditos_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.parte_inicio_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.parte_cierre_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.parte_plot_twist_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.Nro_series.getText())){
+                this.Mensaje.setText("Debe ingresar un numero > 0");
+                
             }
             
-        }catch(Exception e){
-            System.out.println(e);
+        }catch(FileNotFoundException e){
+            
+            this.Mensaje.setText(String.valueOf(e));
+//            System.out.println(e);
         }
         
         
@@ -860,6 +939,14 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ReseteoHardActionPerformed
 
+    private void Nro_seriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Nro_seriesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Nro_seriesActionPerformed
+
+    private void MensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MensajeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MensajeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -906,6 +993,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField Dias_entre_despachos_MainFrame_text;
     private javax.swing.JTextField Ensamblador_TLOU;
     private javax.swing.JTextField Ensamblador_VELMA;
+    private javax.swing.JTextField Mensaje;
+    private javax.swing.JTextField Nro_series;
     private javax.swing.JTextField Productor_Cierre_TLOU;
     private javax.swing.JTextField Productor_Cierre_VELMA;
     private javax.swing.JTextField Productor_Creditos_TLOU;
@@ -918,12 +1007,16 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField Productor_Plot_Twist_VELMA;
     private javax.swing.JCheckBox ReseteoHard;
     private javax.swing.JButton btnAggUsuario;
+    private javax.swing.JLabel ganancias_anterior_VELMA;
+    private javax.swing.JLabel gananias_anterior_TLOU;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -938,6 +1031,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

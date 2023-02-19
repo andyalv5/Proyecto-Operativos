@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -104,7 +105,7 @@ public class JSONReaderWriter{
     /**
      * Lee el archivo JSON
      */
-    public void Reader(){
+    public void Reader() throws FileNotFoundException{
         
         try{
             
@@ -184,9 +185,9 @@ public class JSONReaderWriter{
             lista[i] = Costos_Rodaje_andy;
             i++;
             
-            for (String lista1 : lista) {
-                System.out.println(lista1);
-            }
+//            for (String lista1 : lista) {
+//                System.out.println(lista1);
+//            }
 //            Ponemos en variables publicas para las demás clases los valores correspondientes
 
             
@@ -250,7 +251,8 @@ public class JSONReaderWriter{
                 
                 System.out.println("Arreglando JSON al por defecto");
                 
-                this.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "1", "1","0","0","0","0");
+//                this.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "1", "1","0","0","0","0");
+                this.ArreglarJSONporDefecto();
                 
                 Proyecto_operativos.keep = false;
                 
@@ -259,9 +261,21 @@ public class JSONReaderWriter{
             
         }catch(Exception e){
             System.out.println(e);
+            
+            System.out.println("Arreglando JSON al por defecto");
+//            this.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "1", "1","0","0","0","0");
+            this.ArreglarJSONporDefecto();
+            Proyecto_operativos.keep = false;
         }
         
         
+    }
+    /**
+     * Arregla el JSON a datos predeterminados para que no haya errores
+     * @throws FileNotFoundException 
+     */
+    public void ArreglarJSONporDefecto() throws FileNotFoundException{
+        this.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "1", "1","0","0","0","0");
     }
     
     /**
@@ -330,55 +344,64 @@ public class JSONReaderWriter{
     }
     /**
      * Valida los datos que se pusieron en el JSON
-     * @return 
+     * @return true SI TODOS los datos son válidos, false SI ALGUNO ES MALO
      */
     private boolean Validador_del_JSONfile(){
         
-//        Verificamos que el dia_en_segundos no sea negativo
-        if(JSONReaderWriter.dia_en_segundos < 0){
-            System.out.println("No tiene sentido que un dia sean " + JSONReaderWriter.dia_en_segundos + " milisegundos");
-            return false;
-        }        
-        
-//        Verificamos que el dia entre despachos no sea mayor que cero
-        if(JSONReaderWriter.dias_entre_despachos <= 0){
-            System.out.println("No es conveniente que el valor de dias entre despachos sea " + JSONReaderWriter.dias_entre_despachos);
-            return false;
-        }
-        
-//        Se verifica que la capacidad máxima de almacenaje en el Drive de ninguna de las partes sea <= 0
-        if(JSONReaderWriter.parte_intro_max <= 0 || JSONReaderWriter.parte_creditos_max <= 0 || JSONReaderWriter.parte_inicio_max <= 0 || JSONReaderWriter.parte_cierre_max <= 0 || JSONReaderWriter.parte_plot_twist_max <= 0){
-            System.out.println("No es conveniente que el valor maximo de capacidad de una de las partes de los capitulos en el drive sea <= 0");
-            return false;
-        }
-        
-//        Verificamos que la cantidad de productores y ensambladores tanto de jose como de andy no sea negativa
-        if(JSONReaderWriter.Productor_Intros_andy < 0 || JSONReaderWriter.Productor_Creditos_andy < 0 || JSONReaderWriter.Productor_Inicio_andy < 0 || JSONReaderWriter.Productor_cierre_andy < 0 || JSONReaderWriter.Productor_Plot_Twist_andy < 0 || JSONReaderWriter.Productor_Intros_jose < 0 || JSONReaderWriter.Productor_Creditos_jose < 0 || JSONReaderWriter.Productor_Inicio_jose  < 0 || JSONReaderWriter.Productor_cierre_jose < 0 || JSONReaderWriter.Productor_Plot_Twist_jose < 0 || JSONReaderWriter.Ensamblador_Rodaje_andy < 0 || JSONReaderWriter.Ensamblador_Rodaje_jose < 0){
-            System.out.println("No tiene sentido tener un nro de productores y/o ensambladores en negativo");
-            return false;
-        }
-        
-//        Verificamos que la cantidad de productores de jose no sobrepase el límite impuesto por la cédula de jose
-        if (JSONReaderWriter.Productor_Intros_jose + JSONReaderWriter.Productor_Creditos_jose + JSONReaderWriter.Productor_Inicio_jose  + JSONReaderWriter.Productor_cierre_jose + JSONReaderWriter.Productor_Plot_Twist_jose > Proyecto_operativos.ci_jose + 10){
-            System.out.println("Cantidad erronea de productores de jose escritos en el JSON");
-            return false; 
-        }
-        
-//        Verificamos que la cantidad de productores de andy no sobrepase el límite impuesto por la cedula de andy
-        if(JSONReaderWriter.Productor_Intros_andy + JSONReaderWriter.Productor_Creditos_andy + JSONReaderWriter.Productor_Inicio_andy  + JSONReaderWriter.Productor_cierre_andy + JSONReaderWriter.Productor_Plot_Twist_andy > Proyecto_operativos.ci_Andy + 10){
+//        Agregamos Try-catch para asegurar que no halla datos "raros" en el JSON
+        try{
+    //        Verificamos que el dia_en_segundos no sea negativo
+            if(JSONReaderWriter.dia_en_segundos < 0){
+                System.out.println("No tiene sentido que un dia sean " + JSONReaderWriter.dia_en_segundos + " milisegundos");
+                return false;
+            }        
+
+    //        Verificamos que el dia entre despachos no sea mayor que cero
+            if(JSONReaderWriter.dias_entre_despachos <= 0){
+                System.out.println("No es conveniente que el valor de dias entre despachos sea " + JSONReaderWriter.dias_entre_despachos);
+                return false;
+            }
+
+    //        Se verifica que la capacidad máxima de almacenaje en el Drive de ninguna de las partes sea <= 0
+            if(JSONReaderWriter.parte_intro_max <= 0 || JSONReaderWriter.parte_creditos_max <= 0 || JSONReaderWriter.parte_inicio_max <= 0 || JSONReaderWriter.parte_cierre_max <= 0 || JSONReaderWriter.parte_plot_twist_max <= 0){
+                System.out.println("No es conveniente que el valor maximo de capacidad de una de las partes de los capitulos en el drive sea <= 0");
+                return false;
+            }
+
+    //        Verificamos que la cantidad de productores y ensambladores tanto de jose como de andy no sea negativa
+            if(JSONReaderWriter.Productor_Intros_andy < 0 || JSONReaderWriter.Productor_Creditos_andy < 0 || JSONReaderWriter.Productor_Inicio_andy < 0 || JSONReaderWriter.Productor_cierre_andy < 0 || JSONReaderWriter.Productor_Plot_Twist_andy < 0 || JSONReaderWriter.Productor_Intros_jose < 0 || JSONReaderWriter.Productor_Creditos_jose < 0 || JSONReaderWriter.Productor_Inicio_jose  < 0 || JSONReaderWriter.Productor_cierre_jose < 0 || JSONReaderWriter.Productor_Plot_Twist_jose < 0 || JSONReaderWriter.Ensamblador_Rodaje_andy < 0 || JSONReaderWriter.Ensamblador_Rodaje_jose < 0){
+                System.out.println("No tiene sentido tener un nro de productores y/o ensambladores en negativo");
+                return false;
+            }
+
+    //        Verificamos que la cantidad de productores de jose no sobrepase el límite impuesto por la cédula de jose
+            if (JSONReaderWriter.Productor_Intros_jose + JSONReaderWriter.Productor_Creditos_jose + JSONReaderWriter.Productor_Inicio_jose  + JSONReaderWriter.Productor_cierre_jose + JSONReaderWriter.Productor_Plot_Twist_jose > Proyecto_operativos.ci_jose + 10){
+                System.out.println("Cantidad erronea de productores de jose escritos en el JSON");
+                return false; 
+            }
+
+    //        Verificamos que la cantidad de productores de andy no sobrepase el límite impuesto por la cedula de andy
+            if(JSONReaderWriter.Productor_Intros_andy + JSONReaderWriter.Productor_Creditos_andy + JSONReaderWriter.Productor_Inicio_andy  + JSONReaderWriter.Productor_cierre_andy + JSONReaderWriter.Productor_Plot_Twist_andy > Proyecto_operativos.ci_Andy + 10){
+
+                int variable = JSONReaderWriter.Productor_Intros_andy + JSONReaderWriter.Productor_Creditos_andy + JSONReaderWriter.Productor_Inicio_andy  + JSONReaderWriter.Productor_cierre_andy + JSONReaderWriter.Productor_Plot_Twist_andy;
+                int var2 = Proyecto_operativos.ci_Andy + 10;
+                System.out.println("Cantidad erronea de productores de andy ( " + variable + " > " + var2 + "). ");
+                return false;
+            }
+
+    //        Verificamos que la cantidad de ingresos  y costos del rodaje no estén escritos en negativo
+            if(JSONReaderWriter.Ingresos_Rodaje_andy < 0 || JSONReaderWriter.Ingresos_Rodaje_jose < 0 || JSONReaderWriter.Costos_Rodaje_andy < 0 || JSONReaderWriter.Costos_Rodaje_jose < 0){
+                System.out.println("No tiene sentido ni queremos los ingresos y costos con valores < 0");
+                return false;
+            }
+
+            return true;
             
-            int variable = JSONReaderWriter.Productor_Intros_andy + JSONReaderWriter.Productor_Creditos_andy + JSONReaderWriter.Productor_Inicio_andy  + JSONReaderWriter.Productor_cierre_andy + JSONReaderWriter.Productor_Plot_Twist_andy;
-            int var2 = Proyecto_operativos.ci_Andy + 10;
-            System.out.println("Cantidad erronea de productores de andy ( " + variable + " > " + var2 + "). ");
+        }catch(Exception e){
+            
             return false;
+            
         }
-        
-        if(JSONReaderWriter.Ingresos_Rodaje_andy < 0 || JSONReaderWriter.Ingresos_Rodaje_jose < 0 || JSONReaderWriter.Costos_Rodaje_andy < 0 || JSONReaderWriter.Costos_Rodaje_jose < 0){
-            System.out.println("No tiene sentido ni queremos los ingresos y costos con valores < 0");
-            return false;
-        }
-        
-        return true;
     }
     
     /**
