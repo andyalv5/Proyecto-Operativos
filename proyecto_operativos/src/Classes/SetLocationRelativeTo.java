@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Classes;
+import Interfaces.Dashboard;
 import Interfaces.Dashboard1;
 import java.awt.Color;
 
@@ -12,8 +13,8 @@ import javax.swing.JPanel;
  * @author Andy
  */
 public class SetLocationRelativeTo {
-    public static void SetLocationRelativeTo(){
-        Dashboard1 ventana = new Dashboard1();
+    public static void SetLocationRelativeTo(Dashboard1 ventana){
+        
         ventana.setLayout(null);
         ventana.setVisible(true);
         JPanel p = new JPanel();

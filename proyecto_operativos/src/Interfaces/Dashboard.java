@@ -18,6 +18,7 @@ import Leer_Escribir_JSON.JSONReaderWriter;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,10 +32,10 @@ import proyecto_operativos.Proyecto_operativos;
 public class Dashboard extends javax.swing.JFrame {
     private Timer t;
     public ActionListener ac;
+    public Pago pagohilo;
     
 //    Final cédula de Andy 
     public int ci_Andy = Proyecto_operativos.ci_Andy;
-    private int id;
     public static float comparacion;
     
     //    Tamaños diferentes en el drive
@@ -84,11 +85,13 @@ public class Dashboard extends javax.swing.JFrame {
         this.comparacion =beneficio;
     }
     
+    public Director dir_andy1;
     /**
      * Creates new form Dashboard
      */
     public Dashboard() {
         initComponents();
+        this.Despedido.setForeground(Color.white);
         this.BeneficiosReal.setForeground(Color.white);
         this.es_el_mejor.setForeground(Color.white);
         this.text1.setForeground(Color.white);
@@ -174,7 +177,7 @@ public class Dashboard extends javax.swing.JFrame {
         
         Pago hilo7= new Pago(pm_andy, dir_andy);
         hilo7.start();
-        
+        pagohilo=hilo7;
         Paso_el_dia pel_andy = new Paso_el_dia();
         
         pel_andy.start();
@@ -357,6 +360,7 @@ public class Dashboard extends javax.swing.JFrame {
         costos_generales_reales = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        Despedido = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -815,6 +819,11 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/green-and-blue-investment-building.jpg"))); // NOI18N
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 0, -1, -1));
 
+        Despedido.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Despedido.setForeground(new java.awt.Color(255, 0, 0));
+        Despedido.setText("-Despedido-");
+        jPanel1.add(Despedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 105, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -834,7 +843,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_Cant_Productores_CreditoActionPerformed
 
     private void Cant_Productores_IntroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cant_Productores_IntroActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_Cant_Productores_IntroActionPerformed
 
     private void Inicio_to_CierreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inicio_to_CierreActionPerformed
@@ -859,6 +868,10 @@ public class Dashboard extends javax.swing.JFrame {
                 Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        if(Integer.parseInt(this.Cant_Productores_Inicio.getText())==0){
+            this.Despedido.setForeground(Color.red);
+            this.pagohilo.ganancia_canadiense=0;
+        }
     }//GEN-LAST:event_Inicio_to_CierreActionPerformed
 
     private void Inicio_to_Plot_TwistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inicio_to_Plot_TwistActionPerformed
@@ -881,6 +894,10 @@ public class Dashboard extends javax.swing.JFrame {
             } catch (InterruptedException ex) {
                 Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+        if(Integer.parseInt(this.Cant_Productores_Inicio.getText())==0){
+            this.Despedido.setForeground(Color.red);
+            this.pagohilo.ganancia_canadiense=0;
         }
     }//GEN-LAST:event_Inicio_to_Plot_TwistActionPerformed
 
@@ -910,6 +927,10 @@ public class Dashboard extends javax.swing.JFrame {
                 Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        if(Integer.parseInt(this.Cant_Productores_Credito.getText())==0){
+            this.Despedido.setForeground(Color.red);
+            this.pagohilo.ganancia_canadiense=0;
+        }
     }//GEN-LAST:event_credit_to_cierreActionPerformed
 
     private void Cant_Productores_CierreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cant_Productores_CierreActionPerformed
@@ -936,6 +957,10 @@ public class Dashboard extends javax.swing.JFrame {
             } catch (InterruptedException ex) {
                 Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+        if(Integer.parseInt(this.Cant_Productores_Cierre.getText())==0){
+            this.Despedido.setForeground(Color.red);
+            this.pagohilo.ganancia_canadiense=0;
         }
     }//GEN-LAST:event_cierre_to_InicioActionPerformed
 
@@ -970,6 +995,12 @@ public class Dashboard extends javax.swing.JFrame {
                 Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        if(Integer.parseInt(this.Cant_Productores_Credito.getText())==0){
+            this.Despedido.setForeground(Color.red);
+            Proyecto_operativos.keep=false;
+            this.pagohilo.ganancia_canadiense=0;
+            
+        }
     }//GEN-LAST:event_Credito_to_IntroActionPerformed
 
     private void Cierre_to_CreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cierre_to_CreditoActionPerformed
@@ -992,6 +1023,11 @@ public class Dashboard extends javax.swing.JFrame {
             } catch (InterruptedException ex) {
                 Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+        if(Integer.parseInt(this.Cant_Productores_Cierre.getText())==0){
+            this.Despedido.setForeground(Color.red);
+            this.pagohilo.ganancia_canadiense=0;
+            
         }
     }//GEN-LAST:event_Cierre_to_CreditoActionPerformed
 
@@ -1016,9 +1052,15 @@ public class Dashboard extends javax.swing.JFrame {
                 Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        if(Integer.parseInt(this.Cant_Productores_PT.getText())==0){
+            this.Despedido.setForeground(Color.red);
+            this.pagohilo.ganancia_canadiense=0;
+        }
     }//GEN-LAST:event_Plot_Twist_To_InicioActionPerformed
 
     private void Intro_a_creditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Intro_a_creditoActionPerformed
+        
+        
         if(Integer.parseInt(this.Cant_Productores_Intro.getText()) > 0 ){
             
             try {
@@ -1040,6 +1082,13 @@ public class Dashboard extends javax.swing.JFrame {
             }
         }
         
+        if(Integer.parseInt(this.Cant_Productores_Intro.getText())==0){
+            this.Despedido.setForeground(Color.red);
+            this.pagohilo.ganancia_canadiense=0;
+            
+            
+        }
+        
     }//GEN-LAST:event_Intro_a_creditoActionPerformed
 
     private void subir_EnsambladoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subir_EnsambladoresActionPerformed
@@ -1052,6 +1101,11 @@ public class Dashboard extends javax.swing.JFrame {
             this.Cant_Productores_Ensamblado.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Ensamblado.getText()) - 1));
             
            
+        }
+        if(Integer.parseInt(this.Cant_Productores_Ensamblado.getText())==0){
+            this.Despedido.setForeground(Color.red);
+            this.pagohilo.ganancia_canadiense=0;
+            
         }
     }//GEN-LAST:event_bajar_EnsabladoresActionPerformed
 
@@ -1108,6 +1162,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel Costos_Totales_PD;
     private javax.swing.JLabel Credito_Quantity;
     private javax.swing.JButton Credito_to_Intro;
+    private javax.swing.JLabel Despedido;
     private javax.swing.JLabel EnsambladoTxt;
     private javax.swing.JLabel Ensamblado_Ganancia;
     private javax.swing.JLabel Ganancia_Capitulo;

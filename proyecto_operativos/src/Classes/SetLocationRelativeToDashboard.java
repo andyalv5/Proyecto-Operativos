@@ -1,5 +1,6 @@
 package Classes;
 import Interfaces.Dashboard;
+import Interfaces.Dashboard1;
 import java.awt.Color;
 
 import javax.swing.JPanel;
@@ -8,8 +9,7 @@ import javax.swing.JPanel;
  * @author Andy
  */
 public class SetLocationRelativeToDashboard {
-    public static void SetLocationRelativeToDashboard(){
-        Dashboard ventana = new Dashboard();
+    public static void SetLocationRelativeToDashboard(Dashboard ventana){
         ventana.setLayout(null);
         ventana.setVisible(true);
         JPanel p = new JPanel();

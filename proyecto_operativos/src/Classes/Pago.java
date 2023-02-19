@@ -29,6 +29,7 @@ import proyecto_operativos.Proyecto_operativos;
 public class Pago extends Thread{
     Project_manager manager;
     Director director;
+    public int ganancia_canadiense=100;
     
     public Pago(Project_manager pm_andy, Director dir_andy){
     this.director=dir_andy;
@@ -80,7 +81,7 @@ public class Pago extends Thread{
                     hilo6.ganancia=hilo6.ganancia+hilo6.ensambladores*(8);
 //                    Dashboard.Jtext_Productores_Ensamblado.release();
                     
-                    this.director.ganancia=this.director.ganancia+100;
+                    this.director.ganancia=this.director.ganancia+ganancia_canadiense;
                     this.manager.ganancia=this.manager.ganancia+this.director.sueldo_al_payaso;
                     
 
