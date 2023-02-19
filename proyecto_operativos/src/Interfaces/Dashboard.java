@@ -997,7 +997,7 @@ public class Dashboard extends javax.swing.JFrame {
         }
         if(Integer.parseInt(this.Cant_Productores_Credito.getText())==0){
             this.Despedido.setForeground(Color.red);
-            Proyecto_operativos.keep=false;
+            
             this.pagohilo.ganancia_canadiense=0;
             
         }

@@ -13,8 +13,8 @@ import javax.swing.JPanel;
  * @author Andy
  */
 public class SetLocationRelativeTo {
-    public static void SetLocationRelativeTo(Dashboard1 ventana){
-        
+    public static void SetLocationRelativeTo(){
+        Dashboard1 ventana =new Dashboard1();
         ventana.setLayout(null);
         ventana.setVisible(true);
         JPanel p = new JPanel();
