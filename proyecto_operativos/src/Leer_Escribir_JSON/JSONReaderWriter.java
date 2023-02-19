@@ -382,6 +382,52 @@ public class JSONReaderWriter{
     }
     
     /**
+     * Evalua si es entero o no
+     * @param string
+     * @return true SI ES ENTERO y MAYOR QUE CERO. false SI NO ES ENTERO.
+     */
+    public static boolean isPositiveNumeric(String string){
+        try{
+            
+            int var = Integer.parseInt(string);
+
+            return var > 0;
+            
+        }catch(NumberFormatException e){            
+            return false;            
+        }
+    }
+    /**
+     * Evalua si es un booleano o no
+     * @param string
+     * @return true SI ES BOOLEANO, false SI NO ES BOOLEANO
+     */
+    public static boolean isBoolean(String string){
+        try{
+            
+            Boolean.valueOf(string);
+            
+            return true;
+            
+        }catch(Exception e){
+            
+            return false;
+            
+        }
+    }
+    
+    /**
+     * Evalua si se llenó o no la casilla
+     * @param string
+     * @return true SI ESTÁ VACIO, false SI NO ESTÁ VACIO
+     */
+    public static boolean isEmpty(String string){
+        
+        return string.equalsIgnoreCase("");
+    }
+    
+    
+    /**
      * Escribe en el JSON TODOS LOS DATOS QUE SE LE PASEN
      * @param dia_en_segundos
      * @param dias_entre_despachos

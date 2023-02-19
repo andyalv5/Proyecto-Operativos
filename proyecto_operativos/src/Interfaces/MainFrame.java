@@ -6,6 +6,7 @@ package Interfaces;
 
 import Classes.SetLocationRelativeTo;
 import Classes.SetLocationRelativeToDashboard;
+import Leer_Escribir_JSON.JSONReaderWriter;
 
 /**
  *
@@ -31,61 +32,58 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         Background = new javax.swing.JPanel();
-        jTextField13 = new javax.swing.JTextField();
+        Productor_Intros_VELMA = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
+        Productor_Creditos_VELMA = new javax.swing.JTextField();
+        Productor_Inicio_VELMA = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        jTextField16 = new javax.swing.JTextField();
-        jTextField17 = new javax.swing.JTextField();
-        jLabel24 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        Productor_Cierre_VELMA = new javax.swing.JTextField();
+        Productor_Plot_Twist_VELMA = new javax.swing.JTextField();
+        Dias_entre_despachos_MainFrame_text = new javax.swing.JTextField();
+        parte_intro_max_MainFrame = new javax.swing.JTextField();
+        Dia_en_segundos_MainFrame_text = new javax.swing.JTextField();
+        parte_cierre_max_MainFrame = new javax.swing.JTextField();
+        parte_creditos_max_MainFrame = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        parte_inicio_max_MainFrame = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
+        Productor_Intros_TLOU = new javax.swing.JTextField();
+        Productor_Creditos_TLOU = new javax.swing.JTextField();
+        Productor_Inicio_TLOU = new javax.swing.JTextField();
+        Productor_Cierre_TLOU = new javax.swing.JTextField();
+        Ensamblador_VELMA = new javax.swing.JTextField();
+        parte_plot_twist_max_MainFrame = new javax.swing.JTextField();
+        Capacidad_infinita_plot_twist_checkbox = new javax.swing.JCheckBox();
+        Capacidad_infinita_cierre_checkbox = new javax.swing.JCheckBox();
+        Capacidad_infinita_inicio_checkbox = new javax.swing.JCheckBox();
+        Capacidad_infinita_creditos_checkbox = new javax.swing.JCheckBox();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        Capacidad_infinita_intro_checkbox = new javax.swing.JCheckBox();
+        Productor_Plot_Twist_TLOU = new javax.swing.JTextField();
+        Ensamblador_TLOU = new javax.swing.JTextField();
+        ReseteoHard = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnAggUsuario = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -95,74 +93,44 @@ public class MainFrame extends javax.swing.JFrame {
         Background.setBackground(new java.awt.Color(255, 255, 255));
         Background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField13.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField13.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField13.addActionListener(new java.awt.event.ActionListener() {
+        Productor_Intros_VELMA.setBackground(new java.awt.Color(0, 0, 0));
+        Productor_Intros_VELMA.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Productor_Intros_VELMA.setForeground(new java.awt.Color(255, 255, 255));
+        Productor_Intros_VELMA.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Productor_Intros_VELMA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField13ActionPerformed(evt);
+                Productor_Intros_VELMAActionPerformed(evt);
             }
         });
-        Background.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 400, 160, 40));
+        Background.add(Productor_Intros_VELMA, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 350, 160, 40));
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Productores iniciales VELMA");
-        Background.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, -1, -1));
+        Background.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 300, -1, -1));
 
-        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setText("Productor Creditos");
-        Background.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, -1, -1));
-
-        jTextField14.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField14.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField14.addActionListener(new java.awt.event.ActionListener() {
+        Productor_Creditos_VELMA.setBackground(new java.awt.Color(0, 0, 0));
+        Productor_Creditos_VELMA.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Productor_Creditos_VELMA.setForeground(new java.awt.Color(255, 255, 255));
+        Productor_Creditos_VELMA.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Productor_Creditos_VELMA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField14ActionPerformed(evt);
+                Productor_Creditos_VELMAActionPerformed(evt);
             }
         });
-        Background.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 450, 160, 40));
+        Background.add(Productor_Creditos_VELMA, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 400, 160, 40));
 
-        jTextField15.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField15.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField15.addActionListener(new java.awt.event.ActionListener() {
+        Productor_Inicio_VELMA.setBackground(new java.awt.Color(0, 0, 0));
+        Productor_Inicio_VELMA.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Productor_Inicio_VELMA.setForeground(new java.awt.Color(255, 255, 255));
+        Productor_Inicio_VELMA.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Productor_Inicio_VELMA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField15ActionPerformed(evt);
+                Productor_Inicio_VELMAActionPerformed(evt);
             }
         });
-        Background.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 500, 160, 40));
-
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel22.setText("Productor Inicio");
-        Background.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 510, -1, -1));
-
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setText("Productor Cierre");
-        Background.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 560, -1, -1));
-
-        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel31.setText("Productor Plot Twist");
-        Background.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 610, -1, -1));
-
-        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel33.setText("Productor Inicio");
-        Background.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, -1, -1));
+        Background.add(Productor_Inicio_VELMA, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 450, 160, 40));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setForeground(new java.awt.Color(0, 0, 0));
@@ -182,132 +150,146 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel35.setText("Productor Cierre");
 
+        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel33.setText("Productor Inicio");
+
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel31.setText("Productor Plot Twist");
+
+        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel32.setText("Ensamblador");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel36)
-                    .addComponent(jLabel35)
-                    .addComponent(jLabel30))
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel33)
+                            .addComponent(jLabel36)
+                            .addComponent(jLabel30)
+                            .addComponent(jLabel35))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addContainerGap(20, Short.MAX_VALUE)
+                        .addComponent(jLabel31)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel32)
+                .addGap(45, 45, 45))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(15, 15, 15)
                 .addComponent(jLabel30)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel36)
-                .addGap(75, 75, 75)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel33)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel35)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(jLabel32)
+                .addGap(18, 18, 18))
         );
 
-        Background.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, -1, -1));
+        Background.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, 310));
 
-        jLabel34.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel34.setText("Productor Creditos");
-        Background.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 470, -1, -1));
-
-        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel32.setText("Productor Cierre");
-        Background.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 570, -1, -1));
-
-        jTextField16.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField16.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField16.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField16.addActionListener(new java.awt.event.ActionListener() {
+        Productor_Cierre_VELMA.setBackground(new java.awt.Color(0, 0, 0));
+        Productor_Cierre_VELMA.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Productor_Cierre_VELMA.setForeground(new java.awt.Color(255, 255, 255));
+        Productor_Cierre_VELMA.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Productor_Cierre_VELMA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField16ActionPerformed(evt);
+                Productor_Cierre_VELMAActionPerformed(evt);
             }
         });
-        Background.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 550, 160, 40));
+        Background.add(Productor_Cierre_VELMA, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 500, 160, 40));
 
-        jTextField17.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField17.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField17.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField17.addActionListener(new java.awt.event.ActionListener() {
+        Productor_Plot_Twist_VELMA.setBackground(new java.awt.Color(0, 0, 0));
+        Productor_Plot_Twist_VELMA.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Productor_Plot_Twist_VELMA.setForeground(new java.awt.Color(255, 255, 255));
+        Productor_Plot_Twist_VELMA.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Productor_Plot_Twist_VELMA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField17ActionPerformed(evt);
+                Productor_Plot_Twist_VELMAActionPerformed(evt);
             }
         });
-        Background.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 600, 160, 40));
+        Background.add(Productor_Plot_Twist_VELMA, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 550, 160, 40));
 
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setText("Productor Plot Twist");
-        Background.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 610, -1, -1));
-
-        jTextField2.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        Dias_entre_despachos_MainFrame_text.setBackground(new java.awt.Color(0, 0, 0));
+        Dias_entre_despachos_MainFrame_text.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Dias_entre_despachos_MainFrame_text.setForeground(new java.awt.Color(255, 255, 255));
+        Dias_entre_despachos_MainFrame_text.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Dias_entre_despachos_MainFrame_text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                Dias_entre_despachos_MainFrame_textActionPerformed(evt);
             }
         });
-        Background.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 160, 40));
+        Background.add(Dias_entre_despachos_MainFrame_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 160, 40));
 
-        jTextField1.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        parte_intro_max_MainFrame.setBackground(new java.awt.Color(0, 0, 0));
+        parte_intro_max_MainFrame.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        parte_intro_max_MainFrame.setForeground(new java.awt.Color(255, 255, 255));
+        parte_intro_max_MainFrame.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        parte_intro_max_MainFrame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                parte_intro_max_MainFrameActionPerformed(evt);
             }
         });
-        Background.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 90, 160, 40));
+        Background.add(parte_intro_max_MainFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, 160, 40));
 
-        jTextField3.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        Dia_en_segundos_MainFrame_text.setBackground(new java.awt.Color(0, 0, 0));
+        Dia_en_segundos_MainFrame_text.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Dia_en_segundos_MainFrame_text.setForeground(new java.awt.Color(255, 255, 255));
+        Dia_en_segundos_MainFrame_text.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Dia_en_segundos_MainFrame_text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                Dia_en_segundos_MainFrame_textActionPerformed(evt);
             }
         });
-        Background.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 160, 40));
+        Background.add(Dia_en_segundos_MainFrame_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 160, 40));
 
-        jTextField5.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        parte_cierre_max_MainFrame.setBackground(new java.awt.Color(0, 0, 0));
+        parte_cierre_max_MainFrame.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        parte_cierre_max_MainFrame.setForeground(new java.awt.Color(255, 255, 255));
+        parte_cierre_max_MainFrame.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        parte_cierre_max_MainFrame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                parte_cierre_max_MainFrameActionPerformed(evt);
             }
         });
-        Background.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 240, 160, 40));
+        Background.add(parte_cierre_max_MainFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 200, 160, 40));
 
-        jTextField4.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        parte_creditos_max_MainFrame.setBackground(new java.awt.Color(0, 0, 0));
+        parte_creditos_max_MainFrame.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        parte_creditos_max_MainFrame.setForeground(new java.awt.Color(255, 255, 255));
+        parte_creditos_max_MainFrame.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        parte_creditos_max_MainFrame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                parte_creditos_max_MainFrameActionPerformed(evt);
             }
         });
-        Background.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, 160, 40));
+        Background.add(parte_creditos_max_MainFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, 160, 40));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Productores iniciales TLOU");
-        Background.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
+        Background.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 48)); // NOI18N
@@ -317,132 +299,132 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel2.setOpaque(true);
         Background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 350, -1));
 
-        jTextField6.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        parte_inicio_max_MainFrame.setBackground(new java.awt.Color(0, 0, 0));
+        parte_inicio_max_MainFrame.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        parte_inicio_max_MainFrame.setForeground(new java.awt.Color(255, 255, 255));
+        parte_inicio_max_MainFrame.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        parte_inicio_max_MainFrame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                parte_inicio_max_MainFrameActionPerformed(evt);
             }
         });
-        Background.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, 160, 40));
+        Background.add(parte_inicio_max_MainFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 160, 40));
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Drive:");
-        Background.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, -1, -1));
+        Background.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 0, -1, -1));
 
-        jTextField8.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField8.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        Productor_Intros_TLOU.setBackground(new java.awt.Color(0, 0, 0));
+        Productor_Intros_TLOU.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Productor_Intros_TLOU.setForeground(new java.awt.Color(255, 255, 255));
+        Productor_Intros_TLOU.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Productor_Intros_TLOU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                Productor_Intros_TLOUActionPerformed(evt);
             }
         });
-        Background.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, 160, 40));
+        Background.add(Productor_Intros_TLOU, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 160, 40));
 
-        jTextField9.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField9.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        Productor_Creditos_TLOU.setBackground(new java.awt.Color(0, 0, 0));
+        Productor_Creditos_TLOU.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Productor_Creditos_TLOU.setForeground(new java.awt.Color(255, 255, 255));
+        Productor_Creditos_TLOU.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Productor_Creditos_TLOU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                Productor_Creditos_TLOUActionPerformed(evt);
             }
         });
-        Background.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 460, 160, 40));
+        Background.add(Productor_Creditos_TLOU, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 410, 160, 40));
 
-        jTextField10.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField10.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+        Productor_Inicio_TLOU.setBackground(new java.awt.Color(0, 0, 0));
+        Productor_Inicio_TLOU.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Productor_Inicio_TLOU.setForeground(new java.awt.Color(255, 255, 255));
+        Productor_Inicio_TLOU.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Productor_Inicio_TLOU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
+                Productor_Inicio_TLOUActionPerformed(evt);
             }
         });
-        Background.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 510, 160, 40));
+        Background.add(Productor_Inicio_TLOU, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 160, 40));
 
-        jTextField11.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField11.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+        Productor_Cierre_TLOU.setBackground(new java.awt.Color(0, 0, 0));
+        Productor_Cierre_TLOU.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Productor_Cierre_TLOU.setForeground(new java.awt.Color(255, 255, 255));
+        Productor_Cierre_TLOU.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Productor_Cierre_TLOU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
+                Productor_Cierre_TLOUActionPerformed(evt);
             }
         });
-        Background.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 560, 160, 40));
+        Background.add(Productor_Cierre_TLOU, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 510, 160, 40));
 
-        jTextField12.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField12.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField12.addActionListener(new java.awt.event.ActionListener() {
+        Ensamblador_VELMA.setBackground(new java.awt.Color(0, 0, 0));
+        Ensamblador_VELMA.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Ensamblador_VELMA.setForeground(new java.awt.Color(255, 255, 255));
+        Ensamblador_VELMA.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Ensamblador_VELMA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField12ActionPerformed(evt);
+                Ensamblador_VELMAActionPerformed(evt);
             }
         });
-        Background.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 610, 160, 40));
+        Background.add(Ensamblador_VELMA, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 600, 160, 40));
 
-        jTextField7.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        parte_plot_twist_max_MainFrame.setBackground(new java.awt.Color(0, 0, 0));
+        parte_plot_twist_max_MainFrame.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        parte_plot_twist_max_MainFrame.setForeground(new java.awt.Color(255, 255, 255));
+        parte_plot_twist_max_MainFrame.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        parte_plot_twist_max_MainFrame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                parte_plot_twist_max_MainFrameActionPerformed(evt);
             }
         });
-        Background.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 290, 160, 40));
+        Background.add(parte_plot_twist_max_MainFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, 160, 40));
 
-        jCheckBox6.setBackground(new java.awt.Color(255, 255, 255));
-        jCheckBox6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jCheckBox6.setForeground(new java.awt.Color(0, 0, 0));
-        jCheckBox6.setText("Capacidad Infinita");
-        jCheckBox6.addActionListener(new java.awt.event.ActionListener() {
+        Capacidad_infinita_plot_twist_checkbox.setBackground(new java.awt.Color(255, 255, 255));
+        Capacidad_infinita_plot_twist_checkbox.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Capacidad_infinita_plot_twist_checkbox.setForeground(new java.awt.Color(0, 0, 0));
+        Capacidad_infinita_plot_twist_checkbox.setText("Capacidad Infinita");
+        Capacidad_infinita_plot_twist_checkbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox6ActionPerformed(evt);
+                Capacidad_infinita_plot_twist_checkboxActionPerformed(evt);
             }
         });
-        Background.add(jCheckBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 290, -1, -1));
+        Background.add(Capacidad_infinita_plot_twist_checkbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 250, -1, -1));
 
-        jCheckBox5.setBackground(new java.awt.Color(255, 255, 255));
-        jCheckBox5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jCheckBox5.setForeground(new java.awt.Color(0, 0, 0));
-        jCheckBox5.setText("Capacidad Infinita");
-        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
+        Capacidad_infinita_cierre_checkbox.setBackground(new java.awt.Color(255, 255, 255));
+        Capacidad_infinita_cierre_checkbox.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Capacidad_infinita_cierre_checkbox.setForeground(new java.awt.Color(0, 0, 0));
+        Capacidad_infinita_cierre_checkbox.setText("Capacidad Infinita");
+        Capacidad_infinita_cierre_checkbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox5ActionPerformed(evt);
+                Capacidad_infinita_cierre_checkboxActionPerformed(evt);
             }
         });
-        Background.add(jCheckBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 240, -1, -1));
+        Background.add(Capacidad_infinita_cierre_checkbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 200, -1, -1));
 
-        jCheckBox4.setBackground(new java.awt.Color(255, 255, 255));
-        jCheckBox4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jCheckBox4.setForeground(new java.awt.Color(0, 0, 0));
-        jCheckBox4.setText("Capacidad Infinita");
-        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+        Capacidad_infinita_inicio_checkbox.setBackground(new java.awt.Color(255, 255, 255));
+        Capacidad_infinita_inicio_checkbox.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Capacidad_infinita_inicio_checkbox.setForeground(new java.awt.Color(0, 0, 0));
+        Capacidad_infinita_inicio_checkbox.setText("Capacidad Infinita");
+        Capacidad_infinita_inicio_checkbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox4ActionPerformed(evt);
+                Capacidad_infinita_inicio_checkboxActionPerformed(evt);
             }
         });
-        Background.add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 190, -1, -1));
+        Background.add(Capacidad_infinita_inicio_checkbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 150, -1, -1));
 
-        jCheckBox3.setBackground(new java.awt.Color(255, 255, 255));
-        jCheckBox3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jCheckBox3.setForeground(new java.awt.Color(0, 0, 0));
-        jCheckBox3.setText("Capacidad Infinita");
-        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+        Capacidad_infinita_creditos_checkbox.setBackground(new java.awt.Color(255, 255, 255));
+        Capacidad_infinita_creditos_checkbox.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Capacidad_infinita_creditos_checkbox.setForeground(new java.awt.Color(0, 0, 0));
+        Capacidad_infinita_creditos_checkbox.setText("Capacidad Infinita");
+        Capacidad_infinita_creditos_checkbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox3ActionPerformed(evt);
+                Capacidad_infinita_creditos_checkboxActionPerformed(evt);
             }
         });
-        Background.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 140, -1, -1));
+        Background.add(Capacidad_infinita_creditos_checkbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 100, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -465,7 +447,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(jLabel5))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -479,16 +461,48 @@ public class MainFrame extends javax.swing.JFrame {
 
         Background.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 200, -1));
 
-        jCheckBox2.setBackground(new java.awt.Color(255, 255, 255));
-        jCheckBox2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jCheckBox2.setForeground(new java.awt.Color(0, 0, 0));
-        jCheckBox2.setText("Capacidad Infinita");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        Capacidad_infinita_intro_checkbox.setBackground(new java.awt.Color(255, 255, 255));
+        Capacidad_infinita_intro_checkbox.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Capacidad_infinita_intro_checkbox.setForeground(new java.awt.Color(0, 0, 0));
+        Capacidad_infinita_intro_checkbox.setText("Capacidad Infinita");
+        Capacidad_infinita_intro_checkbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                Capacidad_infinita_intro_checkboxActionPerformed(evt);
             }
         });
-        Background.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 90, -1, -1));
+        Background.add(Capacidad_infinita_intro_checkbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 50, -1, -1));
+
+        Productor_Plot_Twist_TLOU.setBackground(new java.awt.Color(0, 0, 0));
+        Productor_Plot_Twist_TLOU.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Productor_Plot_Twist_TLOU.setForeground(new java.awt.Color(255, 255, 255));
+        Productor_Plot_Twist_TLOU.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Productor_Plot_Twist_TLOU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Productor_Plot_Twist_TLOUActionPerformed(evt);
+            }
+        });
+        Background.add(Productor_Plot_Twist_TLOU, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 160, 40));
+
+        Ensamblador_TLOU.setBackground(new java.awt.Color(0, 0, 0));
+        Ensamblador_TLOU.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Ensamblador_TLOU.setForeground(new java.awt.Color(255, 255, 255));
+        Ensamblador_TLOU.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Ensamblador_TLOU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Ensamblador_TLOUActionPerformed(evt);
+            }
+        });
+        Background.add(Ensamblador_TLOU, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 610, 160, 40));
+
+        ReseteoHard.setBackground(new java.awt.Color(0, 0, 0));
+        ReseteoHard.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ReseteoHard.setText("Usar datos por defecto (RESETEO HARD)");
+        ReseteoHard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReseteoHardActionPerformed(evt);
+            }
+        });
+        Background.add(ReseteoHard, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 390, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -498,24 +512,72 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setText("Productor Intros");
 
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("Productor Creditos");
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText("Productor Inicio");
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("Productor Cierre");
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("Productor Plot Twist");
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel25.setText("Ensamblador");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jLabel20)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel23)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel22))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel24)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel25)
+                        .addGap(37, 37, 37))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel20)
-                .addContainerGap(219, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jLabel21)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel22)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel23)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(jLabel25)
+                .addGap(24, 24, 24))
         );
 
-        Background.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 400, -1, 250));
+        Background.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 350, -1, 310));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -545,66 +607,6 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("parte creditos max");
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setForeground(new java.awt.Color(0, 0, 0));
-
-        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel25.setText("parte intro max");
-
-        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel26.setText("parte inicio max");
-
-        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel27.setText("parte cierre max");
-
-        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel28.setText("parte plot twist max");
-
-        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel29.setText("parte creditos max");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel27)
-                    .addComponent(jLabel29)
-                    .addComponent(jLabel28)
-                    .addComponent(jLabel25)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel26)))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel25)
-                .addGap(26, 26, 26)
-                .addComponent(jLabel29)
-                .addGap(24, 24, 24)
-                .addComponent(jLabel26)
-                .addGap(28, 28, 28)
-                .addComponent(jLabel27)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jLabel28)
-                .addGap(15, 15, 15))
-        );
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -619,12 +621,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(jLabel11)))
-                .addContainerGap(11, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -640,14 +637,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jLabel12)
                 .addGap(15, 15, 15))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        Background.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, 200, 250));
+        Background.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 200, 250));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pngegg.png"))); // NOI18N
         jLabel1.setText("1030");
@@ -690,106 +682,183 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Le da paso a los Dashboards
+     */
+    private void PasarSiguienteInterfaz(){
+//            Llama a la otra interfaz
+
+            SetLocationRelativeToDashboard.SetLocationRelativeToDashboard();
+
+            SetLocationRelativeTo.SetLocationRelativeTo();
+
+//            Cierra la interfaz actual
+            this.setVisible(false);
+    }
+    
     private void btnAggUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAggUsuarioActionPerformed
-        
-//        Llama a la otra interfaz
+        try{
+            
+            JSONReaderWriter jsnrw = new JSONReaderWriter();
+            
+//            Valida si todos los campos son valores numericos mayores que cero
+            if(this.ReseteoHard.isSelected()){
+                jsnrw.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "1", "1","0","0","0","0");
+                jsnrw.Reader();
+                
+//                Ahora se pasa a la siguiente interfaz
+                this.PasarSiguienteInterfaz();
+                
+            }else if(JSONReaderWriter.isPositiveNumeric(this.Dia_en_segundos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric(this.Dias_entre_despachos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Intros_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Creditos_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Inicio_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Cierre_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Plot_Twist_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Ensamblador_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Intros_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Creditos_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Inicio_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Cierre_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Plot_Twist_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Ensamblador_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_intro_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_creditos_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_inicio_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_cierre_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_plot_twist_max_MainFrame.getText())){
+//                Si se entra aquí, se debe escribir en el JSON los valores escritos en la interfaz
+                
+//                Casteamos las cajitas de checkbox a String
+                String Capacidad_infinita_intro = String.valueOf(this.Capacidad_infinita_intro_checkbox.isSelected());
+                String Capacidad_infinita_credito = String.valueOf(this.Capacidad_infinita_creditos_checkbox.isSelected());
+                String Capacidad_infinita_inicio = String.valueOf(this.Capacidad_infinita_inicio_checkbox.isSelected());
+                String Capacidad_infinita_cierre = String.valueOf(this.Capacidad_infinita_cierre_checkbox.isSelected());
+                String Capacidad_infinita_plot_twist = String.valueOf(this.Capacidad_infinita_plot_twist_checkbox.isSelected());
+                
+                
+                
+                
+                jsnrw.Writer(this.Dia_en_segundos_MainFrame_text.getText(), this.Dias_entre_despachos_MainFrame_text.getText(), this.parte_intro_max_MainFrame.getText(), Capacidad_infinita_intro, this.parte_creditos_max_MainFrame.getText(), Capacidad_infinita_credito, this.parte_inicio_max_MainFrame.getText(), Capacidad_infinita_inicio, this.parte_cierre_max_MainFrame.getText(), Capacidad_infinita_cierre, this.parte_plot_twist_max_MainFrame.getText(), Capacidad_infinita_plot_twist, this.Productor_Intros_TLOU.getText(), this.Productor_Creditos_TLOU.getText(), this.Productor_Inicio_TLOU.getText(), this.Productor_Cierre_TLOU.getText(), this.Productor_Plot_Twist_TLOU.getText(), this.Productor_Intros_VELMA.getText(), this.Productor_Creditos_VELMA.getText(), this.Productor_Inicio_VELMA.getText(), this.Productor_Cierre_VELMA.getText(), this.Productor_Plot_Twist_VELMA.getText(), this.Ensamblador_TLOU.getText(), this.Ensamblador_VELMA.getText(), String.valueOf(JSONReaderWriter.Ingresos_Rodaje_jose), String.valueOf(JSONReaderWriter.Ingresos_Rodaje_andy), String.valueOf(JSONReaderWriter.Costos_Rodaje_jose), String.valueOf(JSONReaderWriter.Costos_Rodaje_andy));
+                
+                jsnrw.Reader();
+                
+                
+                
 
-        SetLocationRelativeToDashboard.SetLocationRelativeToDashboard();
+//                Ahora se pasa a la siguiente interfaz
+                this.PasarSiguienteInterfaz();
+            
+            }else if(JSONReaderWriter.isEmpty(this.Dia_en_segundos_MainFrame_text.getText()) && JSONReaderWriter.isEmpty(this.Dias_entre_despachos_MainFrame_text.getText()) && JSONReaderWriter.isEmpty(this.Productor_Intros_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Creditos_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Inicio_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Cierre_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Plot_Twist_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Ensamblador_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Intros_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Productor_Creditos_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Productor_Inicio_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Productor_Cierre_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Productor_Plot_Twist_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Ensamblador_VELMA.getText()) && JSONReaderWriter.isEmpty(this.parte_intro_max_MainFrame.getText()) && JSONReaderWriter.isEmpty(this.parte_creditos_max_MainFrame.getText()) && JSONReaderWriter.isEmpty(this.parte_inicio_max_MainFrame.getText()) && JSONReaderWriter.isEmpty(this.parte_cierre_max_MainFrame.getText()) && JSONReaderWriter.isEmpty(this.parte_plot_twist_max_MainFrame.getText())){
+//                Si entra aqui, significa que está todo vacío, por lo tanto, tomamos el JSON por defecto
 
-        SetLocationRelativeTo.SetLocationRelativeTo();
+////                Llama a la otra interfaz
+//
+//                SetLocationRelativeToDashboard.SetLocationRelativeToDashboard();
+//
+//                SetLocationRelativeTo.SetLocationRelativeTo();
+//
+////                Cierra la interfaz actual
+//                this.setVisible(false);
+
+                this.PasarSiguienteInterfaz();
+                
+                
+            }else if(JSONReaderWriter.isEmpty(this.Dia_en_segundos_MainFrame_text.getText()) || JSONReaderWriter.isEmpty(this.Dias_entre_despachos_MainFrame_text.getText()) || JSONReaderWriter.isEmpty(this.Productor_Intros_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Creditos_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Inicio_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Cierre_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Plot_Twist_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Ensamblador_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Intros_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Productor_Creditos_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Productor_Inicio_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Productor_Cierre_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Productor_Plot_Twist_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Ensamblador_VELMA.getText()) || JSONReaderWriter.isEmpty(this.parte_intro_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.parte_creditos_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.parte_inicio_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.parte_cierre_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.parte_plot_twist_max_MainFrame.getText())){
+                System.out.println("Debe ingresar un numero > 0");
+                System.out.println(this.Dia_en_segundos_MainFrame_text.getText());
+            }
+            
+        }catch(Exception e){
+            System.out.println(e);
+        }
         
-//        Cierra la interfaz actual
-        this.setVisible(false);
+        
         
     }//GEN-LAST:event_btnAggUsuarioActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void parte_intro_max_MainFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parte_intro_max_MainFrameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_parte_intro_max_MainFrameActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void Dias_entre_despachos_MainFrame_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dias_entre_despachos_MainFrame_textActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_Dias_entre_despachos_MainFrame_textActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void Dia_en_segundos_MainFrame_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dia_en_segundos_MainFrame_textActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_Dia_en_segundos_MainFrame_textActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void parte_creditos_max_MainFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parte_creditos_max_MainFrameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_parte_creditos_max_MainFrameActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void parte_cierre_max_MainFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parte_cierre_max_MainFrameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_parte_cierre_max_MainFrameActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void parte_inicio_max_MainFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parte_inicio_max_MainFrameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_parte_inicio_max_MainFrameActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void parte_plot_twist_max_MainFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parte_plot_twist_max_MainFrameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_parte_plot_twist_max_MainFrameActionPerformed
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+    private void Capacidad_infinita_intro_checkboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Capacidad_infinita_intro_checkboxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+    }//GEN-LAST:event_Capacidad_infinita_intro_checkboxActionPerformed
 
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+    private void Capacidad_infinita_creditos_checkboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Capacidad_infinita_creditos_checkboxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
+    }//GEN-LAST:event_Capacidad_infinita_creditos_checkboxActionPerformed
 
-    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+    private void Capacidad_infinita_inicio_checkboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Capacidad_infinita_inicio_checkboxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox4ActionPerformed
+    }//GEN-LAST:event_Capacidad_infinita_inicio_checkboxActionPerformed
 
-    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
+    private void Capacidad_infinita_cierre_checkboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Capacidad_infinita_cierre_checkboxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox5ActionPerformed
+    }//GEN-LAST:event_Capacidad_infinita_cierre_checkboxActionPerformed
 
-    private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
+    private void Capacidad_infinita_plot_twist_checkboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Capacidad_infinita_plot_twist_checkboxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox6ActionPerformed
+    }//GEN-LAST:event_Capacidad_infinita_plot_twist_checkboxActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void Productor_Intros_TLOUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Productor_Intros_TLOUActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_Productor_Intros_TLOUActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void Productor_Creditos_TLOUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Productor_Creditos_TLOUActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+    }//GEN-LAST:event_Productor_Creditos_TLOUActionPerformed
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+    private void Productor_Inicio_TLOUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Productor_Inicio_TLOUActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    }//GEN-LAST:event_Productor_Inicio_TLOUActionPerformed
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+    private void Productor_Cierre_TLOUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Productor_Cierre_TLOUActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
+    }//GEN-LAST:event_Productor_Cierre_TLOUActionPerformed
 
-    private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
+    private void Ensamblador_VELMAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ensamblador_VELMAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField12ActionPerformed
+    }//GEN-LAST:event_Ensamblador_VELMAActionPerformed
 
-    private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
+    private void Productor_Intros_VELMAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Productor_Intros_VELMAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField13ActionPerformed
+    }//GEN-LAST:event_Productor_Intros_VELMAActionPerformed
 
-    private void jTextField14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14ActionPerformed
+    private void Productor_Creditos_VELMAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Productor_Creditos_VELMAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField14ActionPerformed
+    }//GEN-LAST:event_Productor_Creditos_VELMAActionPerformed
 
-    private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
+    private void Productor_Inicio_VELMAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Productor_Inicio_VELMAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField15ActionPerformed
+    }//GEN-LAST:event_Productor_Inicio_VELMAActionPerformed
 
-    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
+    private void Productor_Cierre_VELMAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Productor_Cierre_VELMAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField16ActionPerformed
+    }//GEN-LAST:event_Productor_Cierre_VELMAActionPerformed
 
-    private void jTextField17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField17ActionPerformed
+    private void Productor_Plot_Twist_VELMAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Productor_Plot_Twist_VELMAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField17ActionPerformed
+    }//GEN-LAST:event_Productor_Plot_Twist_VELMAActionPerformed
+
+    private void Productor_Plot_Twist_TLOUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Productor_Plot_Twist_TLOUActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Productor_Plot_Twist_TLOUActionPerformed
+
+    private void Ensamblador_TLOUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ensamblador_TLOUActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Ensamblador_TLOUActionPerformed
+
+    private void ReseteoHardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReseteoHardActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ReseteoHardActionPerformed
 
     /**
      * @param args the command line arguments
@@ -828,12 +897,27 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Background;
+    private javax.swing.JCheckBox Capacidad_infinita_cierre_checkbox;
+    private javax.swing.JCheckBox Capacidad_infinita_creditos_checkbox;
+    private javax.swing.JCheckBox Capacidad_infinita_inicio_checkbox;
+    private javax.swing.JCheckBox Capacidad_infinita_intro_checkbox;
+    private javax.swing.JCheckBox Capacidad_infinita_plot_twist_checkbox;
+    private javax.swing.JTextField Dia_en_segundos_MainFrame_text;
+    private javax.swing.JTextField Dias_entre_despachos_MainFrame_text;
+    private javax.swing.JTextField Ensamblador_TLOU;
+    private javax.swing.JTextField Ensamblador_VELMA;
+    private javax.swing.JTextField Productor_Cierre_TLOU;
+    private javax.swing.JTextField Productor_Cierre_VELMA;
+    private javax.swing.JTextField Productor_Creditos_TLOU;
+    private javax.swing.JTextField Productor_Creditos_VELMA;
+    private javax.swing.JTextField Productor_Inicio_TLOU;
+    private javax.swing.JTextField Productor_Inicio_VELMA;
+    private javax.swing.JTextField Productor_Intros_TLOU;
+    private javax.swing.JTextField Productor_Intros_VELMA;
+    private javax.swing.JTextField Productor_Plot_Twist_TLOU;
+    private javax.swing.JTextField Productor_Plot_Twist_VELMA;
+    private javax.swing.JCheckBox ReseteoHard;
     private javax.swing.JButton btnAggUsuario;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -847,16 +931,11 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel5;
@@ -866,25 +945,12 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField parte_cierre_max_MainFrame;
+    private javax.swing.JTextField parte_creditos_max_MainFrame;
+    private javax.swing.JTextField parte_inicio_max_MainFrame;
+    private javax.swing.JTextField parte_intro_max_MainFrame;
+    private javax.swing.JTextField parte_plot_twist_max_MainFrame;
     // End of variables declaration//GEN-END:variables
 }
