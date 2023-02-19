@@ -4,6 +4,9 @@
  */
 package Classes;
 
+import Interfaces.Dashboard;
+import Interfaces.Dashboard1;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import proyecto_operativos.Proyecto_operativos;
@@ -17,8 +20,25 @@ public class Director extends Thread{
 //    Estas variables random las pienso usar para calculos futuros
     int random;
     int random2;
+    float com;
     public int ganancia;
     public int sueldo_al_payaso =(7*8);
+    private int  ingresos_generales_num;
+    private float costos_generales_num;
+    private float beneficios_generales_num;
+    javax.swing.JLabel  ingresos_generales;
+    javax.swing.JLabel costos_generales_reales;
+    private int es_el_mejor;
+    private int cap_entregados;
+    javax.swing.JLabel costos_text;
+    javax.swing.JLabel beneficios_text;
+    javax.swing.JLabel text1;
+    javax.swing.JLabel text2;
+    javax.swing.JLabel text3;
+    javax.swing.JLabel es_elmejor;
+    javax.swing.JLabel capitulos_entregados;
+    private int id;
+    
     
 //    Variable que indica si el director está en un nuevo dia
 //    public static volatile boolean Director_nuevo_dia = false;
@@ -39,12 +59,28 @@ public class Director extends Thread{
     javax.swing.JLabel Veces_PM_atrapado;
         
         
-    public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter, javax.swing.JLabel Veces_PM_atrapado){
+    public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter, javax.swing.JLabel Veces_PM_atrapado, javax.swing.JLabel beneficios_text, javax.swing.JLabel costos_text, javax.swing.JLabel Es_el_mejor, javax.swing.JLabel texto1, javax.swing.JLabel texto2, javax.swing.JLabel texto3, javax.swing.JLabel series_Entregadas, javax.swing.JLabel ingresos_generales ,javax.swing.JLabel costos_generales_reales,int id){
         this.pm = pm;
         this.rodaje = rodaje;
         this.Contador_inter = Contador_inter;
         this.Veces_PM_atrapado = Veces_PM_atrapado;
+      
+        this.text1= texto1;
+        this.text2= texto2;
+        this.text3 = texto3;
+        this.beneficios_text= beneficios_text;
+        this.costos_text= costos_text;
+        this.capitulos_entregados = series_Entregadas;
+        this.es_elmejor = Es_el_mejor;
+        this.ingresos_generales= ingresos_generales;
+        this.costos_generales_reales= costos_generales_reales;
+        this.id=id;
+        
     }
+    
+    
+    
+    
     /**
      * Hace un acquire del semaforo de su respectivo rodaje
      * @throws InterruptedException 
@@ -88,6 +124,7 @@ public class Director extends Thread{
             this.Contador_inter.setText(String.valueOf(Proyecto_operativos.contador_dias_restantes_jose));
         }
     }
+        
     
     /**
      * 
@@ -165,6 +202,50 @@ public class Director extends Thread{
 //                    Y además resetearemos el contador a su valor original
                     
 //                    Proyecto_operativos.contador_dias_restantes = Proyecto_operativos.dias_entre_despachos;
+                    this.ingresos_generales_num=Integer.parseInt(String.valueOf(this.ingresos_generales.getText()));
+                    
+                    this.costos_generales_num=costos_generales_num+Float.parseFloat(String.valueOf(this.costos_text.getText()));
+                    this.beneficios_generales_num= beneficios_generales_num+this.ingresos_generales_num-costos_generales_num;
+                    this.costos_generales_reales.setText(String.valueOf(this.costos_generales_num));
+                    this.beneficios_text.setText(String.valueOf(this.beneficios_generales_num));
+                    this.cap_entregados=this.cap_entregados+1;
+                    this.capitulos_entregados.setText(String.valueOf(this.cap_entregados));
+                    this.text1.setForeground(Color.black);
+                    this.text2.setForeground(Color.black);
+                    this.text3.setForeground(Color.black);
+                    this.costos_generales_reales.setForeground(Color.black);
+                    this.capitulos_entregados.setForeground(Color.black);
+                    this.beneficios_text.setForeground(Color.black);
+                    
+                    
+                    if (id ==0){
+                       Dashboard1.semaforo_final.release();
+                       Dashboard.comparacion =beneficios_generales_num;
+                       com = Dashboard.comparacion;
+                       Dashboard.semaforo_final.acquire();
+                       
+                       
+                    }
+                    else if(id==1){
+                        Dashboard.semaforo_final.release();
+                        Dashboard1.comparacion =beneficios_generales_num;
+                        com = Dashboard1.comparacion;
+                        Dashboard1.semaforo_final.acquire();
+                         
+                    }
+                    if (id ==0 && com < Dashboard1.comparacion){
+                        this.es_elmejor.setText("No es la mejor >:(");
+                    }
+                    
+                    if (id ==1 && com < Dashboard.comparacion){
+                        
+                        this.es_elmejor.setText("No es la mejor >:(");
+                    }
+                    this.es_elmejor.setForeground(Color.red);
+                    
+                    
+                    
+                    
                     
                     this.resetear_contador_dias_restantes_rodaje();
                     
@@ -176,6 +257,7 @@ public class Director extends Thread{
                     pm.Semaforo_Contador_release();
                     
                     this.Falsear_Director_nuevo_dia_rodaje();
+                    
                     
                     Proyecto_operativos.keep=false;
                                         

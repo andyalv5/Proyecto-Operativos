@@ -20,7 +20,7 @@ public class SetLocationRelativeTo {
         p.setBackground(Color.getHSBColor(20, 26, 77));
         p.setBounds(400,500,50,50);
         ventana.add(p);
-        ventana.setSize(960, 640);
+        ventana.setSize(1040, 640);
         ventana.setLocationRelativeTo(p);
     }
 }

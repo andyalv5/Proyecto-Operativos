@@ -16,6 +16,7 @@ import Classes.Productor_Plot_Twist;
 import Classes.Productores_Intro;
 import Classes.Project_manager;
 import Leer_Escribir_JSON.JSONReaderWriter;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.Semaphore;
@@ -34,6 +35,7 @@ public class Dashboard1 extends javax.swing.JFrame {
     
 //    Final cédula de Andy 
     public int ci_jose = Proyecto_operativos.ci_jose;
+    public static float comparacion;
     
     //    Tamaños diferentes en el drive
     public static int tamanio_Intro1 = JSONReaderWriter.parte_intro_max;
@@ -56,6 +58,7 @@ public class Dashboard1 extends javax.swing.JFrame {
     public static Semaphore semaforo_PT1 = new Semaphore(1);
     public static Semaphore semaforo_cie1 = new Semaphore(1);
     public static Semaphore semaforo_intro1 = new Semaphore(1);
+    public static Semaphore semaforo_final = new Semaphore(0);
     
 //    Semaforos para los JtextosFields
     public static Semaphore Jtext_Productores_Intro1 = new Semaphore(1);
@@ -69,7 +72,7 @@ public class Dashboard1 extends javax.swing.JFrame {
     public static Productor_Cierre Dhilo2 = new Productor_Cierre(drive_Cierre1, semaforo_cie1,1,tamanio_Cierre1,2);
     public static Productor_Inicio Dhilo3 = new Productor_Inicio(drive_Inicio1, semaforo_ini1,1,tamanio_Inicio1,2);
     public static Productor_Credito Dhilo4 = new Productor_Credito(drive_credito1, semaforo_con1,1,tamanio_credito1,1);
-    public static Productor_Plot_Twist Dhilo5 = new Productor_Plot_Twist(drive_Plot_Twist1, semaforo_PT1,1,tamanio_Plot_Twist1);
+    public static Productor_Plot_Twist Dhilo5 = new Productor_Plot_Twist(drive_Plot_Twist1, semaforo_PT1,1,tamanio_Plot_Twist1,2);
     public static Ensamblador1 Dhilo6 = new Ensamblador1(Dhilo1,Dhilo2,Dhilo3,Dhilo4,Dhilo5,semaforo_intro1,semaforo_cie1,semaforo_ini1,semaforo_con1,semaforo_PT1,1100);
   
     
@@ -77,13 +80,22 @@ public class Dashboard1 extends javax.swing.JFrame {
 //    Project_manager pm_andy = new Project_manager(Proyecto_operativos.ci_Andy, "andy", this.Contador);
 ////    Aqui le indico al director de andy a que productor vigilar, y además, le indico que es el director de andy
 //    Director dir_andy = new Director(this.pm_andy, "andy", this.Contador);
-
+    public void set_comparacion(float beneficio){
+            this.comparacion =beneficio;
+        }
     
     /**
      * Creates new form Dashboard
      */
     public Dashboard1() {
         initComponents();
+        this.BeneficiosReal.setForeground(Color.white);
+        this.es_el_mejor.setForeground(Color.white);
+        this.text1.setForeground(Color.white);
+        this.text2.setForeground(Color.white);
+        this.text3.setForeground(Color.white);
+        this.series_entregadas.setForeground(Color.white);
+        this.costos_generales_reales.setForeground(Color.white);
         
 //        Se pone el valor inicial de la cantidad de productores ensamblados
         Cant_Productores_Ensamblado1.setText(String.valueOf(JSONReaderWriter.Ensamblador_Rodaje_jose));
@@ -148,7 +160,7 @@ public class Dashboard1 extends javax.swing.JFrame {
     //    Aqui tengo el project manager trabajando con la cedula de jose
         Project_manager pm_jose = new Project_manager(Proyecto_operativos.ci_jose, "jose", this.Contador1);
     //    Aqui le indico al director de jose a que productor vigilar, y además, le indico que es el director de jose
-        Director dir_jose = new Director(pm_jose, "jose", this.Contador1, this.Veces_PM_atrapado);
+        Director dir_jose = new Director(pm_jose, "jose", this.Contador1, this.Veces_PM_atrapado,this.BeneficiosReal,this.Costos_Totales_PD,this.es_el_mejor,this.text1,this.text2,this.text3,this.series_entregadas,this.Ganancia_Capitulo1,this.costos_generales_reales,0);
         
         Dhilo1.start();
         Dhilo2.start();
@@ -240,6 +252,7 @@ public class Dashboard1 extends javax.swing.JFrame {
                         Ganancia_Capitulo1.setText(String.valueOf(Dhilo6.get_ganancia_velma()));
                         sueldo_Director1.setText(String.valueOf(dir_jose.ganancia));
                         sueldo_Manager1.setText(String.valueOf(pm_jose.ganancia));
+                        Costos_Totales_PD.setText(String.valueOf(Dhilo1.ganancia+Dhilo2.ganancia+Dhilo3.ganancia+Dhilo4.ganancia+Dhilo5.ganancia+Dhilo6.ganancia+pm_jose.ganancia+dir_jose.ganancia));
                         
                         
                     } catch (InterruptedException ex) {
@@ -266,9 +279,11 @@ public class Dashboard1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel18 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         EnsambladoTxt1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        Costos_Totales_PD = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Cant_Productores_Ensamblado1 = new javax.swing.JTextField();
         Cant_Productores_Credito = new javax.swing.JTextField();
@@ -328,6 +343,19 @@ public class Dashboard1 extends javax.swing.JFrame {
         sueldo_Director1 = new javax.swing.JLabel();
         sueldo_Manager1 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        BeneficiosReal = new javax.swing.JLabel();
+        text3 = new javax.swing.JLabel();
+        series_entregadas = new javax.swing.JLabel();
+        text1 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        es_el_mejor = new javax.swing.JLabel();
+        text2 = new javax.swing.JLabel();
+        costos_generales_reales = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+
+        jLabel18.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel18.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel18.setText("Costos totales por Dia: ");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -344,6 +372,11 @@ public class Dashboard1 extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel11.setText("Costos:  -");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
+
+        Costos_Totales_PD.setBackground(new java.awt.Color(0, 0, 0));
+        Costos_Totales_PD.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        Costos_Totales_PD.setText("0");
+        jPanel1.add(Costos_Totales_PD, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 230, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -731,11 +764,63 @@ public class Dashboard1 extends javax.swing.JFrame {
         jLabel17.setText("Veces PM descubierto: ");
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, -1, -1));
 
+        BeneficiosReal.setBackground(new java.awt.Color(0, 0, 0));
+        BeneficiosReal.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        BeneficiosReal.setForeground(new java.awt.Color(0, 0, 0));
+        BeneficiosReal.setText("00");
+        jPanel1.add(BeneficiosReal, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 310, -1, -1));
+
+        text3.setBackground(new java.awt.Color(0, 0, 0));
+        text3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        text3.setForeground(new java.awt.Color(0, 0, 0));
+        text3.setText("Costos Totales:");
+        jPanel1.add(text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 390, -1, -1));
+
+        series_entregadas.setBackground(new java.awt.Color(0, 0, 0));
+        series_entregadas.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        series_entregadas.setForeground(new java.awt.Color(0, 0, 0));
+        series_entregadas.setText("00");
+        jPanel1.add(series_entregadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 350, -1, -1));
+
+        text1.setBackground(new java.awt.Color(0, 0, 0));
+        text1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        text1.setForeground(new java.awt.Color(0, 0, 0));
+        text1.setText("Beneficios Totales:");
+        jPanel1.add(text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 310, -1, -1));
+
+        jLabel20.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel20.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel20.setText("Costos totales por Dia: ");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 230, -1, -1));
+
+        es_el_mejor.setBackground(new java.awt.Color(0, 0, 0));
+        es_el_mejor.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        es_el_mejor.setForeground(new java.awt.Color(255, 0, 0));
+        es_el_mejor.setText("Esta Opción es Mejor!!!");
+        jPanel1.add(es_el_mejor, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 450, -1, -1));
+
+        text2.setBackground(new java.awt.Color(255, 255, 255));
+        text2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        text2.setForeground(new java.awt.Color(0, 0, 0));
+        text2.setText("Series Despachadas:");
+        jPanel1.add(text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 350, -1, -1));
+
+        costos_generales_reales.setBackground(new java.awt.Color(0, 0, 0));
+        costos_generales_reales.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        costos_generales_reales.setForeground(new java.awt.Color(0, 0, 0));
+        costos_generales_reales.setText("00");
+        jPanel1.add(costos_generales_reales, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 390, -1, -1));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/green-and-blue-investment-building.jpg"))); // NOI18N
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 0, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 963, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1012,6 +1097,7 @@ public class Dashboard1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel BeneficiosReal;
     private javax.swing.JTextField Cant_Productores_Cierre;
     private javax.swing.JTextField Cant_Productores_Credito;
     private javax.swing.JTextField Cant_Productores_Ensamblado1;
@@ -1021,6 +1107,7 @@ public class Dashboard1 extends javax.swing.JFrame {
     private javax.swing.JLabel Cierre_Quantity1;
     private javax.swing.JButton Cierre_to_Credito;
     private javax.swing.JTextField Contador1;
+    private javax.swing.JLabel Costos_Totales_PD;
     private javax.swing.JLabel Credito_Quantity1;
     private javax.swing.JButton Credito_to_Intro;
     private javax.swing.JLabel EnsambladoTxt1;
@@ -1037,8 +1124,10 @@ public class Dashboard1 extends javax.swing.JFrame {
     private javax.swing.JButton bajar_Ensabladores;
     private javax.swing.JLabel cierre_ganancia13;
     private javax.swing.JButton cierre_to_Inicio;
+    private javax.swing.JLabel costos_generales_reales;
     private javax.swing.JButton credit_to_cierre;
     private javax.swing.JLabel credito_ganancia12;
+    private javax.swing.JLabel es_el_mejor;
     private javax.swing.JLabel inicio_ganancia14;
     private javax.swing.JLabel intro_Quantity1;
     private javax.swing.JLabel intro_ganancia1;
@@ -1054,8 +1143,11 @@ public class Dashboard1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1071,8 +1163,12 @@ public class Dashboard1 extends javax.swing.JFrame {
     private javax.swing.JProgressBar progresoInicioBar1;
     private javax.swing.JProgressBar progresoIntroBar1;
     private javax.swing.JProgressBar progresoPlotTwistBar1;
+    private javax.swing.JLabel series_entregadas;
     private javax.swing.JButton subir_Ensambladores;
     private javax.swing.JLabel sueldo_Director1;
     private javax.swing.JLabel sueldo_Manager1;
+    private javax.swing.JLabel text1;
+    private javax.swing.JLabel text2;
+    private javax.swing.JLabel text3;
     // End of variables declaration//GEN-END:variables
 }

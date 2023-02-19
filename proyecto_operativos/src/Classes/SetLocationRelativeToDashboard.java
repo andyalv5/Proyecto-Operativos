@@ -14,9 +14,9 @@ public class SetLocationRelativeToDashboard {
         ventana.setVisible(true);
         JPanel p = new JPanel();
         p.setBackground(Color.getHSBColor(20, 26, 77));
-        p.setBounds(1490,500,50,50);
+        p.setBounds(1510,500,50,50);
         ventana.add(p);
-        ventana.setSize(960, 640);
+        ventana.setSize(1040, 640);
         ventana.setLocationRelativeTo(p);
     }
 }

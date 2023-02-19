@@ -18,15 +18,17 @@ public class Productor_Plot_Twist extends Thread{
     public int ganancia;
     public int productores;
     private int max_Drive;
+    private int num;
     public int Pro_per_Day;
     Semaphore drive_Plot_Twist;
     Semaphore s;
     
-    public Productor_Plot_Twist(Semaphore drive_Plot_Twist, Semaphore s, int productores,int max_Drive) {
+    public Productor_Plot_Twist(Semaphore drive_Plot_Twist, Semaphore s, int productores,int max_Drive,int num) {
         this.drive_Plot_Twist=drive_Plot_Twist;
         this.s=s;
         this.productores = productores;
         this.max_Drive= max_Drive;
+        this.num=num;
     }
     
     public int get_Pro_per_Day(){
@@ -37,8 +39,8 @@ public class Productor_Plot_Twist extends Thread{
         this.Pro_per_Day = Pro_per_Day;
     }
     
-    public void free_space(){        
-        this.drive_Plot_Twist.release();
+    public void free_space(int num){        
+        this.drive_Plot_Twist.release(num);
     }
     
     public int get_ganancia(){
@@ -61,7 +63,7 @@ public class Productor_Plot_Twist extends Thread{
     public void run(){
         while(Proyecto_operativos.keep){
                 try {
-                    this.drive_Plot_Twist.acquire();
+                    this.drive_Plot_Twist.acquire(num);
                     Thread.sleep(Proyecto_operativos.dia_en_ms);
                     
                     

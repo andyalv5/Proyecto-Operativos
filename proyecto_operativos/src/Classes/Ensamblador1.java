@@ -148,7 +148,8 @@ public class Ensamblador1 extends Thread{
                        System.out.println("///////////////////////"+capitulo_Counter);
                         if (this.capitulo_Counter==0){
                             hilo5.set_Pro_per_Day(hilo5.Pro_per_Day-1);
-                            hilo5.free_space();
+                            hilo5.set_Pro_per_Day(hilo5.Pro_per_Day-1);
+                            hilo5.free_space(2);
                             capitulo_Counter =5;
                         }
                         
