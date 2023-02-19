@@ -240,9 +240,21 @@ public class JSONReaderWriter{
 //            Ahora le ponemos el valor a dia_en_ms de la clase "Proyectos_operativos"
             Proyecto_operativos.dia_en_ms = JSONReaderWriter.dia_en_segundos * 1000;
                    
-               
-    
-            this.Validador_del_JSONfile();
+//            Ahora ponemos el valor a contador_dias_restantes de la clase "Proyectos_operativos"   
+            int variable_para_contador_dias_restantes = JSONReaderWriter.dias_entre_despachos;
+            
+            Proyecto_operativos.contador_dias_restantes_andy = variable_para_contador_dias_restantes;
+            Proyecto_operativos.contador_dias_restantes_jose = variable_para_contador_dias_restantes;
+            
+            if(!this.Validador_del_JSONfile()){
+                
+                System.out.println("Arreglando JSON al por defecto");
+                
+                this.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "1", "1","0","0","0","0");
+                
+                Proyecto_operativos.keep = false;
+                
+            }
             
             
         }catch(Exception e){
