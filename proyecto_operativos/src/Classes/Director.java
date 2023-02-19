@@ -22,7 +22,7 @@ public class Director extends Thread{
     int random2;
     float com;
     public int ganancia;
-    public int sueldo_al_payaso =(7*8);
+    public int sueldo_al_payaso =(7*24);
     private int  ingresos_generales_num;
     private float costos_generales_num;
     private float beneficios_generales_num;

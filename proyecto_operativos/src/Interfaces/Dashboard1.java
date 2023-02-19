@@ -336,7 +336,8 @@ public class Dashboard1 extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         Credito_to_Intro = new javax.swing.JButton();
         Intro_a_credito = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        Plot_Twist_To_Inicio1 = new javax.swing.JButton();
+        Inicio_to_Plot_Twist1 = new javax.swing.JButton();
         Ensamblado_Ganancia1 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -358,6 +359,7 @@ public class Dashboard1 extends javax.swing.JFrame {
         costos_generales_reales = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         Despedido = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
 
         jLabel18.setBackground(new java.awt.Color(0, 0, 0));
         jLabel18.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -684,33 +686,50 @@ public class Dashboard1 extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setText("Rodaje José");
+        Plot_Twist_To_Inicio1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Plot_Twist_To_Inicio1.setText("^");
+        Plot_Twist_To_Inicio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Plot_Twist_To_Inicio1ActionPerformed(evt);
+            }
+        });
+
+        Inicio_to_Plot_Twist1.setText("V");
+        Inicio_to_Plot_Twist1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Inicio_to_Plot_Twist1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Intro_a_credito, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Credito_to_Intro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(Inicio_to_Plot_Twist1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(Plot_Twist_To_Inicio1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(Intro_a_credito, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Credito_to_Intro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6)
-                .addGap(88, 88, 88)
+                .addGap(20, 20, 20)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Inicio_to_Plot_Twist1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Plot_Twist_To_Inicio1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Intro_a_credito, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Credito_to_Intro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(370, Short.MAX_VALUE))
+                .addContainerGap(368, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 150, 520));
@@ -824,6 +843,9 @@ public class Dashboard1 extends javax.swing.JFrame {
         Despedido.setForeground(new java.awt.Color(255, 0, 0));
         Despedido.setText("-Despedido-");
         jPanel1.add(Despedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 105, -1, -1));
+
+        jLabel19.setText("Rodaje Jose");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 70, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1106,6 +1128,38 @@ public class Dashboard1 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_Contador1ActionPerformed
 
+    private void Plot_Twist_To_Inicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Plot_Twist_To_Inicio1ActionPerformed
+        if(Integer.parseInt(this.Cant_Productores_Intro.getText()) > 0 ){
+            try {
+                this.Jtext_Productores_Intro1.acquire();
+                this.Cant_Productores_Intro.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Intro.getText()) - 1));
+                this.Cant_Productores_Ensamblado1.setText(String.valueOf(Integer.valueOf(this.Cant_Productores_Ensamblado1.getText()) + 1));
+                
+//                Liberamos las secciones criticas
+                this.Jtext_Productores_Intro1.release();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       
+    }//GEN-LAST:event_Plot_Twist_To_Inicio1ActionPerformed
+
+    private void Inicio_to_Plot_Twist1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inicio_to_Plot_Twist1ActionPerformed
+       if(Integer.parseInt(this.Cant_Productores_Ensamblado1.getText()) > 0 && (Integer.parseInt(this.Cant_Productores_Cierre.getText())+Integer.parseInt(this.Cant_Productores_Intro.getText())+Integer.parseInt(this.Cant_Productores_Inicio.getText())+Integer.parseInt(this.Cant_Productores_PT.getText())+Integer.parseInt(this.Cant_Productores_Credito.getText()))<=18){
+            try {
+                this.Jtext_Productores_Intro1.acquire();
+                this.Cant_Productores_Intro.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Intro.getText()) + 1));
+                this.Cant_Productores_Ensamblado1.setText(String.valueOf(Integer.valueOf(this.Cant_Productores_Ensamblado1.getText()) - 1));
+                
+//                Liberamos las secciones criticas
+                this.Jtext_Productores_Intro1.release();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       
+    }//GEN-LAST:event_Inicio_to_Plot_Twist1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1163,9 +1217,11 @@ public class Dashboard1 extends javax.swing.JFrame {
     private javax.swing.JLabel Inicio_Quantity1;
     private javax.swing.JButton Inicio_to_Cierre;
     private javax.swing.JButton Inicio_to_Plot_Twist;
+    private javax.swing.JButton Inicio_to_Plot_Twist1;
     private javax.swing.JButton Intro_a_credito;
     private javax.swing.JLabel Plot_Twist_Quantity1;
     private javax.swing.JButton Plot_Twist_To_Inicio;
+    private javax.swing.JButton Plot_Twist_To_Inicio1;
     private javax.swing.JLabel Plot_Twist_ganancia15;
     private javax.swing.JLabel Veces_PM_atrapado;
     private javax.swing.JButton bajar_Ensabladores;
@@ -1193,12 +1249,12 @@ public class Dashboard1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
