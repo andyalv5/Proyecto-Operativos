@@ -9,6 +9,7 @@ import javax.swing.JPanel;
  * @author Andy
  */
 public class SetLocationRelativeToDashboard {
+    
     public static void SetLocationRelativeToDashboard(){
         Dashboard ventana =new Dashboard();
         ventana.setLayout(null);

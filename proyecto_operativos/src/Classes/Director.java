@@ -6,6 +6,7 @@ package Classes;
 
 import Interfaces.Dashboard;
 import Interfaces.Dashboard1;
+import Leer_Escribir_JSON.JSONReaderWriter;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -57,7 +58,9 @@ public class Director extends Thread{
     
 //    Variable de la interfaz que el director cambiará
     javax.swing.JLabel Veces_PM_atrapado;
-        
+    
+    public static volatile int NroSeries_Andy;
+    public static volatile int NroSeries_Jose;
         
     public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter, javax.swing.JLabel Veces_PM_atrapado, javax.swing.JLabel beneficios_text, javax.swing.JLabel costos_text, javax.swing.JLabel Es_el_mejor, javax.swing.JLabel texto1, javax.swing.JLabel texto2, javax.swing.JLabel texto3, javax.swing.JLabel series_Entregadas, javax.swing.JLabel ingresos_generales ,javax.swing.JLabel costos_generales_reales,int id){
         this.pm = pm;
@@ -116,11 +119,14 @@ public class Director extends Thread{
         
         if(this.rodaje.equalsIgnoreCase("andy")){
 //            System.out.println("Toca el reseteo a andy");
-            Proyecto_operativos.contador_dias_restantes_andy = Proyecto_operativos.dias_entre_despachos;
+//            System.out.println("");
+//            Proyecto_operativos.contador_dias_restantes_andy = Proyecto_operativos.dias_entre_despachos;
+//            this.Contador_inter.setText(String.valueOf(Proyecto_operativos.contador_dias_restantes_andy));
+            Proyecto_operativos.contador_dias_restantes_andy = JSONReaderWriter.dias_entre_despachos;
             this.Contador_inter.setText(String.valueOf(Proyecto_operativos.contador_dias_restantes_andy));
         }else{
             
-            Proyecto_operativos.contador_dias_restantes_jose = Proyecto_operativos.dias_entre_despachos;
+            Proyecto_operativos.contador_dias_restantes_jose = JSONReaderWriter.dias_entre_despachos;
             this.Contador_inter.setText(String.valueOf(Proyecto_operativos.contador_dias_restantes_jose));
         }
     }
@@ -155,6 +161,90 @@ public class Director extends Thread{
             Director.Director_nuevo_dia_jose = false;
             
         }        
+    }
+    
+    /**
+     * Para el proceso si ya se hicieron el NroSeries_Rodaje, de lo contrario, le resta en 1
+     */
+    public void StopIfNroSeries_Rodaje_Es0() throws InterruptedException{
+        if(this.rodaje.equalsIgnoreCase("andy")){
+            
+             Director.NroSeries_Andy = this.Restar_NroSeries_Rodaje(Director.NroSeries_Andy);
+            
+             System.out.println("Hola broski, este el nro de series actuales: de andy" + Director.NroSeries_Andy);
+             
+        }else{
+            
+             Director.NroSeries_Jose = this.Restar_NroSeries_Rodaje(Director.NroSeries_Jose);
+             
+             System.out.println("Hola broski, este el nro de series actuales: de jose" + Director.NroSeries_Andy);
+        }
+        
+        if(Director.NroSeries_Andy == 0 || Director.NroSeries_Jose == 0){
+            
+//            Proyecto_operativos.contador_dias_restantes = Proyecto_operativos.dias_entre_despachos;
+            this.ingresos_generales_num=Integer.parseInt(String.valueOf(this.ingresos_generales.getText()));
+
+            this.costos_generales_num=costos_generales_num+Float.parseFloat(String.valueOf(this.costos_text.getText()));
+            this.beneficios_generales_num= beneficios_generales_num+this.ingresos_generales_num-costos_generales_num;
+            this.costos_generales_reales.setText(String.valueOf(this.costos_generales_num));
+            this.beneficios_text.setText(String.valueOf(this.beneficios_generales_num));
+            this.cap_entregados=this.cap_entregados+1;
+            this.capitulos_entregados.setText(String.valueOf(this.cap_entregados));
+            this.text1.setForeground(Color.black);
+            this.text2.setForeground(Color.black);
+            this.text3.setForeground(Color.black);
+            this.costos_generales_reales.setForeground(Color.black);
+            this.capitulos_entregados.setForeground(Color.black);
+            this.beneficios_text.setForeground(Color.black);
+
+
+            if (id ==0){
+               Dashboard1.semaforo_final.release();
+               Dashboard.comparacion =beneficios_generales_num;
+               com = Dashboard.comparacion;
+               Dashboard.semaforo_final.acquire();
+
+
+            }
+            else if(id==1){
+                Dashboard.semaforo_final.release();
+                Dashboard1.comparacion =beneficios_generales_num;
+                com = Dashboard1.comparacion;
+                Dashboard1.semaforo_final.acquire();
+
+            }
+            if (id ==0 && com < Dashboard1.comparacion){
+                this.es_elmejor.setText("No es la mejor >:(");
+            }
+
+            if (id ==1 && com < Dashboard.comparacion){
+
+                this.es_elmejor.setText("No es la mejor >:(");
+            }
+            this.es_elmejor.setForeground(Color.red);
+            
+            Proyecto_operativos.keep = false;
+        }
+        
+        
+    }
+    
+    /**
+     * Resta en uno el valor entero que se le otorgue si se cumple que es > 0
+     * @param NroSeries_rodaje
+     * @return El valor recibido -1 SI ESE VALOR es > 0, de lo contrario, retorna el mismo valor 
+     */
+    private int Restar_NroSeries_Rodaje(int NroSeries_rodaje){
+        
+        if(NroSeries_rodaje > 0){
+//            System.out.println("Hola broski, este el nro de series actuales: " + NroSeries_rodaje);
+//            System.out.println("Hola broski, este el nro de series actuales: " + NroSeries_rodaje);
+                NroSeries_rodaje = NroSeries_rodaje  - 1;                                
+            return NroSeries_rodaje;
+        }else{
+            return NroSeries_rodaje;
+        }
     }
     
     @Override
@@ -196,56 +286,63 @@ public class Director extends Thread{
 //                    Toma su descanso de vigilación cada 30-90 minutos
                     
 //                }else if(pm.Contador_dias_restantes_rodaje() == 0 && this.Director_nuevo_dia_rodaje()){
-                }else if(pm.Contador_dias_restantes_rodaje() == 0){
+                }else if(pm.Contador_dias_restantes_rodaje() == 0 ){
 //                    ---------------------------------------
 //                    Aquí pondremos el método para agregar todos los capitulos creados a la serie
 //                    Y además resetearemos el contador a su valor original
                     
-//                    Proyecto_operativos.contador_dias_restantes = Proyecto_operativos.dias_entre_despachos;
-                    this.ingresos_generales_num=Integer.parseInt(String.valueOf(this.ingresos_generales.getText()));
-                    
-                    this.costos_generales_num=costos_generales_num+Float.parseFloat(String.valueOf(this.costos_text.getText()));
-                    this.beneficios_generales_num= beneficios_generales_num+this.ingresos_generales_num-costos_generales_num;
-                    this.costos_generales_reales.setText(String.valueOf(this.costos_generales_num));
-                    this.beneficios_text.setText(String.valueOf(this.beneficios_generales_num));
-                    this.cap_entregados=this.cap_entregados+1;
-                    this.capitulos_entregados.setText(String.valueOf(this.cap_entregados));
-                    this.text1.setForeground(Color.black);
-                    this.text2.setForeground(Color.black);
-                    this.text3.setForeground(Color.black);
-                    this.costos_generales_reales.setForeground(Color.black);
-                    this.capitulos_entregados.setForeground(Color.black);
-                    this.beneficios_text.setForeground(Color.black);
-                    
-                    
-                    if (id ==0){
-                       Dashboard1.semaforo_final.release();
-                       Dashboard.comparacion =beneficios_generales_num;
-                       com = Dashboard.comparacion;
-                       Dashboard.semaforo_final.acquire();
-                       
-                       
-                    }
-                    else if(id==1){
-                        Dashboard.semaforo_final.release();
-                        Dashboard1.comparacion =beneficios_generales_num;
-                        com = Dashboard1.comparacion;
-                        Dashboard1.semaforo_final.acquire();
-                         
-                    }
-                    if (id ==0 && com < Dashboard1.comparacion){
-                        this.es_elmejor.setText("No es la mejor >:(");
-                    }
-                    
-                    if (id ==1 && com < Dashboard.comparacion){
+                    if(this.rodaje.equalsIgnoreCase("andy") && Director.NroSeries_Andy != 0){
                         
-                        this.es_elmejor.setText("No es la mejor >:(");
+                    }else if(this.rodaje.equalsIgnoreCase("jose") && Director.NroSeries_Jose != 0){
+                        
+                    }else{
+                        
+//    //                    Proyecto_operativos.contador_dias_restantes = Proyecto_operativos.dias_entre_despachos;
+//                        this.ingresos_generales_num=Integer.parseInt(String.valueOf(this.ingresos_generales.getText()));
+//
+//                        this.costos_generales_num=costos_generales_num+Float.parseFloat(String.valueOf(this.costos_text.getText()));
+//                        this.beneficios_generales_num= beneficios_generales_num+this.ingresos_generales_num-costos_generales_num;
+//                        this.costos_generales_reales.setText(String.valueOf(this.costos_generales_num));
+//                        this.beneficios_text.setText(String.valueOf(this.beneficios_generales_num));
+//                        this.cap_entregados=this.cap_entregados+1;
+//                        this.capitulos_entregados.setText(String.valueOf(this.cap_entregados));
+//                        this.text1.setForeground(Color.black);
+//                        this.text2.setForeground(Color.black);
+//                        this.text3.setForeground(Color.black);
+//                        this.costos_generales_reales.setForeground(Color.black);
+//                        this.capitulos_entregados.setForeground(Color.black);
+//                        this.beneficios_text.setForeground(Color.black);
+//
+//
+//                        if (id ==0){
+//                           Dashboard1.semaforo_final.release();
+//                           Dashboard.comparacion =beneficios_generales_num;
+//                           com = Dashboard.comparacion;
+//                           Dashboard.semaforo_final.acquire();
+//
+//
+//                        }
+//                        else if(id==1){
+//                            Dashboard.semaforo_final.release();
+//                            Dashboard1.comparacion =beneficios_generales_num;
+//                            com = Dashboard1.comparacion;
+//                            Dashboard1.semaforo_final.acquire();
+//
+//                        }
+//                        if (id ==0 && com < Dashboard1.comparacion){
+//                            this.es_elmejor.setText("No es la mejor >:(");
+//                        }
+//
+//                        if (id ==1 && com < Dashboard.comparacion){
+//
+//                            this.es_elmejor.setText("No es la mejor >:(");
+//                        }
+//                        this.es_elmejor.setForeground(Color.red);
                     }
-                    this.es_elmejor.setForeground(Color.red);
                     
                     
                     
-                    
+                   
                     
                     this.resetear_contador_dias_restantes_rodaje();
                     
@@ -258,8 +355,9 @@ public class Director extends Thread{
                     
                     this.Falsear_Director_nuevo_dia_rodaje();
                     
-                    
-                    Proyecto_operativos.keep=false;
+//                    Revisa cuantas series faltan por hacer, si ya se hicieron todas, para la simulación
+                    this.StopIfNroSeries_Rodaje_Es0();
+//                    Proyecto_operativos.keep=false;
                                         
                 }else{
                     

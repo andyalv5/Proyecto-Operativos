@@ -4,17 +4,21 @@
  */
 package Interfaces;
 
+import Classes.Director;
 import Classes.SetLocationRelativeTo;
 import Classes.SetLocationRelativeToDashboard;
 import Leer_Escribir_JSON.JSONReaderWriter;
 import java.io.FileNotFoundException;
+import proyecto_operativos.Proyecto_operativos;
 
 /**
  *
  * @author AndyYJosé
  */
 public class MainFrame extends javax.swing.JFrame {
-
+    
+    public static int NroSeries_Andy;
+    
     /**
      * Creates new form MainFrame
      */
@@ -771,14 +775,25 @@ public class MainFrame extends javax.swing.JFrame {
      * Le da paso a los Dashboards
      */
     private void PasarSiguienteInterfaz(){
-//            Llama a la otra interfaz
+        
+//        Director.NroSeries_Andy = Integer.parseInt(this.Nro_series.getText());
+        Director.NroSeries_Jose = Integer.parseInt(this.Nro_series.getText());
+        
+        Director.NroSeries_Andy = Integer.parseInt(this.Nro_series.getText());
+        
+//        System.out.println(this.Nro_series.getText());
+//        System.out.println("NroSeries_Andy" + Director.NroSeries_Andy);
+//        System.out.println("NroSeries_Jose" + Director.NroSeries_Jose);
 
-            SetLocationRelativeToDashboard.SetLocationRelativeToDashboard();
+//        Llama a la otra interfaz
 
-            SetLocationRelativeTo.SetLocationRelativeTo();
 
-//            Cierra la interfaz actual
-            this.setVisible(false);
+        SetLocationRelativeToDashboard.SetLocationRelativeToDashboard();
+
+        SetLocationRelativeTo.SetLocationRelativeTo();
+
+//        Cierra la interfaz actual
+        this.setVisible(false);
     }
     
     private void btnAggUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAggUsuarioActionPerformed

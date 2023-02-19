@@ -30,6 +30,10 @@ public class Proyecto_operativos {
     
     
 //    Director:
+    
+//    public static int NroSeries_Andy;
+//    public static int NroSeries_Jose;
+    
 //    ------------------------------------------------------------------------
 //    Cantidad de dias entre despachos de series (NO CAMBIA)
     public static int dias_entre_despachos = 30;
@@ -61,8 +65,11 @@ public class Proyecto_operativos {
     public static Semaphore Contador_jose = new Semaphore(1);
     
 //    -----------------------------------------------------------------------
-
+    
+//    Lo que para todo
     public static volatile boolean keep = true;
+    
+    
     
     
 //    -----------------------------------------------------------------
