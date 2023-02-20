@@ -117,7 +117,7 @@ public class Ensamblador1 extends Thread{
                     p.acquire();
                     q.acquire();
                     r.acquire();
-                    for (int i = 0;i < Math.min(ensambladores , Math.min(intro_Prod, Math.min(inicio_Prod, Math.min(cierre_Prod, Math.min(Plot_Twist_Prod, Credito_Prod)))))-1;i++){
+                    for (int i = 0;i < Math.min(ensambladores , Math.min(intro_Prod, Math.min(inicio_Prod, Math.min(cierre_Prod, Math.min(Plot_Twist_Prod, Credito_Prod)))));i++){
                         capitulo = capitulo+1;
                         Dashboard.Jtext_Productores_Ensamblado.acquire();
                         this.ganancia_Velma= ganancia_Velma +((dinero*100)/150);
