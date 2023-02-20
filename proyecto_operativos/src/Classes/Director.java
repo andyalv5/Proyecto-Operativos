@@ -126,10 +126,12 @@ public class Director extends Thread{
 //            System.out.println("");
 //            Proyecto_operativos.contador_dias_restantes_andy = Proyecto_operativos.dias_entre_despachos;
 //            this.Contador_inter.setText(String.valueOf(Proyecto_operativos.contador_dias_restantes_andy));
+
+            this.cap_entregados=this.cap_entregados+1;
             Proyecto_operativos.contador_dias_restantes_andy = JSONReaderWriter.dias_entre_despachos;
             this.Contador_inter.setText(String.valueOf(Proyecto_operativos.contador_dias_restantes_andy));
         }else{
-            
+            this.cap_entregados=this.cap_entregados+1;
             Proyecto_operativos.contador_dias_restantes_jose = JSONReaderWriter.dias_entre_despachos;
             this.Contador_inter.setText(String.valueOf(Proyecto_operativos.contador_dias_restantes_jose));
         }
@@ -195,7 +197,6 @@ public class Director extends Thread{
             this.beneficios_generales_num= beneficios_generales_num+this.ingresos_generales_num-costos_generales_num;
             this.costos_generales_reales.setText(String.valueOf(this.costos_generales_num));
             this.beneficios_text.setText(String.valueOf(this.beneficios_generales_num));
-            this.cap_entregados=this.cap_entregados+1;
             this.capitulos_entregados.setText(String.valueOf(this.cap_entregados));
             this.text1.setForeground(Color.black);
             this.text2.setForeground(Color.black);

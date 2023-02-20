@@ -9,6 +9,7 @@ import Classes.SetLocationRelativeTo;
 import Classes.SetLocationRelativeToDashboard;
 import Leer_Escribir_JSON.JSONReaderWriter;
 import java.io.FileNotFoundException;
+import javax.swing.JOptionPane;
 import proyecto_operativos.Proyecto_operativos;
 
 /**
@@ -841,6 +842,7 @@ public class MainFrame extends javax.swing.JFrame {
                 
             }else if(JSONReaderWriter.isEmpty(this.Dia_en_segundos_MainFrame_text.getText()) || JSONReaderWriter.isEmpty(this.Dias_entre_despachos_MainFrame_text.getText()) || JSONReaderWriter.isEmpty(this.Productor_Intros_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Creditos_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Inicio_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Cierre_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Plot_Twist_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Ensamblador_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Intros_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Productor_Creditos_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Productor_Inicio_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Productor_Cierre_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Productor_Plot_Twist_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Ensamblador_VELMA.getText()) || JSONReaderWriter.isEmpty(this.parte_intro_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.parte_creditos_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.parte_inicio_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.parte_cierre_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.parte_plot_twist_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.Nro_series.getText())){
                 this.Mensaje.setText("Debe ingresar un numero > 0");
+                JOptionPane.showMessageDialog(null,"Debe ingresar un numero > 0","ERROR",JOptionPane.ERROR_MESSAGE);
                 
             }
             
