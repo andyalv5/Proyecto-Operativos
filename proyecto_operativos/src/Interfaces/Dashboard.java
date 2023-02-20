@@ -377,7 +377,7 @@ public class Dashboard extends javax.swing.JFrame {
         text1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         text1.setForeground(new java.awt.Color(0, 0, 0));
         text1.setText("Beneficios Totales:");
-        jPanel1.add(text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 310, -1, -1));
+        jPanel1.add(text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 340, -1, -1));
 
         EnsambladoTxt.setBackground(new java.awt.Color(0, 0, 0));
         EnsambladoTxt.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -816,13 +816,13 @@ public class Dashboard extends javax.swing.JFrame {
         es_el_mejor.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         es_el_mejor.setForeground(new java.awt.Color(255, 0, 0));
         es_el_mejor.setText("Esta Opción es Mejor!!!");
-        jPanel1.add(es_el_mejor, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 450, -1, -1));
+        jPanel1.add(es_el_mejor, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 460, -1, -1));
 
         text2.setBackground(new java.awt.Color(255, 255, 255));
         text2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         text2.setForeground(new java.awt.Color(0, 0, 0));
         text2.setText("Series Despachadas:");
-        jPanel1.add(text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 350, -1, -1));
+        jPanel1.add(text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 380, -1, -1));
 
         Costos_Totales_PD.setBackground(new java.awt.Color(0, 0, 0));
         Costos_Totales_PD.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -833,25 +833,25 @@ public class Dashboard extends javax.swing.JFrame {
         BeneficiosReal.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         BeneficiosReal.setForeground(new java.awt.Color(0, 0, 0));
         BeneficiosReal.setText("00");
-        jPanel1.add(BeneficiosReal, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 310, -1, -1));
+        jPanel1.add(BeneficiosReal, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 340, -1, -1));
 
         series_entregadas.setBackground(new java.awt.Color(0, 0, 0));
         series_entregadas.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         series_entregadas.setForeground(new java.awt.Color(0, 0, 0));
         series_entregadas.setText("00");
-        jPanel1.add(series_entregadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 350, -1, -1));
+        jPanel1.add(series_entregadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 380, -1, -1));
 
         text3.setBackground(new java.awt.Color(0, 0, 0));
         text3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         text3.setForeground(new java.awt.Color(0, 0, 0));
         text3.setText("Costos Totales:");
-        jPanel1.add(text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 390, -1, -1));
+        jPanel1.add(text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 420, -1, -1));
 
         costos_generales_reales.setBackground(new java.awt.Color(0, 0, 0));
         costos_generales_reales.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         costos_generales_reales.setForeground(new java.awt.Color(0, 0, 0));
         costos_generales_reales.setText("00");
-        jPanel1.add(costos_generales_reales, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 390, -1, -1));
+        jPanel1.add(costos_generales_reales, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 420, -1, -1));
 
         jLabel19.setBackground(new java.awt.Color(0, 0, 0));
         jLabel19.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N

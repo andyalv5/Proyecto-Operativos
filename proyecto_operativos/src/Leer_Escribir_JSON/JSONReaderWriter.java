@@ -420,6 +420,17 @@ public class JSONReaderWriter{
             return false;            
         }
     }
+    public static boolean isPositiveNumeric2(String string){
+        try{
+            
+            int var = Integer.parseInt(string);
+
+            return var >= 0;
+            
+        }catch(NumberFormatException e){            
+            return false;            
+        }
+    }
     /**
      * Evalua si es un booleano o no
      * @param string

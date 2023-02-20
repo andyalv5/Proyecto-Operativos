@@ -25,6 +25,26 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        this.parte_intro_max_MainFrame.setText("0");
+        this.parte_cierre_max_MainFrame.setText("0");
+        this.parte_creditos_max_MainFrame.setText("0");
+        this.parte_plot_twist_max_MainFrame.setText("0");
+        this.parte_inicio_max_MainFrame.setText("0");
+        this.Productor_Intros_TLOU.setText("0");
+        this.Productor_Intros_VELMA.setText("0");
+        this.Productor_Cierre_TLOU.setText("0");
+        this.Productor_Cierre_VELMA.setText("0");
+        this.Productor_Creditos_TLOU.setText("0");
+        this.Productor_Creditos_VELMA.setText("0");
+        this.Productor_Plot_Twist_TLOU.setText("0");
+        this.Productor_Plot_Twist_VELMA.setText("0");
+        this.Productor_Inicio_TLOU.setText("0");
+        this.Productor_Inicio_VELMA.setText("0");
+        this.Ensamblador_TLOU.setText("0");
+        this.Ensamblador_VELMA.setText("0");
+        this.Dia_en_segundos_MainFrame_text.setText("0");
+        this.Dias_entre_despachos_MainFrame_text.setText("0");
+        
         this.setLocationRelativeTo(null);
         
 //        Se abre JSON para poder trabajar
@@ -319,6 +339,13 @@ public class MainFrame extends javax.swing.JFrame {
         Dia_en_segundos_MainFrame_text.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Dia_en_segundos_MainFrame_text.setForeground(new java.awt.Color(255, 255, 255));
         Dia_en_segundos_MainFrame_text.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Dia_en_segundos_MainFrame_text.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                Dia_en_segundos_MainFrame_textInputMethodTextChanged(evt);
+            }
+        });
         Dia_en_segundos_MainFrame_text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Dia_en_segundos_MainFrame_textActionPerformed(evt);
@@ -799,7 +826,9 @@ public class MainFrame extends javax.swing.JFrame {
     
     private void btnAggUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAggUsuarioActionPerformed
         
+            
         try{
+            
             
             JSONReaderWriter jsnrw = new JSONReaderWriter();
             
@@ -813,36 +842,68 @@ public class MainFrame extends javax.swing.JFrame {
                 
 //                Ahora se pasa a la siguiente interfaz con los datos por defecto
                 this.PasarSiguienteInterfaz();
+            }
                 
-            }else if(JSONReaderWriter.isPositiveNumeric(this.Dia_en_segundos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric(this.Dias_entre_despachos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Intros_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Creditos_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Inicio_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Cierre_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Plot_Twist_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Ensamblador_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Intros_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Creditos_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Inicio_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Cierre_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Plot_Twist_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Ensamblador_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_intro_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_creditos_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_inicio_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_cierre_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_plot_twist_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.Nro_series.getText())){
+            else if(JSONReaderWriter.isPositiveNumeric2(this.Dia_en_segundos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Dias_entre_despachos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Intros_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Creditos_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Inicio_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Cierre_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Plot_Twist_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Ensamblador_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Intros_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Creditos_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Inicio_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Cierre_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Plot_Twist_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Ensamblador_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.parte_intro_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric2(this.parte_creditos_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric2(this.parte_inicio_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric2(this.parte_cierre_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric2(this.parte_plot_twist_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Nro_series.getText())){
+//                Valida si todos los campos son valores numericos mayores que cero
+//                Si se entra aquí, se debe escribir en el JSON los valores escritos en la interfaz
+                if(Integer.parseInt(this.Productor_Intros_TLOU.getText()) + Integer.parseInt(this.Productor_Plot_Twist_TLOU.getText())+Integer.parseInt(this.Productor_Cierre_TLOU.getText())+Integer.parseInt(this.Productor_Creditos_TLOU.getText()) + Integer.parseInt(this.Productor_Inicio_TLOU.getText()) > 19){
+                    this.Mensaje.setText("Revise los productores");
+                    JOptionPane.showMessageDialog(null,"La cantidad total de productores se encuentra por encima de 19","ERROR",JOptionPane.ERROR_MESSAGE);
+                    
+                    
+                }else if(Integer.parseInt(this.Productor_Intros_VELMA.getText()) + Integer.parseInt(this.Productor_Plot_Twist_VELMA.getText())+Integer.parseInt(this.Productor_Cierre_VELMA.getText())+Integer.parseInt(this.Productor_Creditos_VELMA.getText()) +Integer.parseInt(this.Productor_Inicio_VELMA.getText()) > 18){
+                    this.Mensaje.setText("Revise los productores");
+                    JOptionPane.showMessageDialog(null,"La cantidad total de productores se encuentra por encima de 19","ERROR",JOptionPane.ERROR_MESSAGE);
+                    
+                    
+                }else if(Integer.parseInt(this.Productor_Intros_VELMA.getText()) ==0|| Integer.parseInt(this.Productor_Plot_Twist_VELMA.getText())==0||Integer.parseInt(this.Productor_Cierre_VELMA.getText())==0||Integer.parseInt(this.Productor_Creditos_VELMA.getText()) ==0||Integer.parseInt(this.Productor_Inicio_VELMA.getText()) ==0|| 
+                        Integer.parseInt(this.parte_cierre_max_MainFrame.getText())==0||Integer.parseInt(this.parte_creditos_max_MainFrame.getText())==0||Integer.parseInt(this.parte_inicio_max_MainFrame.getText())==0||Integer.parseInt(this.parte_plot_twist_max_MainFrame.getText())==0||Integer.parseInt(this.parte_intro_max_MainFrame.getText())==0|| Integer.parseInt(this.Dia_en_segundos_MainFrame_text.getText()) ==0||Integer.parseInt(this.Dias_entre_despachos_MainFrame_text.getText()) == 0 ||Integer.parseInt(this.Nro_series.getText()) == 0 ){
+                    this.Mensaje.setText("Debe ingresar un numero > 0");
+                    JOptionPane.showMessageDialog(null,"Debe ingresar un numero > 0","ERROR",JOptionPane.ERROR_MESSAGE);
+                    
+                
+                }    
+            else if(JSONReaderWriter.isPositiveNumeric(this.Dia_en_segundos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric(this.Dias_entre_despachos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Intros_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Creditos_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Inicio_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Cierre_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Plot_Twist_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Ensamblador_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Intros_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Creditos_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Inicio_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Cierre_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Plot_Twist_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Ensamblador_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_intro_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_creditos_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_inicio_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_cierre_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_plot_twist_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.Nro_series.getText())){
 //                Valida si todos los campos son valores numericos mayores que cero
 //                Si se entra aquí, se debe escribir en el JSON los valores escritos en la interfaz
                 
-//                Casteamos las cajitas de checkbox a String
-                String Capacidad_infinita_intro = String.valueOf(this.Capacidad_infinita_intro_checkbox.isSelected());
-                String Capacidad_infinita_credito = String.valueOf(this.Capacidad_infinita_creditos_checkbox.isSelected());
-                String Capacidad_infinita_inicio = String.valueOf(this.Capacidad_infinita_inicio_checkbox.isSelected());
-                String Capacidad_infinita_cierre = String.valueOf(this.Capacidad_infinita_cierre_checkbox.isSelected());
-                String Capacidad_infinita_plot_twist = String.valueOf(this.Capacidad_infinita_plot_twist_checkbox.isSelected());
-                
-                
-                
-//                Se escribe en el JSON todos los datos recopilados
-                jsnrw.Writer(this.Dia_en_segundos_MainFrame_text.getText(), this.Dias_entre_despachos_MainFrame_text.getText(), this.parte_intro_max_MainFrame.getText(), Capacidad_infinita_intro, this.parte_creditos_max_MainFrame.getText(), Capacidad_infinita_credito, this.parte_inicio_max_MainFrame.getText(), Capacidad_infinita_inicio, this.parte_cierre_max_MainFrame.getText(), Capacidad_infinita_cierre, this.parte_plot_twist_max_MainFrame.getText(), Capacidad_infinita_plot_twist, this.Productor_Intros_TLOU.getText(), this.Productor_Creditos_TLOU.getText(), this.Productor_Inicio_TLOU.getText(), this.Productor_Cierre_TLOU.getText(), this.Productor_Plot_Twist_TLOU.getText(), this.Productor_Intros_VELMA.getText(), this.Productor_Creditos_VELMA.getText(), this.Productor_Inicio_VELMA.getText(), this.Productor_Cierre_VELMA.getText(), this.Productor_Plot_Twist_VELMA.getText(), this.Ensamblador_TLOU.getText(), this.Ensamblador_VELMA.getText(), String.valueOf(JSONReaderWriter.Ingresos_Rodaje_jose), String.valueOf(JSONReaderWriter.Ingresos_Rodaje_andy), String.valueOf(JSONReaderWriter.Costos_Rodaje_jose), String.valueOf(JSONReaderWriter.Costos_Rodaje_andy));
-//                Se lee el JSON para que se carguen los datos en el programa
-                jsnrw.Reader();                
-//                Ahora se pasa a la siguiente interfaz
-                this.PasarSiguienteInterfaz();
+    //                Casteamos las cajitas de checkbox a String
+                    String Capacidad_infinita_intro = String.valueOf(this.Capacidad_infinita_intro_checkbox.isSelected());
+                    String Capacidad_infinita_credito = String.valueOf(this.Capacidad_infinita_creditos_checkbox.isSelected());
+                    String Capacidad_infinita_inicio = String.valueOf(this.Capacidad_infinita_inicio_checkbox.isSelected());
+                    String Capacidad_infinita_cierre = String.valueOf(this.Capacidad_infinita_cierre_checkbox.isSelected());
+                    String Capacidad_infinita_plot_twist = String.valueOf(this.Capacidad_infinita_plot_twist_checkbox.isSelected());
+
+
+
+    //                Se escribe en el JSON todos los datos recopilados
+                    jsnrw.Writer(this.Dia_en_segundos_MainFrame_text.getText(), this.Dias_entre_despachos_MainFrame_text.getText(), this.parte_intro_max_MainFrame.getText(), Capacidad_infinita_intro, this.parte_creditos_max_MainFrame.getText(), Capacidad_infinita_credito, this.parte_inicio_max_MainFrame.getText(), Capacidad_infinita_inicio, this.parte_cierre_max_MainFrame.getText(), Capacidad_infinita_cierre, this.parte_plot_twist_max_MainFrame.getText(), Capacidad_infinita_plot_twist, this.Productor_Intros_TLOU.getText(), this.Productor_Creditos_TLOU.getText(), this.Productor_Inicio_TLOU.getText(), this.Productor_Cierre_TLOU.getText(), this.Productor_Plot_Twist_TLOU.getText(), this.Productor_Intros_VELMA.getText(), this.Productor_Creditos_VELMA.getText(), this.Productor_Inicio_VELMA.getText(), this.Productor_Cierre_VELMA.getText(), this.Productor_Plot_Twist_VELMA.getText(), this.Ensamblador_TLOU.getText(), this.Ensamblador_VELMA.getText(), String.valueOf(JSONReaderWriter.Ingresos_Rodaje_jose), String.valueOf(JSONReaderWriter.Ingresos_Rodaje_andy), String.valueOf(JSONReaderWriter.Costos_Rodaje_jose), String.valueOf(JSONReaderWriter.Costos_Rodaje_andy));
+    //                Se lee el JSON para que se carguen los datos en el programa
+                    jsnrw.Reader();                
+    //                Ahora se pasa a la siguiente interfaz
+                    this.PasarSiguienteInterfaz();
+                }
+            }
             
-            }else if(JSONReaderWriter.isEmpty(this.Dia_en_segundos_MainFrame_text.getText()) && JSONReaderWriter.isEmpty(this.Dias_entre_despachos_MainFrame_text.getText()) && JSONReaderWriter.isEmpty(this.Productor_Intros_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Creditos_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Inicio_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Cierre_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Plot_Twist_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Ensamblador_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Intros_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Productor_Creditos_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Productor_Inicio_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Productor_Cierre_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Productor_Plot_Twist_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Ensamblador_VELMA.getText()) && JSONReaderWriter.isEmpty(this.parte_intro_max_MainFrame.getText()) && JSONReaderWriter.isEmpty(this.parte_creditos_max_MainFrame.getText()) && JSONReaderWriter.isEmpty(this.parte_inicio_max_MainFrame.getText()) && JSONReaderWriter.isEmpty(this.parte_cierre_max_MainFrame.getText()) && JSONReaderWriter.isEmpty(this.parte_plot_twist_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.Nro_series.getText())){
+            else if(JSONReaderWriter.isEmpty(this.Dia_en_segundos_MainFrame_text.getText()) && JSONReaderWriter.isEmpty(this.Dias_entre_despachos_MainFrame_text.getText()) && JSONReaderWriter.isEmpty(this.Productor_Intros_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Creditos_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Inicio_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Cierre_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Plot_Twist_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Ensamblador_TLOU.getText()) && JSONReaderWriter.isEmpty(this.Productor_Intros_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Productor_Creditos_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Productor_Inicio_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Productor_Cierre_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Productor_Plot_Twist_VELMA.getText()) && JSONReaderWriter.isEmpty(this.Ensamblador_VELMA.getText()) && JSONReaderWriter.isEmpty(this.parte_intro_max_MainFrame.getText()) && JSONReaderWriter.isEmpty(this.parte_creditos_max_MainFrame.getText()) && JSONReaderWriter.isEmpty(this.parte_inicio_max_MainFrame.getText()) && JSONReaderWriter.isEmpty(this.parte_cierre_max_MainFrame.getText()) && JSONReaderWriter.isEmpty(this.parte_plot_twist_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.Nro_series.getText())){
 //                Si entra aqui, significa que está todo vacío, por lo tanto, tomamos el JSON por defecto
 
-                this.PasarSiguienteInterfaz();
+                this.Mensaje.setText("Introduzca los datos menor");
+                JOptionPane.showMessageDialog(null,"Introduzca los datos menor","ERROR",JOptionPane.ERROR_MESSAGE);
+                
                 
                 
             }else if(JSONReaderWriter.isEmpty(this.Dia_en_segundos_MainFrame_text.getText()) || JSONReaderWriter.isEmpty(this.Dias_entre_despachos_MainFrame_text.getText()) || JSONReaderWriter.isEmpty(this.Productor_Intros_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Creditos_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Inicio_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Cierre_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Plot_Twist_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Ensamblador_TLOU.getText()) || JSONReaderWriter.isEmpty(this.Productor_Intros_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Productor_Creditos_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Productor_Inicio_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Productor_Cierre_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Productor_Plot_Twist_VELMA.getText()) || JSONReaderWriter.isEmpty(this.Ensamblador_VELMA.getText()) || JSONReaderWriter.isEmpty(this.parte_intro_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.parte_creditos_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.parte_inicio_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.parte_cierre_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.parte_plot_twist_max_MainFrame.getText()) || JSONReaderWriter.isEmpty(this.Nro_series.getText())){
                 this.Mensaje.setText("Debe ingresar un numero > 0");
                 JOptionPane.showMessageDialog(null,"Debe ingresar un numero > 0","ERROR",JOptionPane.ERROR_MESSAGE);
+            
+                
+                
+            }else{
+                this.Mensaje.setText("Dato invalido");
+                JOptionPane.showMessageDialog(null,"Tipo de dato invalido","ERROR",JOptionPane.ERROR_MESSAGE);
+            
                 
             }
             
@@ -963,6 +1024,10 @@ public class MainFrame extends javax.swing.JFrame {
     private void MensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MensajeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MensajeActionPerformed
+
+    private void Dia_en_segundos_MainFrame_textInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_Dia_en_segundos_MainFrame_textInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Dia_en_segundos_MainFrame_textInputMethodTextChanged
 
     /**
      * @param args the command line arguments
