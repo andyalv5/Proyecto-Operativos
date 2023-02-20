@@ -62,6 +62,12 @@ public class Dashboard1 extends javax.swing.JFrame {
     public static Semaphore semaforo_intro1 = new Semaphore(1);
     public static Semaphore semaforo_final = new Semaphore(0);
     
+    public static Semaphore semaforo_empty_intro = new Semaphore(0);
+    public static Semaphore semaforo_empty_credito = new Semaphore(0);
+    public static Semaphore semaforo_empty_inicio = new Semaphore(0);
+    public static Semaphore semaforo_empty_plot_twist = new Semaphore(0);
+    public static Semaphore semaforo_empty_cierre = new Semaphore(0);
+    
 //    Semaforos para los JtextosFields
     public static Semaphore Jtext_Productores_Intro1 = new Semaphore(1);
     public static Semaphore Jtext_Productores_Credito1 = new Semaphore(1);
@@ -70,11 +76,11 @@ public class Dashboard1 extends javax.swing.JFrame {
     public static Semaphore Jtext_Productores_Cierre1 = new Semaphore(1);
     public static Semaphore Jtext_Productores_Plot_Twist1 = new Semaphore(1);
     
-    public static Productores_Intro Dhilo1 = new Productores_Intro(drive_Intro1, semaforo_intro1,1,tamanio_Intro1,1);
-    public static Productor_Cierre Dhilo2 = new Productor_Cierre(drive_Cierre1, semaforo_cie1,1,tamanio_Cierre1,2);
-    public static Productor_Inicio Dhilo3 = new Productor_Inicio(drive_Inicio1, semaforo_ini1,1,tamanio_Inicio1,2);
-    public static Productor_Credito Dhilo4 = new Productor_Credito(drive_credito1, semaforo_con1,1,tamanio_credito1,1);
-    public static Productor_Plot_Twist Dhilo5 = new Productor_Plot_Twist(drive_Plot_Twist1, semaforo_PT1,1,tamanio_Plot_Twist1,2);
+    public static Productores_Intro Dhilo1 = new Productores_Intro(drive_Intro1, semaforo_empty_intro,semaforo_intro1,1,tamanio_Intro1,1);
+    public static Productor_Cierre Dhilo2 = new Productor_Cierre(drive_Cierre1, semaforo_empty_cierre,semaforo_cie1,1,tamanio_Cierre1,2);
+    public static Productor_Inicio Dhilo3 = new Productor_Inicio(drive_Inicio1, semaforo_empty_inicio,semaforo_ini1,1,tamanio_Inicio1,2);
+    public static Productor_Credito Dhilo4 = new Productor_Credito(drive_credito1,semaforo_empty_credito, semaforo_con1,1,tamanio_credito1,1);
+    public static Productor_Plot_Twist Dhilo5 = new Productor_Plot_Twist(drive_Plot_Twist1,semaforo_empty_plot_twist, semaforo_PT1,1,tamanio_Plot_Twist1,2);
     public static Ensamblador1 Dhilo6 = new Ensamblador1(Dhilo1,Dhilo2,Dhilo3,Dhilo4,Dhilo5,semaforo_intro1,semaforo_cie1,semaforo_ini1,semaforo_con1,semaforo_PT1,1100);
   
     

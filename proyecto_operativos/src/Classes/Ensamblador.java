@@ -111,7 +111,11 @@ public class Ensamblador extends Thread{
                 
                 Thread.sleep(Proyecto_operativos.dia_en_ms);
                 if(intro_Prod>0 && inicio_Prod>0 && cierre_Prod>0 && Plot_Twist_Prod>0 && Credito_Prod>0 && ensambladores>0){
-                    
+                    hilo1.empty.acquire(2);
+                    hilo2.empty.acquire(1);
+                    hilo3.empty.acquire(1);
+                    hilo4.empty.acquire(2);
+                    hilo5.empty.acquire(1);
                     s.acquire();
                     o.acquire();
                     p.acquire();
@@ -125,7 +129,12 @@ public class Ensamblador extends Thread{
                         
                         hilo1.free_space(2);
                         hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);
-                        hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);
+                        if (hilo1.get_Pro_per_Day()-1<0){
+                            hilo1.set_Pro_per_Day(0);
+                        }
+                        else{
+                            hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);
+                        }
                         
                         
                         
@@ -141,7 +150,12 @@ public class Ensamblador extends Thread{
                         
                         hilo4.free_space(2);
                         hilo4.set_Pro_per_Day(hilo4.Pro_per_Day-1);
-                        hilo4.set_Pro_per_Day(hilo4.Pro_per_Day-1);
+                        if (hilo4.get_Pro_per_Day()-1<0){
+                            hilo4.set_Pro_per_Day(0);
+                        }
+                        else{
+                            hilo4.set_Pro_per_Day(hilo4.Pro_per_Day-1);
+                        }
                         
                         
                         

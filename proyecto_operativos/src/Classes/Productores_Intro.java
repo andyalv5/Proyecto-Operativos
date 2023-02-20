@@ -23,16 +23,18 @@ public class Productores_Intro extends Thread{
     public int productores;
     private int max_Drive;
     private int num;
+    Semaphore empty;
     
     javax.swing.JTextField Cant_Productores_Intro;
     
     
-    public Productores_Intro(Semaphore drive_Intro, Semaphore s,int productores,int max_Drive,int num) {
+    public Productores_Intro(Semaphore drive_Intro,Semaphore empty, Semaphore s,int productores,int max_Drive,int num) {
         this.drive_Intro = drive_Intro;
         this.s = s;
         this.max_Drive = max_Drive;
         this.productores=productores;
         this.num=num;
+        this.empty=empty;
     }
     
     public void free_space(int n){        
@@ -126,7 +128,7 @@ public class Productores_Intro extends Thread{
                     s.release();
                 }
                 System.out.println("Se hicieron " + Pro_per_Day + " intros");
-             
+                empty.release(Pro_per_Day);
                     
             }
             catch (InterruptedException ex) {

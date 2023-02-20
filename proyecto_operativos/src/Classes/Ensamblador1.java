@@ -110,14 +110,20 @@ public class Ensamblador1 extends Thread{
                 Thread.sleep(Proyecto_operativos.dia_en_ms);
                 
                 Thread.sleep(Proyecto_operativos.dia_en_ms);
-                if(intro_Prod>0 && inicio_Prod>0 && cierre_Prod>0 && Plot_Twist_Prod>0 && Credito_Prod>0 && ensambladores>0){
+                for (int i = 0;i < Math.min(ensambladores , Math.min(intro_Prod, Math.min(inicio_Prod, Math.min(cierre_Prod, Math.min(Plot_Twist_Prod, Credito_Prod)))));i++){
+                    if(intro_Prod>0 && inicio_Prod>1 && cierre_Prod>1 && Plot_Twist_Prod>1 && Credito_Prod>0 && ensambladores>0){
+                        hilo1.empty.acquire(1);
+                        hilo2.empty.acquire(2);
+                        hilo3.empty.acquire(2);
+                        hilo4.empty.acquire(1);
+                        hilo5.empty.acquire(2);
+                        s.acquire();
+                        o.acquire();
+                        p.acquire();
+                        q.acquire();
+                        r.acquire();
                     
-                    s.acquire();
-                    o.acquire();
-                    p.acquire();
-                    q.acquire();
-                    r.acquire();
-                    for (int i = 0;i < Math.min(ensambladores , Math.min(intro_Prod, Math.min(inicio_Prod, Math.min(cierre_Prod, Math.min(Plot_Twist_Prod, Credito_Prod)))));i++){
+                        
                         capitulo = capitulo+1;
                         Dashboard.Jtext_Productores_Ensamblado.acquire();
                         this.ganancia_Velma= ganancia_Velma +((dinero*100)/150);
@@ -130,13 +136,24 @@ public class Ensamblador1 extends Thread{
                         
                         hilo2.free_space(2);
                         hilo2.set_Pro_per_Day(hilo2.Pro_per_Day-1);
-                        hilo2.set_Pro_per_Day(hilo2.Pro_per_Day-1);
+                        if (hilo2.get_Pro_per_Day()-1<0){
+                            hilo2.set_Pro_per_Day(0);
+                        }
+                        else{
+                            hilo2.set_Pro_per_Day(hilo2.Pro_per_Day-1);
+                        }
                         
                        
                         
                         hilo3.free_space(2);
                         hilo3.set_Pro_per_Day(hilo3.Pro_per_Day-1);
-                        hilo3.set_Pro_per_Day(hilo3.Pro_per_Day-1);
+                        if (hilo3.get_Pro_per_Day()-1<0){
+                            hilo3.set_Pro_per_Day(0);
+                        }
+                        else{
+                            hilo3.set_Pro_per_Day(hilo3.Pro_per_Day-1);
+                        }
+                        
                         
                       
                         
@@ -150,22 +167,24 @@ public class Ensamblador1 extends Thread{
                         if (this.capitulo_Counter==0){
                             hilo5.free_space(2);
                             hilo5.set_Pro_per_Day(hilo5.Pro_per_Day-1);
-                            hilo5.set_Pro_per_Day(hilo5.Pro_per_Day-1);
+                            if (hilo5.get_Pro_per_Day()-1<0){
+                                hilo5.set_Pro_per_Day(0);
+                            }
+                            else{
+                                hilo5.set_Pro_per_Day(hilo5.Pro_per_Day-1);
+                            }
+                        
                             
                             capitulo_Counter =5;
                         }
                         
                         System.out.println("Se ensamblo "+capitulo+" capitulos");
-                        
+                        r.release();
+                        q.release();
+                        p.release();
+                        o.release();    
+                        s.release();   
                     }
-                    
-                    
-                r.release();
-                q.release();
-                p.release();
-                o.release();    
-                s.release();    
-                    
                     
                 }
             } catch (InterruptedException ex) {

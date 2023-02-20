@@ -22,13 +22,15 @@ public class Productor_Cierre extends Thread{
     private int num;
     Semaphore drive_Cierre;
     Semaphore s;
+    Semaphore empty;
     
-    public Productor_Cierre(Semaphore drive_Cierre, Semaphore s, int productores,int max_Drive,int num) {
+    public Productor_Cierre(Semaphore drive_Cierre,Semaphore empty, Semaphore s, int productores,int max_Drive,int num) {
         this.drive_Cierre=drive_Cierre;
         this.s=s;
         this.productores=productores;
         this.max_Drive = max_Drive;
         this.num=num;
+        this.empty=empty;
     }
     
     public int get_Pro_per_Day(){
@@ -107,6 +109,7 @@ public class Productor_Cierre extends Thread{
                         Pro_per_Day =0;
                         s.release();
                     }
+                    empty.release(Pro_per_Day);
                     System.out.println("Se hicieron "+Pro_per_Day+" Cierres");
                   
 

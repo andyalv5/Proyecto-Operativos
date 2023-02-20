@@ -22,13 +22,15 @@ public class Productor_Plot_Twist extends Thread{
     public int Pro_per_Day;
     Semaphore drive_Plot_Twist;
     Semaphore s;
+    Semaphore empty;
     
-    public Productor_Plot_Twist(Semaphore drive_Plot_Twist, Semaphore s, int productores,int max_Drive,int num) {
+    public Productor_Plot_Twist(Semaphore drive_Plot_Twist,Semaphore empty, Semaphore s, int productores,int max_Drive,int num) {
         this.drive_Plot_Twist=drive_Plot_Twist;
         this.s=s;
         this.productores = productores;
         this.max_Drive= max_Drive;
         this.num=num;
+        this.empty=empty;
     }
     
     public int get_Pro_per_Day(){
@@ -99,7 +101,7 @@ public class Productor_Plot_Twist extends Thread{
                             s.release();
                         }
                     System.out.println("Se hicieron "+Pro_per_Day+" plot twist");
-                
+                    empty.release(Pro_per_Day);
                     
                         
                     }

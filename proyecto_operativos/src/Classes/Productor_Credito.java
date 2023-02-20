@@ -21,14 +21,16 @@ public class Productor_Credito extends Thread{
     public int Pro_per_Day;
     Semaphore drive_Credito;
     Semaphore s;
+    Semaphore empty;
     private int num;
     
-    public Productor_Credito(Semaphore drive_Credito, Semaphore s,int productores,int max_Drive,int num) {
+    public Productor_Credito(Semaphore drive_Credito,Semaphore empty, Semaphore s,int productores,int max_Drive,int num) {
         this.drive_Credito=drive_Credito;
         this.s=s;
         this.productores =productores;
         this.max_Drive =max_Drive;
         this.num = num;
+        this.empty=empty;
     }
     
     public int get_Pro_per_Day(){
@@ -99,7 +101,7 @@ public class Productor_Credito extends Thread{
                         Pro_per_Day =0;
                         s.release();
                     }
-                    
+                    empty.release(Pro_per_Day);
                     System.out.println("Se hicieron "+Pro_per_Day+" Creditos");
                     
                 } catch (InterruptedException ex) {

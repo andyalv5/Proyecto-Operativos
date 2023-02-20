@@ -28,6 +28,7 @@ public class Pago1 extends Thread{
     this.director=dir_andy;
     this.manager=pm_andy;
     
+    
     }
     
     @Override

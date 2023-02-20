@@ -61,6 +61,17 @@ public class Dashboard extends javax.swing.JFrame {
     public static Semaphore semaforo_intro = new Semaphore(1);
     public static Semaphore semaforo_final = new Semaphore(0);
     
+    public static Semaphore semaforo_empty_intro = new Semaphore(0);
+    public static Semaphore semaforo_empty_credito = new Semaphore(0);
+    public static Semaphore semaforo_empty_inicio = new Semaphore(0);
+    public static Semaphore semaforo_empty_plot_twist = new Semaphore(0);
+    public static Semaphore semaforo_empty_cierre = new Semaphore(0);
+    
+    
+    
+    
+    
+    
 //    Semaforos para los JtextosFields
     public static Semaphore Jtext_Productores_Intro = new Semaphore(1);
     public static Semaphore Jtext_Productores_Credito = new Semaphore(1);
@@ -69,11 +80,11 @@ public class Dashboard extends javax.swing.JFrame {
     public static Semaphore Jtext_Productores_Cierre = new Semaphore(1);
     public static Semaphore Jtext_Productores_Plot_Twist = new Semaphore(1);
     
-    public static Productores_Intro hilo1 = new Productores_Intro(drive_Intro, semaforo_intro,1,tamanio_Intro,2);
-    public static Productor_Cierre hilo2 = new Productor_Cierre(drive_Cierre, semaforo_cie,1,tamanio_Cierre,1);
-    public static Productor_Inicio hilo3 = new Productor_Inicio(drive_Inicio, semaforo_ini,1,tamanio_Inicio,1);
-    public static Productor_Credito hilo4 = new Productor_Credito(drive_credito, semaforo_con,1,tamanio_credito,2);
-    public static Productor_Plot_Twist hilo5 = new Productor_Plot_Twist(drive_Plot_Twist, semaforo_PT,1,tamanio_Plot_Twist,1);
+    public static Productores_Intro hilo1 = new Productores_Intro(drive_Intro,semaforo_empty_intro, semaforo_intro,1,tamanio_Intro,2);
+    public static Productor_Cierre hilo2 = new Productor_Cierre(drive_Cierre,semaforo_empty_cierre ,semaforo_cie,1,tamanio_Cierre,1);
+    public static Productor_Inicio hilo3 = new Productor_Inicio(drive_Inicio,semaforo_empty_inicio, semaforo_ini,1,tamanio_Inicio,1);
+    public static Productor_Credito hilo4 = new Productor_Credito(drive_credito,semaforo_empty_credito, semaforo_con,1,tamanio_credito,2);
+    public static Productor_Plot_Twist hilo5 = new Productor_Plot_Twist(drive_Plot_Twist,semaforo_empty_plot_twist, semaforo_PT,1,tamanio_Plot_Twist,1);
     public static Ensamblador hilo6 = new Ensamblador(hilo1,hilo2,hilo3,hilo4,hilo5,semaforo_intro,semaforo_cie,semaforo_ini,semaforo_con,semaforo_PT,950);
     
 ////    Aqui tengo el project manager trabajando con la cedula de andy

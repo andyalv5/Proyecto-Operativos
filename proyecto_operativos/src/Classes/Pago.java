@@ -18,6 +18,7 @@ import static Interfaces.Dashboard1.Dhilo3;
 import static Interfaces.Dashboard1.Dhilo4;
 import static Interfaces.Dashboard1.Dhilo5;
 import static Interfaces.Dashboard1.Dhilo6;
+import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import proyecto_operativos.Proyecto_operativos;

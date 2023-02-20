@@ -22,13 +22,15 @@ public class Productor_Inicio extends Thread{
     public int Pro_per_Day;
     Semaphore drive_Inicio;
     Semaphore s;
+    Semaphore empty;
     
-    public Productor_Inicio(Semaphore drive_Inicio, Semaphore s, int productores, int max_Drive,int num) {
+    public Productor_Inicio(Semaphore drive_Inicio,Semaphore empty, Semaphore s, int productores, int max_Drive,int num) {
         this.drive_Inicio=drive_Inicio;
         this.s=s;
         this.productores=productores;
         this.max_Drive =max_Drive;
         this.num=num;
+        this.empty=empty;
         
     }
     
@@ -106,7 +108,7 @@ public class Productor_Inicio extends Thread{
                         Pro_per_Day =0;
                         s.release();
                     }
-
+                    empty.release(Pro_per_Day);
 
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Productores_Intro.class.getName()).log(Level.SEVERE, null, ex);
