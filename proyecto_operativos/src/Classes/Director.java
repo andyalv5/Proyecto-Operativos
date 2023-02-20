@@ -61,8 +61,10 @@ public class Director extends Thread{
     
     public static volatile int NroSeries_Andy;
     public static volatile int NroSeries_Jose;
-        
-    public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter, javax.swing.JLabel Veces_PM_atrapado, javax.swing.JLabel beneficios_text, javax.swing.JLabel costos_text, javax.swing.JLabel Es_el_mejor, javax.swing.JLabel texto1, javax.swing.JLabel texto2, javax.swing.JLabel texto3, javax.swing.JLabel series_Entregadas, javax.swing.JLabel ingresos_generales ,javax.swing.JLabel costos_generales_reales,int id){
+    
+    javax.swing.JLabel DirectorHaciendo;
+    
+    public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter, javax.swing.JLabel Veces_PM_atrapado, javax.swing.JLabel beneficios_text, javax.swing.JLabel costos_text, javax.swing.JLabel Es_el_mejor, javax.swing.JLabel texto1, javax.swing.JLabel texto2, javax.swing.JLabel texto3, javax.swing.JLabel series_Entregadas, javax.swing.JLabel ingresos_generales ,javax.swing.JLabel costos_generales_reales,int id, javax.swing.JLabel DirectorHaciendo){
         this.pm = pm;
         this.rodaje = rodaje;
         this.Contador_inter = Contador_inter;
@@ -78,6 +80,8 @@ public class Director extends Thread{
         this.ingresos_generales= ingresos_generales;
         this.costos_generales_reales= costos_generales_reales;
         this.id=id;
+        
+        this.DirectorHaciendo = DirectorHaciendo;
         
     }
     
@@ -148,6 +152,8 @@ public class Director extends Thread{
             
         }
     }
+    
+    
     /**
      * Vuelve falso a que pasó un nuevo en su rodaje respectivo
      */
@@ -224,6 +230,9 @@ public class Director extends Thread{
             }
             this.es_elmejor.setForeground(Color.red);
             
+            
+            
+            
             Proyecto_operativos.keep = false;
         }
         
@@ -267,6 +276,9 @@ public class Director extends Thread{
                     
 //                    genera un numero random de 30 a 90 min en base al día establecido
                     random = (int)(Math.random()*((double)(Proyecto_operativos.dia_en_ms)/24 + (double)(Proyecto_operativos.dia_en_ms)/24/60) + (double)(Proyecto_operativos.dia_en_ms)/24/2);
+                    
+//                    Se prepara para ver en el periodo aleatorio calculado de tiempo
+                    this.DirectorHaciendo.setText("va a vigilar PM");
                     
                     Thread.sleep(random);
                     
@@ -343,8 +355,9 @@ public class Director extends Thread{
                     
                     
                    
-                    
+                    this.DirectorHaciendo.setText("Entregando serie");
                     this.resetear_contador_dias_restantes_rodaje();
+                    this.DirectorHaciendo.setText("Series entregadas");
                     
                     
                     
@@ -381,13 +394,16 @@ public class Director extends Thread{
         
         if(this.pm.Rick_y_Morty == true){
             
+            this.DirectorHaciendo.setText("pilló al PM y está restandole el sueldo");
+            
             System.out.println("Director: Te vi menooor");
-            this.sueldo_al_payaso =sueldo_al_payaso-1;
             
 //            Medimos las horas que tarda el Director 12-18 horas aleatoriamente
             int random2 = (int)(Math.random()*Proyecto_operativos.dia_en_ms*6/24 + Proyecto_operativos.dia_en_ms*12/24);
             
             Thread.sleep(random2);
+            
+            this.sueldo_al_payaso = sueldo_al_payaso-1;
             
             //Se agrega +1 a las veces que fue descubierto flojeando al Project_manager
 //            Project_manager.Veces_descubierto_flojeando++;
@@ -395,6 +411,8 @@ public class Director extends Thread{
             
             
         }else{
+            
+            this.DirectorHaciendo.setText("Dejó de vigilar al PM");
             System.out.println("Director: A la proxima te veo >.>");
 
         }

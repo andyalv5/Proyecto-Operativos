@@ -163,7 +163,7 @@ public class Dashboard extends javax.swing.JFrame {
     //    Aqui tengo el project manager trabajando con la cedula de andy
         Project_manager pm_andy = new Project_manager(Proyecto_operativos.ci_Andy, "andy", this.Contador);
     //    Aqui le indico al director de andy a que productor vigilar, y además, le indico que es el director de andy
-        Director dir_andy = new Director(pm_andy, "andy", this.Contador, this.Veces_PM_atrapado,this.BeneficiosReal,this.Costos_Totales_PD,this.es_el_mejor,this.text1,this.text2,this.text3,this.series_entregadas,this.Ganancia_Capitulo,this.costos_generales_reales,1);
+        Director dir_andy = new Director(pm_andy, "andy", this.Contador, this.Veces_PM_atrapado,this.BeneficiosReal,this.Costos_Totales_PD,this.es_el_mejor,this.text1,this.text2,this.text3,this.series_entregadas,this.Ganancia_Capitulo,this.costos_generales_reales,1, this.DirectorHaciendo);
         
         hilo1.start();
         hilo2.start();
@@ -346,6 +346,10 @@ public class Dashboard extends javax.swing.JFrame {
         Ganancia_Capitulo = new javax.swing.JLabel();
         Veces_PM_atrapado = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        DirectorHaciendo = new javax.swing.JLabel();
+        ProjectManagerHaciendo = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -762,6 +766,26 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel18.setText("Costos totales por Dia: ");
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 230, -1, -1));
+
+        jLabel21.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel21.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel21.setText("Project Manager:");
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 290, -1, -1));
+
+        DirectorHaciendo.setBackground(new java.awt.Color(0, 0, 0));
+        DirectorHaciendo.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        DirectorHaciendo.setText("-");
+        jPanel1.add(DirectorHaciendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, 280, -1));
+
+        ProjectManagerHaciendo.setBackground(new java.awt.Color(0, 0, 0));
+        ProjectManagerHaciendo.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        ProjectManagerHaciendo.setText("-");
+        jPanel1.add(ProjectManagerHaciendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 290, 210, -1));
+
+        jLabel24.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel24.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel24.setText("Director:");
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 260, -1, -1));
 
         jLabel13.setBackground(new java.awt.Color(0, 0, 0));
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -1216,6 +1240,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel Credito_Quantity;
     private javax.swing.JButton Credito_to_Intro;
     private javax.swing.JLabel Despedido1;
+    private javax.swing.JLabel DirectorHaciendo;
     private javax.swing.JLabel EnsambladoTxt;
     private javax.swing.JLabel Ensamblado_Ganancia;
     private javax.swing.JButton Ensamble_to_Intro;
@@ -1228,6 +1253,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel Plot_Twist_Quantity;
     private javax.swing.JButton Plot_Twist_To_Inicio;
     private javax.swing.JLabel Plot_Twist_ganancia;
+    private javax.swing.JLabel ProjectManagerHaciendo;
     private javax.swing.JLabel Veces_PM_atrapado;
     private javax.swing.JButton bajar_Ensabladores;
     private javax.swing.JLabel cierre_ganancia;
@@ -1256,6 +1282,8 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

@@ -164,7 +164,7 @@ public class Dashboard1 extends javax.swing.JFrame {
     //    Aqui tengo el project manager trabajando con la cedula de jose
         Project_manager pm_jose = new Project_manager(Proyecto_operativos.ci_jose, "jose", this.Contador1);
     //    Aqui le indico al director de jose a que productor vigilar, y además, le indico que es el director de jose
-        Director dir_jose = new Director(pm_jose, "jose", this.Contador1, this.Veces_PM_atrapado,this.BeneficiosReal,this.Costos_Totales_PD,this.es_el_mejor,this.text1,this.text2,this.text3,this.series_entregadas,this.Ganancia_Capitulo1,this.costos_generales_reales,0);
+        Director dir_jose = new Director(pm_jose, "jose", this.Contador1, this.Veces_PM_atrapado,this.BeneficiosReal,this.Costos_Totales_PD,this.es_el_mejor,this.text1,this.text2,this.text3,this.series_entregadas,this.Ganancia_Capitulo1,this.costos_generales_reales,0, this.DirectorHaciendo);
         
         Dhilo1.start();
         Dhilo2.start();
@@ -286,6 +286,7 @@ public class Dashboard1 extends javax.swing.JFrame {
 
         jLabel18 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
         EnsambladoTxt1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         Costos_Totales_PD = new javax.swing.JLabel();
@@ -350,8 +351,11 @@ public class Dashboard1 extends javax.swing.JFrame {
         sueldo_Manager1 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         BeneficiosReal = new javax.swing.JLabel();
+        ProjectManagerHaciendo = new javax.swing.JLabel();
+        DirectorHaciendo = new javax.swing.JLabel();
         text3 = new javax.swing.JLabel();
         series_entregadas = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         text1 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         es_el_mejor = new javax.swing.JLabel();
@@ -370,6 +374,11 @@ public class Dashboard1 extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel21.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel21.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel21.setText("PM:");
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 280, -1, -1));
 
         EnsambladoTxt1.setBackground(new java.awt.Color(0, 0, 0));
         EnsambladoTxt1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -795,6 +804,16 @@ public class Dashboard1 extends javax.swing.JFrame {
         BeneficiosReal.setText("00");
         jPanel1.add(BeneficiosReal, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 310, -1, -1));
 
+        ProjectManagerHaciendo.setBackground(new java.awt.Color(0, 0, 0));
+        ProjectManagerHaciendo.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        ProjectManagerHaciendo.setText("-");
+        jPanel1.add(ProjectManagerHaciendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 170, -1));
+
+        DirectorHaciendo.setBackground(new java.awt.Color(0, 0, 0));
+        DirectorHaciendo.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        DirectorHaciendo.setText("-");
+        jPanel1.add(DirectorHaciendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, 170, -1));
+
         text3.setBackground(new java.awt.Color(0, 0, 0));
         text3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         text3.setForeground(new java.awt.Color(0, 0, 0));
@@ -806,6 +825,11 @@ public class Dashboard1 extends javax.swing.JFrame {
         series_entregadas.setForeground(new java.awt.Color(0, 0, 0));
         series_entregadas.setText("00");
         jPanel1.add(series_entregadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 350, -1, -1));
+
+        jLabel22.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel22.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel22.setText("Director:");
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 260, -1, -1));
 
         text1.setBackground(new java.awt.Color(0, 0, 0));
         text1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -1211,6 +1235,7 @@ public class Dashboard1 extends javax.swing.JFrame {
     private javax.swing.JLabel Credito_Quantity1;
     private javax.swing.JButton Credito_to_Intro;
     private javax.swing.JLabel Despedido;
+    private javax.swing.JLabel DirectorHaciendo;
     private javax.swing.JLabel EnsambladoTxt1;
     private javax.swing.JLabel Ensamblado_Ganancia1;
     private javax.swing.JLabel Ganancia_Capitulo1;
@@ -1223,6 +1248,7 @@ public class Dashboard1 extends javax.swing.JFrame {
     private javax.swing.JButton Plot_Twist_To_Inicio;
     private javax.swing.JButton Plot_Twist_To_Inicio1;
     private javax.swing.JLabel Plot_Twist_ganancia15;
+    private javax.swing.JLabel ProjectManagerHaciendo;
     private javax.swing.JLabel Veces_PM_atrapado;
     private javax.swing.JButton bajar_Ensabladores;
     private javax.swing.JLabel cierre_ganancia13;
@@ -1252,6 +1278,8 @@ public class Dashboard1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
