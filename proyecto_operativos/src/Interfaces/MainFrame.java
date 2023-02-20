@@ -874,7 +874,8 @@ public class MainFrame extends javax.swing.JFrame {
                     String Capacidad_infinita_inicio = String.valueOf(this.Capacidad_infinita_inicio_checkbox.isSelected());
                     String Capacidad_infinita_cierre = String.valueOf(this.Capacidad_infinita_cierre_checkbox.isSelected());
                     String Capacidad_infinita_plot_twist = String.valueOf(this.Capacidad_infinita_plot_twist_checkbox.isSelected());
-
+                    
+                    
 
 
     //                Se escribe en el JSON todos los datos recopilados
