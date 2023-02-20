@@ -117,38 +117,40 @@ public class Ensamblador extends Thread{
                     p.acquire();
                     q.acquire();
                     r.acquire();
-                    for (int i = 0;i < Math.min(ensambladores , Math.min(intro_Prod, Math.min(inicio_Prod, Math.min(cierre_Prod, Math.min(Plot_Twist_Prod, Credito_Prod)))));i++){
+                    for (int i = 0;i < Math.min(ensambladores , Math.min(intro_Prod, Math.min(inicio_Prod, Math.min(cierre_Prod, Math.min(Plot_Twist_Prod, Credito_Prod)))))-1;i++){
                         capitulo = capitulo+1;
                         Dashboard.Jtext_Productores_Ensamblado.acquire();
                         this.ganancia_Velma= ganancia_Velma +((dinero*100)/150);
                         Dashboard.Jtext_Productores_Ensamblado.release();
                         
-                        hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);
-                        hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);
                         hilo1.free_space(2);
+                        hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);
+                        hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);
                         
                         
                         
-                        hilo2.set_Pro_per_Day(hilo2.Pro_per_Day-1);
                         hilo2.free_space(1);
+                        hilo2.set_Pro_per_Day(hilo2.Pro_per_Day-1);
+                        
                        
                         
-                        
-                        hilo3.set_Pro_per_Day(hilo3.Pro_per_Day-1);
                         hilo3.free_space(1);
-                      
+                        hilo3.set_Pro_per_Day(hilo3.Pro_per_Day-1);
                         
                       
-                        hilo4.set_Pro_per_Day(hilo4.Pro_per_Day-1);
-                        hilo4.set_Pro_per_Day(hilo4.Pro_per_Day-1);
+                        
                         hilo4.free_space(2);
+                        hilo4.set_Pro_per_Day(hilo4.Pro_per_Day-1);
+                        hilo4.set_Pro_per_Day(hilo4.Pro_per_Day-1);
+                        
                         
                         
                        capitulo_Counter= capitulo_Counter-1;
                        System.out.println("///////////////////////"+capitulo_Counter);
                         if (this.capitulo_Counter==0){
-                            hilo5.set_Pro_per_Day(hilo5.Pro_per_Day-1);
                             hilo5.free_space(1);
+                            hilo5.set_Pro_per_Day(hilo5.Pro_per_Day-1);
+                            
                             capitulo_Counter =5;
                         }
                         
