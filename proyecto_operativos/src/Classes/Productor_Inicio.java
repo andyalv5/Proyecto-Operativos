@@ -108,7 +108,7 @@ public class Productor_Inicio extends Thread{
                         Pro_per_Day =0;
                         s.release();
                     }
-                    empty.release(Pro_per_Day);
+                    empty.release(Pro_per_Day-1);
 
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Productores_Intro.class.getName()).log(Level.SEVERE, null, ex);

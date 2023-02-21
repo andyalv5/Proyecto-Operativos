@@ -136,23 +136,15 @@ public class Ensamblador1 extends Thread{
                         
                         hilo2.free_space(2);
                         hilo2.set_Pro_per_Day(hilo2.Pro_per_Day-1);
-                        if (hilo2.get_Pro_per_Day()-1<0){
-                            hilo2.set_Pro_per_Day(0);
-                        }
-                        else{
-                            hilo2.set_Pro_per_Day(hilo2.Pro_per_Day-1);
-                        }
+                        hilo2.set_Pro_per_Day(hilo2.Pro_per_Day-1);
+                        
                         
                        
                         
                         hilo3.free_space(2);
                         hilo3.set_Pro_per_Day(hilo3.Pro_per_Day-1);
-                        if (hilo3.get_Pro_per_Day()-1<0){
-                            hilo3.set_Pro_per_Day(0);
-                        }
-                        else{
-                            hilo3.set_Pro_per_Day(hilo3.Pro_per_Day-1);
-                        }
+                        hilo3.set_Pro_per_Day(hilo3.Pro_per_Day-1);
+                        
                         
                         
                       
@@ -167,12 +159,8 @@ public class Ensamblador1 extends Thread{
                         if (this.capitulo_Counter==0){
                             hilo5.free_space(2);
                             hilo5.set_Pro_per_Day(hilo5.Pro_per_Day-1);
-                            if (hilo5.get_Pro_per_Day()-1<0){
-                                hilo5.set_Pro_per_Day(0);
-                            }
-                            else{
-                                hilo5.set_Pro_per_Day(hilo5.Pro_per_Day-1);
-                            }
+                            hilo5.set_Pro_per_Day(hilo5.Pro_per_Day-1);
+                           
                         
                             
                             capitulo_Counter =5;

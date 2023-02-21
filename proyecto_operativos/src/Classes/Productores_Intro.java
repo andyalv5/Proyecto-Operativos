@@ -128,7 +128,7 @@ public class Productores_Intro extends Thread{
                     s.release();
                 }
                 System.out.println("Se hicieron " + Pro_per_Day + " intros");
-                empty.release(Pro_per_Day);
+                empty.release(Pro_per_Day-1);
                     
             }
             catch (InterruptedException ex) {

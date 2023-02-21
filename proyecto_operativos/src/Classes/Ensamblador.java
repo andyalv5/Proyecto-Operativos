@@ -129,12 +129,8 @@ public class Ensamblador extends Thread{
                         
                         hilo1.free_space(2);
                         hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);
-                        if (hilo1.get_Pro_per_Day()-1<0){
-                            hilo1.set_Pro_per_Day(0);
-                        }
-                        else{
-                            hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);
-                        }
+                        hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);
+                        
                         
                         
                         
@@ -150,12 +146,8 @@ public class Ensamblador extends Thread{
                         
                         hilo4.free_space(2);
                         hilo4.set_Pro_per_Day(hilo4.Pro_per_Day-1);
-                        if (hilo4.get_Pro_per_Day()-1<0){
-                            hilo4.set_Pro_per_Day(0);
-                        }
-                        else{
-                            hilo4.set_Pro_per_Day(hilo4.Pro_per_Day-1);
-                        }
+                        hilo4.set_Pro_per_Day(hilo4.Pro_per_Day-1);
+                        
                         
                         
                         
