@@ -25,6 +25,17 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        
+//        Se abre JSON para poder trabajar
+        JSONReaderWriter jsnrw = new JSONReaderWriter();
+        
+        try{
+            jsnrw.Reader();
+            
+        }catch(FileNotFoundException e){
+            this.Mensaje.setText(String.valueOf(e));
+        }
+        
         this.parte_intro_max_MainFrame.setText("0");
         this.parte_cierre_max_MainFrame.setText("0");
         this.parte_creditos_max_MainFrame.setText("0");
@@ -47,15 +58,6 @@ public class MainFrame extends javax.swing.JFrame {
         
         this.setLocationRelativeTo(null);
         
-//        Se abre JSON para poder trabajar
-        JSONReaderWriter jsnrw = new JSONReaderWriter();
-        
-        try{
-            jsnrw.Reader();
-            
-        }catch(FileNotFoundException e){
-            this.Mensaje.setText(String.valueOf(e));
-        }
         
 //        Valores para hacer operaciones
         int ingreso_anterior_andy = JSONReaderWriter.Ingresos_Rodaje_andy;
