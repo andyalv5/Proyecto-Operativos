@@ -64,39 +64,66 @@ public class Ensamblador extends Thread{
      this.capitulo_Counter=5;
      this.dinero=dinero;
     }
-    
+    /**
+     * get capitulo
+     * @return capitulo
+     */
     public int get_capitulo(){
         return this.capitulo;
     }
-    
+    /**
+     * set_cierre_Prod
+     * @param Pro_per_Day 
+     */
     public void set_cierre_Prod(int Pro_per_Day){
         this.cierre_Prod = Pro_per_Day;
     }
-    
+    /**
+     * set_Credito_Prod
+     * @param Pro_per_Day 
+     */
     public void set_Credito_Prod(int Pro_per_Day){
         this.Credito_Prod = Pro_per_Day;
     }
-    
+    /**
+     * set_inicio_prod
+     * @param Pro_per_Day 
+     */
     public void set_inicio_Prod(int Pro_per_Day){
         this.intro_Prod = Pro_per_Day;
     }
-    
+    /**
+     * set_into_prod
+     * @param Pro_per_Day 
+     */
     public void set_intro_Prod(int Pro_per_Day){
         this.inicio_Prod = Pro_per_Day;
     }
-    
+    /**
+     * set_Plot_Twist_Prod
+     * @param Pro_per_Day 
+     */
     public void set_Plot_Twist_Prod(int Pro_per_Day){
         this.Plot_Twist_Prod = Pro_per_Day;
     }
-    
+    /**
+     * set_Productores
+     * @param productores 
+     */
     public void set_Productores(int productores){
         this.ensambladores=productores;
     }
-    
+    /**
+     * get_ganancia
+     * @return ganancia
+     */
     public int get_ganancia(){
         return this.ganancia;
     }
-    
+    /**
+     * set_ganancia
+     * @param ganancia 
+     */
     public void set_ganancia(int ganancia){
         this.ganancia = ganancia;
     }
@@ -121,7 +148,9 @@ public class Ensamblador extends Thread{
                     p.acquire();
                     q.acquire();
                     r.acquire();
+                   
                     for (int i = 0;i < Math.min(ensambladores , Math.min(intro_Prod, Math.min(inicio_Prod, Math.min(cierre_Prod, Math.min(Plot_Twist_Prod, Credito_Prod)))));i++){
+
                         capitulo = capitulo+1;
                         Dashboard.Jtext_Productores_Ensamblado.acquire();
                         this.ganancia_Velma= ganancia_Velma +((dinero*100)/150);
