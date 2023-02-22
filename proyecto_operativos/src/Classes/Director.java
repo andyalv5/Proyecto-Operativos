@@ -78,7 +78,24 @@ public class Director extends Thread{
     
     
 //    ------------------------------------------------------------
-    
+    /**
+     * Constructor del director
+     * @param pm
+     * @param rodaje
+     * @param Contador_inter
+     * @param Veces_PM_atrapado
+     * @param beneficios_text
+     * @param costos_text
+     * @param Es_el_mejor
+     * @param texto1
+     * @param texto2
+     * @param texto3
+     * @param series_Entregadas
+     * @param ingresos_generales
+     * @param costos_generales_reales
+     * @param id
+     * @param DirectorHaciendo 
+     */
     public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter, javax.swing.JLabel Veces_PM_atrapado, javax.swing.JLabel beneficios_text, javax.swing.JLabel costos_text, javax.swing.JLabel Es_el_mejor, javax.swing.JLabel texto1, javax.swing.JLabel texto2, javax.swing.JLabel texto3, javax.swing.JLabel series_Entregadas, javax.swing.JLabel ingresos_generales ,javax.swing.JLabel costos_generales_reales,int id, javax.swing.JLabel DirectorHaciendo){
         this.pm = pm;
         this.rodaje = rodaje;
@@ -99,8 +116,6 @@ public class Director extends Thread{
         this.DirectorHaciendo = DirectorHaciendo;
         
     }
-    
-    
     
     
     /**
@@ -149,7 +164,6 @@ public class Director extends Thread{
         }
     }
         
-    
     /**
      * 
      * @return el valor de si paso un nuevo dia en su respectivo rodaje
@@ -166,7 +180,6 @@ public class Director extends Thread{
             
         }
     }
-    
     
     /**
      * Vuelve falso a que pasó un nuevo en su rodaje respectivo
@@ -236,10 +249,6 @@ public class Director extends Thread{
             this.beneficios_text.setForeground(Color.black);
             
             this.EscribirIngresosCostosEnClaseJSON();
-            
-            
-            
-            
             
             if (id ==0){
                Dashboard1.semaforo_final.release();
@@ -381,7 +390,7 @@ public class Director extends Thread{
 
 //                    ---------------------------------------------------------------------
     
-                }else if(pm.Contador_dias_restantes_rodaje() == 0 ){
+                }else if(pm.Contador_dias_restantes_rodaje() == 0){
 //                    ---------------------------------------
 //                    Aquí pondremos el método para agregar todos los capitulos creados a la serie
 //                    Y además resetearemos el contador a su valor original
@@ -408,7 +417,7 @@ public class Director extends Thread{
 //                    Proyecto_operativos.keep=false;
                                         
                 }else{
-                    
+                    this.DirectorHaciendo.setText("Ya hizo todo por hoy");
                     pm.Semaforo_Contador_release();
                 }
                 

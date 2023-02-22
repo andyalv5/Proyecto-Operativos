@@ -168,7 +168,7 @@ public class Dashboard1 extends javax.swing.JFrame {
         Contador1.setText(String.valueOf(JSONReaderWriter.dias_entre_despachos));
         
     //    Aqui tengo el project manager trabajando con la cedula de jose
-        Project_manager pm_jose = new Project_manager(Proyecto_operativos.ci_jose, "jose", this.Contador1);
+        Project_manager pm_jose = new Project_manager(Proyecto_operativos.ci_jose, "jose", this.Contador1, this.ProjectManagerHaciendo);
     //    Aqui le indico al director de jose a que productor vigilar, y además, le indico que es el director de jose
         Director dir_jose = new Director(pm_jose, "jose", this.Contador1, this.Veces_PM_atrapado,this.BeneficiosReal,this.Costos_Totales_PD,this.es_el_mejor,this.text1,this.text2,this.text3,this.series_entregadas,this.Ganancia_Capitulo1,this.costos_generales_reales,0, this.DirectorHaciendo);
         
@@ -813,12 +813,12 @@ public class Dashboard1 extends javax.swing.JFrame {
         ProjectManagerHaciendo.setBackground(new java.awt.Color(0, 0, 0));
         ProjectManagerHaciendo.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         ProjectManagerHaciendo.setText("-");
-        jPanel1.add(ProjectManagerHaciendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 170, -1));
+        jPanel1.add(ProjectManagerHaciendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 290, -1));
 
         DirectorHaciendo.setBackground(new java.awt.Color(0, 0, 0));
         DirectorHaciendo.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         DirectorHaciendo.setText("-");
-        jPanel1.add(DirectorHaciendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, 170, -1));
+        jPanel1.add(DirectorHaciendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, 290, -1));
 
         text3.setBackground(new java.awt.Color(0, 0, 0));
         text3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
