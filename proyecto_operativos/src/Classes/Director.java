@@ -68,8 +68,16 @@ public class Director extends Thread{
     
     javax.swing.JLabel DirectorHaciendo;
     
+//    Semaforos que avisan a los directores de cada rodaje que ya llegaron
     private static Semaphore LlegoJose = new Semaphore(0);
     private static Semaphore LlegoAndy = new Semaphore(0);
+    
+//    Booleanos qe indica si el director de su respectivo rodaje está vigilando
+    public static boolean vigila_andy;
+    public static boolean vigila_jose;
+    
+    
+//    ------------------------------------------------------------
     
     public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter, javax.swing.JLabel Veces_PM_atrapado, javax.swing.JLabel beneficios_text, javax.swing.JLabel costos_text, javax.swing.JLabel Es_el_mejor, javax.swing.JLabel texto1, javax.swing.JLabel texto2, javax.swing.JLabel texto3, javax.swing.JLabel series_Entregadas, javax.swing.JLabel ingresos_generales ,javax.swing.JLabel costos_generales_reales,int id, javax.swing.JLabel DirectorHaciendo){
         this.pm = pm;
@@ -129,10 +137,7 @@ public class Director extends Thread{
     public void resetear_contador_dias_restantes_rodaje(){
         
         if(this.rodaje.equalsIgnoreCase("andy")){
-//            System.out.println("Toca el reseteo a andy");
-//            System.out.println("");
-//            Proyecto_operativos.contador_dias_restantes_andy = Proyecto_operativos.dias_entre_despachos;
-//            this.Contador_inter.setText(String.valueOf(Proyecto_operativos.contador_dias_restantes_andy));
+
 
             this.cap_entregados=this.cap_entregados+1;
             Proyecto_operativos.contador_dias_restantes_andy = JSONReaderWriter.dias_entre_despachos;
@@ -184,14 +189,12 @@ public class Director extends Thread{
 //            Avisa al rodaje de jose que llegó al punto
             Director.LlegoAndy.release();
 //            Espera a que José ya halla llegado
-//            System.out.println("Voy a esperar a José ----------------");
             Director.LlegoJose.acquire();
             
         }else{
 //            Avisa al rodaje de jose que llegó al punto
             Director.LlegoJose.release();
 //            Esperando a que Andy ya halla llegado
-//            System.out.println("Voy a esperar a Andy --------------------");
             Director.LlegoAndy.acquire();
         }
     }
@@ -206,13 +209,13 @@ public class Director extends Thread{
             
              Director.NroSeries_Andy = this.Restar_NroSeries_Rodaje(Director.NroSeries_Andy);
             
-             System.out.println("Hola broski, este el nro de series actuales: de andy" + Director.NroSeries_Andy);
+//             System.out.println("Hola broski, este el nro de series actuales: de andy" + Director.NroSeries_Andy);
              
         }else{
             
              Director.NroSeries_Jose = this.Restar_NroSeries_Rodaje(Director.NroSeries_Jose);
              
-             System.out.println("Hola broski, este el nro de series actuales: de jose" + Director.NroSeries_Andy);
+//             System.out.println("Hola broski, este el nro de series actuales: de jose" + Director.NroSeries_Andy);
         }
         
         if(Director.NroSeries_Andy == 0 || Director.NroSeries_Jose == 0){
@@ -341,77 +344,48 @@ public class Director extends Thread{
 //                    Se prepara para ver en el periodo aleatorio calculado de tiempo
                     this.DirectorHaciendo.setText("va a vigilar PM");
                     
-                    Thread.sleep(random);
+//                    Thread.sleep(random);
                     
     //                Agregamos semaforo a la sección critica
 //                    Proyecto_operativos.Director_PM_Semaphore.acquire();
     //                Llamamos al metodo "cachado"
-                    
-                    this.Semaforo_RM_acquire();
-    
-                    cachado();                 
-                    
-                    this.Semaforo_RM_release();
 
-    //                Liberamos semaforo a la sección critica
-//                    Proyecto_operativos.Director_PM_Semaphore.release();
+//                    ---------------------------------------------------------------------
                     
-//                    Toma su descanso de vigilación cada 30-90 minutos
-                    
-//                }else if(pm.Contador_dias_restantes_rodaje() == 0 && this.Director_nuevo_dia_rodaje()){
+//                    this.Semaforo_RM_acquire();
+                    if(rodaje.equalsIgnoreCase("andy")){
+                        Director.vigila_andy = true;
+                        VigilandoAndy vandy = new VigilandoAndy(random);
+                        
+                        vandy.start();
+                        
+                        do{
+                            cachado();                 
+                            
+                        }while(Director.vigila_andy);
+                        
+                    }else{
+                        Director.vigila_jose = true;
+                        VigilandoJose vjose = new VigilandoJose(random);
+                        
+                        
+                        vjose.start();
+                        
+                        do{                            
+                            cachado();                
+                            
+                        }while(Director.vigila_jose);
+                        
+                    }
+//                    this.Semaforo_RM_release();
+
+//                    ---------------------------------------------------------------------
+    
                 }else if(pm.Contador_dias_restantes_rodaje() == 0 ){
 //                    ---------------------------------------
 //                    Aquí pondremos el método para agregar todos los capitulos creados a la serie
 //                    Y además resetearemos el contador a su valor original
                     
-                    if(this.rodaje.equalsIgnoreCase("andy") && Director.NroSeries_Andy != 0){
-                        
-                    }else if(this.rodaje.equalsIgnoreCase("jose") && Director.NroSeries_Jose != 0){
-                        
-                    }else{
-                        
-//    //                    Proyecto_operativos.contador_dias_restantes = Proyecto_operativos.dias_entre_despachos;
-//                        this.ingresos_generales_num=Integer.parseInt(String.valueOf(this.ingresos_generales.getText()));
-//
-//                        this.costos_generales_num=costos_generales_num+Float.parseFloat(String.valueOf(this.costos_text.getText()));
-//                        this.beneficios_generales_num= beneficios_generales_num+this.ingresos_generales_num-costos_generales_num;
-//                        this.costos_generales_reales.setText(String.valueOf(this.costos_generales_num));
-//                        this.beneficios_text.setText(String.valueOf(this.beneficios_generales_num));
-//                        this.cap_entregados=this.cap_entregados+1;
-//                        this.capitulos_entregados.setText(String.valueOf(this.cap_entregados));
-//                        this.text1.setForeground(Color.black);
-//                        this.text2.setForeground(Color.black);
-//                        this.text3.setForeground(Color.black);
-//                        this.costos_generales_reales.setForeground(Color.black);
-//                        this.capitulos_entregados.setForeground(Color.black);
-//                        this.beneficios_text.setForeground(Color.black);
-//
-//
-//                        if (id ==0){
-//                           Dashboard1.semaforo_final.release();
-//                           Dashboard.comparacion =beneficios_generales_num;
-//                           com = Dashboard.comparacion;
-//                           Dashboard.semaforo_final.acquire();
-//
-//
-//                        }
-//                        else if(id==1){
-//                            Dashboard.semaforo_final.release();
-//                            Dashboard1.comparacion =beneficios_generales_num;
-//                            com = Dashboard1.comparacion;
-//                            Dashboard1.semaforo_final.acquire();
-//
-//                        }
-//                        if (id ==0 && com < Dashboard1.comparacion){
-//                            this.es_elmejor.setText("No es la mejor >:(");
-//                        }
-//
-//                        if (id ==1 && com < Dashboard.comparacion){
-//
-//                            this.es_elmejor.setText("No es la mejor >:(");
-//                        }
-//                        this.es_elmejor.setForeground(Color.red);
-                    }
                     
                     
                     
@@ -452,8 +426,9 @@ public class Director extends Thread{
     Revisa si el PM está viendo RyM
     */
     public void cachado() throws InterruptedException{
-        
+        this.Semaforo_RM_acquire();
         if(this.pm.Rick_y_Morty == true){
+            this.Semaforo_RM_release();
             
             this.DirectorHaciendo.setText("pilló al PM y está restandole el sueldo");
             
@@ -472,9 +447,11 @@ public class Director extends Thread{
             
             
         }else{
+            this.Semaforo_RM_release();
             
             this.DirectorHaciendo.setText("Dejó de vigilar al PM");
             System.out.println("Director: A la proxima te veo >.>");
+            System.out.println("--------------------------------------------------------");
 
         }
     }
