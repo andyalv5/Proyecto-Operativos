@@ -21,8 +21,10 @@ import proyecto_operativos.Proyecto_operativos;
  */
 public class Director extends Thread{
 //    Estas variables random las pienso usar para calculos futuros
-    int random;
-    int random2;
+//    int random;
+//    int random2;
+    
+    
     float com;
     public int ganancia;
     public int sueldo_al_payaso =(7*24);
@@ -334,7 +336,7 @@ public class Director extends Thread{
                     Falsear_Director_nuevo_dia_rodaje();
                     
 //                    genera un numero random de 30 a 90 min en base al día establecido
-                    random = (int)(Math.random()*((double)(Proyecto_operativos.dia_en_ms)/24 + (double)(Proyecto_operativos.dia_en_ms)/24/60) + (double)(Proyecto_operativos.dia_en_ms)/24/2);
+                    int random = (int)(Math.random()*((double)(Proyecto_operativos.dia_en_ms)/24 + (double)(Proyecto_operativos.dia_en_ms)/24/60) + (double)(Proyecto_operativos.dia_en_ms)/24/2);
                     
 //                    Se prepara para ver en el periodo aleatorio calculado de tiempo
                     this.DirectorHaciendo.setText("va a vigilar PM");

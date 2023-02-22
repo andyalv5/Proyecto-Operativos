@@ -5,6 +5,7 @@
 package Classes;
 
 
+import Interfaces.Dashboard;
 import Interfaces.Dashboard1;
 import static Interfaces.Dashboard1.Dhilo1;
 import static Interfaces.Dashboard1.Dhilo2;
@@ -51,29 +52,29 @@ public class Pago1 extends Thread{
 
 
 
-//                    Dashboard.Jtext_Productores_Intro.acquire();
+                    Dashboard.Jtext_Productores_Intro.acquire();
                     Dashboard1.Dhilo1.ganancia=Dashboard1.Dhilo1.ganancia+Dashboard1.Dhilo1.productores*(3);
-//                    Dashboard.Jtext_Productores_Intro.release();
+                    Dashboard.Jtext_Productores_Intro.release();
                     
-//                    Dashboard.Jtext_Productores_Cierre.acquire();
+                    Dashboard.Jtext_Productores_Cierre.acquire();
                     Dashboard1.Dhilo2.ganancia=Dashboard1.Dhilo2.ganancia+Dashboard1.Dhilo2.productores*(7.5f);
-//                    Dashboard.Jtext_Productores_Cierre.release();
+                    Dashboard.Jtext_Productores_Cierre.release();
                     
-//                    Dashboard.Jtext_Productores_Inicio.acquire();
+                    Dashboard.Jtext_Productores_Inicio.acquire();
                     Dashboard1.Dhilo3.ganancia=Dashboard1.Dhilo3.ganancia+Dashboard1.Dhilo3.productores*(7);
-//                    Dashboard.Jtext_Productores_Inicio.release();
+                    Dashboard.Jtext_Productores_Inicio.release();
                   
-//                    Dashboard.Jtext_Productores_Credito.acquire();
+                    Dashboard.Jtext_Productores_Credito.acquire();
                     Dashboard1.Dhilo4.ganancia=Dashboard1.Dhilo4.ganancia+Dashboard1.Dhilo4.productores*(3);
-//                    Dashboard.Jtext_Productores_Credito.release();
+                    Dashboard.Jtext_Productores_Credito.release();
                     
-//                    Dashboard.Jtext_Productores_Plot_Twist.acquire();
+                    Dashboard.Jtext_Productores_Plot_Twist.acquire();
                     Dashboard1.Dhilo5.ganancia=Dashboard1.Dhilo5.ganancia+Dashboard1.Dhilo5.productores*(10);
-//                    Dashboard.Jtext_Productores_Plot_Twist.release();
+                    Dashboard.Jtext_Productores_Plot_Twist.release();
                         
-//                    Dashboard.Jtext_Productores_Ensamblado.acquire();
+                    Dashboard.Jtext_Productores_Ensamblado.acquire();
                     Dashboard1.Dhilo6.ganancia=Dashboard1.Dhilo6.ganancia+Dashboard1.Dhilo6.ensambladores*(8);
-//                    Dashboard.Jtext_Productores_Ensamblado.release();
+                    Dashboard.Jtext_Productores_Ensamblado.release();
                     
                     
                     this.director.ganancia=this.director.ganancia+ganancia_canadiense;
