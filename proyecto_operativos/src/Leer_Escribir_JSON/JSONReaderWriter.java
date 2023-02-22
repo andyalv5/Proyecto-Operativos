@@ -275,7 +275,7 @@ public class JSONReaderWriter{
      * @throws FileNotFoundException 
      */
     public void ArreglarJSONporDefecto() throws FileNotFoundException{
-        this.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "1", "1","0","0","0","0");
+        this.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "4", "5", "5", "4", "1", "4", "5", "4", "4", "1", "1", "1","0","0","0","0");
     }
     
     /**

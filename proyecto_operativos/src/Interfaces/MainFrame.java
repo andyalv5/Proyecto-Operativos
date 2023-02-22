@@ -36,25 +36,25 @@ public class MainFrame extends javax.swing.JFrame {
             this.Mensaje.setText(String.valueOf(e));
         }
         
-        this.parte_intro_max_MainFrame.setText("0");
-        this.parte_cierre_max_MainFrame.setText("0");
-        this.parte_creditos_max_MainFrame.setText("0");
-        this.parte_plot_twist_max_MainFrame.setText("0");
-        this.parte_inicio_max_MainFrame.setText("0");
-        this.Productor_Intros_TLOU.setText("0");
-        this.Productor_Intros_VELMA.setText("0");
-        this.Productor_Cierre_TLOU.setText("0");
-        this.Productor_Cierre_VELMA.setText("0");
-        this.Productor_Creditos_TLOU.setText("0");
-        this.Productor_Creditos_VELMA.setText("0");
-        this.Productor_Plot_Twist_TLOU.setText("0");
-        this.Productor_Plot_Twist_VELMA.setText("0");
-        this.Productor_Inicio_TLOU.setText("0");
-        this.Productor_Inicio_VELMA.setText("0");
-        this.Ensamblador_TLOU.setText("0");
-        this.Ensamblador_VELMA.setText("0");
-        this.Dia_en_segundos_MainFrame_text.setText("0");
-        this.Dias_entre_despachos_MainFrame_text.setText("0");
+        this.parte_intro_max_MainFrame.setText(String.valueOf(JSONReaderWriter.parte_intro_max));
+        this.parte_cierre_max_MainFrame.setText(String.valueOf(JSONReaderWriter.parte_cierre_max));
+        this.parte_creditos_max_MainFrame.setText(String.valueOf(String.valueOf(JSONReaderWriter.parte_creditos_max)));
+        this.parte_plot_twist_max_MainFrame.setText(String.valueOf(JSONReaderWriter.parte_plot_twist_max));
+        this.parte_inicio_max_MainFrame.setText(String.valueOf(JSONReaderWriter.parte_inicio_max));
+        this.Productor_Intros_TLOU.setText(String.valueOf(JSONReaderWriter.Productor_Intros_jose));
+        this.Productor_Intros_VELMA.setText(String.valueOf(JSONReaderWriter.Productor_Intros_andy));
+        this.Productor_Cierre_TLOU.setText(String.valueOf(JSONReaderWriter.Productor_cierre_jose));
+        this.Productor_Cierre_VELMA.setText(String.valueOf(JSONReaderWriter.Productor_cierre_andy));
+        this.Productor_Creditos_TLOU.setText(String.valueOf(JSONReaderWriter.Productor_Creditos_jose));
+        this.Productor_Creditos_VELMA.setText(String.valueOf(JSONReaderWriter.Productor_Creditos_andy));
+        this.Productor_Plot_Twist_TLOU.setText(String.valueOf(JSONReaderWriter.Productor_Plot_Twist_jose));
+        this.Productor_Plot_Twist_VELMA.setText(String.valueOf(JSONReaderWriter.Productor_Plot_Twist_andy));
+        this.Productor_Inicio_TLOU.setText(String.valueOf(JSONReaderWriter.Productor_Inicio_jose));
+        this.Productor_Inicio_VELMA.setText(String.valueOf(JSONReaderWriter.Productor_Inicio_andy));
+        this.Ensamblador_TLOU.setText(String.valueOf(JSONReaderWriter.Ensamblador_Rodaje_jose));
+        this.Ensamblador_VELMA.setText(String.valueOf(JSONReaderWriter.Ensamblador_Rodaje_andy));
+        this.Dia_en_segundos_MainFrame_text.setText(String.valueOf(JSONReaderWriter.dia_en_segundos));
+        this.Dias_entre_despachos_MainFrame_text.setText(String.valueOf(JSONReaderWriter.dias_entre_despachos));
         
         this.setLocationRelativeTo(null);
         
@@ -816,7 +816,9 @@ public class MainFrame extends javax.swing.JFrame {
 //        System.out.println("NroSeries_Jose" + Director.NroSeries_Jose);
 
 //        Llama a la otra interfaz
-
+        
+//        Pone en la clase del JSON los valores de TRUE necesarios
+        this.CapacidadInfinita();
 
         SetLocationRelativeToDashboard.SetLocationRelativeToDashboard();
 
@@ -824,6 +826,37 @@ public class MainFrame extends javax.swing.JFrame {
 
 //        Cierra la interfaz actual
         this.setVisible(false);
+    }
+    
+    /**
+     * Pone las variables de la clase JSON que se necesiten en TRUE
+     */
+    public void CapacidadInfinita(){
+//        Revisa si la capacidad de intro es infinita
+        if(this.Capacidad_infinita_intro_checkbox.isSelected()){
+            JSONReaderWriter.Capacidad_infinita_intro = true;
+        }
+        
+//        Revisa si la capacidad de credito es infinita
+        if(this.Capacidad_infinita_creditos_checkbox.isSelected()){
+            JSONReaderWriter.Capacidad_infinita_creditos = true;
+        }
+        
+//        Revisa si la capacidad de inicio es infinita
+        if(this.Capacidad_infinita_inicio_checkbox.isSelected()){
+            JSONReaderWriter.Capacidad_infinita_inicio = true;
+        }
+        
+//        Revisa si la capacidad de cierre es infinita
+        if(this.Capacidad_infinita_cierre_checkbox.isSelected()){
+            JSONReaderWriter.Capacidad_infinita_cierre = true;
+        }
+        
+//        Revisa si la capacidad de plot twist es infinita
+        if(this.Capacidad_infinita_plot_twist_checkbox.isSelected()){
+            JSONReaderWriter.Capacidad_infinita_plot_twist = true;
+        }
+        
     }
     
     private void btnAggUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAggUsuarioActionPerformed
@@ -849,6 +882,7 @@ public class MainFrame extends javax.swing.JFrame {
             else if(JSONReaderWriter.isPositiveNumeric2(this.Dia_en_segundos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Dias_entre_despachos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Intros_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Creditos_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Inicio_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Cierre_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Plot_Twist_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Ensamblador_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Intros_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Creditos_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Inicio_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Cierre_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Plot_Twist_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Ensamblador_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.parte_intro_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric2(this.parte_creditos_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric2(this.parte_inicio_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric2(this.parte_cierre_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric2(this.parte_plot_twist_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Nro_series.getText())){
 //                Valida si todos los campos son valores numericos mayores que cero
 //                Si se entra aquí, se debe escribir en el JSON los valores escritos en la interfaz
+                
                 if(Integer.parseInt(this.Productor_Intros_TLOU.getText()) + Integer.parseInt(this.Productor_Plot_Twist_TLOU.getText())+Integer.parseInt(this.Productor_Cierre_TLOU.getText())+Integer.parseInt(this.Productor_Creditos_TLOU.getText()) + Integer.parseInt(this.Productor_Inicio_TLOU.getText()) > 19){
                     this.Mensaje.setText("Revise los productores");
                     JOptionPane.showMessageDialog(null,"La cantidad total de productores se encuentra por encima de 19","ERROR",JOptionPane.ERROR_MESSAGE);
