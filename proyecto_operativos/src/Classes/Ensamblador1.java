@@ -8,7 +8,7 @@ import Classes.Productor_Cierre;
 import Classes.Productor_Credito;
 import Classes.Productor_Inicio;
 import Classes.Productor_Plot_Twist;
-import Classes.Productores_Intro;
+import Classes.Productor_Intro;
 import Interfaces.Dashboard;
 import static Interfaces.Dashboard.hilo6;
 import java.util.concurrent.Semaphore;
@@ -36,7 +36,7 @@ public class Ensamblador1 extends Thread{
     public int Credito_Prod;
     public int inicio_Prod;
     public int Plot_Twist_Prod;
-    Productores_Intro hilo1;
+    Productor_Intro hilo1;
     Productor_Cierre hilo2;
     Productor_Inicio hilo3;
     Productor_Credito hilo4;
@@ -50,7 +50,7 @@ public class Ensamblador1 extends Thread{
     
     
     
-    public Ensamblador1(Productores_Intro hilo1,Productor_Cierre hilo2,Productor_Inicio hilo3,Productor_Credito hilo4,Productor_Plot_Twist hilo5, Semaphore s,Semaphore o,Semaphore p, Semaphore q,Semaphore r,int dinero) {
+    public Ensamblador1(Productor_Intro hilo1,Productor_Cierre hilo2,Productor_Inicio hilo3,Productor_Credito hilo4,Productor_Plot_Twist hilo5, Semaphore s,Semaphore o,Semaphore p, Semaphore q,Semaphore r,int dinero) {
      this.hilo1= hilo1;
      this.hilo2= hilo2;
      this.hilo3= hilo3;

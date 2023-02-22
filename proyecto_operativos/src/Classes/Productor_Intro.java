@@ -15,7 +15,7 @@ import proyecto_operativos.Proyecto_operativos;
  *
  * @author Andy
  */
-public class Productores_Intro extends Thread{
+public class Productor_Intro extends Thread{
     public int ganancia;
     public int Pro_per_Day;
     Semaphore drive_Intro;
@@ -28,7 +28,7 @@ public class Productores_Intro extends Thread{
     javax.swing.JTextField Cant_Productores_Intro;
     
     
-    public Productores_Intro(Semaphore drive_Intro,Semaphore empty, Semaphore s,int productores,int max_Drive,int num) {
+    public Productor_Intro(Semaphore drive_Intro,Semaphore empty, Semaphore s,int productores,int max_Drive,int num) {
         this.drive_Intro = drive_Intro;
         this.s = s;
         this.max_Drive = max_Drive;
@@ -132,7 +132,7 @@ public class Productores_Intro extends Thread{
                     
             }
             catch (InterruptedException ex) {
-                Logger.getLogger(Productores_Intro.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Productor_Intro.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }  

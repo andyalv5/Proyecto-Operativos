@@ -12,7 +12,7 @@ import Classes.Productor_Cierre;
 import Classes.Productor_Credito;
 import Classes.Productor_Inicio;
 import Classes.Productor_Plot_Twist;
-import Classes.Productores_Intro;
+import Classes.Productor_Intro;
 import Classes.Project_manager;
 import Leer_Escribir_JSON.JSONReaderWriter;
 import java.awt.Color;
@@ -80,7 +80,7 @@ public class Dashboard extends javax.swing.JFrame {
     public static Semaphore Jtext_Productores_Cierre = new Semaphore(1);
     public static Semaphore Jtext_Productores_Plot_Twist = new Semaphore(1);
     
-    public static Productores_Intro hilo1 = new Productores_Intro(drive_Intro,semaforo_empty_intro, semaforo_intro,1,tamanio_Intro,2);
+    public static Productor_Intro hilo1 = new Productor_Intro(drive_Intro,semaforo_empty_intro, semaforo_intro,1,tamanio_Intro,2);
     public static Productor_Cierre hilo2 = new Productor_Cierre(drive_Cierre,semaforo_empty_cierre ,semaforo_cie,1,tamanio_Cierre,1);
     public static Productor_Inicio hilo3 = new Productor_Inicio(drive_Inicio,semaforo_empty_inicio, semaforo_ini,1,tamanio_Inicio,1);
     public static Productor_Credito hilo4 = new Productor_Credito(drive_credito,semaforo_empty_credito, semaforo_con,1,tamanio_credito,2);

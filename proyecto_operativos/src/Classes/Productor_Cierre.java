@@ -115,7 +115,7 @@ public class Productor_Cierre extends Thread{
 
 
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(Productores_Intro.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Productor_Intro.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
             
