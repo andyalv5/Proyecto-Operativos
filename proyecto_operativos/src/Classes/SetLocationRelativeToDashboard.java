@@ -1,6 +1,5 @@
 package Classes;
 import Interfaces.Dashboard;
-import Interfaces.Dashboard1;
 import java.awt.Color;
 
 import javax.swing.JPanel;

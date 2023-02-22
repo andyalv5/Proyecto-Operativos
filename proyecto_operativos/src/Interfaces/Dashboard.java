@@ -273,11 +273,11 @@ public class Dashboard extends javax.swing.JFrame {
                         
                         
                         
-                        
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
+//                    JSONReaderWriter.Costos_Rodaje_andy =  Integer.parseInt(String.valueOf(hilo1.ganancia+hilo2.ganancia+hilo3.ganancia+hilo4.ganancia+hilo5.ganancia+hilo6.ganancia+pm_andy.ganancia+dir_andy.ganancia));
                    
                 }
             };

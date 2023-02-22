@@ -9,8 +9,9 @@ import Classes.SetLocationRelativeTo;
 import Classes.SetLocationRelativeToDashboard;
 import Leer_Escribir_JSON.JSONReaderWriter;
 import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import proyecto_operativos.Proyecto_operativos;
 
 /**
  *
@@ -22,8 +23,9 @@ public class MainFrame extends javax.swing.JFrame {
     
     /**
      * Creates new form MainFrame
+     * @throws java.lang.InterruptedException
      */
-    public MainFrame() {
+    public MainFrame() throws InterruptedException {
         initComponents();
         
 //        Se abre JSON para poder trabajar
@@ -71,6 +73,8 @@ public class MainFrame extends javax.swing.JFrame {
         int ganancias_anterior_jose =  ingreso_anterior_jose - costos_anterior_jose;
         
 //        Se pone en la interfaz las ganancias de la simulación pasada
+        System.out.println("Ganancias jose " + ganancias_anterior_andy);
+        System.out.println("Ganancias andy" + ganancias_anterior_jose);
         this.ganancias_anterior_VELMA.setText(String.valueOf(ganancias_anterior_andy));
         this.gananias_anterior_TLOU.setText(String.valueOf(ganancias_anterior_jose));
     }
@@ -542,7 +546,7 @@ public class MainFrame extends javax.swing.JFrame {
         ganancias_anterior_VELMA.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         ganancias_anterior_VELMA.setForeground(new java.awt.Color(0, 0, 0));
         ganancias_anterior_VELMA.setText("0");
-        Background.add(ganancias_anterior_VELMA, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 360, 60, -1));
+        Background.add(ganancias_anterior_VELMA, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 360, 70, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -948,6 +952,8 @@ public class MainFrame extends javax.swing.JFrame {
             
             this.Mensaje.setText(String.valueOf(e));
 //            System.out.println(e);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -1082,21 +1088,21 @@ public class MainFrame extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainFrame().setVisible(true);
+                try {
+                    new MainFrame().setVisible(true);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

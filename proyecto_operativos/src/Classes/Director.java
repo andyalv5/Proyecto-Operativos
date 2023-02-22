@@ -8,6 +8,8 @@ import Interfaces.Dashboard;
 import Interfaces.Dashboard1;
 import Leer_Escribir_JSON.JSONReaderWriter;
 import java.awt.Color;
+import java.io.FileNotFoundException;
+import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import proyecto_operativos.Proyecto_operativos;
@@ -63,6 +65,9 @@ public class Director extends Thread{
     public static volatile int NroSeries_Jose;
     
     javax.swing.JLabel DirectorHaciendo;
+    
+    private static Semaphore LlegoJose = new Semaphore(0);
+    private static Semaphore LlegoAndy = new Semaphore(0);
     
     public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter, javax.swing.JLabel Veces_PM_atrapado, javax.swing.JLabel beneficios_text, javax.swing.JLabel costos_text, javax.swing.JLabel Es_el_mejor, javax.swing.JLabel texto1, javax.swing.JLabel texto2, javax.swing.JLabel texto3, javax.swing.JLabel series_Entregadas, javax.swing.JLabel ingresos_generales ,javax.swing.JLabel costos_generales_reales,int id, javax.swing.JLabel DirectorHaciendo){
         this.pm = pm;
@@ -171,10 +176,30 @@ public class Director extends Thread{
         }        
     }
     
+    private void SincronizarRodajes() throws InterruptedException{
+        
+        if(this.rodaje.equalsIgnoreCase("andy")){
+//            Avisa al rodaje de jose que llegó al punto
+            Director.LlegoAndy.release();
+//            Espera a que José ya halla llegado
+//            System.out.println("Voy a esperar a José ----------------");
+            Director.LlegoJose.acquire();
+            
+        }else{
+//            Avisa al rodaje de jose que llegó al punto
+            Director.LlegoJose.release();
+//            Esperando a que Andy ya halla llegado
+//            System.out.println("Voy a esperar a Andy --------------------");
+            Director.LlegoAndy.acquire();
+        }
+    }
+    
     /**
      * Para el proceso si ya se hicieron el NroSeries_Rodaje, de lo contrario, le resta en 1
+     * @throws java.lang.InterruptedException
+     * @throws java.io.FileNotFoundException
      */
-    public void StopIfNroSeries_Rodaje_Es0() throws InterruptedException{
+    public void StopIfNroSeries_Rodaje_Es0() throws InterruptedException, FileNotFoundException{
         if(this.rodaje.equalsIgnoreCase("andy")){
             
              Director.NroSeries_Andy = this.Restar_NroSeries_Rodaje(Director.NroSeries_Andy);
@@ -204,8 +229,13 @@ public class Director extends Thread{
             this.costos_generales_reales.setForeground(Color.black);
             this.capitulos_entregados.setForeground(Color.black);
             this.beneficios_text.setForeground(Color.black);
-
-
+            
+            this.EscribirIngresosCostosEnClaseJSON();
+            
+            
+            
+            
+            
             if (id ==0){
                Dashboard1.semaforo_final.release();
                Dashboard.comparacion =beneficios_generales_num;
@@ -231,8 +261,17 @@ public class Director extends Thread{
             }
             this.es_elmejor.setForeground(Color.red);
             
+//            Se asegura que los directores de ambos rodajes hallan llegado a este punto para terminar
+
+//            System.out.println("Hola! soy " + this.rodaje + " _________________");
             
             
+            JSONReaderWriter jsnrw = new JSONReaderWriter();
+            jsnrw.Writer(String.valueOf(JSONReaderWriter.dia_en_segundos), String.valueOf(JSONReaderWriter.dias_entre_despachos), String.valueOf(JSONReaderWriter.parte_intro_max), String.valueOf(JSONReaderWriter.Capacidad_infinita_intro), String.valueOf(JSONReaderWriter.parte_creditos_max), String.valueOf(JSONReaderWriter.Capacidad_infinita_creditos), String.valueOf(JSONReaderWriter.parte_inicio_max), String.valueOf(JSONReaderWriter.Capacidad_infinita_inicio), String.valueOf(JSONReaderWriter.parte_cierre_max), String.valueOf(JSONReaderWriter.Capacidad_infinita_cierre), String.valueOf(JSONReaderWriter.parte_plot_twist_max), String.valueOf(JSONReaderWriter.Capacidad_infinita_plot_twist), String.valueOf(JSONReaderWriter.Productor_Intros_jose), String.valueOf(JSONReaderWriter.Productor_Creditos_jose), String.valueOf(JSONReaderWriter.Productor_Inicio_jose), String.valueOf(JSONReaderWriter.Productor_cierre_jose), String.valueOf(JSONReaderWriter.Productor_Plot_Twist_jose), String.valueOf(JSONReaderWriter.Productor_Intros_andy), String.valueOf(JSONReaderWriter.Productor_Creditos_andy), String.valueOf(JSONReaderWriter.Productor_Inicio_andy), String.valueOf(JSONReaderWriter.Productor_cierre_andy), String.valueOf(JSONReaderWriter.Productor_Plot_Twist_andy), String.valueOf(JSONReaderWriter.Ensamblador_Rodaje_jose), String.valueOf(JSONReaderWriter.Ensamblador_Rodaje_andy), String.valueOf(JSONReaderWriter.Ingresos_Rodaje_jose), String.valueOf(JSONReaderWriter.Ingresos_Rodaje_andy), String.valueOf(JSONReaderWriter.Costos_Rodaje_jose), String.valueOf(JSONReaderWriter.Costos_Rodaje_andy));
+            
+            this.SincronizarRodajes();
+            
+//            System.out.println("Ya salí de la sincronización " + this.rodaje + "-------------");
             
             Proyecto_operativos.keep = false;
         }
@@ -255,6 +294,25 @@ public class Director extends Thread{
         }else{
             return NroSeries_rodaje;
         }
+    }
+    
+    /**
+     * Escribe en la clase JSON los valores de ingresos y costosS
+     */
+    public void EscribirIngresosCostosEnClaseJSON(){
+        
+        if(this.rodaje.equalsIgnoreCase("andy")){
+            
+            JSONReaderWriter.Costos_Rodaje_andy = (int) this.costos_generales_num;
+            JSONReaderWriter.Ingresos_Rodaje_andy = (int) this.beneficios_generales_num + JSONReaderWriter.Costos_Rodaje_andy;
+            
+        }else{
+            
+            JSONReaderWriter.Costos_Rodaje_jose = (int) this.costos_generales_num;
+            JSONReaderWriter.Ingresos_Rodaje_jose = (int) this.beneficios_generales_num + JSONReaderWriter.Costos_Rodaje_jose;
+            
+        }
+        
     }
     
     @Override
@@ -379,7 +437,7 @@ public class Director extends Thread{
                 }
                 
                 
-            } catch (InterruptedException ex) {
+            } catch (InterruptedException | FileNotFoundException ex) {
                 Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

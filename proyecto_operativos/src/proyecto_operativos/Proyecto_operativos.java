@@ -116,8 +116,9 @@ public class Proyecto_operativos {
     /**
      * @param args the command line arguments
      * @throws java.io.FileNotFoundException
+     * @throws java.lang.InterruptedException
      */
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException, InterruptedException {
         
         
 //        JOSE VA A DOMINAR ESTO MUAJAJAJA
