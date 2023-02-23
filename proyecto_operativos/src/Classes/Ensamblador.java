@@ -153,7 +153,7 @@ public class Ensamblador extends Thread{
 
                         capitulo = capitulo+1;
                         Dashboard.Jtext_Productores_Ensamblado.acquire();
-                        this.ganancia_Velma= ganancia_Velma +((dinero*100)/150);
+                        this.ganancia_Velma= ganancia_Velma +((dinero*100000)/150000);
                         Dashboard.Jtext_Productores_Ensamblado.release();
                         
                         hilo1.free_space(2);

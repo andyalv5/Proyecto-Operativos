@@ -85,7 +85,7 @@ public class Dashboard extends javax.swing.JFrame {
     public static Productor_Inicio hilo3 = new Productor_Inicio(drive_Inicio,semaforo_empty_inicio, semaforo_ini,1,tamanio_Inicio,1);
     public static Productor_Credito hilo4 = new Productor_Credito(drive_credito,semaforo_empty_credito, semaforo_con,1,tamanio_credito,2);
     public static Productor_Plot_Twist hilo5 = new Productor_Plot_Twist(drive_Plot_Twist,semaforo_empty_plot_twist, semaforo_PT,1,tamanio_Plot_Twist,1);
-    public static Ensamblador hilo6 = new Ensamblador(hilo1,hilo2,hilo3,hilo4,hilo5,semaforo_intro,semaforo_cie,semaforo_ini,semaforo_con,semaforo_PT,950);
+    public static Ensamblador hilo6 = new Ensamblador(hilo1,hilo2,hilo3,hilo4,hilo5,semaforo_intro,semaforo_cie,semaforo_ini,semaforo_con,semaforo_PT,950000);
     
 ////    Aqui tengo el project manager trabajando con la cedula de andy
 //    Project_manager pm_andy = new Project_manager(Proyecto_operativos.ci_Andy, "andy", this.Contador);
