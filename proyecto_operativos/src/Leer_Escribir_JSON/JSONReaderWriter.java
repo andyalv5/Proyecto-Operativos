@@ -111,9 +111,9 @@ public class JSONReaderWriter{
         try{
             
             // parsing file "JSONExample.json"
-            
+            JSONReaderWriter.writeAndreadmutex.acquire();
             Object obj = new JSONParser().parse(new FileReader("src\\Archivos\\jsonfile.json"));
-            
+            JSONReaderWriter.writeAndreadmutex.release();
 
             // typecasting obj to JSONObject
             JSONObject jo = (JSONObject) obj;
@@ -494,7 +494,7 @@ public class JSONReaderWriter{
      * @param Costos_Rodaje_andy
      * @throws FileNotFoundException 
      */
-    public void Writer(String dia_en_segundos, String dias_entre_despachos, String parte_intro_max, String Capacidad_infinita1, String parte_creditos_max, String Capacidad_infinita2, String parte_inicio_max, String Capacidad_infinita3, String parte_cierre_max, String Capacidad_infinita4, String parte_plot_twist_max, String Capacidad_infinita5, String Productor_Intros_jose, String Productor_Creditos_jose, String Productor_Inicio_jose, String Productor_cierre_jose, String Productor_Plot_Twist_jose, String Productor_Intros_andy, String Productor_Creditos_andy, String Productor_Inicio_andy, String Productor_cierre_andy, String Productor_Plot_Twist_andy, String Ensamblador_Rodaje_jose, String Ensamblador_Rodaje_andy, String Ingresos_Rodaje_jose, String Ingresos_Rodaje_andy, String Costos_Rodaje_jose, String Costos_Rodaje_andy) throws FileNotFoundException{
+    public void Writer(String dia_en_segundos, String dias_entre_despachos, String parte_intro_max, String Capacidad_infinita1, String parte_creditos_max, String Capacidad_infinita2, String parte_inicio_max, String Capacidad_infinita3, String parte_cierre_max, String Capacidad_infinita4, String parte_plot_twist_max, String Capacidad_infinita5, String Productor_Intros_jose, String Productor_Creditos_jose, String Productor_Inicio_jose, String Productor_cierre_jose, String Productor_Plot_Twist_jose, String Productor_Intros_andy, String Productor_Creditos_andy, String Productor_Inicio_andy, String Productor_cierre_andy, String Productor_Plot_Twist_andy, String Ensamblador_Rodaje_jose, String Ensamblador_Rodaje_andy, String Ingresos_Rodaje_jose, String Ingresos_Rodaje_andy, String Costos_Rodaje_jose, String Costos_Rodaje_andy) throws FileNotFoundException, InterruptedException{
         
         // creating JSONObject
         JSONObject jo = new JSONObject();
@@ -584,14 +584,14 @@ public class JSONReaderWriter{
         jo.put("Costos_Rodaje_andy", Costos_Rodaje_andy_int);
         
         
-        
+        JSONReaderWriter.writeAndreadmutex.acquire();
         try (//        writing JSON to file:"jsonfile.json" in cwd
                 PrintWriter pw = new PrintWriter("src\\Archivos\\jsonfile.json")) {
             pw.write(jo.toJSONString());
             
             pw.flush();
         }
-
+        JSONReaderWriter.writeAndreadmutex.release();
     }
          
 }
