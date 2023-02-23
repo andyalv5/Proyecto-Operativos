@@ -77,6 +77,14 @@ public class Director extends Thread{
     public static boolean vigila_jose;
     
     
+//    Texto para que el director sepa que capitulos despachar
+    javax.swing.JLabel EnsambladoTxt;
+//    Texto donde el director pondrá la cantidad del lote anterior
+    javax.swing.JLabel loteanteriortext;
+//    Variable que indica cuantos capitulos se imprimieron en el ultimo lote
+    int capitulosHastaElMomento = 0;
+//    Variable que indica cuantos capitulos no se deberian tomar en cuenta
+    int capitulosIgnorados = 0;
 //    ------------------------------------------------------------
     /**
      * Constructor del director
@@ -95,8 +103,10 @@ public class Director extends Thread{
      * @param costos_generales_reales
      * @param id
      * @param DirectorHaciendo 
+     * @param EnsambladoTxt 
+     * @param loteanteriortext  
      */
-    public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter, javax.swing.JLabel Veces_PM_atrapado, javax.swing.JLabel beneficios_text, javax.swing.JLabel costos_text, javax.swing.JLabel Es_el_mejor, javax.swing.JLabel texto1, javax.swing.JLabel texto2, javax.swing.JLabel texto3, javax.swing.JLabel series_Entregadas, javax.swing.JLabel ingresos_generales ,javax.swing.JLabel costos_generales_reales,int id, javax.swing.JLabel DirectorHaciendo){
+    public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter, javax.swing.JLabel Veces_PM_atrapado, javax.swing.JLabel beneficios_text, javax.swing.JLabel costos_text, javax.swing.JLabel Es_el_mejor, javax.swing.JLabel texto1, javax.swing.JLabel texto2, javax.swing.JLabel texto3, javax.swing.JLabel series_Entregadas, javax.swing.JLabel ingresos_generales ,javax.swing.JLabel costos_generales_reales,int id, javax.swing.JLabel DirectorHaciendo, javax.swing.JLabel EnsambladoTxt, javax.swing.JLabel loteanteriortext){
         this.pm = pm;
         this.rodaje = rodaje;
         this.Contador_inter = Contador_inter;
@@ -115,6 +125,9 @@ public class Director extends Thread{
         
         this.DirectorHaciendo = DirectorHaciendo;
         
+        this.EnsambladoTxt = EnsambladoTxt;
+        
+        this.loteanteriortext = loteanteriortext;
     }
     
     
@@ -394,8 +407,7 @@ public class Director extends Thread{
 //                    ---------------------------------------
 //                    Aquí pondremos el método para agregar todos los capitulos creados a la serie
 //                    Y además resetearemos el contador a su valor original
-                    
-                    
+                                        
                     
                     
                    
@@ -404,7 +416,16 @@ public class Director extends Thread{
                     this.DirectorHaciendo.setText("Series entregadas");
                     
                     
+//                    Se plantea lo siguiente
                     
+//                    La variable temp toma el valor de capitulos ensamblados TOTALES
+                    int temp = Integer.parseInt(this.EnsambladoTxt.getText());
+//                    Se ponen la cantidad de capitulos para la serie que acaba de terminar de despacharse
+                    this.capitulosHastaElMomento = temp - this.capitulosIgnorados;
+//                    Se toma en cuenta la nueva cantidad de capitulos ignorados para la siguiente tanda
+                    this.capitulosIgnorados = temp;
+//                    Se escribe en la interfaz la cantidad de capitulos creados para la serie
+                    this.loteanteriortext.setText(String.valueOf(this.capitulosHastaElMomento));
 //                    --------------------------------------------
 
 //                    Proyecto_operativos.Contador.release();
