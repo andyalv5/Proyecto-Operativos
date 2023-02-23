@@ -493,7 +493,7 @@ public class MainFrame extends javax.swing.JFrame {
                 Productor_Inicio_TLOUActionPerformed(evt);
             }
         });
-        Background.add(Productor_Inicio_TLOU, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 160, 40));
+        Background.add(Productor_Inicio_TLOU, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, 160, 40));
 
         Productor_Cierre_TLOU.setBackground(new java.awt.Color(0, 0, 0));
         Productor_Cierre_TLOU.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -890,8 +890,13 @@ public class MainFrame extends javax.swing.JFrame {
             }
                 
             else if(JSONReaderWriter.isPositiveNumeric2(this.Dia_en_segundos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Dias_entre_despachos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Intros_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Creditos_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Inicio_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Cierre_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Plot_Twist_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Ensamblador_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Intros_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Creditos_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Inicio_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Cierre_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Plot_Twist_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Ensamblador_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.parte_intro_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric2(this.parte_creditos_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric2(this.parte_inicio_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric2(this.parte_cierre_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric2(this.parte_plot_twist_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Nro_series.getText())){
+                    
+                
 //                Valida si todos los campos son valores numericos mayores que cero
 //                Si se entra aquí, se debe escribir en el JSON los valores escritos en la interfaz
+                
+                boolean validador = true;
+                
                 if(Integer.parseInt(this.Productor_Intros_TLOU.getText()) + Integer.parseInt(this.Productor_Plot_Twist_TLOU.getText())+Integer.parseInt(this.Productor_Cierre_TLOU.getText())+Integer.parseInt(this.Productor_Creditos_TLOU.getText()) + Integer.parseInt(this.Productor_Inicio_TLOU.getText()) > 19){
                     this.Mensaje.setText("Revise los productores");
                     JOptionPane.showMessageDialog(null,"La cantidad total de productores se encuentra por encima de 19","ERROR",JOptionPane.ERROR_MESSAGE);
@@ -908,8 +913,8 @@ public class MainFrame extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null,"Debe ingresar un numero > 0","ERROR",JOptionPane.ERROR_MESSAGE);
                     
                 
-                }    
-            else if(JSONReaderWriter.isPositiveNumeric(this.Dia_en_segundos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric(this.Dias_entre_despachos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Intros_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Creditos_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Inicio_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Cierre_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Plot_Twist_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Ensamblador_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Intros_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Creditos_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Inicio_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Cierre_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Plot_Twist_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Ensamblador_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_intro_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_creditos_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_inicio_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_cierre_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_plot_twist_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.Nro_series.getText())){
+                }else if(JSONReaderWriter.isPositiveNumeric(this.Dia_en_segundos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric(this.Dias_entre_despachos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Intros_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Creditos_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Inicio_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Cierre_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Plot_Twist_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Ensamblador_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Intros_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Creditos_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Inicio_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Cierre_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Productor_Plot_Twist_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.Ensamblador_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_intro_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_creditos_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_inicio_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_cierre_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.parte_plot_twist_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric(this.Nro_series.getText())){
+
 //                Valida si todos los campos son valores numericos mayores que cero
 //                Si se entra aquí, se debe escribir en el JSON los valores escritos en la interfaz
                 
@@ -920,14 +925,46 @@ public class MainFrame extends javax.swing.JFrame {
                     String Capacidad_infinita_cierre = String.valueOf(this.Capacidad_infinita_cierre_checkbox.isSelected());
                     String Capacidad_infinita_plot_twist = String.valueOf(this.Capacidad_infinita_plot_twist_checkbox.isSelected());
                     
-                    
-
-
+                    System.out.println(Capacidad_infinita_plot_twist);
     //                Se escribe en el JSON todos los datos recopilados
-                    jsnrw.Writer(this.Dia_en_segundos_MainFrame_text.getText(), this.Dias_entre_despachos_MainFrame_text.getText(), this.parte_intro_max_MainFrame.getText(), Capacidad_infinita_intro, this.parte_creditos_max_MainFrame.getText(), Capacidad_infinita_credito, this.parte_inicio_max_MainFrame.getText(), Capacidad_infinita_inicio, this.parte_cierre_max_MainFrame.getText(), Capacidad_infinita_cierre, this.parte_plot_twist_max_MainFrame.getText(), Capacidad_infinita_plot_twist, this.Productor_Intros_TLOU.getText(), this.Productor_Creditos_TLOU.getText(), this.Productor_Inicio_TLOU.getText(), this.Productor_Cierre_TLOU.getText(), this.Productor_Plot_Twist_TLOU.getText(), this.Productor_Intros_VELMA.getText(), this.Productor_Creditos_VELMA.getText(), this.Productor_Inicio_VELMA.getText(), this.Productor_Cierre_VELMA.getText(), this.Productor_Plot_Twist_VELMA.getText(), this.Ensamblador_TLOU.getText(), this.Ensamblador_VELMA.getText(), String.valueOf(JSONReaderWriter.Ingresos_Rodaje_jose), String.valueOf(JSONReaderWriter.Ingresos_Rodaje_andy), String.valueOf(JSONReaderWriter.Costos_Rodaje_jose), String.valueOf(JSONReaderWriter.Costos_Rodaje_andy));
+                    jsnrw.Writer(this.Dia_en_segundos_MainFrame_text.getText(),
+                            this.Dias_entre_despachos_MainFrame_text.getText(), 
+                            this.parte_intro_max_MainFrame.getText(), 
+                            Capacidad_infinita_intro, 
+                            this.parte_creditos_max_MainFrame.getText(), 
+                            Capacidad_infinita_credito, 
+                            this.parte_inicio_max_MainFrame.getText(), 
+                            Capacidad_infinita_inicio, 
+                            this.parte_cierre_max_MainFrame.getText(), 
+                            Capacidad_infinita_cierre, 
+                            this.parte_plot_twist_max_MainFrame.getText(), 
+                            Capacidad_infinita_plot_twist, 
+                            this.Productor_Intros_TLOU.getText(), 
+                            this.Productor_Creditos_TLOU.getText(), 
+                            this.Productor_Inicio_TLOU.getText(), 
+                            this.Productor_Cierre_TLOU.getText(), 
+                            this.Productor_Plot_Twist_TLOU.getText(), 
+                            this.Productor_Intros_VELMA.getText(), 
+                            this.Productor_Creditos_VELMA.getText(), 
+                            this.Productor_Inicio_VELMA.getText(), 
+                            this.Productor_Cierre_VELMA.getText(), 
+                            this.Productor_Plot_Twist_VELMA.getText(), 
+                            this.Ensamblador_TLOU.getText(), 
+                            this.Ensamblador_VELMA.getText(), 
+                            String.valueOf(JSONReaderWriter.Ingresos_Rodaje_jose), 
+                            String.valueOf(JSONReaderWriter.Ingresos_Rodaje_andy), 
+                            String.valueOf(JSONReaderWriter.Costos_Rodaje_jose), 
+                            String.valueOf(JSONReaderWriter.Costos_Rodaje_andy));
     //                Se lee el JSON para que se carguen los datos en el programa
                     jsnrw.Reader();                
     //                Ahora se pasa a la siguiente interfaz
+    
+                    System.out.println("||||||||||||||");
+                    
+                    System.out.println(JSONReaderWriter.Capacidad_infinita_plot_twist);
+                    
+                    System.out.println("||||||||||||||");
+                    
                     this.PasarSiguienteInterfaz();
                 }
             }

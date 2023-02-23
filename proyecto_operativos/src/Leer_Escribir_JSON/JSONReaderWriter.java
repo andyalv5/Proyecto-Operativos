@@ -492,10 +492,19 @@ public class JSONReaderWriter{
      * @param Costos_Rodaje_andy
      * @throws FileNotFoundException 
      */
-    public void Writer(String dia_en_segundos, String dias_entre_despachos, String parte_intro_max, 
-            String Capacidad_infinita1, String parte_creditos_max, String Capacidad_infinita2,
-            String parte_inicio_max, String Capacidad_infinita3, String parte_cierre_max, String Capacidad_infinita4,
-            String parte_plot_twist_max, String Capacidad_infinita5, String Productor_Intros_jose,
+    public void Writer(String dia_en_segundos,
+            String dias_entre_despachos,
+            String parte_intro_max,
+            String Capacidad_infinita1, 
+            String parte_creditos_max, 
+            String Capacidad_infinita2,
+            String parte_inicio_max, 
+            String Capacidad_infinita3, 
+            String parte_cierre_max, 
+            String Capacidad_infinita4,
+            String parte_plot_twist_max, 
+            String Capacidad_infinita5, 
+            String Productor_Intros_jose,
             String Productor_Creditos_jose, String Productor_Inicio_jose, String Productor_cierre_jose,
             String Productor_Plot_Twist_jose, String Productor_Intros_andy, String Productor_Creditos_andy,
             String Productor_Inicio_andy, String Productor_cierre_andy, String Productor_Plot_Twist_andy,
@@ -549,7 +558,7 @@ public class JSONReaderWriter{
         m = new LinkedHashMap(2);
         
         m.put("parte_plot_twist_max", this.Toint(parte_plot_twist_max));
-        m.put("Capacidad_infinita", this.Tobool(parte_plot_twist_max));
+        m.put("Capacidad_infinita", this.Tobool(Capacidad_infinita5));
         
         ja.add(m);
         

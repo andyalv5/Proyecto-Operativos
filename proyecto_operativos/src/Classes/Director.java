@@ -236,13 +236,13 @@ public class Director extends Thread{
 //            Proyecto_operativos.keep = false;
              Director.NroSeries_Andy = this.Restar_NroSeries_Rodaje(Director.NroSeries_Andy);
             
-             System.out.println("Hola broski, este el nro de series actuales: de andy" + Director.NroSeries_Andy);
+//             System.out.println("Hola broski, este el nro de series actuales: de andy" + Director.NroSeries_Andy);
              
         }else{
             
              Director.NroSeries_Jose = this.Restar_NroSeries_Rodaje(Director.NroSeries_Jose);
              
-             System.out.println("Hola broski, este el nro de series actuales: de jose" + Director.NroSeries_Andy);
+//             System.out.println("Hola broski, este el nro de series actuales: de jose" + Director.NroSeries_Andy);
         }
         
         if(Director.NroSeries_Andy == 0 || Director.NroSeries_Jose == 0){
@@ -288,7 +288,7 @@ public class Director extends Thread{
             }
             this.es_elmejor.setForeground(Color.red);
             
-            System.out.println("-----------------||||---------||||-------");
+//            System.out.println("-----------------||||---------||||-------");
             
             
             
@@ -347,11 +347,11 @@ public class Director extends Thread{
 //                
 //            }
             
-            System.out.println( "> " + JSONReaderWriter.Ingresos_Rodaje_jose + JSONReaderWriter.Ingresos_Rodaje_andy + JSONReaderWriter.Costos_Rodaje_jose + JSONReaderWriter.Costos_Rodaje_andy);
+//            System.out.println( "> " + JSONReaderWriter.Ingresos_Rodaje_jose + JSONReaderWriter.Ingresos_Rodaje_andy + JSONReaderWriter.Costos_Rodaje_jose + JSONReaderWriter.Costos_Rodaje_andy);
 
             
             
-            System.out.println("-----------------||||---------||||-------");
+//            System.out.println("-----------------||||---------||||-------");
             
             
             float ingresosFloat = this.beneficios_generales_num - this.costos_generales_num;
@@ -562,7 +562,7 @@ public class Director extends Thread{
             this.Semaforo_RM_release();
             this.DirectorHaciendo.setText("pilló al PM y está restandole el sueldo");
             
-            System.out.println("Director: Te vi menooor");
+//            System.out.println("Director: Te vi menooor");
             
 //            Medimos las horas que tarda el Director 12-18 horas aleatoriamente
             int random2 = (int)(Math.random()*Proyecto_operativos.dia_en_ms*6/24 + Proyecto_operativos.dia_en_ms*12/24);
@@ -584,7 +584,7 @@ public class Director extends Thread{
         }else{
             this.Semaforo_RM_release();
             this.DirectorHaciendo.setText("Dejó de vigilar al PM");
-            System.out.println("Director: A la proxima te veo >.>");
+//            System.out.println("Director: A la proxima te veo >.>");
 
         }
     }
