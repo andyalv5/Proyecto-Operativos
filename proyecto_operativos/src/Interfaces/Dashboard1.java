@@ -170,7 +170,7 @@ public class Dashboard1 extends javax.swing.JFrame {
     //    Aqui tengo el project manager trabajando con la cedula de jose
         Project_manager pm_jose = new Project_manager(Proyecto_operativos.ci_jose, "jose", this.Contador1,this.ProjectManagerHaciendo);
     //    Aqui le indico al director de jose a que productor vigilar, y además, le indico que es el director de jose
-        Director dir_jose = new Director(pm_jose, "jose", this.Contador1, this.Veces_PM_atrapado,this.BeneficiosReal,this.Costos_Totales_PD,this.es_el_mejor,this.text1,this.text2,this.text3,this.series_entregadas,this.Ganancia_Capitulo1,this.costos_generales_reales,0, this.DirectorHaciendo, this.EnsambladoTxt1, this.loteanteriortext);
+        Director dir_jose = new Director(pm_jose, "jose", this.Contador1, this.Veces_PM_atrapado,this.BeneficiosReal,this.Costos_Totales_PD,this.es_el_mejor,this.text1,this.text2,this.text3,this.series_entregadas,this.Ganancia_Capitulo1,this.costos_generales_reales,0, this.DirectorHaciendo);
         
         Dhilo1.start();
         Dhilo2.start();
@@ -370,8 +370,6 @@ public class Dashboard1 extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         Despedido = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        loteanteriortext = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
 
         jLabel18.setBackground(new java.awt.Color(0, 0, 0));
         jLabel18.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -879,12 +877,6 @@ public class Dashboard1 extends javax.swing.JFrame {
         jLabel19.setText("Rodaje Jose");
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 70, -1, -1));
 
-        loteanteriortext.setText("0");
-        jPanel1.add(loteanteriortext, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 520, -1, -1));
-
-        jLabel6.setText("Lote ant caps:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 520, -1, -1));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1297,14 +1289,12 @@ public class Dashboard1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel loteanteriortext;
     private javax.swing.JProgressBar progresoCierreBar1;
     private javax.swing.JProgressBar progresoCreditoBar1;
     private javax.swing.JProgressBar progresoInicioBar1;
