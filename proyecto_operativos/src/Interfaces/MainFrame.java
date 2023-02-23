@@ -23,6 +23,38 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
+    
+      /**
+     * Pone las variables de la clase JSON que se necesiten en TRUE
+     */
+    public void CapacidadInfinita(){
+//        Revisa si la capacidad de intro es infinita
+        if(this.Capacidad_infinita_intro_checkbox.isSelected()){
+            JSONReaderWriter.Capacidad_infinita_intro = true;
+        }
+        
+//        Revisa si la capacidad de credito es infinita
+        if(this.Capacidad_infinita_creditos_checkbox.isSelected()){
+            JSONReaderWriter.Capacidad_infinita_creditos = true;
+        }
+        
+//        Revisa si la capacidad de inicio es infinita
+        if(this.Capacidad_infinita_inicio_checkbox.isSelected()){
+            JSONReaderWriter.Capacidad_infinita_inicio = true;
+        }
+        
+//        Revisa si la capacidad de cierre es infinita
+        if(this.Capacidad_infinita_cierre_checkbox.isSelected()){
+            JSONReaderWriter.Capacidad_infinita_cierre = true;
+        }
+        
+//        Revisa si la capacidad de plot twist es infinita
+        if(this.Capacidad_infinita_plot_twist_checkbox.isSelected()){
+            JSONReaderWriter.Capacidad_infinita_plot_twist = true;
+        }
+        
+    }
+    
     public MainFrame() {
         initComponents();
         
