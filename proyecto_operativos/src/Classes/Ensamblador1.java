@@ -8,7 +8,7 @@ import Classes.Productor_Cierre;
 import Classes.Productor_Credito;
 import Classes.Productor_Inicio;
 import Classes.Productor_Plot_Twist;
-import Classes.Productor_Intro;
+import Classes.Productores_Intro;
 import Interfaces.Dashboard;
 import static Interfaces.Dashboard.hilo6;
 import java.util.concurrent.Semaphore;
@@ -21,10 +21,10 @@ import proyecto_operativos.Proyecto_operativos;
  * @author Andy
  */
 public class Ensamblador1 extends Thread{
-    private int ganancia_TLOU=0;
+    private int ganancia_Velma;
     
-    public int get_ganancia_TLOU(){
-        return this.ganancia_TLOU;
+    public int get_ganancia_velma(){
+        return this.ganancia_Velma;
     }
     
     private int dinero;
@@ -36,7 +36,7 @@ public class Ensamblador1 extends Thread{
     public int Credito_Prod;
     public int inicio_Prod;
     public int Plot_Twist_Prod;
-    Productor_Intro hilo1;
+    Productores_Intro hilo1;
     Productor_Cierre hilo2;
     Productor_Inicio hilo3;
     Productor_Credito hilo4;
@@ -50,7 +50,7 @@ public class Ensamblador1 extends Thread{
     
     
     
-    public Ensamblador1(Productor_Intro hilo1,Productor_Cierre hilo2,Productor_Inicio hilo3,Productor_Credito hilo4,Productor_Plot_Twist hilo5, Semaphore s,Semaphore o,Semaphore p, Semaphore q,Semaphore r,int dinero) {
+    public Ensamblador1(Productores_Intro hilo1,Productor_Cierre hilo2,Productor_Inicio hilo3,Productor_Credito hilo4,Productor_Plot_Twist hilo5, Semaphore s,Semaphore o,Semaphore p, Semaphore q,Semaphore r,int dinero) {
      this.hilo1= hilo1;
      this.hilo2= hilo2;
      this.hilo3= hilo3;
@@ -126,7 +126,7 @@ public class Ensamblador1 extends Thread{
                         
                         capitulo = capitulo+1;
                         Dashboard.Jtext_Productores_Ensamblado.acquire();
-                        this.ganancia_TLOU= ganancia_TLOU+((dinero*100000)/150000);
+                        this.ganancia_Velma= ganancia_Velma +((dinero*100000)/150);
                         Dashboard.Jtext_Productores_Ensamblado.release();
                         
                         hilo1.free_space(1);
@@ -136,15 +136,23 @@ public class Ensamblador1 extends Thread{
                         
                         hilo2.free_space(2);
                         hilo2.set_Pro_per_Day(hilo2.Pro_per_Day-1);
-                        hilo2.set_Pro_per_Day(hilo2.Pro_per_Day-1);
-                        
+                        if (hilo2.get_Pro_per_Day()-1<0){
+                            hilo2.set_Pro_per_Day(0);
+                        }
+                        else{
+                            hilo2.set_Pro_per_Day(hilo2.Pro_per_Day-1);
+                        }
                         
                        
                         
                         hilo3.free_space(2);
                         hilo3.set_Pro_per_Day(hilo3.Pro_per_Day-1);
-                        hilo3.set_Pro_per_Day(hilo3.Pro_per_Day-1);
-                        
+                        if (hilo3.get_Pro_per_Day()-1<0){
+                            hilo3.set_Pro_per_Day(0);
+                        }
+                        else{
+                            hilo3.set_Pro_per_Day(hilo3.Pro_per_Day-1);
+                        }
                         
                         
                       
@@ -159,8 +167,12 @@ public class Ensamblador1 extends Thread{
                         if (this.capitulo_Counter==0){
                             hilo5.free_space(2);
                             hilo5.set_Pro_per_Day(hilo5.Pro_per_Day-1);
-                            hilo5.set_Pro_per_Day(hilo5.Pro_per_Day-1);
-                           
+                            if (hilo5.get_Pro_per_Day()-1<0){
+                                hilo5.set_Pro_per_Day(0);
+                            }
+                            else{
+                                hilo5.set_Pro_per_Day(hilo5.Pro_per_Day-1);
+                            }
                         
                             
                             capitulo_Counter =5;

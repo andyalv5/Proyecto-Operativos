@@ -25,7 +25,7 @@ import proyecto_operativos.Proyecto_operativos;
  */
 public class JSONReaderWriter{
     
-    
+    private static Semaphore writeAndreadmutex = new Semaphore(1);
     public static int dia_en_segundos;
     public static int dias_entre_despachos;
     
@@ -77,14 +77,8 @@ public class JSONReaderWriter{
     
     
     int i = 0;
-    
-    private static Semaphore writeAndreadmutex = new Semaphore(1);
-    
 //    creamos una LISTA DE STRINGS que será devuelta cuandos se corra este metodo
-    String[] lista = new String[28];
-    
-     
-        
+     String[] lista = new String[28];
      
     /**
      * 
@@ -108,22 +102,17 @@ public class JSONReaderWriter{
             }
     }
 
+    
     /**
      * Lee el archivo JSON
-     * @throws java.io.FileNotFoundException
      */
     public void Reader() throws FileNotFoundException, InterruptedException{
         
         try{
             
             // parsing file "JSONExample.json"
-            
-//            Se intenta acceder al JSON para leerlo
             JSONReaderWriter.writeAndreadmutex.acquire();
-
             Object obj = new JSONParser().parse(new FileReader("src\\Archivos\\jsonfile.json"));
-            
-//            Se libera el JSON
             JSONReaderWriter.writeAndreadmutex.release();
 
             // typecasting obj to JSONObject
@@ -259,8 +248,6 @@ public class JSONReaderWriter{
             Proyecto_operativos.contador_dias_restantes_andy = variable_para_contador_dias_restantes;
             Proyecto_operativos.contador_dias_restantes_jose = variable_para_contador_dias_restantes;
             
-            
-
             if(!this.Validador_del_JSONfile()){
                 
                 System.out.println("Arreglando JSON al por defecto");
@@ -284,7 +271,6 @@ public class JSONReaderWriter{
         
         
     }
-    
     /**
      * Arregla el JSON a datos predeterminados para que no haya errores
      * @throws FileNotFoundException 
@@ -357,7 +343,6 @@ public class JSONReaderWriter{
         boolean booler = Boolean.parseBoolean(string);
         return booler;
     }
-    
     /**
      * Valida los datos que se pusieron en el JSON
      * @return true SI TODOS los datos son válidos, false SI ALGUNO ES MALO
@@ -436,7 +421,6 @@ public class JSONReaderWriter{
             return false;            
         }
     }
-    
     public static boolean isPositiveNumeric2(String string){
         try{
             
@@ -448,7 +432,6 @@ public class JSONReaderWriter{
             return false;            
         }
     }
-    
     /**
      * Evalua si es un booleano o no
      * @param string
@@ -477,7 +460,8 @@ public class JSONReaderWriter{
         
         return string.equalsIgnoreCase("");
     }
-        
+    
+    
     /**
      * Escribe en el JSON TODOS LOS DATOS QUE SE LE PASEN
      * @param dia_en_segundos
@@ -511,7 +495,6 @@ public class JSONReaderWriter{
      * @throws FileNotFoundException 
      */
     public void Writer(String dia_en_segundos, String dias_entre_despachos, String parte_intro_max, String Capacidad_infinita1, String parte_creditos_max, String Capacidad_infinita2, String parte_inicio_max, String Capacidad_infinita3, String parte_cierre_max, String Capacidad_infinita4, String parte_plot_twist_max, String Capacidad_infinita5, String Productor_Intros_jose, String Productor_Creditos_jose, String Productor_Inicio_jose, String Productor_cierre_jose, String Productor_Plot_Twist_jose, String Productor_Intros_andy, String Productor_Creditos_andy, String Productor_Inicio_andy, String Productor_cierre_andy, String Productor_Plot_Twist_andy, String Ensamblador_Rodaje_jose, String Ensamblador_Rodaje_andy, String Ingresos_Rodaje_jose, String Ingresos_Rodaje_andy, String Costos_Rodaje_jose, String Costos_Rodaje_andy) throws FileNotFoundException, InterruptedException{
-                
         
         // creating JSONObject
         JSONObject jo = new JSONObject();
@@ -600,24 +583,15 @@ public class JSONReaderWriter{
         int Costos_Rodaje_andy_int = Integer.parseInt(Costos_Rodaje_andy);
         jo.put("Costos_Rodaje_andy", Costos_Rodaje_andy_int);
         
-//        Se intenta entrar al JSON
-        JSONReaderWriter.writeAndreadmutex.acquire();
         
+        JSONReaderWriter.writeAndreadmutex.acquire();
         try (//        writing JSON to file:"jsonfile.json" in cwd
                 PrintWriter pw = new PrintWriter("src\\Archivos\\jsonfile.json")) {
             pw.write(jo.toJSONString());
             
             pw.flush();
-        }catch(Exception e){
-            
-        
         }
-        
-//        Se libera el JSON
         JSONReaderWriter.writeAndreadmutex.release();
-        
-        
-
     }
          
 }

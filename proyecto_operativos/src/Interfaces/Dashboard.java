@@ -12,7 +12,7 @@ import Classes.Productor_Cierre;
 import Classes.Productor_Credito;
 import Classes.Productor_Inicio;
 import Classes.Productor_Plot_Twist;
-import Classes.Productor_Intro;
+import Classes.Productores_Intro;
 import Classes.Project_manager;
 import Leer_Escribir_JSON.JSONReaderWriter;
 import java.awt.Color;
@@ -80,12 +80,12 @@ public class Dashboard extends javax.swing.JFrame {
     public static Semaphore Jtext_Productores_Cierre = new Semaphore(1);
     public static Semaphore Jtext_Productores_Plot_Twist = new Semaphore(1);
     
-    public static Productor_Intro hilo1 = new Productor_Intro(drive_Intro,semaforo_empty_intro, semaforo_intro,1,tamanio_Intro,2);
+    public static Productores_Intro hilo1 = new Productores_Intro(drive_Intro,semaforo_empty_intro, semaforo_intro,1,tamanio_Intro,2);
     public static Productor_Cierre hilo2 = new Productor_Cierre(drive_Cierre,semaforo_empty_cierre ,semaforo_cie,1,tamanio_Cierre,1);
     public static Productor_Inicio hilo3 = new Productor_Inicio(drive_Inicio,semaforo_empty_inicio, semaforo_ini,1,tamanio_Inicio,1);
     public static Productor_Credito hilo4 = new Productor_Credito(drive_credito,semaforo_empty_credito, semaforo_con,1,tamanio_credito,2);
     public static Productor_Plot_Twist hilo5 = new Productor_Plot_Twist(drive_Plot_Twist,semaforo_empty_plot_twist, semaforo_PT,1,tamanio_Plot_Twist,1);
-    public static Ensamblador hilo6 = new Ensamblador(hilo1,hilo2,hilo3,hilo4,hilo5,semaforo_intro,semaforo_cie,semaforo_ini,semaforo_con,semaforo_PT,950000);
+    public static Ensamblador hilo6 = new Ensamblador(hilo1,hilo2,hilo3,hilo4,hilo5,semaforo_intro,semaforo_cie,semaforo_ini,semaforo_con,semaforo_PT,950);
     
 ////    Aqui tengo el project manager trabajando con la cedula de andy
 //    Project_manager pm_andy = new Project_manager(Proyecto_operativos.ci_Andy, "andy", this.Contador);
@@ -172,9 +172,9 @@ public class Dashboard extends javax.swing.JFrame {
         Contador.setText(String.valueOf(JSONReaderWriter.dias_entre_despachos));
         
     //    Aqui tengo el project manager trabajando con la cedula de andy
-        Project_manager pm_andy = new Project_manager(Proyecto_operativos.ci_Andy, "andy", this.Contador, this.ProjectManagerHaciendo);
+        Project_manager pm_andy = new Project_manager(Proyecto_operativos.ci_Andy, "andy", this.Contador,this.ProjectManagerHaciendo);
     //    Aqui le indico al director de andy a que productor vigilar, y además, le indico que es el director de andy
-        Director dir_andy = new Director(pm_andy, "andy", this.Contador, this.Veces_PM_atrapado,this.BeneficiosReal,this.Costos_Totales_PD,this.es_el_mejor,this.text1,this.text2,this.text3,this.series_entregadas,this.Ganancia_Capitulo,this.costos_generales_reales,1, this.DirectorHaciendo, this.EnsambladoTxt, this.loteanteriortext);
+        Director dir_andy = new Director(pm_andy, "andy", this.Contador, this.Veces_PM_atrapado,this.BeneficiosReal,this.Costos_Totales_PD,this.es_el_mejor,this.text1,this.text2,this.text3,this.series_entregadas,this.Ganancia_Capitulo,this.costos_generales_reales,1, this.DirectorHaciendo);
         
         hilo1.start();
         hilo2.start();
@@ -273,11 +273,11 @@ public class Dashboard extends javax.swing.JFrame {
                         
                         
                         
+                        
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
-//                    JSONReaderWriter.Costos_Rodaje_andy =  Integer.parseInt(String.valueOf(hilo1.ganancia+hilo2.ganancia+hilo3.ganancia+hilo4.ganancia+hilo5.ganancia+hilo6.ganancia+pm_andy.ganancia+dir_andy.ganancia));
                    
                 }
             };
@@ -377,8 +377,6 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         Despedido1 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        loteanteriortext = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -882,12 +880,6 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel20.setText("Rodaje Andy");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 70, -1, -1));
 
-        jLabel6.setText("Lote ant caps:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, -1, -1));
-
-        loteanteriortext.setText("0");
-        jPanel1.add(loteanteriortext, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 40, 30, -1));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1306,14 +1298,12 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel loteanteriortext;
     private javax.swing.JProgressBar progresoCierreBar;
     private javax.swing.JProgressBar progresoCreditoBar;
     private javax.swing.JProgressBar progresoInicioBar;

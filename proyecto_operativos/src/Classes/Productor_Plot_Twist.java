@@ -101,7 +101,7 @@ public class Productor_Plot_Twist extends Thread{
                             s.release();
                         }
                     System.out.println("Se hicieron "+Pro_per_Day+" plot twist");
-                    empty.release(Pro_per_Day-1);
+                    empty.release(Pro_per_Day);
                     
                         
                     }

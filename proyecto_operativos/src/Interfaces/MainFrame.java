@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import proyecto_operativos.Proyecto_operativos;
 
 /**
  *
@@ -23,11 +24,43 @@ public class MainFrame extends javax.swing.JFrame {
     
     /**
      * Creates new form MainFrame
-     * @throws java.lang.InterruptedException
      */
+    
+      /**
+     * Pone las variables de la clase JSON que se necesiten en TRUE
+     */
+    public void CapacidadInfinita(){
+//        Revisa si la capacidad de intro es infinita
+        if(this.Capacidad_infinita_intro_checkbox.isSelected()){
+            JSONReaderWriter.Capacidad_infinita_intro = true;
+        }
+        
+//        Revisa si la capacidad de credito es infinita
+        if(this.Capacidad_infinita_creditos_checkbox.isSelected()){
+            JSONReaderWriter.Capacidad_infinita_creditos = true;
+        }
+        
+//        Revisa si la capacidad de inicio es infinita
+        if(this.Capacidad_infinita_inicio_checkbox.isSelected()){
+            JSONReaderWriter.Capacidad_infinita_inicio = true;
+        }
+        
+//        Revisa si la capacidad de cierre es infinita
+        if(this.Capacidad_infinita_cierre_checkbox.isSelected()){
+            JSONReaderWriter.Capacidad_infinita_cierre = true;
+        }
+        
+//        Revisa si la capacidad de plot twist es infinita
+        if(this.Capacidad_infinita_plot_twist_checkbox.isSelected()){
+            JSONReaderWriter.Capacidad_infinita_plot_twist = true;
+        }
+        
+    }
+    
     public MainFrame() throws InterruptedException {
         initComponents();
         
+            
 //        Se abre JSON para poder trabajar
         JSONReaderWriter jsnrw = new JSONReaderWriter();
         
@@ -37,6 +70,8 @@ public class MainFrame extends javax.swing.JFrame {
         }catch(FileNotFoundException e){
             this.Mensaje.setText(String.valueOf(e));
         }
+        
+        
         
         this.parte_intro_max_MainFrame.setText(String.valueOf(JSONReaderWriter.parte_intro_max));
         this.parte_cierre_max_MainFrame.setText(String.valueOf(JSONReaderWriter.parte_cierre_max));
@@ -57,9 +92,15 @@ public class MainFrame extends javax.swing.JFrame {
         this.Ensamblador_VELMA.setText(String.valueOf(JSONReaderWriter.Ensamblador_Rodaje_andy));
         this.Dia_en_segundos_MainFrame_text.setText(String.valueOf(JSONReaderWriter.dia_en_segundos));
         this.Dias_entre_despachos_MainFrame_text.setText(String.valueOf(JSONReaderWriter.dias_entre_despachos));
-        
+        this.CapacidadInfinita();
         this.setLocationRelativeTo(null);
         
+        try{
+            jsnrw.Reader();
+            
+        }catch(FileNotFoundException e){
+            this.Mensaje.setText(String.valueOf(e));
+        }
         
 //        Valores para hacer operaciones
         int ingreso_anterior_andy = JSONReaderWriter.Ingresos_Rodaje_andy;
@@ -73,8 +114,6 @@ public class MainFrame extends javax.swing.JFrame {
         int ganancias_anterior_jose =  ingreso_anterior_jose - costos_anterior_jose;
         
 //        Se pone en la interfaz las ganancias de la simulación pasada
-        System.out.println("Ganancias jose " + ganancias_anterior_andy);
-        System.out.println("Ganancias andy" + ganancias_anterior_jose);
         this.ganancias_anterior_VELMA.setText(String.valueOf(ganancias_anterior_andy));
         this.gananias_anterior_TLOU.setText(String.valueOf(ganancias_anterior_jose));
     }
@@ -546,7 +585,7 @@ public class MainFrame extends javax.swing.JFrame {
         ganancias_anterior_VELMA.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         ganancias_anterior_VELMA.setForeground(new java.awt.Color(0, 0, 0));
         ganancias_anterior_VELMA.setText("0");
-        Background.add(ganancias_anterior_VELMA, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 360, 70, -1));
+        Background.add(ganancias_anterior_VELMA, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 360, 60, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -820,9 +859,7 @@ public class MainFrame extends javax.swing.JFrame {
 //        System.out.println("NroSeries_Jose" + Director.NroSeries_Jose);
 
 //        Llama a la otra interfaz
-        
-//        Pone en la clase del JSON los valores de TRUE necesarios
-        this.CapacidadInfinita();
+
 
         SetLocationRelativeToDashboard.SetLocationRelativeToDashboard();
 
@@ -830,37 +867,6 @@ public class MainFrame extends javax.swing.JFrame {
 
 //        Cierra la interfaz actual
         this.setVisible(false);
-    }
-    
-    /**
-     * Pone las variables de la clase JSON que se necesiten en TRUE
-     */
-    public void CapacidadInfinita(){
-//        Revisa si la capacidad de intro es infinita
-        if(this.Capacidad_infinita_intro_checkbox.isSelected()){
-            JSONReaderWriter.Capacidad_infinita_intro = true;
-        }
-        
-//        Revisa si la capacidad de credito es infinita
-        if(this.Capacidad_infinita_creditos_checkbox.isSelected()){
-            JSONReaderWriter.Capacidad_infinita_creditos = true;
-        }
-        
-//        Revisa si la capacidad de inicio es infinita
-        if(this.Capacidad_infinita_inicio_checkbox.isSelected()){
-            JSONReaderWriter.Capacidad_infinita_inicio = true;
-        }
-        
-//        Revisa si la capacidad de cierre es infinita
-        if(this.Capacidad_infinita_cierre_checkbox.isSelected()){
-            JSONReaderWriter.Capacidad_infinita_cierre = true;
-        }
-        
-//        Revisa si la capacidad de plot twist es infinita
-        if(this.Capacidad_infinita_plot_twist_checkbox.isSelected()){
-            JSONReaderWriter.Capacidad_infinita_plot_twist = true;
-        }
-        
     }
     
     private void btnAggUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAggUsuarioActionPerformed
@@ -886,7 +892,6 @@ public class MainFrame extends javax.swing.JFrame {
             else if(JSONReaderWriter.isPositiveNumeric2(this.Dia_en_segundos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Dias_entre_despachos_MainFrame_text.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Intros_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Creditos_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Inicio_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Cierre_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Plot_Twist_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Ensamblador_TLOU.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Intros_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Creditos_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Inicio_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Cierre_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Productor_Plot_Twist_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Ensamblador_VELMA.getText()) && JSONReaderWriter.isPositiveNumeric2(this.parte_intro_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric2(this.parte_creditos_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric2(this.parte_inicio_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric2(this.parte_cierre_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric2(this.parte_plot_twist_max_MainFrame.getText()) && JSONReaderWriter.isPositiveNumeric2(this.Nro_series.getText())){
 //                Valida si todos los campos son valores numericos mayores que cero
 //                Si se entra aquí, se debe escribir en el JSON los valores escritos en la interfaz
-                
                 if(Integer.parseInt(this.Productor_Intros_TLOU.getText()) + Integer.parseInt(this.Productor_Plot_Twist_TLOU.getText())+Integer.parseInt(this.Productor_Cierre_TLOU.getText())+Integer.parseInt(this.Productor_Creditos_TLOU.getText()) + Integer.parseInt(this.Productor_Inicio_TLOU.getText()) > 19){
                     this.Mensaje.setText("Revise los productores");
                     JOptionPane.showMessageDialog(null,"La cantidad total de productores se encuentra por encima de 19","ERROR",JOptionPane.ERROR_MESSAGE);
@@ -1088,11 +1093,15 @@ public class MainFrame extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        
         //</editor-fold>
 
         /* Create and display the form */

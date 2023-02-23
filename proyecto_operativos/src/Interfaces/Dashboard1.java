@@ -13,7 +13,7 @@ import Classes.Productor_Cierre;
 import Classes.Productor_Credito;
 import Classes.Productor_Inicio;
 import Classes.Productor_Plot_Twist;
-import Classes.Productor_Intro;
+import Classes.Productores_Intro;
 import Classes.Project_manager;
 import Leer_Escribir_JSON.JSONReaderWriter;
 import java.awt.Color;
@@ -76,12 +76,12 @@ public class Dashboard1 extends javax.swing.JFrame {
     public static Semaphore Jtext_Productores_Cierre1 = new Semaphore(1);
     public static Semaphore Jtext_Productores_Plot_Twist1 = new Semaphore(1);
     
-    public static Productor_Intro Dhilo1 = new Productor_Intro(drive_Intro1, semaforo_empty_intro,semaforo_intro1,1,tamanio_Intro1,1);
+    public static Productores_Intro Dhilo1 = new Productores_Intro(drive_Intro1, semaforo_empty_intro,semaforo_intro1,1,tamanio_Intro1,1);
     public static Productor_Cierre Dhilo2 = new Productor_Cierre(drive_Cierre1, semaforo_empty_cierre,semaforo_cie1,1,tamanio_Cierre1,2);
     public static Productor_Inicio Dhilo3 = new Productor_Inicio(drive_Inicio1, semaforo_empty_inicio,semaforo_ini1,1,tamanio_Inicio1,2);
     public static Productor_Credito Dhilo4 = new Productor_Credito(drive_credito1,semaforo_empty_credito, semaforo_con1,1,tamanio_credito1,1);
     public static Productor_Plot_Twist Dhilo5 = new Productor_Plot_Twist(drive_Plot_Twist1,semaforo_empty_plot_twist, semaforo_PT1,1,tamanio_Plot_Twist1,2);
-    public static Ensamblador1 Dhilo6 = new Ensamblador1(Dhilo1,Dhilo2,Dhilo3,Dhilo4,Dhilo5,semaforo_intro1,semaforo_cie1,semaforo_ini1,semaforo_con1,semaforo_PT1,1100000);
+    public static Ensamblador1 Dhilo6 = new Ensamblador1(Dhilo1,Dhilo2,Dhilo3,Dhilo4,Dhilo5,semaforo_intro1,semaforo_cie1,semaforo_ini1,semaforo_con1,semaforo_PT1,1100);
   
     
 ////    Aqui tengo el project manager trabajando con la cedula de andy
@@ -168,9 +168,9 @@ public class Dashboard1 extends javax.swing.JFrame {
         Contador1.setText(String.valueOf(JSONReaderWriter.dias_entre_despachos));
         
     //    Aqui tengo el project manager trabajando con la cedula de jose
-        Project_manager pm_jose = new Project_manager(Proyecto_operativos.ci_jose, "jose", this.Contador1, this.ProjectManagerHaciendo);
+        Project_manager pm_jose = new Project_manager(Proyecto_operativos.ci_jose, "jose", this.Contador1,this.ProjectManagerHaciendo);
     //    Aqui le indico al director de jose a que productor vigilar, y además, le indico que es el director de jose
-        Director dir_jose = new Director(pm_jose, "jose", this.Contador1, this.Veces_PM_atrapado,this.BeneficiosReal,this.Costos_Totales_PD,this.es_el_mejor,this.text1,this.text2,this.text3,this.series_entregadas,this.Ganancia_Capitulo1,this.costos_generales_reales,0, this.DirectorHaciendo, this.EnsambladoTxt1, this.loteanteriortext);
+        Director dir_jose = new Director(pm_jose, "jose", this.Contador1, this.Veces_PM_atrapado,this.BeneficiosReal,this.Costos_Totales_PD,this.es_el_mejor,this.text1,this.text2,this.text3,this.series_entregadas,this.Ganancia_Capitulo1,this.costos_generales_reales,0, this.DirectorHaciendo);
         
         Dhilo1.start();
         Dhilo2.start();
@@ -260,7 +260,7 @@ public class Dashboard1 extends javax.swing.JFrame {
                         
                         EnsambladoTxt1.setText(String.valueOf(Dhilo6.get_capitulo()));
                         Ensamblado_Ganancia1.setText(String.valueOf(Dhilo6.get_ganancia()));
-                        Ganancia_Capitulo1.setText(String.valueOf(Dhilo6.get_ganancia_TLOU()));
+                        Ganancia_Capitulo1.setText(String.valueOf(Dhilo6.get_ganancia_velma()));
                         sueldo_Director1.setText(String.valueOf(dir_jose.ganancia));
                         sueldo_Manager1.setText(String.valueOf(pm_jose.ganancia));
                         Costos_Totales_PD.setText(String.valueOf(Dhilo1.ganancia+Dhilo2.ganancia+Dhilo3.ganancia+Dhilo4.ganancia+Dhilo5.ganancia+Dhilo6.ganancia+pm_jose.ganancia+dir_jose.ganancia));
@@ -370,8 +370,6 @@ public class Dashboard1 extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         Despedido = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        loteanteriortext = new javax.swing.JLabel();
 
         jLabel18.setBackground(new java.awt.Color(0, 0, 0));
         jLabel18.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -815,12 +813,12 @@ public class Dashboard1 extends javax.swing.JFrame {
         ProjectManagerHaciendo.setBackground(new java.awt.Color(0, 0, 0));
         ProjectManagerHaciendo.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         ProjectManagerHaciendo.setText("-");
-        jPanel1.add(ProjectManagerHaciendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 290, -1));
+        jPanel1.add(ProjectManagerHaciendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 170, -1));
 
         DirectorHaciendo.setBackground(new java.awt.Color(0, 0, 0));
         DirectorHaciendo.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         DirectorHaciendo.setText("-");
-        jPanel1.add(DirectorHaciendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, 290, -1));
+        jPanel1.add(DirectorHaciendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, 170, -1));
 
         text3.setBackground(new java.awt.Color(0, 0, 0));
         text3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -878,12 +876,6 @@ public class Dashboard1 extends javax.swing.JFrame {
 
         jLabel19.setText("Rodaje Jose");
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 70, -1, -1));
-
-        jLabel6.setText("Lote ant caps:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, -1, -1));
-
-        loteanteriortext.setText("0");
-        jPanel1.add(loteanteriortext, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, 30, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1297,14 +1289,12 @@ public class Dashboard1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel loteanteriortext;
     private javax.swing.JProgressBar progresoCierreBar1;
     private javax.swing.JProgressBar progresoCreditoBar1;
     private javax.swing.JProgressBar progresoInicioBar1;

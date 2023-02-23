@@ -8,7 +8,7 @@ import Classes.Productor_Cierre;
 import Classes.Productor_Credito;
 import Classes.Productor_Inicio;
 import Classes.Productor_Plot_Twist;
-import Classes.Productor_Intro;
+import Classes.Productores_Intro;
 import Interfaces.Dashboard;
 import static Interfaces.Dashboard.hilo6;
 import java.util.concurrent.Semaphore;
@@ -21,7 +21,7 @@ import proyecto_operativos.Proyecto_operativos;
  * @author Andy
  */
 public class Ensamblador extends Thread{
-    private int ganancia_Velma =0;
+    private int ganancia_Velma;
     
     public int get_ganancia_velma(){
         return this.ganancia_Velma;
@@ -36,7 +36,7 @@ public class Ensamblador extends Thread{
     public int Credito_Prod;
     public int inicio_Prod;
     public int Plot_Twist_Prod;
-    Productor_Intro hilo1;
+    Productores_Intro hilo1;
     Productor_Cierre hilo2;
     Productor_Inicio hilo3;
     Productor_Credito hilo4;
@@ -50,7 +50,7 @@ public class Ensamblador extends Thread{
     
     
     
-    public Ensamblador(Productor_Intro hilo1,Productor_Cierre hilo2,Productor_Inicio hilo3,Productor_Credito hilo4,Productor_Plot_Twist hilo5, Semaphore s,Semaphore o,Semaphore p, Semaphore q,Semaphore r,int dinero) {
+    public Ensamblador(Productores_Intro hilo1,Productor_Cierre hilo2,Productor_Inicio hilo3,Productor_Credito hilo4,Productor_Plot_Twist hilo5, Semaphore s,Semaphore o,Semaphore p, Semaphore q,Semaphore r,int dinero) {
      this.hilo1= hilo1;
      this.hilo2= hilo2;
      this.hilo3= hilo3;
@@ -64,66 +64,39 @@ public class Ensamblador extends Thread{
      this.capitulo_Counter=5;
      this.dinero=dinero;
     }
-    /**
-     * get capitulo
-     * @return capitulo
-     */
+    
     public int get_capitulo(){
         return this.capitulo;
     }
-    /**
-     * set_cierre_Prod
-     * @param Pro_per_Day 
-     */
+    
     public void set_cierre_Prod(int Pro_per_Day){
         this.cierre_Prod = Pro_per_Day;
     }
-    /**
-     * set_Credito_Prod
-     * @param Pro_per_Day 
-     */
+    
     public void set_Credito_Prod(int Pro_per_Day){
         this.Credito_Prod = Pro_per_Day;
     }
-    /**
-     * set_inicio_prod
-     * @param Pro_per_Day 
-     */
+    
     public void set_inicio_Prod(int Pro_per_Day){
         this.intro_Prod = Pro_per_Day;
     }
-    /**
-     * set_into_prod
-     * @param Pro_per_Day 
-     */
+    
     public void set_intro_Prod(int Pro_per_Day){
         this.inicio_Prod = Pro_per_Day;
     }
-    /**
-     * set_Plot_Twist_Prod
-     * @param Pro_per_Day 
-     */
+    
     public void set_Plot_Twist_Prod(int Pro_per_Day){
         this.Plot_Twist_Prod = Pro_per_Day;
     }
-    /**
-     * set_Productores
-     * @param productores 
-     */
+    
     public void set_Productores(int productores){
         this.ensambladores=productores;
     }
-    /**
-     * get_ganancia
-     * @return ganancia
-     */
+    
     public int get_ganancia(){
         return this.ganancia;
     }
-    /**
-     * set_ganancia
-     * @param ganancia 
-     */
+    
     public void set_ganancia(int ganancia){
         this.ganancia = ganancia;
     }
@@ -148,18 +121,20 @@ public class Ensamblador extends Thread{
                     p.acquire();
                     q.acquire();
                     r.acquire();
-                   
                     for (int i = 0;i < Math.min(ensambladores , Math.min(intro_Prod, Math.min(inicio_Prod, Math.min(cierre_Prod, Math.min(Plot_Twist_Prod, Credito_Prod)))));i++){
-
                         capitulo = capitulo+1;
                         Dashboard.Jtext_Productores_Ensamblado.acquire();
-                        this.ganancia_Velma= ganancia_Velma +((dinero*100000)/150000);
+                        this.ganancia_Velma= ganancia_Velma +((dinero*100000)/150);
                         Dashboard.Jtext_Productores_Ensamblado.release();
                         
                         hilo1.free_space(2);
                         hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);
-                        hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);
-                        
+                        if (hilo1.get_Pro_per_Day()-1<0){
+                            hilo1.set_Pro_per_Day(0);
+                        }
+                        else{
+                            hilo1.set_Pro_per_Day(hilo1.Pro_per_Day-1);
+                        }
                         
                         
                         
@@ -175,8 +150,12 @@ public class Ensamblador extends Thread{
                         
                         hilo4.free_space(2);
                         hilo4.set_Pro_per_Day(hilo4.Pro_per_Day-1);
-                        hilo4.set_Pro_per_Day(hilo4.Pro_per_Day-1);
-                        
+                        if (hilo4.get_Pro_per_Day()-1<0){
+                            hilo4.set_Pro_per_Day(0);
+                        }
+                        else{
+                            hilo4.set_Pro_per_Day(hilo4.Pro_per_Day-1);
+                        }
                         
                         
                         

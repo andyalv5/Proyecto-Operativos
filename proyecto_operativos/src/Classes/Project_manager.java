@@ -16,7 +16,7 @@ import proyecto_operativos.Proyecto_operativos;
  * @author Hallo
  */
 public class Project_manager extends Thread{
-    
+    public javax.swing.JLabel ProjectManagerHaciendo;
     public int ganancia;
     
 //    Si está viendo R y M
@@ -39,22 +39,17 @@ public class Project_manager extends Thread{
     
     javax.swing.JTextField Contador_inter;
     
-    javax.swing.JLabel ProjectManagerHaciendo;
-    
-//    -----------------------------------------------------------------
-    
     /**
      * 
      * @param ci 
      * @param rodaje 
      * @param Contador_inter 
-     * @param ProjectManagerHaciendo 
      */
-    public Project_manager(int ci, String rodaje, javax.swing.JTextField Contador_inter, javax.swing.JLabel ProjectManagerHaciendo){
+    public Project_manager(int ci, String rodaje, javax.swing.JTextField Contador_inter,javax.swing.JLabel ProjectManagerHaciendo){
         this.ci = ci;
         this.rodaje = rodaje;
         this.Contador_inter = Contador_inter;
-        this.ProjectManagerHaciendo = ProjectManagerHaciendo;
+        this.ProjectManagerHaciendo= ProjectManagerHaciendo;
     }
     
     /**
@@ -97,8 +92,8 @@ public class Project_manager extends Thread{
         }else{
             return Proyecto_operativos.contador_dias_restantes_jose;            
         }
+        
     }
-    
     /**
      * Resta en 1 el contador de dias restantes en el rodaje en específico
      */
@@ -159,18 +154,16 @@ public class Project_manager extends Thread{
                     this.Falsear_PM_nuevo_dia_rodaje();
     //                Tomaremos el valor de "final de la cedula" + "1 hora" en relación a lo que vale un día en milisegundos
                     tiempo = Proyecto_operativos.dia_en_ms * ci / 24 + Proyecto_operativos.dia_en_ms / 24;
-                    
-                    this.ProjectManagerHaciendo.setText("Rebajando contador...");
+
     //                Se duermen las horas establecidas
                     Thread.sleep(tiempo);
                     
 //                    Disminuimos el contador de dias restantes
 //                    Proyecto_operativos.contador_dias_restantes--;
                     this.Restar_contador_dias_restantes_rodaje();
-                    this.ProjectManagerHaciendo.setText("Contador rebajado");
                     
                     System.out.println("Tomaa: " + this.Contador_dias_restantes_rodaje());
-                    
+                    this.ProjectManagerHaciendo.setText("rebajando contador");
 //                    Proyecto_operativos.Contador.release();
                     this.Semaforo_Contador_release();
                     
@@ -183,14 +176,14 @@ public class Project_manager extends Thread{
                 tiempo = (Proyecto_operativos.dia_en_ms*15/24)/60 + (Proyecto_operativos.dia_en_ms*Proyecto_operativos.nro_final_id_andy/24)/60;
                 
                 //Se dispone a ver Rick_y_Morty xd
-                this.ProjectManagerHaciendo.setText("Viendo RyM");
-                
                 if(this.rodaje.equalsIgnoreCase("andy")){
 //                    Si es del rodaje de andy, pues entrará aquí
 
 //                    Sección critica
                     Proyecto_operativos.Director_PM_Semaphore_andy.acquire();                    
 //                    System.out.println("Verdadero en andy");
+                    this.ProjectManagerHaciendo.setText("Viendo Rick y Morty");
+                    
                     this.Rick_y_Morty = true;                    
                     Proyecto_operativos.Director_PM_Semaphore_andy.release();
                     
@@ -209,6 +202,7 @@ public class Project_manager extends Thread{
 //                    Sección critica
                     Proyecto_operativos.Director_PM_Semaphore_jose.acquire();                    
 //                    System.out.println("Verdadero en jose");
+                    this.ProjectManagerHaciendo.setText("Viendo Rick y Morty");
                     this.Rick_y_Morty = true;                    
                     Proyecto_operativos.Director_PM_Semaphore_jose.release();
                     
@@ -238,9 +232,8 @@ public class Project_manager extends Thread{
                 
 //                Ahora se dispone a ver Sprints Reviews
                 
-                this.ProjectManagerHaciendo.setText("Viendo Sprint Reviews");
                 this.Sprint_reviews = true;
-                
+                this.ProjectManagerHaciendo.setText("En Sprint Reviews");
                 Thread.sleep(tiempo);
                 
                 this.Sprint_reviews = false;
@@ -248,7 +241,6 @@ public class Project_manager extends Thread{
                 Thread.sleep(tiempo);
                 
                 this.ProjectManagerHaciendo.setText("Dejó de ver Sprints");
-                
                 
             } catch (InterruptedException ex) {
                 Logger.getLogger(Project_manager.class.getName()).log(Level.SEVERE, null, ex);
