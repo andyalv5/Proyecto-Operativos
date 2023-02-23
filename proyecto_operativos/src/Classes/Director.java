@@ -90,6 +90,23 @@ public class Director extends Thread{
         
     }
     
+     private void SincronizarRodajes() throws InterruptedException{
+        
+        if(this.rodaje.equalsIgnoreCase("andy")){
+//            Avisa al rodaje de jose que llegó al punto
+            Director.LlegoAndy.release();
+//            Espera a que José ya halla llegado
+//            System.out.println("Voy a esperar a José ----------------");
+            Director.LlegoJose.acquire();
+            
+        }else{
+//            Avisa al rodaje de jose que llegó al punto
+            Director.LlegoJose.release();
+//            Esperando a que Andy ya halla llegado
+//            System.out.println("Voy a esperar a Andy --------------------");
+            Director.LlegoAndy.acquire();
+        }
+    }
     
     
     
