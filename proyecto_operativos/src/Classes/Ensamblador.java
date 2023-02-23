@@ -117,11 +117,7 @@ public class Ensamblador extends Thread{
                     hilo3.empty.acquire(1);
                     hilo4.empty.acquire(2);
                     hilo5.empty.acquire(1);
-                    s.acquire();
-                    o.acquire();
-                    p.acquire();
-                    q.acquire();
-                    r.acquire();
+                    
                     for (int i = 0;i < Math.min(ensambladores , Math.min(intro_Prod, Math.min(inicio_Prod, Math.min(cierre_Prod, Math.min(Plot_Twist_Prod, Credito_Prod)))));i++){
                         capitulo = capitulo+1;
                         Dashboard.Jtext_Productores_Ensamblado.acquire();
@@ -179,17 +175,13 @@ public class Ensamblador extends Thread{
                             }
                         }
                         
-                        System.out.println("Se ensamblo "+capitulo+" capitulos");
-                        
+                    System.out.println("Se ensamblo "+capitulo+" capitulos");
+                    
                     }
                     
                     
                     
-                    r.release();
-                    q.release();
-                    p.release();
-                    o.release();    
-                    s.release();
+                   
                     
                 }
             } catch (InterruptedException ex) {

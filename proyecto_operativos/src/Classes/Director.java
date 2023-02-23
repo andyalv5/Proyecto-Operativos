@@ -213,7 +213,7 @@ public class Director extends Thread{
             this.costos_generales_num=costos_generales_num+Float.parseFloat(String.valueOf(this.costos_text.getText()));
             this.beneficios_generales_num= beneficios_generales_num+this.ingresos_generales_num-costos_generales_num;
             this.costos_generales_reales.setText(String.valueOf(this.costos_generales_num));
-            this.beneficios_text.setText(String.valueOf(this.beneficios_generales_num));
+            this.beneficios_text.setText(String.valueOf(this.beneficios_generales_num/10));
             this.capitulos_entregados.setText(String.valueOf(this.cap_entregados));
             this.text1.setForeground(Color.black);
             this.text2.setForeground(Color.black);
