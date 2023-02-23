@@ -203,75 +203,106 @@ public class Dashboard extends javax.swing.JFrame {
                     
                    
                     try {
-                        semaforo_s.acquire();
-                        hilo1.set_Productores(Integer.parseInt(Cant_Productores_Intro.getText().toString()));
-                        semaforo_s.release();
                         
-                        semaforo_cie.acquire();
-                        hilo2.set_Productores(Integer.parseInt(Cant_Productores_Cierre.getText().toString()));
-                        semaforo_cie.release();
-                        
-                        semaforo_ini.acquire();
-                        hilo3.set_Productores(Integer.parseInt(Cant_Productores_Inicio.getText().toString()));
-                        semaforo_ini.release();
-                        
-                        semaforo_con.acquire();
-                        hilo4.set_Productores(Integer.parseInt(Cant_Productores_Credito.getText().toString()));
-                        semaforo_con.release();
-                        
-                        semaforo_PT.acquire();
-                        hilo5.set_Productores(Integer.parseInt(Cant_Productores_PT.getText().toString()));
-                        semaforo_PT.release();
-                        
-                        hilo6.set_Productores(Integer.parseInt(Cant_Productores_Ensamblado.getText().toString()));
-                        
-                        semaforo_s.acquire();
-                        progresoIntroBar.setValue(hilo1.get_Pro_per_Day());
-                        intro_Quantity.setText(String.valueOf(hilo1.get_Pro_per_Day()));
-                        intro_ganancia.setText(String.valueOf(hilo1.get_ganancia()));
-                        hilo6.set_intro_Prod(hilo1.get_Pro_per_Day());
-                        semaforo_s.release();
-                        
-                        semaforo_cie.acquire();
-                        hilo2.set_Productores(Integer.parseInt(Cant_Productores_Cierre.getText().toString()));
-                        progresoCierreBar.setValue(hilo2.get_Pro_per_Day());
-                        Cierre_Quantity.setText(String.valueOf(hilo2.get_Pro_per_Day()));
-                        cierre_ganancia.setText(String.valueOf(hilo2.get_ganancia()));
-                        hilo6.set_cierre_Prod(hilo2.get_Pro_per_Day());
-                        semaforo_cie.release();
-                        
-                        semaforo_ini.acquire();
-                        hilo3.set_Productores(Integer.parseInt(Cant_Productores_Inicio.getText().toString()));
-                        progresoInicioBar.setValue(hilo3.get_Pro_per_Day());
-                        Inicio_Quantity.setText(String.valueOf(hilo3.get_Pro_per_Day()));
-                        inicio_ganancia.setText(String.valueOf(hilo3.get_ganancia()));
-                        hilo6.set_inicio_Prod(hilo3.get_Pro_per_Day());
-                        semaforo_ini.release();
-                        
-                        semaforo_con.acquire();
-                        hilo4.set_Productores(Integer.parseInt(Cant_Productores_Credito.getText().toString()));
-                        progresoCreditoBar.setValue(hilo4.get_Pro_per_Day());
-                        Credito_Quantity.setText(String.valueOf(hilo4.get_Pro_per_Day()));
-                        credito_ganancia.setText(String.valueOf(hilo4.get_ganancia()));
-                        hilo6.set_Credito_Prod(hilo4.get_Pro_per_Day());
-                        semaforo_con.release();
-                        
-                        semaforo_PT.acquire();
-                        hilo5.set_Productores(Integer.parseInt(Cant_Productores_PT.getText().toString()));
-                        progresoPlotTwistBar.setValue(hilo5.get_Pro_per_Day());
-                        Plot_Twist_Quantity.setText(String.valueOf(hilo5.get_Pro_per_Day()));
-                        Plot_Twist_ganancia.setText(String.valueOf(hilo5.get_ganancia()));
-                        hilo6.set_Plot_Twist_Prod(hilo5.get_Pro_per_Day());
-                        semaforo_PT.release();
-                    
-                        
-                        EnsambladoTxt.setText(String.valueOf(hilo6.get_capitulo()));
-                        Ensamblado_Ganancia.setText(String.valueOf(hilo6.get_ganancia()));
-                        Ganancia_Capitulo.setText(String.valueOf(hilo6.get_ganancia_velma()));
-                        sueldo_Director.setText(String.valueOf(dir_andy.ganancia));
-                        sueldo_Manager.setText(String.valueOf(pm_andy.ganancia));
-                        Costos_Totales_PD.setText(String.valueOf(hilo1.ganancia+hilo2.ganancia+hilo3.ganancia+hilo4.ganancia+hilo5.ganancia+hilo6.ganancia+pm_andy.ganancia+dir_andy.ganancia));
-                        
+                            semaforo_s.acquire();
+                            if(Proyecto_operativos.keep != false){
+                                hilo1.set_Productores(Integer.parseInt(Cant_Productores_Intro.getText().toString()));
+                            }
+                            semaforo_s.release();
+
+                            semaforo_cie.acquire();
+                            if(Proyecto_operativos.keep != false){
+                                hilo2.set_Productores(Integer.parseInt(Cant_Productores_Cierre.getText().toString()));
+                            }
+                            semaforo_cie.release();
+
+                            semaforo_ini.acquire();
+                            if(Proyecto_operativos.keep != false){
+                            hilo3.set_Productores(Integer.parseInt(Cant_Productores_Inicio.getText().toString()));
+                            }
+                            semaforo_ini.release();
+
+                            semaforo_con.acquire();
+                            if(Proyecto_operativos.keep != false){
+                                hilo4.set_Productores(Integer.parseInt(Cant_Productores_Credito.getText().toString()));
+                            }
+                            semaforo_con.release();
+
+                            semaforo_PT.acquire();
+                            if(Proyecto_operativos.keep != false){
+                            hilo5.set_Productores(Integer.parseInt(Cant_Productores_PT.getText().toString()));
+                            }
+                            semaforo_PT.release();
+                            if(Proyecto_operativos.keep != false){
+                                hilo6.set_Productores(Integer.parseInt(Cant_Productores_Ensamblado.getText().toString()));
+                            }
+                            semaforo_s.acquire();
+                            if(Proyecto_operativos.keep != false){
+                                progresoIntroBar.setValue(hilo1.get_Pro_per_Day());
+                                intro_Quantity.setText(String.valueOf(hilo1.get_Pro_per_Day()));
+                                intro_ganancia.setText(String.valueOf(hilo1.get_ganancia()));
+                                hilo6.set_intro_Prod(hilo1.get_Pro_per_Day());
+                            }
+                            semaforo_s.release();
+
+                            semaforo_cie.acquire();
+                            if(Proyecto_operativos.keep != false){
+                                hilo2.set_Productores(Integer.parseInt(Cant_Productores_Cierre.getText().toString()));
+                                progresoCierreBar.setValue(hilo2.get_Pro_per_Day());
+                                Cierre_Quantity.setText(String.valueOf(hilo2.get_Pro_per_Day()));
+                                cierre_ganancia.setText(String.valueOf(hilo2.get_ganancia()));
+                                hilo6.set_cierre_Prod(hilo2.get_Pro_per_Day());
+                            }
+                            semaforo_cie.release();
+
+                            semaforo_ini.acquire();
+                            if(Proyecto_operativos.keep != false){
+                                hilo3.set_Productores(Integer.parseInt(Cant_Productores_Inicio.getText().toString()));
+                                progresoInicioBar.setValue(hilo3.get_Pro_per_Day());
+                                Inicio_Quantity.setText(String.valueOf(hilo3.get_Pro_per_Day()));
+                                inicio_ganancia.setText(String.valueOf(hilo3.get_ganancia()));
+                                hilo6.set_inicio_Prod(hilo3.get_Pro_per_Day());
+                            }
+                            semaforo_ini.release();
+
+                            semaforo_con.acquire();
+                            if(Proyecto_operativos.keep != false){
+                                hilo4.set_Productores(Integer.parseInt(Cant_Productores_Credito.getText().toString()));
+                                progresoCreditoBar.setValue(hilo4.get_Pro_per_Day());
+                                Credito_Quantity.setText(String.valueOf(hilo4.get_Pro_per_Day()));
+                                credito_ganancia.setText(String.valueOf(hilo4.get_ganancia()));
+                                hilo6.set_Credito_Prod(hilo4.get_Pro_per_Day());
+                            }
+                            semaforo_con.release();
+
+                            semaforo_PT.acquire();
+                            if(Proyecto_operativos.keep != false){
+                                hilo5.set_Productores(Integer.parseInt(Cant_Productores_PT.getText().toString()));
+                                progresoPlotTwistBar.setValue(hilo5.get_Pro_per_Day());
+                                Plot_Twist_Quantity.setText(String.valueOf(hilo5.get_Pro_per_Day()));
+                                Plot_Twist_ganancia.setText(String.valueOf(hilo5.get_ganancia()));
+                                hilo6.set_Plot_Twist_Prod(hilo5.get_Pro_per_Day());
+                            }
+                            semaforo_PT.release();
+
+                            if(Proyecto_operativos.keep != false){
+                                EnsambladoTxt.setText(String.valueOf(hilo6.get_capitulo()));
+                            }
+                            if(Proyecto_operativos.keep != false){
+                               Ensamblado_Ganancia.setText(String.valueOf(hilo6.get_ganancia()));
+                            }
+                            if(Proyecto_operativos.keep != false){
+                               Ganancia_Capitulo.setText(String.valueOf(hilo6.get_ganancia_velma()));
+                            }
+                            if(Proyecto_operativos.keep != false){
+                                sueldo_Director.setText(String.valueOf(dir_andy.ganancia));
+                            }
+                            if(Proyecto_operativos.keep != false){
+                                sueldo_Manager.setText(String.valueOf(pm_andy.ganancia));
+                            }
+                            if(Proyecto_operativos.keep != false){
+                                Costos_Totales_PD.setText(String.valueOf(hilo1.ganancia+hilo2.ganancia+hilo3.ganancia+hilo4.ganancia+hilo5.ganancia+hilo6.ganancia+pm_andy.ganancia+dir_andy.ganancia));
+                            }
                         
                         
                         

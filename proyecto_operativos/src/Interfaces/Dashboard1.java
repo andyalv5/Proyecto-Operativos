@@ -203,75 +203,100 @@ public class Dashboard1 extends javax.swing.JFrame {
                     
                    
                     try {
+                        
                         semaforo_s1.acquire();
-                        Dhilo1.set_Productores(Integer.parseInt(Cant_Productores_Intro.getText().toString()));
+                        if(Proyecto_operativos.keep != false){
+                            Dhilo1.set_Productores(Integer.parseInt(Cant_Productores_Intro.getText().toString()));
+                        }
                         semaforo_s1.release();
                         
                         semaforo_cie1.acquire();
-                        Dhilo2.set_Productores(Integer.parseInt(Cant_Productores_Cierre.getText().toString()));
+                        if(Proyecto_operativos.keep != false){
+                            Dhilo2.set_Productores(Integer.parseInt(Cant_Productores_Cierre.getText().toString()));
+                        }
                         semaforo_cie1.release();
                         
                         semaforo_ini1.acquire();
-                        Dhilo3.set_Productores(Integer.parseInt(Cant_Productores_Inicio.getText().toString()));
+                        if(Proyecto_operativos.keep != false){
+                            Dhilo3.set_Productores(Integer.parseInt(Cant_Productores_Inicio.getText().toString()));
+                        }
                         semaforo_ini1.release();
                         
                         semaforo_con1.acquire();
-                        Dhilo4.set_Productores(Integer.parseInt(Cant_Productores_Credito.getText().toString()));
+                        if(Proyecto_operativos.keep != false){
+                            Dhilo4.set_Productores(Integer.parseInt(Cant_Productores_Credito.getText().toString()));
+                        }
                         semaforo_con1.release();
                         
                         semaforo_PT1.acquire();
-                        Dhilo5.set_Productores(Integer.parseInt(Cant_Productores_PT.getText().toString()));
+                        if(Proyecto_operativos.keep != false){
+                            Dhilo5.set_Productores(Integer.parseInt(Cant_Productores_PT.getText().toString()));
+                        }
                         semaforo_PT1.release();
-                        
-                        Dhilo6.set_Productores(Integer.parseInt(Cant_Productores_Ensamblado1.getText().toString()));
-                        
+                        if(Proyecto_operativos.keep != false){
+                            Dhilo6.set_Productores(Integer.parseInt(Cant_Productores_Ensamblado1.getText().toString()));
+                        }
                         semaforo_s1.acquire();
-                        progresoIntroBar1.setValue(Dhilo1.get_Pro_per_Day());
-                        intro_Quantity1.setText(String.valueOf(Dhilo1.get_Pro_per_Day()));
-                        intro_ganancia11.setText(String.valueOf(Dhilo1.get_ganancia()));
-                        Dhilo6.set_intro_Prod(Dhilo1.get_Pro_per_Day());
+                        if(Proyecto_operativos.keep != false){
+                            progresoIntroBar1.setValue(Dhilo1.get_Pro_per_Day());
+                            intro_Quantity1.setText(String.valueOf(Dhilo1.get_Pro_per_Day()));
+                            intro_ganancia11.setText(String.valueOf(Dhilo1.get_ganancia()));
+                            Dhilo6.set_intro_Prod(Dhilo1.get_Pro_per_Day());
+                        }
                         semaforo_s1.release();
                         
                         semaforo_cie1.acquire();
-                        Dhilo2.set_Productores(Integer.parseInt(Cant_Productores_Cierre.getText().toString()));
-                        progresoCierreBar1.setValue(Dhilo2.get_Pro_per_Day());
-                        Cierre_Quantity1.setText(String.valueOf(Dhilo2.get_Pro_per_Day()));
-                        cierre_ganancia13.setText(String.valueOf(Dhilo2.get_ganancia()));
-                        Dhilo6.set_cierre_Prod(Dhilo2.get_Pro_per_Day());
+                        if(Proyecto_operativos.keep != false){
+                            Dhilo2.set_Productores(Integer.parseInt(Cant_Productores_Cierre.getText().toString()));
+                            progresoCierreBar1.setValue(Dhilo2.get_Pro_per_Day());
+                            Cierre_Quantity1.setText(String.valueOf(Dhilo2.get_Pro_per_Day()));
+                            cierre_ganancia13.setText(String.valueOf(Dhilo2.get_ganancia()));
+                            Dhilo6.set_cierre_Prod(Dhilo2.get_Pro_per_Day());
+                        }
                         semaforo_cie1.release();
                         
                         semaforo_ini1.acquire();
-                        Dhilo3.set_Productores(Integer.parseInt(Cant_Productores_Inicio.getText().toString()));
-                        progresoInicioBar1.setValue(Dhilo3.get_Pro_per_Day());
-                        Inicio_Quantity1.setText(String.valueOf(Dhilo3.get_Pro_per_Day()));
-                        inicio_ganancia14.setText(String.valueOf(Dhilo3.get_ganancia()));
-                        Dhilo6.set_inicio_Prod(Dhilo3.get_Pro_per_Day());
+                        if(Proyecto_operativos.keep != false){
+                            Dhilo3.set_Productores(Integer.parseInt(Cant_Productores_Inicio.getText().toString()));
+                            progresoInicioBar1.setValue(Dhilo3.get_Pro_per_Day());
+                            Inicio_Quantity1.setText(String.valueOf(Dhilo3.get_Pro_per_Day()));
+                            inicio_ganancia14.setText(String.valueOf(Dhilo3.get_ganancia()));
+                            Dhilo6.set_inicio_Prod(Dhilo3.get_Pro_per_Day());
+                        }
                         semaforo_ini1.release();
                         
                         semaforo_con1.acquire();
-                        Dhilo4.set_Productores(Integer.parseInt(Cant_Productores_Credito.getText().toString()));
-                        progresoCreditoBar1.setValue(Dhilo4.get_Pro_per_Day());
-                        Credito_Quantity1.setText(String.valueOf(Dhilo4.get_Pro_per_Day()));
-                        credito_ganancia12.setText(String.valueOf(Dhilo4.get_ganancia()));
-                        Dhilo6.set_Credito_Prod(Dhilo4.get_Pro_per_Day());
+                        if(Proyecto_operativos.keep != false){
+                            Dhilo4.set_Productores(Integer.parseInt(Cant_Productores_Credito.getText().toString()));
+                            progresoCreditoBar1.setValue(Dhilo4.get_Pro_per_Day());
+                            Credito_Quantity1.setText(String.valueOf(Dhilo4.get_Pro_per_Day()));
+                            credito_ganancia12.setText(String.valueOf(Dhilo4.get_ganancia()));
+                            Dhilo6.set_Credito_Prod(Dhilo4.get_Pro_per_Day());
+                        }
                         semaforo_con1.release();
                         
                         semaforo_PT1.acquire();
-                        Dhilo5.set_Productores(Integer.parseInt(Cant_Productores_PT.getText().toString()));
-                        progresoPlotTwistBar1.setValue(Dhilo5.get_Pro_per_Day());
-                        Plot_Twist_Quantity1.setText(String.valueOf(Dhilo5.get_Pro_per_Day()));
-                        Plot_Twist_ganancia15.setText(String.valueOf(Dhilo5.get_ganancia()));
-                        Dhilo6.set_Plot_Twist_Prod(Dhilo5.get_Pro_per_Day());
+                        if(Proyecto_operativos.keep != false){
+                            Dhilo5.set_Productores(Integer.parseInt(Cant_Productores_PT.getText().toString()));
+                            progresoPlotTwistBar1.setValue(Dhilo5.get_Pro_per_Day());
+                            Plot_Twist_Quantity1.setText(String.valueOf(Dhilo5.get_Pro_per_Day()));
+                            Plot_Twist_ganancia15.setText(String.valueOf(Dhilo5.get_ganancia()));
+                            Dhilo6.set_Plot_Twist_Prod(Dhilo5.get_Pro_per_Day());
+                        }
                         semaforo_PT1.release();
                     
-                        
-                        EnsambladoTxt1.setText(String.valueOf(Dhilo6.get_capitulo()));
-                        Ensamblado_Ganancia1.setText(String.valueOf(Dhilo6.get_ganancia()));
-                        Ganancia_Capitulo1.setText(String.valueOf(Dhilo6.get_ganancia_velma()));
-                        sueldo_Director1.setText(String.valueOf(dir_jose.ganancia));
-                        sueldo_Manager1.setText(String.valueOf(pm_jose.ganancia));
-                        Costos_Totales_PD.setText(String.valueOf(Dhilo1.ganancia+Dhilo2.ganancia+Dhilo3.ganancia+Dhilo4.ganancia+Dhilo5.ganancia+Dhilo6.ganancia+pm_jose.ganancia+dir_jose.ganancia));
-                        
+                        if(Proyecto_operativos.keep != false){
+                            EnsambladoTxt1.setText(String.valueOf(Dhilo6.get_capitulo()));
+                        }
+                         if(Proyecto_operativos.keep != false){
+                            Ensamblado_Ganancia1.setText(String.valueOf(Dhilo6.get_ganancia()));
+                        }
+                        if(Proyecto_operativos.keep != false){
+                            Ganancia_Capitulo1.setText(String.valueOf(Dhilo6.get_ganancia_velma()));
+                            sueldo_Director1.setText(String.valueOf(dir_jose.ganancia));
+                            sueldo_Manager1.setText(String.valueOf(pm_jose.ganancia));
+                            Costos_Totales_PD.setText(String.valueOf(Dhilo1.ganancia+Dhilo2.ganancia+Dhilo3.ganancia+Dhilo4.ganancia+Dhilo5.ganancia+Dhilo6.ganancia+pm_jose.ganancia+dir_jose.ganancia));
+                        }
                         
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Dashboard1.class.getName()).log(Level.SEVERE, null, ex);

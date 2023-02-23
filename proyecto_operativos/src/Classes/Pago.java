@@ -57,7 +57,7 @@ public class Pago extends Thread{
 //                    Project_manager.PM_nuevo_dia = true;
 
 
-
+                if(Proyecto_operativos.keep != false){
 //                    Dashboard.Jtext_Productores_Intro.acquire();
                     hilo1.ganancia=hilo1.ganancia+hilo1.productores*(3);
 //                    Dashboard.Jtext_Productores_Intro.release();
@@ -84,7 +84,7 @@ public class Pago extends Thread{
                     
                     this.director.ganancia=this.director.ganancia+ganancia_canadiense;
                     this.manager.ganancia=this.manager.ganancia+this.director.sueldo_al_payaso;
-                    
+                }
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(Pago.class.getName()).log(Level.SEVERE, null, ex);
