@@ -39,25 +39,25 @@ public class MainFrame extends javax.swing.JFrame {
         
         
         
-        this.parte_intro_max_MainFrame.setText("0");
-        this.parte_cierre_max_MainFrame.setText("0");
-        this.parte_creditos_max_MainFrame.setText("0");
-        this.parte_plot_twist_max_MainFrame.setText("0");
-        this.parte_inicio_max_MainFrame.setText("0");
-        this.Productor_Intros_TLOU.setText("0");
-        this.Productor_Intros_VELMA.setText("0");
-        this.Productor_Cierre_TLOU.setText("0");
-        this.Productor_Cierre_VELMA.setText("0");
-        this.Productor_Creditos_TLOU.setText("0");
-        this.Productor_Creditos_VELMA.setText("0");
-        this.Productor_Plot_Twist_TLOU.setText("0");
-        this.Productor_Plot_Twist_VELMA.setText("0");
-        this.Productor_Inicio_TLOU.setText("0");
-        this.Productor_Inicio_VELMA.setText("0");
-        this.Ensamblador_TLOU.setText("0");
-        this.Ensamblador_VELMA.setText("0");
-        this.Dia_en_segundos_MainFrame_text.setText("0");
-        this.Dias_entre_despachos_MainFrame_text.setText("0");
+        this.parte_intro_max_MainFrame.setText(String.valueOf(JSONReaderWriter.parte_intro_max));
+        this.parte_cierre_max_MainFrame.setText(String.valueOf(JSONReaderWriter.parte_cierre_max));
+        this.parte_creditos_max_MainFrame.setText(String.valueOf(String.valueOf(JSONReaderWriter.parte_creditos_max)));
+        this.parte_plot_twist_max_MainFrame.setText(String.valueOf(JSONReaderWriter.parte_plot_twist_max));
+        this.parte_inicio_max_MainFrame.setText(String.valueOf(JSONReaderWriter.parte_inicio_max));
+        this.Productor_Intros_TLOU.setText(String.valueOf(JSONReaderWriter.Productor_Intros_jose));
+        this.Productor_Intros_VELMA.setText(String.valueOf(JSONReaderWriter.Productor_Intros_andy));
+        this.Productor_Cierre_TLOU.setText(String.valueOf(JSONReaderWriter.Productor_cierre_jose));
+        this.Productor_Cierre_VELMA.setText(String.valueOf(JSONReaderWriter.Productor_cierre_andy));
+        this.Productor_Creditos_TLOU.setText(String.valueOf(JSONReaderWriter.Productor_Creditos_jose));
+        this.Productor_Creditos_VELMA.setText(String.valueOf(JSONReaderWriter.Productor_Creditos_andy));
+        this.Productor_Plot_Twist_TLOU.setText(String.valueOf(JSONReaderWriter.Productor_Plot_Twist_jose));
+        this.Productor_Plot_Twist_VELMA.setText(String.valueOf(JSONReaderWriter.Productor_Plot_Twist_andy));
+        this.Productor_Inicio_TLOU.setText(String.valueOf(JSONReaderWriter.Productor_Inicio_jose));
+        this.Productor_Inicio_VELMA.setText(String.valueOf(JSONReaderWriter.Productor_Inicio_andy));
+        this.Ensamblador_TLOU.setText(String.valueOf(JSONReaderWriter.Ensamblador_Rodaje_jose));
+        this.Ensamblador_VELMA.setText(String.valueOf(JSONReaderWriter.Ensamblador_Rodaje_andy));
+        this.Dia_en_segundos_MainFrame_text.setText(String.valueOf(JSONReaderWriter.dia_en_segundos));
+        this.Dias_entre_despachos_MainFrame_text.setText(String.valueOf(JSONReaderWriter.dias_entre_despachos));
         
         this.setLocationRelativeTo(null);
         
