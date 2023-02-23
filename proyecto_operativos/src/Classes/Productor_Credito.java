@@ -101,7 +101,7 @@ public class Productor_Credito extends Thread{
                         Pro_per_Day =0;
                         s.release();
                     }
-                    empty.release(Pro_per_Day-1);
+                    empty.release(Pro_per_Day);
                     System.out.println("Se hicieron "+Pro_per_Day+" Creditos");
                     
                 } catch (InterruptedException ex) {
