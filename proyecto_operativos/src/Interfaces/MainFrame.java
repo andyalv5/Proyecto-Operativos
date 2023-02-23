@@ -90,7 +90,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.Ensamblador_VELMA.setText(String.valueOf(JSONReaderWriter.Ensamblador_Rodaje_andy));
         this.Dia_en_segundos_MainFrame_text.setText(String.valueOf(JSONReaderWriter.dia_en_segundos));
         this.Dias_entre_despachos_MainFrame_text.setText(String.valueOf(JSONReaderWriter.dias_entre_despachos));
-        
+        this.CapacidadInfinita();
         this.setLocationRelativeTo(null);
         
         try{
