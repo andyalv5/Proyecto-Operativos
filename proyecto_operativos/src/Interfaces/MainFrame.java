@@ -25,6 +25,20 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        
+            
+//        Se abre JSON para poder trabajar
+        JSONReaderWriter jsnrw = new JSONReaderWriter();
+        
+        try{
+            jsnrw.Reader();
+            
+        }catch(FileNotFoundException e){
+            this.Mensaje.setText(String.valueOf(e));
+        }
+        
+        
+        
         this.parte_intro_max_MainFrame.setText("0");
         this.parte_cierre_max_MainFrame.setText("0");
         this.parte_creditos_max_MainFrame.setText("0");
@@ -46,9 +60,6 @@ public class MainFrame extends javax.swing.JFrame {
         this.Dias_entre_despachos_MainFrame_text.setText("0");
         
         this.setLocationRelativeTo(null);
-        
-//        Se abre JSON para poder trabajar
-        JSONReaderWriter jsnrw = new JSONReaderWriter();
         
         try{
             jsnrw.Reader();
