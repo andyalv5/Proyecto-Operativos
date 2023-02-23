@@ -92,6 +92,7 @@ public class Project_manager extends Thread{
         }else{
             return Proyecto_operativos.contador_dias_restantes_jose;            
         }
+        
     }
     /**
      * Resta en 1 el contador de dias restantes en el rodaje en específico
@@ -162,7 +163,7 @@ public class Project_manager extends Thread{
                     this.Restar_contador_dias_restantes_rodaje();
                     
                     System.out.println("Tomaa: " + this.Contador_dias_restantes_rodaje());
-                    
+                    this.ProjectManagerHaciendo.setText("contador rebajado");
 //                    Proyecto_operativos.Contador.release();
                     this.Semaforo_Contador_release();
                     
@@ -181,6 +182,8 @@ public class Project_manager extends Thread{
 //                    Sección critica
                     Proyecto_operativos.Director_PM_Semaphore_andy.acquire();                    
 //                    System.out.println("Verdadero en andy");
+                    this.ProjectManagerHaciendo.setText("Viendo Rick y Morty");
+                    
                     this.Rick_y_Morty = true;                    
                     Proyecto_operativos.Director_PM_Semaphore_andy.release();
                     
@@ -199,6 +202,7 @@ public class Project_manager extends Thread{
 //                    Sección critica
                     Proyecto_operativos.Director_PM_Semaphore_jose.acquire();                    
 //                    System.out.println("Verdadero en jose");
+                    this.ProjectManagerHaciendo.setText("Viendo Rick y Morty");
                     this.Rick_y_Morty = true;                    
                     Proyecto_operativos.Director_PM_Semaphore_jose.release();
                     
@@ -227,8 +231,9 @@ public class Project_manager extends Thread{
                 
                 
 //                Ahora se dispone a ver Sprints Reviews
-                this.Sprint_reviews = true;
                 
+                this.Sprint_reviews = true;
+                this.ProjectManagerHaciendo.setText("En Sprint Reviews");
                 Thread.sleep(tiempo);
                 
                 this.Sprint_reviews = false;
