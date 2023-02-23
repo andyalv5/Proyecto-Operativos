@@ -440,9 +440,10 @@ public class Director extends Thread{
             
             
         }else{
-            
+            this.Semaforo_RM_acquire();
             this.DirectorHaciendo.setText("Dejó de vigilar al PM");
             System.out.println("Director: A la proxima te veo >.>");
+            this.Semaforo_RM_release();
 
         }
     }
