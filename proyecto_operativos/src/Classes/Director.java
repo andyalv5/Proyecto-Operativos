@@ -8,6 +8,7 @@ import Interfaces.Dashboard;
 import Interfaces.Dashboard1;
 import Leer_Escribir_JSON.JSONReaderWriter;
 import java.awt.Color;
+import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import proyecto_operativos.Proyecto_operativos;
@@ -39,6 +40,10 @@ public class Director extends Thread{
     javax.swing.JLabel es_elmejor;
     javax.swing.JLabel capitulos_entregados;
     private int id;
+    
+    private static Semaphore LlegoJose = new Semaphore(0);
+    private static Semaphore LlegoAndy = new Semaphore(0);
+    
     
     
 //    Variable que indica si el director está en un nuevo dia
