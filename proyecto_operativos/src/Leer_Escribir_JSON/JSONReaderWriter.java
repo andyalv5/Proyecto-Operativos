@@ -106,7 +106,7 @@ public class JSONReaderWriter{
     /**
      * Lee el archivo JSON
      */
-    public void Reader() throws FileNotFoundException{
+    public void Reader() throws FileNotFoundException, InterruptedException{
         
         try{
             
@@ -275,7 +275,7 @@ public class JSONReaderWriter{
      * Arregla el JSON a datos predeterminados para que no haya errores
      * @throws FileNotFoundException 
      */
-    public void ArreglarJSONporDefecto() throws FileNotFoundException{
+    public void ArreglarJSONporDefecto() throws FileNotFoundException, InterruptedException{
         this.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "4", "5", "5", "4", "1", "4", "5", "4", "4", "1", "1", "1","0","0","0","0");
     }
     
