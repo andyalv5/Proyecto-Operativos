@@ -5,8 +5,6 @@
 package Classes;
 
 
-import Classes.VigilandoAndy;
-import Classes.VigilandoJose;
 import Interfaces.Dashboard;
 import Interfaces.Dashboard1;
 import Leer_Escribir_JSON.JSONReaderWriter;
@@ -15,6 +13,7 @@ import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import proyecto_operativos.Proyecto_operativos;
+
 
 
 /**
@@ -420,9 +419,9 @@ public class Director extends Thread{
     Revisa si el PM está viendo RyM
     */
     public void cachado() throws InterruptedException{
-        
+        this.Semaforo_RM_acquire();
         if(this.pm.Rick_y_Morty == true){
-            
+            this.Semaforo_RM_release();
             this.DirectorHaciendo.setText("pilló al PM y está restandole el sueldo");
             
             System.out.println("Director: Te vi menooor");
@@ -440,10 +439,9 @@ public class Director extends Thread{
             
             
         }else{
-            this.Semaforo_RM_acquire();
+            this.Semaforo_RM_release();
             this.DirectorHaciendo.setText("Dejó de vigilar al PM");
             System.out.println("Director: A la proxima te veo >.>");
-            this.Semaforo_RM_release();
 
         }
     }

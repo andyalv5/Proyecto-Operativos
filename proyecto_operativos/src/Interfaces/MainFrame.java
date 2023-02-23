@@ -9,6 +9,8 @@ import Classes.SetLocationRelativeTo;
 import Classes.SetLocationRelativeToDashboard;
 import Leer_Escribir_JSON.JSONReaderWriter;
 import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import proyecto_operativos.Proyecto_operativos;
 
@@ -55,7 +57,7 @@ public class MainFrame extends javax.swing.JFrame {
         
     }
     
-    public MainFrame() {
+    public MainFrame() throws InterruptedException {
         initComponents();
         
             
@@ -955,6 +957,8 @@ public class MainFrame extends javax.swing.JFrame {
             
             this.Mensaje.setText(String.valueOf(e));
 //            System.out.println(e);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -1103,7 +1107,11 @@ public class MainFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainFrame().setVisible(true);
+                try {
+                    new MainFrame().setVisible(true);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
