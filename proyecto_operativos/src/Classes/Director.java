@@ -305,7 +305,7 @@ public class Director extends Thread{
 //                    Se prepara para ver en el periodo aleatorio calculado de tiempo
                     this.DirectorHaciendo.setText("va a vigilar PM");
                     
-                    Thread.sleep(random);
+ //                   Thread.sleep(random);
                     
     //                Agregamos semaforo a la sección critica
 //                    Proyecto_operativos.Director_PM_Semaphore.acquire();
