@@ -94,7 +94,9 @@ public class Director extends Thread{
 //    El semaforo que jose utiliza para avisarle a andy que llegó
     public static Semaphore HolaAndyYaLlegue = new Semaphore(0);
     
-    public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter, javax.swing.JLabel Veces_PM_atrapado, javax.swing.JLabel beneficios_text, javax.swing.JLabel costos_text, javax.swing.JLabel Es_el_mejor, javax.swing.JLabel texto1, javax.swing.JLabel texto2, javax.swing.JLabel texto3, javax.swing.JLabel series_Entregadas, javax.swing.JLabel ingresos_generales ,javax.swing.JLabel costos_generales_reales,int id, javax.swing.JLabel DirectorHaciendo, javax.swing.JLabel LoteAntCapsJlabel, javax.swing.JLabel EnsambladoTxt){
+    javax.swing.JLabel SueldoPorHoraPMJlabel;
+    
+    public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter, javax.swing.JLabel Veces_PM_atrapado, javax.swing.JLabel beneficios_text, javax.swing.JLabel costos_text, javax.swing.JLabel Es_el_mejor, javax.swing.JLabel texto1, javax.swing.JLabel texto2, javax.swing.JLabel texto3, javax.swing.JLabel series_Entregadas, javax.swing.JLabel ingresos_generales ,javax.swing.JLabel costos_generales_reales,int id, javax.swing.JLabel DirectorHaciendo, javax.swing.JLabel LoteAntCapsJlabel, javax.swing.JLabel EnsambladoTxt, javax.swing.JLabel SueldoPorHoraPMJlabel){
         this.pm = pm;
         this.rodaje = rodaje;
         this.Contador_inter = Contador_inter;
@@ -116,6 +118,8 @@ public class Director extends Thread{
         this.LoteAntCapsJlabel = LoteAntCapsJlabel;
         
         this.EnsambladoTxt = EnsambladoTxt;
+        
+        this.SueldoPorHoraPMJlabel = SueldoPorHoraPMJlabel;
     }
     
      private void SincronizarRodajes() throws InterruptedException{
@@ -407,7 +411,10 @@ public class Director extends Thread{
     
     @Override
     public void run(){
-        
+//        Sueldo por hora del PM 2/2
+        float temp1 = Float.parseFloat(String.valueOf(this.sueldo_al_payaso)) / 24;            
+        this.SueldoPorHoraPMJlabel.setText(String.valueOf(temp1));
+
         
         while(keepDir){
             try {
@@ -563,6 +570,11 @@ public class Director extends Thread{
             Thread.sleep(random2);
             
             this.sueldo_al_payaso = sueldo_al_payaso-1;
+            
+//            Sueldo por hora del PM 2/2
+            float temp = Float.parseFloat(String.valueOf(this.sueldo_al_payaso)) / 24;            
+            this.SueldoPorHoraPMJlabel.setText(String.valueOf(temp));
+            
             
             //Se agrega +1 a las veces que fue descubierto flojeando al Project_manager
 //            Project_manager.Veces_descubierto_flojeando++;

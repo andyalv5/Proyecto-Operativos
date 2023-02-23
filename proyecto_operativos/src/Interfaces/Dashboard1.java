@@ -170,7 +170,7 @@ public class Dashboard1 extends javax.swing.JFrame {
     //    Aqui tengo el project manager trabajando con la cedula de jose
         Project_manager pm_jose = new Project_manager(Proyecto_operativos.ci_jose, "jose", this.Contador1,this.ProjectManagerHaciendo);
     //    Aqui le indico al director de jose a que productor vigilar, y además, le indico que es el director de jose
-        Director dir_jose = new Director(pm_jose, "jose", this.Contador1, this.Veces_PM_atrapado,this.BeneficiosReal,this.Costos_Totales_PD,this.es_el_mejor,this.text1,this.text2,this.text3,this.series_entregadas,this.Ganancia_Capitulo1,this.costos_generales_reales,0, this.DirectorHaciendo, this.LoteAntCapsJlabel, this.EnsambladoTxt1);
+        Director dir_jose = new Director(pm_jose, "jose", this.Contador1, this.Veces_PM_atrapado,this.BeneficiosReal,this.Costos_Totales_PD,this.es_el_mejor,this.text1,this.text2,this.text3,this.series_entregadas,this.Ganancia_Capitulo1,this.costos_generales_reales,0, this.DirectorHaciendo, this.LoteAntCapsJlabel, this.EnsambladoTxt1, this.SueldoPorHoraPMJlabel);
         
         Dhilo1.start();
         Dhilo2.start();
@@ -372,6 +372,8 @@ public class Dashboard1 extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         LoteAntCapsJlabel = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        SueldoPorHoraPMJlabel = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
 
         jLabel18.setBackground(new java.awt.Color(0, 0, 0));
         jLabel18.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -885,6 +887,12 @@ public class Dashboard1 extends javax.swing.JFrame {
         jLabel6.setText("Lote ant caps:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, -1, -1));
 
+        SueldoPorHoraPMJlabel.setText("0");
+        jPanel1.add(SueldoPorHoraPMJlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 160, 80, 20));
+
+        jLabel24.setText("Sueldo por hora PM");
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 140, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1264,6 +1272,7 @@ public class Dashboard1 extends javax.swing.JFrame {
     private javax.swing.JButton Plot_Twist_To_Inicio1;
     private javax.swing.JLabel Plot_Twist_ganancia15;
     private javax.swing.JLabel ProjectManagerHaciendo;
+    private javax.swing.JLabel SueldoPorHoraPMJlabel;
     private javax.swing.JLabel Veces_PM_atrapado;
     private javax.swing.JButton bajar_Ensabladores;
     private javax.swing.JLabel cierre_ganancia13;
@@ -1295,6 +1304,7 @@ public class Dashboard1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
