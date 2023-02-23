@@ -20,6 +20,8 @@ import proyecto_operativos.Proyecto_operativos;
  */
 public class Director extends Thread{
 //    Estas variables random las pienso usar para calculos futuros
+    public static boolean vigila_andy;
+    public static boolean vigila_jose;
     int random;
     int random2;
     float com;
