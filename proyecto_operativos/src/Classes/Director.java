@@ -4,6 +4,9 @@
  */
 package Classes;
 
+
+import Classes.VigilandoAndy;
+import Classes.VigilandoJose;
 import Interfaces.Dashboard;
 import Interfaces.Dashboard1;
 import Leer_Escribir_JSON.JSONReaderWriter;
@@ -377,7 +380,7 @@ public class Director extends Thread{
 //                        }
 //                        this.es_elmejor.setForeground(Color.red);
                     }
-                    
+                    }else if(pm.Contador_dias_restantes_rodaje() == 0 ){
                     
                     
                    
