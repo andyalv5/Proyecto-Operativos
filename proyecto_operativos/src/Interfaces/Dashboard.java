@@ -175,7 +175,7 @@ public class Dashboard extends javax.swing.JFrame {
     //    Aqui tengo el project manager trabajando con la cedula de andy
         Project_manager pm_andy = new Project_manager(Proyecto_operativos.ci_Andy, "andy", this.Contador,this.ProjectManagerHaciendo);
     //    Aqui le indico al director de andy a que productor vigilar, y además, le indico que es el director de andy
-        Director dir_andy = new Director(pm_andy, "andy", this.Contador, this.Veces_PM_atrapado,this.BeneficiosReal,this.Costos_Totales_PD,this.es_el_mejor,this.text1,this.text2,this.text3,this.series_entregadas,this.Ganancia_Capitulo,this.costos_generales_reales,1, this.DirectorHaciendo);
+        Director dir_andy = new Director(pm_andy, "andy", this.Contador, this.Veces_PM_atrapado,this.BeneficiosReal,this.Costos_Totales_PD,this.es_el_mejor,this.text1,this.text2,this.text3,this.series_entregadas,this.Ganancia_Capitulo,this.costos_generales_reales,1, this.DirectorHaciendo, this.LoteAntCapsJlabel, this.EnsambladoTxt, this.SueldoPorHoraPMJlabel);
         
         hilo1.start();
         hilo2.start();
@@ -409,6 +409,10 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         Despedido1 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        LoteAntCapsJlabel = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        SueldoPorHoraPMJlabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -912,6 +916,18 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel20.setText("Rodaje Andy");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 70, -1, -1));
 
+        jLabel6.setText("Lote ant caps:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, -1, -1));
+
+        LoteAntCapsJlabel.setText("0");
+        jPanel1.add(LoteAntCapsJlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, 60, -1));
+
+        jLabel17.setText("Sueldo por hora PM");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 140, -1, -1));
+
+        SueldoPorHoraPMJlabel.setText("0");
+        jPanel1.add(SueldoPorHoraPMJlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 160, 80, 20));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1293,10 +1309,12 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton Inicio_to_Plot_Twist;
     private javax.swing.JButton Intro_a_credito;
     private javax.swing.JButton Intro_to_Ensamble;
+    private javax.swing.JLabel LoteAntCapsJlabel;
     private javax.swing.JLabel Plot_Twist_Quantity;
     private javax.swing.JButton Plot_Twist_To_Inicio;
     private javax.swing.JLabel Plot_Twist_ganancia;
     private javax.swing.JLabel ProjectManagerHaciendo;
+    private javax.swing.JLabel SueldoPorHoraPMJlabel;
     private javax.swing.JLabel Veces_PM_atrapado;
     private javax.swing.JButton bajar_Ensabladores;
     private javax.swing.JLabel cierre_ganancia;
@@ -1321,6 +1339,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -1330,6 +1349,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

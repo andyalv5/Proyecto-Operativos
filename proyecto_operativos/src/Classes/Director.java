@@ -9,6 +9,7 @@ import Interfaces.Dashboard;
 import Interfaces.Dashboard1;
 import Leer_Escribir_JSON.JSONReaderWriter;
 import java.awt.Color;
+import java.io.FileNotFoundException;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,31 +45,58 @@ public class Director extends Thread{
     javax.swing.JLabel es_elmejor;
     javax.swing.JLabel capitulos_entregados;
     private int id;
-    public static boolean keepDir=true;
+    public static volatile boolean keepDir = true;
+    
     private static Semaphore LlegoJose = new Semaphore(0);
     private static Semaphore LlegoAndy = new Semaphore(0);
+    
+    
+    
 //    Variable que indica si el director está en un nuevo dia
 //    public static volatile boolean Director_nuevo_dia = false;
     public static volatile boolean Director_nuevo_dia_andy = false;
     public static volatile boolean Director_nuevo_dia_jose = false;
+    
     Project_manager pm;
+    
 //    Solo puede o ser "jose" o "andy"
     String rodaje;
 //    boolean keep = true;
+    
 //    El Project Manager que el director vigila
+    
     public javax.swing.JTextField Contador_inter;
+    
 //    Variable de la interfaz que el director cambiará
     javax.swing.JLabel Veces_PM_atrapado;
+    
     public static volatile int NroSeries_Andy;
     public static volatile int NroSeries_Jose;
+    
+//    Indica que está haciendo el director en el jlabel específico de la interfaz que se le pase
     javax.swing.JLabel DirectorHaciendo;
     
     
-    public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter, 
-            javax.swing.JLabel Veces_PM_atrapado, javax.swing.JLabel beneficios_text, javax.swing.JLabel costos_text, 
-            javax.swing.JLabel Es_el_mejor, javax.swing.JLabel texto1, javax.swing.JLabel texto2, 
-            javax.swing.JLabel texto3, javax.swing.JLabel series_Entregadas, javax.swing.JLabel ingresos_generales 
-            ,javax.swing.JLabel costos_generales_reales,int id, javax.swing.JLabel DirectorHaciendo){
+//    Indica la cantidad de capitulos despachados en el anterior lote del rodaje/interfaz que se le pase
+    javax.swing.JLabel LoteAntCapsJlabel;
+    int CapitulosIgnorados = 0;
+    int CapitulosDelAnteriorRodaje;
+    
+//    Jlabel que vamos a leer para poder hacer las operaciones escritas arriba
+    javax.swing.JLabel EnsambladoTxt;
+    
+    
+//    Semaforos entre el rodaje de jose y andy
+    
+//    El semaforo que andy utiliza para avisarle a jose que llegó
+    public static Semaphore HolaJoseYaLlegue = new Semaphore(0);
+    
+//    El semaforo que jose utiliza para avisarle a andy que llegó
+    public static Semaphore HolaAndyYaLlegue = new Semaphore(0);
+    
+    javax.swing.JLabel SueldoPorHoraPMJlabel;
+    
+    public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter, javax.swing.JLabel Veces_PM_atrapado, javax.swing.JLabel beneficios_text, javax.swing.JLabel costos_text, javax.swing.JLabel Es_el_mejor, javax.swing.JLabel texto1, javax.swing.JLabel texto2, javax.swing.JLabel texto3, javax.swing.JLabel series_Entregadas, javax.swing.JLabel ingresos_generales ,javax.swing.JLabel costos_generales_reales,int id, javax.swing.JLabel DirectorHaciendo, javax.swing.JLabel LoteAntCapsJlabel, javax.swing.JLabel EnsambladoTxt, javax.swing.JLabel SueldoPorHoraPMJlabel){
         this.pm = pm;
         this.rodaje = rodaje;
         this.Contador_inter = Contador_inter;
@@ -87,9 +115,14 @@ public class Director extends Thread{
         
         this.DirectorHaciendo = DirectorHaciendo;
         
+        this.LoteAntCapsJlabel = LoteAntCapsJlabel;
+        
+        this.EnsambladoTxt = EnsambladoTxt;
+        
+        this.SueldoPorHoraPMJlabel = SueldoPorHoraPMJlabel;
     }
     
-    private void SincronizarRodajes() throws InterruptedException{
+     private void SincronizarRodajes() throws InterruptedException{
         
         if(this.rodaje.equalsIgnoreCase("andy")){
 //            Avisa al rodaje de jose que llegó al punto
@@ -106,6 +139,8 @@ public class Director extends Thread{
             Director.LlegoAndy.acquire();
         }
     }
+    
+    
     
     /**
      * Hace un acquire del semaforo de su respectivo rodaje
@@ -140,22 +175,24 @@ public class Director extends Thread{
      */
     public void resetear_contador_dias_restantes_rodaje(){
         
+        this.cap_entregados = this.cap_entregados + 1;
         if(this.rodaje.equalsIgnoreCase("andy")){
 //            System.out.println("Toca el reseteo a andy");
 //            System.out.println("");
 //            Proyecto_operativos.contador_dias_restantes_andy = Proyecto_operativos.dias_entre_despachos;
 //            this.Contador_inter.setText(String.valueOf(Proyecto_operativos.contador_dias_restantes_andy));
 
-            this.cap_entregados=this.cap_entregados+1;
+//            this.cap_entregados=this.cap_entregados+1;
             Proyecto_operativos.contador_dias_restantes_andy = JSONReaderWriter.dias_entre_despachos;
             this.Contador_inter.setText(String.valueOf(Proyecto_operativos.contador_dias_restantes_andy));
         }else{
-            this.cap_entregados=this.cap_entregados+1;
+//            this.cap_entregados=this.cap_entregados+1;
             Proyecto_operativos.contador_dias_restantes_jose = JSONReaderWriter.dias_entre_despachos;
             this.Contador_inter.setText(String.valueOf(Proyecto_operativos.contador_dias_restantes_jose));
         }
     }
         
+    
     /**
      * 
      * @return el valor de si paso un nuevo dia en su respectivo rodaje
@@ -172,6 +209,7 @@ public class Director extends Thread{
             
         }
     }
+    
     
     /**
      * Vuelve falso a que pasó un nuevo en su rodaje respectivo
@@ -190,10 +228,12 @@ public class Director extends Thread{
     
     /**
      * Para el proceso si ya se hicieron el NroSeries_Rodaje, de lo contrario, le resta en 1
+     * @throws java.lang.InterruptedException
+     * @throws java.io.FileNotFoundException
      */
-    public void StopIfNroSeries_Rodaje_Es0() throws InterruptedException{
+    public void StopIfNroSeries_Rodaje_Es0() throws InterruptedException, FileNotFoundException{
         if(this.rodaje.equalsIgnoreCase("andy")){
-            Proyecto_operativos.keep = false;
+//            Proyecto_operativos.keep = false;
              Director.NroSeries_Andy = this.Restar_NroSeries_Rodaje(Director.NroSeries_Andy);
             
              System.out.println("Hola broski, este el nro de series actuales: de andy" + Director.NroSeries_Andy);
@@ -213,7 +253,7 @@ public class Director extends Thread{
             this.costos_generales_num=costos_generales_num+Float.parseFloat(String.valueOf(this.costos_text.getText()));
             this.beneficios_generales_num= beneficios_generales_num+this.ingresos_generales_num-costos_generales_num;
             this.costos_generales_reales.setText(String.valueOf(this.costos_generales_num));
-            this.beneficios_text.setText(String.valueOf(this.beneficios_generales_num/10));
+            this.beneficios_text.setText(String.valueOf(this.beneficios_generales_num));
             this.capitulos_entregados.setText(String.valueOf(this.cap_entregados));
             this.text1.setForeground(Color.black);
             this.text2.setForeground(Color.black);
@@ -248,10 +288,105 @@ public class Director extends Thread{
             }
             this.es_elmejor.setForeground(Color.red);
             
+            System.out.println("-----------------||||---------||||-------");
             
             
+            
+            
+//            float ingresosOperacion = this.beneficios_generales_num - this.costos_generales_num;
+////                int ingresos_string = (int) ingresosOperacion;                                
+//            int ingresos = (int) ingresosOperacion;
+//            int costos = (int) (this.costos_generales_num);
+            
+            
+//            if(this.rodaje.equalsIgnoreCase("andy")){
+//                
+////                Verifica si jose llegó a su parte
+//                this.HolaAndyYaLlegue.acquire();
+//                float ingresosOperacion = this.beneficios_generales_num - this.costos_generales_num;
+//    //                int ingresos_string = (int) ingresosOperacion;                                
+//                int ingresos = (int) ingresosOperacion;
+//                int costos = (int) (this.costos_generales_num);
+//                
+//                
+//                JSONReaderWriter.Ingresos_Rodaje_andy = ingresos;
+//                JSONReaderWriter.Costos_Rodaje_andy = costos;
+//                
+//                JSONReaderWriter jsnrw = new JSONReaderWriter();
+//                
+//                System.out.println("VOY A ESCRIBIR");
+//                jsnrw.Writer(String.valueOf(JSONReaderWriter.dia_en_segundos), String.valueOf(JSONReaderWriter.dias_entre_despachos), String.valueOf(JSONReaderWriter.parte_intro_max), String.valueOf(JSONReaderWriter.Capacidad_infinita_intro), String.valueOf(JSONReaderWriter.parte_creditos_max), String.valueOf(JSONReaderWriter.Capacidad_infinita_creditos), String.valueOf(JSONReaderWriter.parte_inicio_max), String.valueOf(JSONReaderWriter.Capacidad_infinita_inicio), String.valueOf(JSONReaderWriter.parte_cierre_max), String.valueOf(JSONReaderWriter.Capacidad_infinita_cierre), String.valueOf(JSONReaderWriter.parte_plot_twist_max), String.valueOf(JSONReaderWriter.Capacidad_infinita_plot_twist), String.valueOf(JSONReaderWriter.Productor_Intros_jose), String.valueOf(JSONReaderWriter.Productor_Creditos_jose), String.valueOf(JSONReaderWriter.Productor_Inicio_jose), String.valueOf(JSONReaderWriter.Productor_cierre_jose), String.valueOf(JSONReaderWriter.Productor_Plot_Twist_jose), String.valueOf(JSONReaderWriter.Productor_Intros_andy), String.valueOf(JSONReaderWriter.Productor_Creditos_andy), String.valueOf(JSONReaderWriter.Productor_Inicio_andy), String.valueOf(JSONReaderWriter.Productor_cierre_andy), String.valueOf(JSONReaderWriter.Productor_Plot_Twist_andy), String.valueOf(JSONReaderWriter.Ensamblador_Rodaje_jose), String.valueOf(JSONReaderWriter.Ensamblador_Rodaje_andy), String.valueOf(JSONReaderWriter.Ingresos_Rodaje_jose), String.valueOf(JSONReaderWriter.Ingresos_Rodaje_andy), String.valueOf(JSONReaderWriter.Costos_Rodaje_jose), String.valueOf(JSONReaderWriter.Costos_Rodaje_andy));
+//                
+//                System.out.println("VOY A LEEER ----------------------------");
+//                
+//                jsnrw.Reader();
+//                
+//                System.out.println("INTENTANDO PARA ESTA BROMA --------------------------------");
+//                Proyecto_operativos.keep = false;
+//                Director.keepDir = false;
+//                
+////                Le avisa a José que ya llegó
+//                this.HolaJoseYaLlegue.release();
+//                
+//                
+//            }else{
+////                int ingresos = Integer.parseInt(String.valueOf(this.beneficios_generales_num - this.costos_generales_num));
+////                int costos = Integer.parseInt(String.valueOf(this.costos_generales_num));
+//                float ingresosOperacion = this.beneficios_generales_num - this.costos_generales_num;
+//    //                int ingresos_string = (int) ingresosOperacion;                                
+//                int ingresos = (int) ingresosOperacion;
+//                int costos = (int) (this.costos_generales_num);
+//                
+//                JSONReaderWriter.Ingresos_Rodaje_jose = ingresos;
+//                JSONReaderWriter.Costos_Rodaje_jose = costos;
+//                
+////                Le avisa a Andy que ya llegó a su parte
+//                this.HolaAndyYaLlegue.release();
+//                this.HolaJoseYaLlegue.acquire();
+//                
+//                
+//            }
+            
+            System.out.println( "> " + JSONReaderWriter.Ingresos_Rodaje_jose + JSONReaderWriter.Ingresos_Rodaje_andy + JSONReaderWriter.Costos_Rodaje_jose + JSONReaderWriter.Costos_Rodaje_andy);
+
+            
+            
+            System.out.println("-----------------||||---------||||-------");
+            
+            
+            float ingresosFloat = this.beneficios_generales_num - this.costos_generales_num;
+            float costosFloat = this.costos_generales_num;     
+            
+            int ingresos = (int) ingresosFloat;
+            int costos = (int) costosFloat;
+            
+            if(rodaje.equalsIgnoreCase("andy")){
+                
+                Director.HolaAndyYaLlegue.acquire();
+                
+                JSONReaderWriter.Ingresos_Rodaje_andy = ingresos;
+                JSONReaderWriter.Costos_Rodaje_andy = costos;
+                
+                JSONReaderWriter jsrw = new JSONReaderWriter();
+                
+                jsrw.Writer(String.valueOf(JSONReaderWriter.dia_en_segundos), String.valueOf(JSONReaderWriter.dias_entre_despachos), String.valueOf(JSONReaderWriter.parte_intro_max), String.valueOf(JSONReaderWriter.Capacidad_infinita_intro), String.valueOf(JSONReaderWriter.parte_creditos_max), String.valueOf(JSONReaderWriter.Capacidad_infinita_creditos), String.valueOf(JSONReaderWriter.parte_inicio_max), String.valueOf(JSONReaderWriter.Capacidad_infinita_inicio), String.valueOf(JSONReaderWriter.parte_cierre_max), String.valueOf(JSONReaderWriter.Capacidad_infinita_cierre), String.valueOf(JSONReaderWriter.parte_plot_twist_max), String.valueOf(JSONReaderWriter.Capacidad_infinita_plot_twist), String.valueOf(JSONReaderWriter.Productor_Intros_jose), String.valueOf(JSONReaderWriter.Productor_Creditos_jose), String.valueOf(JSONReaderWriter.Productor_Inicio_jose), String.valueOf(JSONReaderWriter.Productor_cierre_jose), String.valueOf(JSONReaderWriter.Productor_Plot_Twist_jose), String.valueOf(JSONReaderWriter.Productor_Intros_andy), String.valueOf(JSONReaderWriter.Productor_Creditos_andy), String.valueOf(JSONReaderWriter.Productor_Inicio_andy), String.valueOf(JSONReaderWriter.Productor_cierre_andy), String.valueOf(JSONReaderWriter.Productor_Plot_Twist_andy), String.valueOf(JSONReaderWriter.Ensamblador_Rodaje_jose),String.valueOf(JSONReaderWriter.Ensamblador_Rodaje_andy), String.valueOf(JSONReaderWriter.Ingresos_Rodaje_jose), String.valueOf(JSONReaderWriter.Ingresos_Rodaje_andy), String.valueOf(JSONReaderWriter.Costos_Rodaje_jose), String.valueOf(JSONReaderWriter.Costos_Rodaje_andy));
+                jsrw.Reader();
+                
+                Director.HolaJoseYaLlegue.release();
+                
+                
+            }else{
+                
+                JSONReaderWriter.Ingresos_Rodaje_jose = ingresos;
+                JSONReaderWriter.Costos_Rodaje_jose = costos;
+                
+                Director.HolaAndyYaLlegue.release();
+                Director.HolaJoseYaLlegue.acquire();
+            }
             
             Proyecto_operativos.keep = false;
+            Director.keepDir = false;
+            
         }
         
         
@@ -276,7 +411,10 @@ public class Director extends Thread{
     
     @Override
     public void run(){
-        
+//        Sueldo por hora del PM 2/2
+        float temp1 = Float.parseFloat(String.valueOf(this.sueldo_al_payaso)) / 24;            
+        this.SueldoPorHoraPMJlabel.setText(String.valueOf(temp1));
+
         
         while(keepDir){
             try {
@@ -387,6 +525,13 @@ public class Director extends Thread{
                     
                     this.Falsear_Director_nuevo_dia_rodaje();
                     
+//                    Aqui se pone la cantidad de capitulos hechos en el anterior rodaje 
+                    int temp = Integer.parseInt(this.EnsambladoTxt.getText());
+                    this.CapitulosDelAnteriorRodaje = temp - this.CapitulosIgnorados;
+                    this.CapitulosIgnorados = temp;
+//                    Se pone el numero de capitulos despachados de la serie anterior en la respectiva interfaz
+                    this.LoteAntCapsJlabel.setText(String.valueOf(this.CapitulosDelAnteriorRodaje));
+                     
 //                    Revisa cuantas series faltan por hacer, si ya se hicieron todas, para la simulación
                     this.StopIfNroSeries_Rodaje_Es0();
 //                    Proyecto_operativos.keep=false;
@@ -399,9 +544,13 @@ public class Director extends Thread{
                 
             } catch (InterruptedException ex) {
                 Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
+    
+    
     
    
     /*
@@ -421,6 +570,11 @@ public class Director extends Thread{
             Thread.sleep(random2);
             
             this.sueldo_al_payaso = sueldo_al_payaso-1;
+            
+//            Sueldo por hora del PM 2/2
+            float temp = Float.parseFloat(String.valueOf(this.sueldo_al_payaso)) / 24;            
+            this.SueldoPorHoraPMJlabel.setText(String.valueOf(temp));
+            
             
             //Se agrega +1 a las veces que fue descubierto flojeando al Project_manager
 //            Project_manager.Veces_descubierto_flojeando++;
