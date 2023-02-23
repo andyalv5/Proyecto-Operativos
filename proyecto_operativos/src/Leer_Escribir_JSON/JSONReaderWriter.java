@@ -12,6 +12,7 @@ import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.Semaphore;
   
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -24,7 +25,7 @@ import proyecto_operativos.Proyecto_operativos;
  */
 public class JSONReaderWriter{
     
-    
+    private static Semaphore writeAndreadmutex = new Semaphore(1);
     public static int dia_en_segundos;
     public static int dias_entre_despachos;
     
