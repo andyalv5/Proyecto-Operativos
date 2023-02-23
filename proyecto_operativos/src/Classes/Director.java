@@ -316,9 +316,24 @@ public class Director extends Thread{
                     if(rodaje.equalsIgnoreCase("andy")){
                         Director.vigila_andy = true;
                         VigilandoAndy vandy = new VigilandoAndy(random);
-                    }else if(this.rodaje.equalsIgnoreCase("jose") && Director.NroSeries_Jose != 0){
-                        
-                    }else{
+                        vandy.start();
+
+                            do{
+                                cachado();                 
+
+                            }while(Director.vigila_andy);
+
+                        }else{
+                            Director.vigila_jose = true;
+                            VigilandoJose vjose = new VigilandoJose(random);
+
+
+                            vjose.start();
+
+                            do{                            
+                                cachado();                
+                            
+                            }while(Director.vigila_jose);
                         
 //    //                    Proyecto_operativos.contador_dias_restantes = Proyecto_operativos.dias_entre_despachos;
 //                        this.ingresos_generales_num=Integer.parseInt(String.valueOf(this.ingresos_generales.getText()));
