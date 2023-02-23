@@ -174,7 +174,7 @@ public class Dashboard extends javax.swing.JFrame {
     //    Aqui tengo el project manager trabajando con la cedula de andy
         Project_manager pm_andy = new Project_manager(Proyecto_operativos.ci_Andy, "andy", this.Contador,this.ProjectManagerHaciendo);
     //    Aqui le indico al director de andy a que productor vigilar, y además, le indico que es el director de andy
-        Director dir_andy = new Director(pm_andy, "andy", this.Contador, this.Veces_PM_atrapado,this.BeneficiosReal,this.Costos_Totales_PD,this.es_el_mejor,this.text1,this.text2,this.text3,this.series_entregadas,this.Ganancia_Capitulo,this.costos_generales_reales,1, this.DirectorHaciendo);
+        Director dir_andy = new Director(pm_andy, "andy", this.Contador, this.Veces_PM_atrapado,this.BeneficiosReal,this.Costos_Totales_PD,this.es_el_mejor,this.text1,this.text2,this.text3,this.series_entregadas,this.Ganancia_Capitulo,this.costos_generales_reales,1, this.DirectorHaciendo, this.EnsambladoTxt, this.loteanteriortext);
         
         hilo1.start();
         hilo2.start();
