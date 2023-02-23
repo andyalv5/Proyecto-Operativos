@@ -377,6 +377,8 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         Despedido1 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        loteanteriortext = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -880,6 +882,12 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel20.setText("Rodaje Andy");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 70, -1, -1));
 
+        loteanteriortext.setText("0");
+        jPanel1.add(loteanteriortext, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 510, -1, -1));
+
+        jLabel6.setText("Lote ant caps:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 510, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1298,12 +1306,14 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel loteanteriortext;
     private javax.swing.JProgressBar progresoCierreBar;
     private javax.swing.JProgressBar progresoCreditoBar;
     private javax.swing.JProgressBar progresoInicioBar;
