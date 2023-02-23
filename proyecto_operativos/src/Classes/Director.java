@@ -313,8 +313,9 @@ public class Director extends Thread{
                     
     
                     
-                    if(this.rodaje.equalsIgnoreCase("andy") && Director.NroSeries_Andy != 0){
-                        
+                    if(rodaje.equalsIgnoreCase("andy")){
+                        Director.vigila_andy = true;
+                        VigilandoAndy vandy = new VigilandoAndy(random);
                     }else if(this.rodaje.equalsIgnoreCase("jose") && Director.NroSeries_Jose != 0){
                         
                     }else{
