@@ -401,7 +401,7 @@ public class Director extends Thread{
 //                    Proyecto_operativos.keep=false;
                                         
                 }else{
-                    
+                    this.DirectorHaciendo.setText("Ya hizo todo por hoy");
                     pm.Semaforo_Contador_release();
                 }
                 
