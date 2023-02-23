@@ -44,6 +44,7 @@ public class Director extends Thread{
     javax.swing.JLabel es_elmejor;
     javax.swing.JLabel capitulos_entregados;
     private int id;
+    public static boolean keepDir=true;
     
     private static Semaphore LlegoJose = new Semaphore(0);
     private static Semaphore LlegoAndy = new Semaphore(0);
@@ -202,7 +203,7 @@ public class Director extends Thread{
      */
     public void StopIfNroSeries_Rodaje_Es0() throws InterruptedException{
         if(this.rodaje.equalsIgnoreCase("andy")){
-            
+            Proyecto_operativos.keep = false;
              Director.NroSeries_Andy = this.Restar_NroSeries_Rodaje(Director.NroSeries_Andy);
             
              System.out.println("Hola broski, este el nro de series actuales: de andy" + Director.NroSeries_Andy);
@@ -287,7 +288,7 @@ public class Director extends Thread{
     public void run(){
         
         
-        while(Proyecto_operativos.keep){
+        while(keepDir){
             try {
                 
 //                Proyecto_operativos.Contador.acquire();

@@ -72,36 +72,47 @@ public class Productor_Credito extends Thread{
                         if(Proyecto_operativos.ci_Andy>=0 && Proyecto_operativos.ci_Andy<3){
 
                             s.acquire();
-                            Pro_per_Day=Pro_per_Day+productores*(4);
+                            if(Proyecto_operativos.keep != false){
+                                Pro_per_Day=Pro_per_Day+productores*(4);
+                            }
                             s.release();
 
                         }
                         else if(Proyecto_operativos.ci_Andy>=3 && Proyecto_operativos.ci_Andy<6){
 
                             s.acquire();
-                            Pro_per_Day=Pro_per_Day+productores*(2);
+                            if(Proyecto_operativos.keep != false){
+                                Pro_per_Day=Pro_per_Day+productores*(2);
+                            }
                             s.release();
 
                         }
                         else{
 
                             s.acquire();
-                            Pro_per_Day=Pro_per_Day+productores*(3);
+                            if(Proyecto_operativos.keep != false){
+                                Pro_per_Day=Pro_per_Day+productores*(3);
+                            }
                             s.release();
 
                         }
                     }
                     if(Pro_per_Day >max_Drive){
                         s.acquire();
-                        Pro_per_Day =max_Drive;
+                        if(Proyecto_operativos.keep != false){
+                            Pro_per_Day =max_Drive;
+                        }
+                            
                         s.release();
                     }
                     if(Pro_per_Day <0){
                         s.acquire();
-                        Pro_per_Day =0;
+                        if(Proyecto_operativos.keep != false){
+                            Pro_per_Day =0;
+                        }
                         s.release();
                     }
-                    empty.release(Pro_per_Day);
+                    empty.release(Pro_per_Day-1);
                     System.out.println("Se hicieron "+Pro_per_Day+" Creditos");
                     
                 } catch (InterruptedException ex) {

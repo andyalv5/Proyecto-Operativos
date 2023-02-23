@@ -75,7 +75,9 @@ public class Productor_Plot_Twist extends Thread{
                                 Thread.sleep((Proyecto_operativos.dia_en_ms));
                                 
                                 s.acquire();
-                                Pro_per_Day=Pro_per_Day+productores*(1);
+                                if(Proyecto_operativos.keep != false){
+                                    Pro_per_Day=Pro_per_Day+productores*(1);
+                                }
                                 s.release();
                                 
                             }
@@ -85,19 +87,25 @@ public class Productor_Plot_Twist extends Thread{
                                 
                                 Dashboard.Jtext_Productores_Plot_Twist.release();
                                 s.acquire();
-                                Pro_per_Day=Pro_per_Day+productores*(1);
+                                if(Proyecto_operativos.keep != false){
+                                    Pro_per_Day=Pro_per_Day+productores*(1);
+                                }
                                 s.release();
                              
                             }
                         if(Pro_per_Day >max_Drive){
                             s.acquire();
-                            Pro_per_Day =max_Drive;
+                            if(Proyecto_operativos.keep != false){
+                                Pro_per_Day =max_Drive;
+                            }
                             s.release();
                         }
                         
                         if(Pro_per_Day <0){
                             s.acquire();
-                            Pro_per_Day =0;
+                            if(Proyecto_operativos.keep != false){
+                                Pro_per_Day =0;
+                            }
                             s.release();
                         }
                     System.out.println("Se hicieron "+Pro_per_Day+" plot twist");
