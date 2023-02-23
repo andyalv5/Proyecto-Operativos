@@ -163,7 +163,7 @@ public class Project_manager extends Thread{
                     this.Restar_contador_dias_restantes_rodaje();
                     
                     System.out.println("Tomaa: " + this.Contador_dias_restantes_rodaje());
-                    this.ProjectManagerHaciendo.setText("contador rebajado");
+                    this.ProjectManagerHaciendo.setText("rebajando contador");
 //                    Proyecto_operativos.Contador.release();
                     this.Semaforo_Contador_release();
                     
@@ -240,7 +240,7 @@ public class Project_manager extends Thread{
                 
                 Thread.sleep(tiempo);
                 
-                
+                this.ProjectManagerHaciendo.setText("Dejó de ver Sprints");
                 
             } catch (InterruptedException ex) {
                 Logger.getLogger(Project_manager.class.getName()).log(Level.SEVERE, null, ex);
