@@ -23,10 +23,6 @@ import proyecto_operativos.Proyecto_operativos;
 public class Ensamblador extends Thread{
     private int ganancia_Velma;
     
-    public int get_ganancia_velma(){
-        return this.ganancia_Velma;
-    }
-    
     private int dinero;
     public int ganancia;
     private int capitulo_Counter;
@@ -49,8 +45,13 @@ public class Ensamblador extends Thread{
     Semaphore r;
     
     
+    public int get_ganancia_velma(){
+        return this.ganancia_Velma;
+    }
     
-    public Ensamblador(Productores_Intro hilo1,Productor_Cierre hilo2,Productor_Inicio hilo3,Productor_Credito hilo4,Productor_Plot_Twist hilo5, Semaphore s,Semaphore o,Semaphore p, Semaphore q,Semaphore r,int dinero) {
+    public Ensamblador(Productores_Intro hilo1,Productor_Cierre hilo2,Productor_Inicio hilo3,
+            Productor_Credito hilo4,Productor_Plot_Twist hilo5, Semaphore s,Semaphore o,Semaphore p, 
+            Semaphore q,Semaphore r,int dinero) {
      this.hilo1= hilo1;
      this.hilo2= hilo2;
      this.hilo3= hilo3;

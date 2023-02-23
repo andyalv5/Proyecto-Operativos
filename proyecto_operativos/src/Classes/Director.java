@@ -45,36 +45,30 @@ public class Director extends Thread{
     javax.swing.JLabel capitulos_entregados;
     private int id;
     public static boolean keepDir=true;
-    
     private static Semaphore LlegoJose = new Semaphore(0);
     private static Semaphore LlegoAndy = new Semaphore(0);
-    
-    
-    
 //    Variable que indica si el director está en un nuevo dia
 //    public static volatile boolean Director_nuevo_dia = false;
     public static volatile boolean Director_nuevo_dia_andy = false;
     public static volatile boolean Director_nuevo_dia_jose = false;
-    
     Project_manager pm;
-    
 //    Solo puede o ser "jose" o "andy"
     String rodaje;
 //    boolean keep = true;
-    
 //    El Project Manager que el director vigila
-    
     public javax.swing.JTextField Contador_inter;
-    
 //    Variable de la interfaz que el director cambiará
     javax.swing.JLabel Veces_PM_atrapado;
-    
     public static volatile int NroSeries_Andy;
     public static volatile int NroSeries_Jose;
-    
     javax.swing.JLabel DirectorHaciendo;
     
-    public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter, javax.swing.JLabel Veces_PM_atrapado, javax.swing.JLabel beneficios_text, javax.swing.JLabel costos_text, javax.swing.JLabel Es_el_mejor, javax.swing.JLabel texto1, javax.swing.JLabel texto2, javax.swing.JLabel texto3, javax.swing.JLabel series_Entregadas, javax.swing.JLabel ingresos_generales ,javax.swing.JLabel costos_generales_reales,int id, javax.swing.JLabel DirectorHaciendo){
+    
+    public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter, 
+            javax.swing.JLabel Veces_PM_atrapado, javax.swing.JLabel beneficios_text, javax.swing.JLabel costos_text, 
+            javax.swing.JLabel Es_el_mejor, javax.swing.JLabel texto1, javax.swing.JLabel texto2, 
+            javax.swing.JLabel texto3, javax.swing.JLabel series_Entregadas, javax.swing.JLabel ingresos_generales 
+            ,javax.swing.JLabel costos_generales_reales,int id, javax.swing.JLabel DirectorHaciendo){
         this.pm = pm;
         this.rodaje = rodaje;
         this.Contador_inter = Contador_inter;
@@ -95,7 +89,7 @@ public class Director extends Thread{
         
     }
     
-     private void SincronizarRodajes() throws InterruptedException{
+    private void SincronizarRodajes() throws InterruptedException{
         
         if(this.rodaje.equalsIgnoreCase("andy")){
 //            Avisa al rodaje de jose que llegó al punto
@@ -112,8 +106,6 @@ public class Director extends Thread{
             Director.LlegoAndy.acquire();
         }
     }
-    
-    
     
     /**
      * Hace un acquire del semaforo de su respectivo rodaje
@@ -164,7 +156,6 @@ public class Director extends Thread{
         }
     }
         
-    
     /**
      * 
      * @return el valor de si paso un nuevo dia en su respectivo rodaje
@@ -181,7 +172,6 @@ public class Director extends Thread{
             
         }
     }
-    
     
     /**
      * Vuelve falso a que pasó un nuevo en su rodaje respectivo
@@ -412,8 +402,6 @@ public class Director extends Thread{
             }
         }
     }
-    
-    
     
    
     /*

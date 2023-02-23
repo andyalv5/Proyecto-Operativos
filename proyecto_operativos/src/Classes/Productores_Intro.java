@@ -24,11 +24,10 @@ public class Productores_Intro extends Thread{
     private int max_Drive;
     private int num;
     Semaphore empty;
-    
     javax.swing.JTextField Cant_Productores_Intro;
     
-    
-    public Productores_Intro(Semaphore drive_Intro,Semaphore empty, Semaphore s,int productores,int max_Drive,int num) {
+    public Productores_Intro(Semaphore drive_Intro,Semaphore empty, Semaphore s,
+            int productores,int max_Drive,int num) {
         this.drive_Intro = drive_Intro;
         this.s = s;
         this.max_Drive = max_Drive;

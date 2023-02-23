@@ -45,7 +45,8 @@ public class Project_manager extends Thread{
      * @param rodaje 
      * @param Contador_inter 
      */
-    public Project_manager(int ci, String rodaje, javax.swing.JTextField Contador_inter,javax.swing.JLabel ProjectManagerHaciendo){
+    public Project_manager(int ci, String rodaje, javax.swing.JTextField Contador_inter,
+            javax.swing.JLabel ProjectManagerHaciendo){
         this.ci = ci;
         this.rodaje = rodaje;
         this.Contador_inter = Contador_inter;

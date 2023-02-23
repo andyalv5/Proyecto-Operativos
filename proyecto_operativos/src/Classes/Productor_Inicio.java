@@ -24,7 +24,8 @@ public class Productor_Inicio extends Thread{
     Semaphore s;
     Semaphore empty;
     
-    public Productor_Inicio(Semaphore drive_Inicio,Semaphore empty, Semaphore s, int productores, int max_Drive,int num) {
+    public Productor_Inicio(Semaphore drive_Inicio,Semaphore empty, Semaphore s,
+            int productores, int max_Drive,int num) {
         this.drive_Inicio=drive_Inicio;
         this.s=s;
         this.productores=productores;

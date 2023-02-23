@@ -24,7 +24,8 @@ public class Productor_Cierre extends Thread{
     Semaphore s;
     Semaphore empty;
     
-    public Productor_Cierre(Semaphore drive_Cierre,Semaphore empty, Semaphore s, int productores,int max_Drive,int num) {
+    public Productor_Cierre(Semaphore drive_Cierre,Semaphore empty, Semaphore s, 
+            int productores,int max_Drive,int num) {
         this.drive_Cierre=drive_Cierre;
         this.s=s;
         this.productores=productores;
@@ -43,7 +44,6 @@ public class Productor_Cierre extends Thread{
     public void free_space(int i){   
         this.drive_Cierre.release(i);
     }
-    
     
     public float get_ganancia(){
         return this.ganancia;

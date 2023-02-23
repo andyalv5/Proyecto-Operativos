@@ -24,7 +24,8 @@ public class Productor_Credito extends Thread{
     Semaphore empty;
     private int num;
     
-    public Productor_Credito(Semaphore drive_Credito,Semaphore empty, Semaphore s,int productores,int max_Drive,int num) {
+    public Productor_Credito(Semaphore drive_Credito,Semaphore empty, Semaphore s,
+            int productores,int max_Drive,int num) {
         this.drive_Credito=drive_Credito;
         this.s=s;
         this.productores =productores;

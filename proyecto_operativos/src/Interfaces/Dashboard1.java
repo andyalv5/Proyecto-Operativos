@@ -76,12 +76,19 @@ public class Dashboard1 extends javax.swing.JFrame {
     public static Semaphore Jtext_Productores_Cierre1 = new Semaphore(1);
     public static Semaphore Jtext_Productores_Plot_Twist1 = new Semaphore(1);
     
-    public static Productores_Intro Dhilo1 = new Productores_Intro(drive_Intro1, semaforo_empty_intro,semaforo_intro1,1,tamanio_Intro1,1);
-    public static Productor_Cierre Dhilo2 = new Productor_Cierre(drive_Cierre1, semaforo_empty_cierre,semaforo_cie1,1,tamanio_Cierre1,2);
-    public static Productor_Inicio Dhilo3 = new Productor_Inicio(drive_Inicio1, semaforo_empty_inicio,semaforo_ini1,1,tamanio_Inicio1,2);
-    public static Productor_Credito Dhilo4 = new Productor_Credito(drive_credito1,semaforo_empty_credito, semaforo_con1,1,tamanio_credito1,1);
-    public static Productor_Plot_Twist Dhilo5 = new Productor_Plot_Twist(drive_Plot_Twist1,semaforo_empty_plot_twist, semaforo_PT1,1,tamanio_Plot_Twist1,2);
-    public static Ensamblador1 Dhilo6 = new Ensamblador1(Dhilo1,Dhilo2,Dhilo3,Dhilo4,Dhilo5,semaforo_intro1,semaforo_cie1,semaforo_ini1,semaforo_con1,semaforo_PT1,1100);
+    public static Productores_Intro Dhilo1 = new Productores_Intro(drive_Intro1, 
+            semaforo_empty_intro,semaforo_intro1,1,tamanio_Intro1,1);
+    public static Productor_Cierre Dhilo2 = new Productor_Cierre(drive_Cierre1, 
+            semaforo_empty_cierre,semaforo_cie1,1,tamanio_Cierre1,2);
+    public static Productor_Inicio Dhilo3 = new Productor_Inicio(drive_Inicio1, 
+            semaforo_empty_inicio,semaforo_ini1,1,tamanio_Inicio1,2);
+    public static Productor_Credito Dhilo4 = new Productor_Credito(drive_credito1,
+            semaforo_empty_credito, semaforo_con1,1,tamanio_credito1,1);
+    public static Productor_Plot_Twist Dhilo5 = new Productor_Plot_Twist(drive_Plot_Twist1,
+            semaforo_empty_plot_twist, semaforo_PT1,1,tamanio_Plot_Twist1,2);
+    public static Ensamblador1 Dhilo6 = new Ensamblador1(Dhilo1,Dhilo2,
+            Dhilo3,Dhilo4,Dhilo5,semaforo_intro1,semaforo_cie1,
+            semaforo_ini1,semaforo_con1,semaforo_PT1,1100);
   
     
 ////    Aqui tengo el project manager trabajando con la cedula de andy
@@ -1138,7 +1145,8 @@ public class Dashboard1 extends javax.swing.JFrame {
     }//GEN-LAST:event_Intro_a_creditoActionPerformed
 
     private void subir_EnsambladoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subir_EnsambladoresActionPerformed
-         this.Cant_Productores_Ensamblado1.setText(String.valueOf(Integer.parseInt(this.Cant_Productores_Ensamblado1.getText()) + 1));
+         this.Cant_Productores_Ensamblado1.setText(String.valueOf(Integer.parseInt(
+                 this.Cant_Productores_Ensamblado1.getText()) + 1));
     }//GEN-LAST:event_subir_EnsambladoresActionPerformed
 
     private void bajar_EnsabladoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bajar_EnsabladoresActionPerformed

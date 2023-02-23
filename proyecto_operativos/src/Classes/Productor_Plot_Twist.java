@@ -24,7 +24,8 @@ public class Productor_Plot_Twist extends Thread{
     Semaphore s;
     Semaphore empty;
     
-    public Productor_Plot_Twist(Semaphore drive_Plot_Twist,Semaphore empty, Semaphore s, int productores,int max_Drive,int num) {
+    public Productor_Plot_Twist(Semaphore drive_Plot_Twist,Semaphore empty,
+            Semaphore s, int productores,int max_Drive,int num) {
         this.drive_Plot_Twist=drive_Plot_Twist;
         this.s=s;
         this.productores = productores;

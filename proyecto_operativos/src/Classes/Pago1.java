@@ -24,6 +24,7 @@ public class Pago1 extends Thread{
     Project_manager manager;
     Director director;
     public int ganancia_canadiense =100;
+    
     public Pago1(Project_manager pm_andy, Director dir_andy){
     this.director=dir_andy;
     this.manager=pm_andy;
