@@ -311,22 +311,7 @@ public class Director extends Thread{
 //                    Proyecto_operativos.Director_PM_Semaphore.acquire();
     //                Llamamos al metodo "cachado"
                     
-                    this.Semaforo_RM_acquire();
     
-                    cachado();                 
-                    
-                    this.Semaforo_RM_release();
-
-    //                Liberamos semaforo a la sección critica
-//                    Proyecto_operativos.Director_PM_Semaphore.release();
-                    
-//                    Toma su descanso de vigilación cada 30-90 minutos
-                    
-//                }else if(pm.Contador_dias_restantes_rodaje() == 0 && this.Director_nuevo_dia_rodaje()){
-                }else if(pm.Contador_dias_restantes_rodaje() == 0 ){
-//                    ---------------------------------------
-//                    Aquí pondremos el método para agregar todos los capitulos creados a la serie
-//                    Y además resetearemos el contador a su valor original
                     
                     if(this.rodaje.equalsIgnoreCase("andy") && Director.NroSeries_Andy != 0){
                         
