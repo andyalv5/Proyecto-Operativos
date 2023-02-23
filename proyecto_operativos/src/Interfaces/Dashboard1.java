@@ -260,7 +260,7 @@ public class Dashboard1 extends javax.swing.JFrame {
                         
                         EnsambladoTxt1.setText(String.valueOf(Dhilo6.get_capitulo()));
                         Ensamblado_Ganancia1.setText(String.valueOf(Dhilo6.get_ganancia()));
-                        Ganancia_Capitulo1.setText(String.valueOf(Dhilo6.get_ganancia_velma()));
+                        Ganancia_Capitulo1.setText(String.valueOf(Dhilo6.get_ganancia_TLOU()));
                         sueldo_Director1.setText(String.valueOf(dir_jose.ganancia));
                         sueldo_Manager1.setText(String.valueOf(pm_jose.ganancia));
                         Costos_Totales_PD.setText(String.valueOf(Dhilo1.ganancia+Dhilo2.ganancia+Dhilo3.ganancia+Dhilo4.ganancia+Dhilo5.ganancia+Dhilo6.ganancia+pm_jose.ganancia+dir_jose.ganancia));

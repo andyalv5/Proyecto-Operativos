@@ -21,10 +21,10 @@ import proyecto_operativos.Proyecto_operativos;
  * @author Andy
  */
 public class Ensamblador1 extends Thread{
-    private int ganancia_Velma;
+    private int ganancia_TLOU=0;
     
-    public int get_ganancia_velma(){
-        return this.ganancia_Velma;
+    public int get_ganancia_TLOU(){
+        return this.ganancia_TLOU;
     }
     
     private int dinero;
@@ -126,7 +126,7 @@ public class Ensamblador1 extends Thread{
                         
                         capitulo = capitulo+1;
                         Dashboard.Jtext_Productores_Ensamblado.acquire();
-                        this.ganancia_Velma= ganancia_Velma +((dinero*100000)/150000);
+                        this.ganancia_TLOU= ganancia_TLOU+((dinero*100000)/150000);
                         Dashboard.Jtext_Productores_Ensamblado.release();
                         
                         hilo1.free_space(1);

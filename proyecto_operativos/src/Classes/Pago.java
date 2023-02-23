@@ -59,29 +59,26 @@ public class Pago extends Thread{
 
 
 
-                    Dashboard.Jtext_Productores_Intro.acquire();
                     hilo1.ganancia=hilo1.ganancia+hilo1.productores*(3);
-                    Dashboard.Jtext_Productores_Intro.release();
                     
-                    Dashboard.Jtext_Productores_Cierre.acquire();
+                    
                     hilo2.ganancia=hilo2.ganancia+hilo2.productores*(7.5f);
-                    Dashboard.Jtext_Productores_Cierre.release();
                     
-                    Dashboard.Jtext_Productores_Inicio.acquire();
+                    
                     hilo3.ganancia=hilo3.ganancia+hilo3.productores*(7);
-                    Dashboard.Jtext_Productores_Inicio.release();
-                  
-                    Dashboard.Jtext_Productores_Credito.acquire();
-                    hilo4.ganancia=hilo4.ganancia+hilo4.productores*(3);
-                    Dashboard.Jtext_Productores_Credito.release();
                     
-                    Dashboard.Jtext_Productores_Plot_Twist.acquire();
+                  
+                    
+                    hilo4.ganancia=hilo4.ganancia+hilo4.productores*(3);
+                    
+                    
+                    
                     hilo5.ganancia=hilo5.ganancia+hilo5.productores*(10);
-                    Dashboard.Jtext_Productores_Plot_Twist.release();
+                    
                         
-                    Dashboard.Jtext_Productores_Ensamblado.acquire();
+                    
                     hilo6.ganancia=hilo6.ganancia+hilo6.ensambladores*(8);
-                    Dashboard.Jtext_Productores_Ensamblado.release();
+                    
                     
                     this.director.ganancia=this.director.ganancia+ganancia_canadiense;
                     this.manager.ganancia=this.manager.ganancia+this.director.sueldo_al_payaso;

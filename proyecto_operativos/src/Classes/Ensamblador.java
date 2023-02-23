@@ -21,7 +21,7 @@ import proyecto_operativos.Proyecto_operativos;
  * @author Andy
  */
 public class Ensamblador extends Thread{
-    private int ganancia_Velma;
+    private int ganancia_Velma =0;
     
     public int get_ganancia_velma(){
         return this.ganancia_Velma;
