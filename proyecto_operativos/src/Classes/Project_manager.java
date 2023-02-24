@@ -101,9 +101,9 @@ public class Project_manager extends Thread{
     public void Restar_contador_dias_restantes_rodaje(){
         
         if(this.rodaje.equalsIgnoreCase("andy")){
-            System.out.println("Voy a restar");
+//            System.out.println("Voy a restar");
             Proyecto_operativos.contador_dias_restantes_andy--;  
-            System.out.println(String.valueOf(Proyecto_operativos.contador_dias_restantes_andy));
+//            System.out.println(String.valueOf(Proyecto_operativos.contador_dias_restantes_andy));
                         
             this.Contador_inter.setText(String.valueOf(Proyecto_operativos.contador_dias_restantes_andy));
         }else{
@@ -163,7 +163,7 @@ public class Project_manager extends Thread{
 //                    Proyecto_operativos.contador_dias_restantes--;
                     this.Restar_contador_dias_restantes_rodaje();
                     
-                    System.out.println("Tomaa: " + this.Contador_dias_restantes_rodaje());
+//                    System.out.println("Tomaa: " + this.Contador_dias_restantes_rodaje());
                     this.ProjectManagerHaciendo.setText("rebajando contador");
 //                    Proyecto_operativos.Contador.release();
                     this.Semaforo_Contador_release();

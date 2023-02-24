@@ -89,6 +89,8 @@ public class Dashboard1 extends javax.swing.JFrame {
     public static Ensamblador1 Dhilo6 = new Ensamblador1(Dhilo1,Dhilo2,
             Dhilo3,Dhilo4,Dhilo5,semaforo_intro1,semaforo_cie1,
             semaforo_ini1,semaforo_con1,semaforo_PT1,1100);
+    
+    
   
     
 ////    Aqui tengo el project manager trabajando con la cedula de andy
@@ -972,8 +974,11 @@ public class Dashboard1 extends javax.swing.JFrame {
             }
         }
         if(Integer.parseInt(this.Cant_Productores_Inicio.getText())==0){
-            this.Despedido.setForeground(Color.red);
+            this.Despedido.setForeground(Color.red);            
             this.pagohilo.ganancia_canadiense=0;
+            
+//            Proyecto_operativos.DirectorEstaDespedido_jose = true;
+            
         }
     }//GEN-LAST:event_Inicio_to_CierreActionPerformed
 

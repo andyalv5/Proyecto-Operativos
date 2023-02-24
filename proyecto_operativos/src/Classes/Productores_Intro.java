@@ -71,9 +71,9 @@ public class Productores_Intro extends Thread{
             try {
 //              Proyecto_operativos.Pro_per_day_Intro_Ensambler.acquire();
                 
-                System.out.println("Estoy a punto de entrar al acquire");
+//                System.out.println("Estoy a punto de entrar al acquire");
                 this.drive_Intro.acquire(num);
-                System.out.println("Estoy saliendo del aquire");
+//                System.out.println("Estoy saliendo del aquire");
                     
                 Thread.sleep(Proyecto_operativos.dia_en_ms);
                
@@ -134,7 +134,7 @@ public class Productores_Intro extends Thread{
                     }
                     s.release();
                 }
-                System.out.println("Se hicieron " + Pro_per_Day + " intros");
+//                System.out.println("Se hicieron " + Pro_per_Day + " intros");
                 empty.release(Pro_per_Day);
                     
             }

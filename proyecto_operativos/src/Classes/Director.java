@@ -96,6 +96,8 @@ public class Director extends Thread{
     
     javax.swing.JLabel SueldoPorHoraPMJlabel;
     
+//    boolean DirectorEstaDespedido;
+    
     public Director(Project_manager pm, String rodaje, javax.swing.JTextField Contador_inter, javax.swing.JLabel Veces_PM_atrapado, javax.swing.JLabel beneficios_text, javax.swing.JLabel costos_text, javax.swing.JLabel Es_el_mejor, javax.swing.JLabel texto1, javax.swing.JLabel texto2, javax.swing.JLabel texto3, javax.swing.JLabel series_Entregadas, javax.swing.JLabel ingresos_generales ,javax.swing.JLabel costos_generales_reales,int id, javax.swing.JLabel DirectorHaciendo, javax.swing.JLabel LoteAntCapsJlabel, javax.swing.JLabel EnsambladoTxt, javax.swing.JLabel SueldoPorHoraPMJlabel){
         this.pm = pm;
         this.rodaje = rodaje;
@@ -120,6 +122,8 @@ public class Director extends Thread{
         this.EnsambladoTxt = EnsambladoTxt;
         
         this.SueldoPorHoraPMJlabel = SueldoPorHoraPMJlabel;
+        
+//        this.DirectorEstaDespedido = DirectorEstaDespedido;
     }
     
      private void SincronizarRodajes() throws InterruptedException{
@@ -594,12 +598,27 @@ public class Director extends Thread{
      */
     public void Sumar_veces_descubierto_flojeando_rodaje(){
         
-        if(this.rodaje.equalsIgnoreCase("andy")){
-            Project_manager.Veces_descubierto_flojeando_andy++;
-            this.Veces_PM_atrapado.setText(String.valueOf(Project_manager.Veces_descubierto_flojeando_andy));
-        }else{
-            Project_manager.Veces_descubierto_flojeando_jose++;
-            this.Veces_PM_atrapado.setText(String.valueOf(Project_manager.Veces_descubierto_flojeando_jose));
+        
+            
+            if(this.rodaje.equalsIgnoreCase("andy")){
+                
+                   
+                Project_manager.Veces_descubierto_flojeando_andy++;
+                this.Veces_PM_atrapado.setText(String.valueOf(Project_manager.Veces_descubierto_flojeando_andy));
+                 
+                
+                
+            }else{
+                
+                    
+//                System.out.println(rodaje + " " + !Proyecto_operativos.DirectorEstaDespedido_jose);
+
+                Project_manager.Veces_descubierto_flojeando_jose++;
+                this.Veces_PM_atrapado.setText(String.valueOf(Project_manager.Veces_descubierto_flojeando_jose));
+                
+                
+            
         }
+        
     }
 }

@@ -109,7 +109,7 @@ public class Productor_Inicio extends Thread{
                         }
                         s.release();
                         }
-                        System.out.println("Se hicieron "+Pro_per_Day+"inicios");
+//                        System.out.println("Se hicieron "+Pro_per_Day+"inicios");
                
                     }
                     if(Pro_per_Day <0){

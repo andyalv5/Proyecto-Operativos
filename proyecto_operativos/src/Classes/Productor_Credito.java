@@ -114,7 +114,7 @@ public class Productor_Credito extends Thread{
                         s.release();
                     }
                     empty.release(Pro_per_Day-1);
-                    System.out.println("Se hicieron "+Pro_per_Day+" Creditos");
+//                    System.out.println("Se hicieron "+Pro_per_Day+" Creditos");
                     
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Productores_Intro.class.getName()).log(Level.SEVERE, null, ex);

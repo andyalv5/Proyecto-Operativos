@@ -14,33 +14,17 @@ import java.util.concurrent.Semaphore;
  * @author Andy
  */
 public class Proyecto_operativos {
-    
-//    JOSÉ SE ROBARÁ ESTE ESPACIO MUAJAJAJA
-//    ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-     
+         
     public static int dia_en_ms = 1000;
     
     public static int nro_final_id_jose = 9;
     public static int nro_final_id_andy = 8;
-    
-    
-//    Project_Manager
-//    ------------------------------------------------------------------------
-//    ------------------------------------------------------------------------
-    
-    
-//    Director:
-    
-//    public static int NroSeries_Andy;
-//    public static int NroSeries_Jose;
-    
+
 //    ------------------------------------------------------------------------
 //    Cantidad de dias entre despachos de series (NO CAMBIA)
     public static int dias_entre_despachos = 30;
-//    -----------------------------------------------------------------------
-    
+//    -----------------------------------------------------------------------    
 //   Director - Project_Manager
-//    -----------------------------------------------------------------------
     
 //    Semaforo que accede al contador (seccion critica)
 //    public static Semaphore Contador = new Semaphore(1);
@@ -68,19 +52,7 @@ public class Proyecto_operativos {
     
 //    Lo que para todo
     public static volatile boolean keep = true;
-    
-    
-    
-    
-//    -----------------------------------------------------------------
-    
-
-
-//    ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-    
-    
-    
-    //prod hay que revisarlo para que sea una variable que se introduzca por interfaz 
+     
     
 //    Final cédula Andy
     public static int ci_Andy = 8;
@@ -92,27 +64,7 @@ public class Proyecto_operativos {
     
     
     public static Semaphore Pro_per_day_Intro_Ensambler = new Semaphore(1);
-    
-    
-//    Tamaños diferentes en el drive
-//    public static int tamanio_credito = 25;
-//    public static int tamanio_Inicio = 50;
-//    public static int tamanio_Cierre = 55;
-//    public static int tamanio_Plot_Twist = 40;
-    
-//    Semaforos para cada tamaño diferente en el drive
-//    public static Semaphore drive_credito = new Semaphore(tamanio_credito);
-//    public static Semaphore drive_Inicio = new Semaphore(tamanio_Inicio);
-//    public static Semaphore drive_Cierre = new Semaphore(tamanio_Cierre);
-//    public static Semaphore drive_Plot_Twist = new Semaphore(tamanio_Plot_Twist);
-//    public static Semaphore semaforo_s = new Semaphore(1);
-    
-    
-    
-    
-//    public Semaphore semaforo_n = new Semaphore(1);
-    
-    
+        
     /**
      * @param args the command line arguments
      * @throws java.io.FileNotFoundException
@@ -120,29 +72,11 @@ public class Proyecto_operativos {
     public static void main(String[] args) throws FileNotFoundException, InterruptedException {
         
         
-//        JOSE VA A DOMINAR ESTO MUAJAJAJA
-//        |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
         JSONReaderWriter jsonrw = new JSONReaderWriter();
         jsonrw.Reader();
        
-//        Project_manager pm = new Project_manager(Proyecto_operativos.ci_Andy);
-//        Director dir = new Director(pm, "andy");
-        
-//        dir_andy.start();
-//        pm_andy.start();
-        
-//        System.out.println(JSONReaderWriter.Capacidad_infinita_plot_twist);
-        
-//        jsonrw.Reader();
-        
-//        jsonrw.Writer("1", "30", "30", "false", "25", "false", "50", "false", "55", "false", "40", "false", "15", "1", "1", "1", "1", "14", "1", "1", "1", "1", "1", "1","0","0","0","0");
-
-//        |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-
         MainFrame inicial = new MainFrame();
         inicial.setVisible(true);
-
-        
         
     }
     

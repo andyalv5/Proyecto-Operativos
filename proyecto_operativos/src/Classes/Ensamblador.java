@@ -164,7 +164,7 @@ public class Ensamblador extends Thread{
                         
                         
                        capitulo_Counter= capitulo_Counter-1;
-                       System.out.println("///////////////////////"+capitulo_Counter);
+//                       System.out.println("///////////////////////"+capitulo_Counter);
                         if (this.capitulo_Counter==0){
                             hilo5.free_space(1);
                             if(Proyecto_operativos.keep != false){
@@ -175,7 +175,7 @@ public class Ensamblador extends Thread{
                             }
                         }
                         
-                    System.out.println("Se ensamblo "+capitulo+" capitulos");
+//                    System.out.println("Se ensamblo "+capitulo+" capitulos");
                     
                     }
                     

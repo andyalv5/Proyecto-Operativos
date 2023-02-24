@@ -120,7 +120,7 @@ public class Productor_Cierre extends Thread{
                         s.release();
                     }
                     empty.release(Pro_per_Day);
-                    System.out.println("Se hicieron "+Pro_per_Day+" Cierres");
+//                    System.out.println("Se hicieron "+Pro_per_Day+" Cierres");
                   
 
 
